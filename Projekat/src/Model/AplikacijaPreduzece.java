@@ -26,6 +26,8 @@ public class AplikacijaPreduzece {
    /** @pdRoleInfo migr=no name=StavkaCenovnika assc=association21 coll=java.util.List impl=java.util.ArrayList mult=0..* */
    public java.util.List<StavkaCenovnika> stavkaCenovnika;
    
+   // komentar
+   
    /** @pdOid 88b72526-db73-439f-877b-52c47f05da53 */
    public void kreirajMenadzera() {
       // TODO: implement
