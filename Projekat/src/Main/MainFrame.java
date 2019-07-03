@@ -6,6 +6,7 @@ import java.awt.Toolkit;
 import java.util.Locale;
 import javax.swing.*;
 
+//dfghjk
 
 public class MainFrame extends JFrame {
 	private static MainFrame instance = null;
