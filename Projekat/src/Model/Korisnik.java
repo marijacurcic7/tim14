@@ -21,5 +21,58 @@ public class Korisnik {
    public Nalog nalog;
    /** @pdRoleInfo migr=no name=Mesto assc=association23 mult=1..1 */
    public Mesto mesto;
+   
+   
+   public Korisnik() {}
+   
+   public Korisnik(String ime, String prezime, String telefon, Mesto mesto, Nalog nalog) {
+	   this.ime = ime;
+	   this.prezime = prezime;
+	   this.telefon = telefon;
+	   this.mesto = mesto;
+	   this.nalog = nalog;
+   }
+
+public String getIme() {
+	return ime;
+}
+
+public void setIme(String ime) {
+	this.ime = ime;
+}
+
+public String getPrezime() {
+	return prezime;
+}
+
+public void setPrezime(String prezime) {
+	this.prezime = prezime;
+}
+
+public String getTelefon() {
+	return telefon;
+}
+
+public void setTelefon(String telefon) {
+	this.telefon = telefon;
+}
+
+public Nalog getNalog() {
+	return nalog;
+}
+
+public void setNalog(Nalog nalog) {
+	this.nalog = nalog;
+}
+
+public Mesto getMesto() {
+	return mesto;
+}
+
+public void setMesto(Mesto mesto) {
+	this.mesto = mesto;
+}
+   
+   
 
 }

@@ -20,7 +20,7 @@ public class AplikacijaPreduzece {
    /** @pdRoleInfo migr=no name=Kategorija assc=association19 coll=java.util.List impl=java.util.ArrayList mult=0..* */
    public java.util.List<Kategorija> kategorija;
    /** @pdRoleInfo migr=no name=Osoba assc=korisnik mult=0..1 */
-   public Korisnik trenutnoUlogovani;
+   public Korisnik trenutnoUlogovani = null;
    /** @pdRoleInfo migr=no name=Narudzbenica assc=association22 mult=1..1 */
    public Narudzbenica korpa;
    /** @pdRoleInfo migr=no name=StavkaCenovnika assc=association21 coll=java.util.List impl=java.util.ArrayList mult=0..* */
@@ -37,6 +37,22 @@ public class AplikacijaPreduzece {
    public int kreirajNarudzbenicu() {
       // TODO: implement
       return 0;
+   }
+   
+   public void registracijaKorisnika(String korisnickoIme, String lozinka, String email, TipKorisnika tipKorisnika,
+		   String ime, String prezime, String telefon, String grad, String drzava, String adresa, int postanskiBroj) {
+	   Nalog nalog = new Nalog(korisnickoIme, lozinka, email, tipKorisnika);
+	   Mesto mesto = new Mesto(grad, drzava, adresa, postanskiBroj);
+	   Korisnik korisnik = new Korisnik(ime, prezime, telefon, mesto, nalog);
+	   trenutnoUlogovani = korisnik;
+   }
+   
+   public void registracijaKupca(String korisnickoIme, String lozinka, String email,
+		   String ime, String prezime, String telefon, String grad, String drzava, String adresa, int postanskiBroj) {
+	   Nalog nalog = new Nalog(korisnickoIme, lozinka, email, TipKorisnika.kupac);
+	   Mesto mesto = new Mesto(grad, drzava, adresa, postanskiBroj);
+	   Korisnik korisnik = new Korisnik(ime, prezime, telefon, mesto, nalog);
+	   trenutnoUlogovani = korisnik;
    }
    
    

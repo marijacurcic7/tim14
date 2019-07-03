@@ -21,6 +21,8 @@ public class Narudzbenica {
    /** @pdOid d17fa62c-3a2e-485b-bda7-c2ed0579ccab */
    private String telefon;
    
+   private double ukupanIznos = 0.0;
+   
    /** @pdRoleInfo migr=no name=StavkaNarudzbenice assc=association7 coll=java.util.List impl=java.util.ArrayList mult=0..* */
    public java.util.List<StavkaNarudzbenice> stavkaNarudzbenice;
    /** @pdRoleInfo migr=no name=Mesto assc=association15 mult=1..1 */
@@ -28,9 +30,37 @@ public class Narudzbenica {
    
    public RegistrovaniKupac regKupac;
    
+   public Narudzbenica() {}
+   
+   public Narudzbenica(int id, Date datum, String ime, String prezime, String telefon, Mesto mesto) {
+	   this.ime = ime;
+	   this.prezime = prezime;
+	   this.datum = datum;
+	   this.id = id;
+	   this.telefon = telefon;
+	   this.mesto = mesto;
+   }
+   
+   public Narudzbenica(int id, Date datum, String ime, String prezime, String telefon, Mesto mesto, StavkaNarudzbenice sn) {
+	   this.ime = ime;
+	   this.prezime = prezime;
+	   this.datum = datum;
+	   this.id = id;
+	   this.telefon = telefon;
+	   this.mesto = mesto;
+	   stavkaNarudzbenice.add(sn);
+	   ukupanIznos += sn.getUkupnaCena();
+   }
+   
+   public void dodajUKorpu(StavkaNarudzbenice s) {
+	   stavkaNarudzbenice.add(s);
+	   ukupanIznos += s.getUkupnaCena();
+   }
+   
    /** @pdOid 7f329260-9504-4d66-b24f-291c5a27d786 */
    public void aktivirajZavrsetak() {
       // TODO: implement
+	   
    }
    
    /** @pdOid 373fc6f7-a0c0-49ca-b088-b275e4d6c52d */
@@ -108,5 +138,71 @@ public class Narudzbenica {
       if (stavkaNarudzbenice != null)
          stavkaNarudzbenice.clear();
    }
+
+public int getId() {
+	return id;
+}
+
+public void setId(int id) {
+	this.id = id;
+}
+
+public Date getDatum() {
+	return datum;
+}
+
+public void setDatum(Date datum) {
+	this.datum = datum;
+}
+
+public String getIme() {
+	return ime;
+}
+
+public void setIme(String ime) {
+	this.ime = ime;
+}
+
+public String getPrezime() {
+	return prezime;
+}
+
+public void setPrezime(String prezime) {
+	this.prezime = prezime;
+}
+
+public String getTelefon() {
+	return telefon;
+}
+
+public void setTelefon(String telefon) {
+	this.telefon = telefon;
+}
+
+public double getUkupanIznos() {
+	return ukupanIznos;
+}
+
+public void setUkupanIznos(double ukupanIznos) {
+	this.ukupanIznos = ukupanIznos;
+}
+
+public Mesto getMesto() {
+	return mesto;
+}
+
+public void setMesto(Mesto mesto) {
+	this.mesto = mesto;
+}
+
+public RegistrovaniKupac getRegKupac() {
+	return regKupac;
+}
+
+public void setRegKupac(RegistrovaniKupac regKupac) {
+	this.regKupac = regKupac;
+}
+   
+   
 
 }
