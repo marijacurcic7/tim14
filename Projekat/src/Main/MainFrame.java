@@ -7,6 +7,7 @@ import java.util.Locale;
 import javax.swing.*;
 
 //dfghjk
+// askdjsad
 
 public class MainFrame extends JFrame {
 	private static MainFrame instance = null;
