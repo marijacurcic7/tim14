@@ -26,6 +26,8 @@ public class Narudzbenica {
    /** @pdRoleInfo migr=no name=Mesto assc=association15 mult=1..1 */
    public Mesto mesto;
    
+   public RegistrovaniKupac regKupac;
+   
    /** @pdOid 7f329260-9504-4d66-b24f-291c5a27d786 */
    public void aktivirajZavrsetak() {
       // TODO: implement

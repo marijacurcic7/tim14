@@ -9,5 +9,7 @@ package Model;
 import java.util.*;
 
 /** @pdOid 708c4d42-5356-4e29-a027-75697e6a03fd */
-public class RegistrovaniKupac extends Osoba {
+public class RegistrovaniKupac extends Korisnik {
+	
+	public java.util.List<Narudzbenica> narudzbenice;
 }

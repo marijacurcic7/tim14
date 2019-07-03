@@ -10,7 +10,7 @@ import java.util.*;
 /** @pdOid a3801020-fe7a-49f9-950a-ee11d9039e33 */
 public class AplikacijaPreduzece {
    /** @pdRoleInfo migr=no name=Osoba assc=association2 coll=java.util.List impl=java.util.ArrayList mult=0..* */
-   public java.util.List<Osoba> korisnici;
+   public java.util.List<Korisnik> korisnici;
    /** @pdRoleInfo migr=no name=Narudzbenica assc=association3 coll=java.util.List impl=java.util.ArrayList mult=0..* */
    public java.util.List<Narudzbenica> narudzbenice;
    /** @pdRoleInfo migr=no name=Proizvod assc=association4 coll=java.util.List impl=java.util.ArrayList mult=0..* */
@@ -20,7 +20,7 @@ public class AplikacijaPreduzece {
    /** @pdRoleInfo migr=no name=Kategorija assc=association19 coll=java.util.List impl=java.util.ArrayList mult=0..* */
    public java.util.List<Kategorija> kategorija;
    /** @pdRoleInfo migr=no name=Osoba assc=korisnik mult=0..1 */
-   public Osoba trenutnoUlogovani;
+   public Korisnik trenutnoUlogovani;
    /** @pdRoleInfo migr=no name=Narudzbenica assc=association22 mult=1..1 */
    public Narudzbenica korpa;
    /** @pdRoleInfo migr=no name=StavkaCenovnika assc=association21 coll=java.util.List impl=java.util.ArrayList mult=0..* */
@@ -39,41 +39,41 @@ public class AplikacijaPreduzece {
    
    
    /** @pdGenerated default getter */
-   public java.util.List<Osoba> getKorisnici() {
+   public java.util.List<Korisnik> getKorisnici() {
       if (korisnici == null)
-         korisnici = new java.util.ArrayList<Osoba>();
+         korisnici = new java.util.ArrayList<Korisnik>();
       return korisnici;
    }
    
    /** @pdGenerated default iterator getter */
    public java.util.Iterator getIteratorKorisnici() {
       if (korisnici == null)
-         korisnici = new java.util.ArrayList<Osoba>();
+         korisnici = new java.util.ArrayList<Korisnik>();
       return korisnici.iterator();
    }
    
    /** @pdGenerated default setter
      * @param newKorisnici */
-   public void setKorisnici(java.util.List<Osoba> newKorisnici) {
+   public void setKorisnici(java.util.List<Korisnik> newKorisnici) {
       removeAllKorisnici();
       for (java.util.Iterator iter = newKorisnici.iterator(); iter.hasNext();)
-         addKorisnici((Osoba)iter.next());
+         addKorisnici((Korisnik)iter.next());
    }
    
    /** @pdGenerated default add
      * @param newOsoba */
-   public void addKorisnici(Osoba newOsoba) {
+   public void addKorisnici(Korisnik newOsoba) {
       if (newOsoba == null)
          return;
       if (this.korisnici == null)
-         this.korisnici = new java.util.ArrayList<Osoba>();
+         this.korisnici = new java.util.ArrayList<Korisnik>();
       if (!this.korisnici.contains(newOsoba))
          this.korisnici.add(newOsoba);
    }
    
    /** @pdGenerated default remove
      * @param oldOsoba */
-   public void removeKorisnici(Osoba oldOsoba) {
+   public void removeKorisnici(Korisnik oldOsoba) {
       if (oldOsoba == null)
          return;
       if (this.korisnici != null)

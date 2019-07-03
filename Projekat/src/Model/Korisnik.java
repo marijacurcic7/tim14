@@ -9,7 +9,7 @@ package Model;
 import java.util.*;
 
 /** @pdOid f168e367-08e7-4404-af82-a7431f69f0f4 */
-public class Osoba {
+public class Korisnik {
    /** @pdOid 29049444-9ca4-4c52-b500-84bd556be10e */
    private String ime;
    /** @pdOid fd5a81c4-511e-4c15-8402-f9cfb0c83b14 */
