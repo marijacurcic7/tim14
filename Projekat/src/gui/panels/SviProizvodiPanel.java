@@ -8,7 +8,7 @@ import javax.swing.JScrollPane;
 
 import Model.Proizvod;
 
-public class SviProizvodiPanel extends JPanel {
+public class SviProizvodiPanel extends AbstractPanelCM {
 
 	public JPanel panelSaProizvodima;
 	JScrollPane skrol;
