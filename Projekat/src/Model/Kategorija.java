@@ -13,5 +13,21 @@ import java.util.*;
 public class Kategorija {
    /** @pdOid 12dd548c-aa43-4761-b70e-064a5a2e6c87 */
    private String naziv;
+   
+   public Kategorija() {}
+   
+   public Kategorija(String naziv) {
+	   this.naziv = naziv;
+   }
+
+	public String getNaziv() {
+		return naziv;
+	}
+	
+	public void setNaziv(String naziv) {
+		this.naziv = naziv;
+	}
+   
+   
 
 }

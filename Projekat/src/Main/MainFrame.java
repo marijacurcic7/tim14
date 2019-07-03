@@ -16,10 +16,12 @@ import javax.swing.JSplitPane;
 
 import gui.panels.SviProizvodiPanel;
 
+//dfghjk
+// askdjsad
+
 public class MainFrame extends JFrame {
 
 	private static final long serialVersionUID = 1366462111697644313L;
-
 	public static final String APP_TITLE = "Nas WebShop";
 
 	JScrollPane skrol;
@@ -34,15 +36,10 @@ public class MainFrame extends JFrame {
 
 	public MainFrame() throws IOException {
 		
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setTitle(APP_TITLE);
+	
 		setSize(1000, 800);
 		setLocationRelativeTo(null);
-
-
-		glavni = new JPanel();
-		
-		
+		glavni = new JPanel();	
 		
 		
 		

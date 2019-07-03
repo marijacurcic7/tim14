@@ -27,6 +27,38 @@ public class Nalog {
 	   this.eMail = email;
 	   this.tipKorisnika = tip;
    }
+
+public String getKorisnickoIme() {
+	return korisnickoIme;
+}
+
+public void setKorisnickoIme(String korisnickoIme) {
+	this.korisnickoIme = korisnickoIme;
+}
+
+public String getLozinka() {
+	return lozinka;
+}
+
+public void setLozinka(String lozinka) {
+	this.lozinka = lozinka;
+}
+
+public String geteMail() {
+	return eMail;
+}
+
+public void seteMail(String eMail) {
+	this.eMail = eMail;
+}
+
+public TipKorisnika getTipKorisnika() {
+	return tipKorisnika;
+}
+
+public void setTipKorisnika(TipKorisnika tipKorisnika) {
+	this.tipKorisnika = tipKorisnika;
+}
    
    
 

@@ -19,5 +19,46 @@ public class StavkaNarudzbenice {
    
    /** @pdRoleInfo migr=no name=Proizvod assc=association11 mult=1..1 side=A */
    public Proizvod proizvod;
+   
+   public StavkaNarudzbenice() {}
+   
+   public StavkaNarudzbenice(int kolicina, double jedinicnaCena) {
+	   this.kolicina = kolicina;
+	   this.jedinicnaCena = jedinicnaCena;
+	   this.ukupnaCena = kolicina*jedinicnaCena;
+   }
+
+	public int getKolicina() {
+		return kolicina;
+	}
+	
+	public void setKolicina(int kolicina) {
+		this.kolicina = kolicina;
+		this.ukupnaCena = kolicina*jedinicnaCena;
+	}
+	
+	public double getJedinicnaCena() {
+		return jedinicnaCena;
+	}
+	
+	public void setJedinicnaCena(double jedinicnaCena) {
+		this.jedinicnaCena = jedinicnaCena;
+	}
+	
+	public double getUkupnaCena() {
+		return ukupnaCena;
+	}
+	
+	public void setUkupnaCena(double ukupnaCena) {
+		this.ukupnaCena = ukupnaCena;
+	}
+	
+	public Proizvod getProizvod() {
+		return proizvod;
+	}
+	
+	public void setProizvod(Proizvod proizvod) {
+		this.proizvod = proizvod;
+	}
 
 }

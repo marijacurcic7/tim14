@@ -19,5 +19,48 @@ public class Mesto {
    private String adresa;
    /** @pdOid 07f4170d-fb6b-40cc-be73-eeb12105be96 */
    private int ptbroj;
+   
+   public Mesto() {}
+   
+   public Mesto(String grad, String drzava, String adresa, int pbr) {
+	   this.grad = grad;
+	   this.drzava = drzava;
+	   this.adresa = adresa;
+	   this.ptbroj = pbr;
+   }
+
+public String getGrad() {
+	return grad;
+}
+
+public void setGrad(String grad) {
+	this.grad = grad;
+}
+
+public String getDrzava() {
+	return drzava;
+}
+
+public void setDrzava(String drzava) {
+	this.drzava = drzava;
+}
+
+public String getAdresa() {
+	return adresa;
+}
+
+public void setAdresa(String adresa) {
+	this.adresa = adresa;
+}
+
+public int getPtbroj() {
+	return ptbroj;
+}
+
+public void setPtbroj(int ptbroj) {
+	this.ptbroj = ptbroj;
+}
+   
+   
 
 }
