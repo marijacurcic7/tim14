@@ -18,5 +18,16 @@ public class Nalog {
    private String eMail;
    /** @pdOid cc7ae305-4788-4711-a6db-517a9463de26 */
    private TipKorisnika tipKorisnika;
+   
+   public Nalog() {}
+   
+   public Nalog(String kIme, String lozinka, String email, TipKorisnika tip) {
+	   this.korisnickoIme = kIme;
+	   this.lozinka = lozinka;
+	   this.eMail = email;
+	   this.tipKorisnika = tip;
+   }
+   
+   
 
 }
