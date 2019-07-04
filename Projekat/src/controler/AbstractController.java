@@ -6,6 +6,7 @@ import gui.panels.AbstractPanelCM;
 // apstraktni kontroler, ima view/panel/gui komponentu, i model koje azurira
 // u ovoj klasi se preklapaju metode kliktanja na dugmad i sl. i azurira se model/osvezava gui komponenta
 
+//
 // svaki kontroler zna koja je njegova gui komponenta, pristupa njenim komponentama
 public abstract class AbstractController {
 
