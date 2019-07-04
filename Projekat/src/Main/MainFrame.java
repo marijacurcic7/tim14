@@ -24,8 +24,6 @@ import javax.swing.*;
 
 import gui.panels.SviProizvodiPanel;
 
-//dfghjk
-// askdjsad
 
 public class MainFrame extends JFrame {
 
