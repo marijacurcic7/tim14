@@ -4,6 +4,7 @@ package Controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import View.ProizvodView;
 import gui.panels.ProizvodPanel;
 
 public class ControllerProizvoda extends Controller {
@@ -32,19 +33,26 @@ public class ControllerProizvoda extends Controller {
 		//ControllerProizvoda cp = new ControllerProizvoda(pp);
 		//prop.setController(cp);
 		
-		System.out.println(pp.getGdjeStoji());
+		//System.out.println(pp.getGdjeStoji());
 		//pp.setGdjeStoji();
 		pp.getGdjeStoji().show();
 		//pp.getGdjeStoji().hide();
-		System.out.println("gdje stoji..........");
-		System.out.println(pp.getGdjeStoji());
+		//System.out.println("gdje stoji..........");
+		//System.out.println(pp.getGdjeStoji());
 		ProizvodPanel ppp = new ProizvodPanel();
 		//ppp.add(new JButton("button"));
 		//pp.setGdjeStoji(ppp);
 		//pp.getGdjeStoji().show();
 		//pp.getGdjeStoji().add(new JButton("Dugme"));
+		
+		
+		ProizvodView novi = new ProizvodView(pp.getProizvod(), pp.getGdjeStoji());
+		ProizvodController noviController = new ProizvodController(novi);
+		novi.setController(noviController);
+		
+		
 		pp.getGdjeStoji().remove(0);
-		pp.getGdjeStoji().add(ppp);
+		pp.getGdjeStoji().add(novi);
 		pp.getGdjeStoji().updateUI();
 		//pp.setGdjeStoji(ppp);
 		//pp.getGdjeStoji().updateUI();

@@ -13,13 +13,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Controller.ControllerProizvoda;
+import Model.AplikacijaPreduzece;
 import Model.Proizvod;
 import View.BaseView;
 
 
 public class ProizvodPanel extends JPanel {
 	
-	
+	AplikacijaPreduzece preduzece;
 	ControllerProizvoda controller;
 	Proizvod proizvod;
 	JLabel labelaCena;
@@ -93,8 +94,8 @@ public class ProizvodPanel extends JPanel {
 		this.gdjeStoji = gdjeStoji;
 	}
 
-	public ProizvodPanel(Proizvod p, BaseView bw) throws IOException {
-		
+	public ProizvodPanel(Proizvod p, BaseView bw, AplikacijaPreduzece preduzece) throws IOException {
+		this.preduzece = preduzece;
 		gdjeStoji = bw;
 		proizvod = p;
 		
