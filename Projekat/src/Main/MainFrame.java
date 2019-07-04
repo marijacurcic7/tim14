@@ -75,10 +75,12 @@ public class MainFrame extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				bw.setVisible(false);
+				//bw.setVisible(false);
 				LogInView lv = new LogInView();
-				split.setBottomComponent(lv);
-				
+				//split.setBottomComponent(lv);
+				bw.add(lv);
+				bw.remove(0);
+				bw.updateUI();
 			}
 		});
 		

@@ -30,7 +30,7 @@ public class RegistracijaView extends JPanel {
 	public RegistracijaView() {
 		//setLayout(new FlowLayout());
 
-		pnlContent = new JPanel();
+		pnlContent = new JPanel(new GridBagLayout());
 
 		lblkorisnickoime = new JLabel("Korisnicko ime:");
 		tfkorisnicko = new JTextField(20);

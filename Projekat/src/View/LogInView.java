@@ -34,7 +34,7 @@ public class LogInView extends JPanel {
 	public LogInView() {
 		//tLayout(new FlowLayout());
 
-		pnlContent = new JPanel(new BorderLayout());
+		pnlContent = new JPanel(new GridBagLayout());
 
 		lblkorisnickoime = new JLabel("Korisnicko ime:");
 		tfkorisnicko = new JTextField(20);
@@ -61,20 +61,25 @@ public class LogInView extends JPanel {
 
 		pnlOK.add(btnOK);
 		pnlOK.add(btnReg);
+		//add(pnlOK, BorderLayout.SOUTH);
+		
+		pnlContent.add(pnlOK);
 
 		add(pnlContent, BorderLayout.CENTER);
 		
-		add(pnlOK, BorderLayout.SOUTH);
+		
 		
 		btnReg.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 					//loginv.setVisible(false);
-					
-					removeAll();
+					//System.out.println("");
+					//removeAll();
 					RegistracijaView rv = new RegistracijaView();
 					add(rv);
+					remove(0);
+					updateUI();
 					//rv.setVisible(true);
 					//setVisible(false);
 					
