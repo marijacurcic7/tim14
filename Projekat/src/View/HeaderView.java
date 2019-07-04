@@ -10,6 +10,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Model.AplikacijaPreduzece;
+
 public class HeaderView extends BaseView {
 
 	//JPanel p;
@@ -18,8 +20,10 @@ public class HeaderView extends BaseView {
 	JLabel labela1;
 	JLabel labela2;
 	JLabel naslov;
+	AplikacijaPreduzece preduzece;
 	
-	public HeaderView(){
+	public HeaderView(AplikacijaPreduzece preduzece){
+		this.preduzece = preduzece;
 	//p = new JPanel(new GridBagLayout());
     this.setLayout(new GridBagLayout());
     GridBagConstraints c = new GridBagConstraints();

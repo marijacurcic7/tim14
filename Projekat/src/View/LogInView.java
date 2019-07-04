@@ -26,7 +26,7 @@ public class LogInView extends JPanel {
 	
 	private LogInController loginc;
 	private Korisnik korisnik;
-	private AplikacijaPreduzece app =  new AplikacijaPreduzece();
+	private AplikacijaPreduzece preduzece;
 	private boolean uspesno;
 	
 	private JPanel pnlContent;
@@ -40,8 +40,9 @@ public class LogInView extends JPanel {
 	public JButton btnReg;  
 	//
 	
-	public LogInView() {
+	public LogInView(AplikacijaPreduzece preduzece) {
 		//tLayout(new FlowLayout());
+		this.preduzece = preduzece;
 
 		pnlContent = new JPanel(new GridBagLayout());
 
@@ -85,7 +86,7 @@ public class LogInView extends JPanel {
 					//loginv.setVisible(false);
 					//System.out.println("");
 					//removeAll();
-					RegistracijaView rv = new RegistracijaView();
+					RegistracijaView rv = new RegistracijaView(preduzece);
 					add(rv);
 					remove(0);
 					updateUI();
@@ -121,13 +122,13 @@ public class LogInView extends JPanel {
 		loginc.login(kime, lozinka);
 		System.out.println(kime);
 		System.out.println(lozinka);
-		if(!(app.proveriLogin(kime, lozinka))) {
+		if(!(preduzece.proveriLogin(kime, lozinka))) {
 			//JDialog neuspesno = new JDialog();
 			String message = "Pogresno uneto korisnicko ime ili lozinka. Pokusajte ponovo.";
 			JOptionPane.showMessageDialog(this, message);
 		}
 		else {
-			ProizvodiView bw = new ProizvodiView();
+			ProizvodiView bw = new ProizvodiView(preduzece);
 			add(bw);
 			remove(0);
 			updateUI();

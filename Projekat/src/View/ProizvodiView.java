@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import Controller.ControllerProizvoda;
+import Model.AplikacijaPreduzece;
 import Model.Proizvod;
 import gui.panels.ProizvodPanel;
 
@@ -18,9 +19,11 @@ public class ProizvodiView extends BaseView{
 	
 	public JPanel panelSaProizvodima;
 	JScrollPane skrol;
+	AplikacijaPreduzece preduzece;
 	
-	public ProizvodiView() throws IOException {
+	public ProizvodiView(AplikacijaPreduzece preduzece) throws IOException {
 		
+		this.preduzece = preduzece;
 		initProductPanel();
 		//skrol = new JScrollPane(panelSaProizvodima,
 		//		 JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, 

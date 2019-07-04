@@ -26,9 +26,25 @@ public class AplikacijaPreduzece {
    /** @pdRoleInfo migr=no name=StavkaCenovnika assc=association21 coll=java.util.List impl=java.util.ArrayList mult=0..* */
    public java.util.List<StavkaCenovnika> stavkaCenovnika;
    
-   // komentar commit
    
-   /** @pdOid 88b72526-db73-439f-877b-52c47f05da53 */
+   
+   
+   
+   public AplikacijaPreduzece() {
+	super();
+	korisnici = new ArrayList<Korisnik>();
+	narudzbenice = new ArrayList<Narudzbenica>();
+	proizvod = new ArrayList<Proizvod>();
+	// prodavnica, kategorije, stavkacenovnika, trenutno ulogovani, korpa
+	prodavnica = new ArrayList<Prodavnica>();
+	kategorija = new ArrayList<Kategorija>();
+	trenutnoUlogovani = new Korisnik();
+	korpa = new Narudzbenica();
+	stavkaCenovnika = new ArrayList<StavkaCenovnika>();
+	
+}
+
+/** @pdOid 88b72526-db73-439f-877b-52c47f05da53 */
    public void kreirajMenadzera() {
       // TODO: implement
    }
@@ -47,12 +63,19 @@ public class AplikacijaPreduzece {
 	   trenutnoUlogovani = korisnik;
    }
    
-   public void registracijaKupca(String korisnickoIme, String lozinka, String email,
+   public boolean registracijaKupca(String korisnickoIme, String lozinka, String email,
 		   String ime, String prezime, String telefon, String grad, String drzava, String adresa, int postanskiBroj) {
+	   for(Korisnik k : korisnici) {
+		   if(k.getNalog().getKorisnickoIme().equals(korisnickoIme)) {
+			   return false;
+		   }
+	   }
 	   Nalog nalog = new Nalog(korisnickoIme, lozinka, email, TipKorisnika.kupac);
 	   Mesto mesto = new Mesto(grad, drzava, adresa, postanskiBroj);
 	   Korisnik korisnik = new Korisnik(ime, prezime, telefon, mesto, nalog);
 	   trenutnoUlogovani = korisnik;
+	   korisnici.add(korisnik);
+	   return true;
    }
    
    public boolean proveriLogin(String korisnickoIme, String lozinka) {

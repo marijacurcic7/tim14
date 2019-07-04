@@ -4,6 +4,7 @@ package Controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import Model.AplikacijaPreduzece;
 import View.BaseView;
 import View.HeaderView;
 import View.LogInView;
@@ -11,6 +12,7 @@ import View.LogInView;
 
 public class HeaderController {
 
+	AplikacijaPreduzece preduzece;
 	HeaderView panel;
 	BaseView view;
 
@@ -26,8 +28,9 @@ public class HeaderController {
 				);*/
 	
 
-	public HeaderController(HeaderView panel, BaseView base) {
+	public HeaderController(HeaderView panel, BaseView base, AplikacijaPreduzece preduzece) {
 		super();
+		this.preduzece = preduzece;
 		this.panel = panel;
 		this.view = base;
 		this.panel.getKorpa().addActionListener(new ActionListener() {
@@ -44,7 +47,7 @@ public class HeaderController {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				//bw.setVisible(false);
-				LogInView lv = new LogInView();
+				LogInView lv = new LogInView(preduzece);
 				//split.setBottomComponent(lv);
 				view.add(lv);
 				view.remove(0);

@@ -15,6 +15,7 @@ import javax.swing.JSplitPane;
 import javax.swing.border.BevelBorder;
 
 import Controller.HeaderController;
+import Model.AplikacijaPreduzece;
 import View.BaseView;
 import View.HeaderView;
 import View.ProizvodiView;
@@ -42,6 +43,7 @@ public class MainFrame extends JFrame {
 	HeaderView header;
 	HeaderController headerController;
 	
+	AplikacijaPreduzece preduzece;
 	
 	JButton prijava;
 
@@ -52,10 +54,11 @@ public class MainFrame extends JFrame {
 		setLocationRelativeTo(null);
 		//glavni = new JPanel();	
 		
+		preduzece = new AplikacijaPreduzece();
 		
 		
-		header = new HeaderView();
-		ProizvodiView bw = new ProizvodiView();  // da on vidi frejm? zbog dimenzija
+		header = new HeaderView(preduzece);
+		ProizvodiView bw = new ProizvodiView(preduzece);  // da on vidi frejm? zbog dimenzija
 		view = bw;
 		
 		//bw = new SviProizvodiPanel();  // da on vidi frejm? zbog dimenzija
@@ -91,7 +94,7 @@ public class MainFrame extends JFrame {
 		});*/
 		
 		
-		headerController = new HeaderController(header, view); 
+		headerController = new HeaderController(header, view, preduzece); 
 		
 	}
 

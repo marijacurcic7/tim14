@@ -5,10 +5,20 @@ import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.*;
 
+import Controller.LogInController;
+import Controller.RegistracijaController;
+import Model.AplikacijaPreduzece;
+
 public class RegistracijaView extends JPanel {
+	
+	private AplikacijaPreduzece preduzece;
+	private RegistracijaController regcon;
 	
 	private JPanel pnlContent;
 	private JLabel lblkorisnickoime;
@@ -27,9 +37,9 @@ public class RegistracijaView extends JPanel {
 	private JPanel pnlOK;
 	private JButton btnOK;
 	
-	public RegistracijaView() {
+	public RegistracijaView(AplikacijaPreduzece preduzece) {
 		//setLayout(new FlowLayout());
-
+		this.preduzece = preduzece;
 		pnlContent = new JPanel(new GridBagLayout());
 
 		lblkorisnickoime = new JLabel("Korisnicko ime:");
@@ -88,7 +98,48 @@ public class RegistracijaView extends JPanel {
 		add(pnlContent, BorderLayout.CENTER);
 		
 		add(pnlOK, BorderLayout.SOUTH);
+		
+		btnOK.addActionListener(new ActionListener() {
 
+			@Override
+			public void actionPerformed(ActionEvent e) {
+					
+					try {
+						ok();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					
+				}
+		});
+
+	}
+	
+	private void ok() throws IOException {
+		if (regcon == null) {
+			regcon = new RegistracijaController(this);
+		}
+		
+		String kime = tfkorisnicko.getText();
+		String lozinka = tflozinka.getText();
+		String ime = tfime.getText();
+		String prezime = tfprezime.getText();
+		String email = tfemail.getText();
+		String telefon = tftelefon.getText();
+		regcon.registrujSe();
+		
+		if(!(preduzece.registracijaKupca(kime, lozinka, email, ime, prezime, telefon, null, null, null, 0))) {
+			//JDialog neuspesno = new JDialog();
+			String message = "Korisnicko ime vec postoji.";
+			JOptionPane.showMessageDialog(this, message);
+		}
+		else {
+			ProizvodiView bw = new ProizvodiView(preduzece);
+			add(bw);
+			remove(0);
+			updateUI();
+		}
 	}
 
 }
