@@ -13,6 +13,9 @@ import javax.swing.JPanel;
 
 import Model.Proizvod;
 
+//proslediti u proizvod parametar ko je ulogovan i na osnovu toga formirati dugmad?
+//npr. ako je kupac onda ima korpa i pregled, a ako je menadzer ima pregled i izmeni
+
 public class ProizvodPanel extends JPanel {
 	Proizvod proizvod;
 	JLabel labelaCena;

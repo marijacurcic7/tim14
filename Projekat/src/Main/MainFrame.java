@@ -2,9 +2,12 @@ package Main;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 
 import javax.swing.JButton;
@@ -13,6 +16,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
+import javax.swing.border.BevelBorder;
+
+import View.LogInView;
+
+import javax.swing.*;
 
 import gui.panels.SviProizvodiPanel;
 
@@ -33,6 +41,10 @@ public class MainFrame extends JFrame {
 	JLabel naslov;
 	JPanel glavni;
 	JPanel p;
+	SviProizvodiPanel bw;
+	JSplitPane split;
+	
+	JButton prijava;
 
 	public MainFrame() throws IOException {
 		
@@ -43,21 +55,35 @@ public class MainFrame extends JFrame {
 		
 		
 		
-		SviProizvodiPanel bw = new SviProizvodiPanel();  // da on vidi frejm? zbog dimenzija
+		bw = new SviProizvodiPanel();  // da on vidi frejm? zbog dimenzija
 		
+		//setContentPane(glavni);
+		//add(glavni);
 		
 		initHeader();
 
-		JSplitPane split = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+		split = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		split.setTopComponent(p);
 		split.setBottomComponent(bw);
 		split.setDividerLocation(0.8);
 		
 		skrol = new JScrollPane(split);
 		
-		add(skrol, BorderLayout.CENTER);
+		//add(skrol, BorderLayout.CENTER); probala sam da stavim slicno sa swing
 		
+		add(skrol, BevelBorder.RAISED);
+		prijava.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				bw.setVisible(false);
+				LogInView lv = new LogInView();
+				split.setBottomComponent(lv);
+				
 			}
+		});
+		
+	}
 
 	
 	
@@ -146,7 +172,9 @@ public class MainFrame extends JFrame {
 	    
 	    c.weightx = 0.0;
 	    c.gridy = 0;
-	    p.add(new JButton("Prijava"), c);
+	    //p.add(new JButton("Prijava"), c);
+	    prijava = new JButton("Prijava");
+	    p.add(prijava, c);
 	    
 	    c.gridy = 2;
 	    p.add(new JPanel(),c);
