@@ -42,7 +42,7 @@ public class MainFrame extends JFrame {
 	JPanel glavni;
 	JPanel p;
 	SviProizvodiPanel bw;
-	JSplitPane split;
+	public JSplitPane split;
 	
 	JButton prijava;
 
@@ -51,7 +51,7 @@ public class MainFrame extends JFrame {
 	
 		setSize(1000, 800);
 		setLocationRelativeTo(null);
-		glavni = new JPanel();	
+		//glavni = new JPanel();	
 		
 		
 		
@@ -72,6 +72,7 @@ public class MainFrame extends JFrame {
 		//add(skrol, BorderLayout.CENTER); probala sam da stavim slicno sa swing
 		
 		add(skrol, BevelBorder.RAISED);
+		
 		prijava.addActionListener(new ActionListener() {
 
 			@Override

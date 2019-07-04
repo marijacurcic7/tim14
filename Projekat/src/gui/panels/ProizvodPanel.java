@@ -13,8 +13,6 @@ import javax.swing.JPanel;
 
 import Model.Proizvod;
 
-//proslediti u proizvod parametar ko je ulogovan i na osnovu toga formirati dugmad?
-//npr. ako je kupac onda ima korpa i pregled, a ako je menadzer ima pregled i izmeni
 
 public class ProizvodPanel extends JPanel {
 	Proizvod proizvod;
@@ -36,16 +34,10 @@ public class ProizvodPanel extends JPanel {
 		labelaCena = new JLabel("1000");  // pokupiti cenu iz stavke cenovnika koja stoji u proizvodu	
 		dugmeKorpa = new JButton("Korpa");
 		dugmePregled = new JButton("Pregled");
-		//BufferedImage myPicture = ImageIO.read(new File("C:\\Windows\\Web\\Wallpaper\\Theme1\\img1.jpg"));
-		
-		//Image image = ImageIO.read(new File("C:\\Windows\\Web\\Wallpaper\\Theme1\\img1.jpg"));
-		//Image scaledImage = image.getScaledInstance(this.getWidth(),this.getHeight(),Image.SCALE_SMOOTH);
-		//JLabel picLabel = new JLabel(new ImageIcon(image));
 		
 		
 		Image myPicture = ImageIO.read(new File("C:\\Windows\\Web\\Wallpaper\\Theme1\\img1.jpg"));
-		//Image scaledImage = myPicture.getScaledInstance(this.getWidth(),this.getHeight(),Image.SCALE_SMOOTH);
-		//slika = new JLabel(new ImageIcon(scaledImage));
+		
 		slika = new JLabel(new ImageIcon(myPicture));
 		//add(slika);
 		add(labelaIme);
@@ -57,9 +49,6 @@ public class ProizvodPanel extends JPanel {
 		holder.add(dugmeKorpa);
 		holder.add(dugmePregled);
 		add(holder);
-		
-		//add(dugmeKorpa);
-		//add(dugmePregled);
 		
 	}
 	
