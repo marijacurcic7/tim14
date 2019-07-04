@@ -12,4 +12,22 @@ import java.util.*;
 public class RegistrovaniKupac extends Korisnik {
 	
 	public java.util.List<Narudzbenica> narudzbenice;
+	
+	public RegistrovaniKupac() {
+		super();
+	}
+	
+	public void dodajNarudzbenicu(Narudzbenica n) {
+		narudzbenice.add(n);
+	}
+
+	public java.util.List<Narudzbenica> getNarudzbenice() {
+		return narudzbenice;
+	}
+
+	public void setNarudzbenice(java.util.List<Narudzbenica> narudzbenice) {
+		this.narudzbenice = narudzbenice;
+	}
+	
+	
 }

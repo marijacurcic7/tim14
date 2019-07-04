@@ -12,9 +12,11 @@ public abstract class AbstractController {
 
 	private AbstractPanelCM panel;
 	private AplikacijaPreduzece aplikacija;
+	
 	public AbstractPanelCM getPanel() {
 		return panel;
 	}
+	
 	public void setPanel(AbstractPanelCM panel) {
 		this.panel = panel;
 	}
