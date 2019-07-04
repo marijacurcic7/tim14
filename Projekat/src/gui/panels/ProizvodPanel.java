@@ -1,33 +1,107 @@
 package gui.panels;
 
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
-import java.io.File;
+import java.awt.Insets;
 import java.io.IOException;
 
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Controller.ControllerProizvoda;
 import Model.Proizvod;
+import View.BaseView;
 
 
 public class ProizvodPanel extends JPanel {
+	
+	
+	ControllerProizvoda controller;
 	Proizvod proizvod;
 	JLabel labelaCena;
 	JLabel labelaIme;
 	JButton dugmeKorpa;
 	JButton dugmePregled;
 	JLabel slika;
+	BaseView gdjeStoji; // wtf?
 	
-	public ProizvodPanel(Proizvod p) throws IOException {
+	public ControllerProizvoda getController() {
+		return controller;
+	}
+
+	public void setController(ControllerProizvoda controller) {
+		this.controller = controller;
+	}
+
+	public Proizvod getProizvod() {
+		return proizvod;
+	}
+
+	public void setProizvod(Proizvod proizvod) {
+		this.proizvod = proizvod;
+	}
+
+	public JLabel getLabelaCena() {
+		return labelaCena;
+	}
+
+	public void setLabelaCena(JLabel labelaCena) {
+		this.labelaCena = labelaCena;
+	}
+
+	public JLabel getLabelaIme() {
+		return labelaIme;
+	}
+
+	public void setLabelaIme(JLabel labelaIme) {
+		this.labelaIme = labelaIme;
+	}
+
+	public JButton getDugmeKorpa() {
+		return dugmeKorpa;
+	}
+
+	public void setDugmeKorpa(JButton dugmeKorpa) {
+		this.dugmeKorpa = dugmeKorpa;
+	}
+
+	public JButton getDugmePregled() {
+		return dugmePregled;
+	}
+
+	public void setDugmePregled(JButton dugmePregled) {
+		this.dugmePregled = dugmePregled;
+	}
+
+	public JLabel getSlika() {
+		return slika;
+	}
+
+	public void setSlika(JLabel slika) {
+		this.slika = slika;
+	}
+
+	public BaseView getGdjeStoji() {
+		return gdjeStoji;
+	}
+
+	public void setGdjeStoji(BaseView gdjeStoji) {
+		this.gdjeStoji = gdjeStoji;
+	}
+
+	public ProizvodPanel(Proizvod p, BaseView bw) throws IOException {
 		
+		gdjeStoji = bw;
 		proizvod = p;
 		
-		GridLayout grid  = new GridLayout(4, 0);
+		GridBagLayout grid = new GridBagLayout();
 		setLayout(grid);
+		GridBagConstraints c = new GridBagConstraints();
+		c.insets = new Insets(2, 2, 2, 2);
 		
 		
 		labelaIme = new JLabel(p.getNaziv());
@@ -36,20 +110,38 @@ public class ProizvodPanel extends JPanel {
 		dugmePregled = new JButton("Pregled");
 		
 		
-		Image myPicture = ImageIO.read(new File("C:\\Windows\\Web\\Wallpaper\\Theme1\\img1.jpg"));
+		//Image myPicture = ImageIO.read(new File("C:\\Windows\\Web\\Wallpaper\\Theme1\\img1.jpg"));
 		
-		slika = new JLabel(new ImageIcon(myPicture));
+		//slika = new JLabel(new ImageIcon(myPicture));
+		
+		slika = new JLabel();
+		slika.setIcon(new ImageIcon(new ImageIcon("C:\\Windows\\Web\\Wallpaper\\Theme1\\img1.jpg").getImage().getScaledInstance(300, 200, Image.SCALE_DEFAULT)));
+		//C:\Windows\Web\Wallpaper\Theme1
+		add(slika);
 		//add(slika);
-		add(labelaIme);
-		add(labelaCena);
+
+		c.gridx = 0;
+		c.gridy = 1;
 		
+		
+		add(labelaIme, c);
+		
+		c.gridy = 2;
+		add(labelaCena, c);
+		
+		c.gridy = 3;
 		GridLayout gridHorizontal = new GridLayout(0,2);
 		JPanel holder = new JPanel();
 		holder.setLayout(gridHorizontal);
 		holder.add(dugmeKorpa);
+		//holder.add(new JPanel());
 		holder.add(dugmePregled);
-		add(holder);
-		
+		add(holder, c);
+
+	}
+
+	public ProizvodPanel() {
+		// TODO Auto-generated constructor stub
 	}
 	
 

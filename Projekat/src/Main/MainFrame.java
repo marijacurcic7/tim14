@@ -1,13 +1,9 @@
 package Main;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Container;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.IOException;
 
 import javax.swing.JButton;
@@ -18,10 +14,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.border.BevelBorder;
 
-import View.LogInView;
-
-import javax.swing.*;
-
+import Controller.HeaderController;
+import View.BaseView;
+import View.HeaderView;
+import View.ProizvodiView;
 import gui.panels.SviProizvodiPanel;
 
 
@@ -31,7 +27,7 @@ public class MainFrame extends JFrame {
 	public static final String APP_TITLE = "Nas WebShop";
 
 	JScrollPane skrol;
-	SviProizvodiPanel view; // on ce se mijenjati, a view cce imati svog kontrolera
+	//SviProizvodiPanel view; // on ce se mijenjati, a view cce imati svog kontrolera
 	JButton login;
 	JButton korpa;
 	JLabel broj;
@@ -42,26 +38,35 @@ public class MainFrame extends JFrame {
 	SviProizvodiPanel bw;
 	public JSplitPane split;
 	
+	BaseView view;
+	HeaderView header;
+	HeaderController headerController;
+	
+	
 	JButton prijava;
 
 	public MainFrame() throws IOException {
 		
-	
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setSize(1000, 800);
 		setLocationRelativeTo(null);
 		//glavni = new JPanel();	
 		
 		
 		
-		bw = new SviProizvodiPanel();  // da on vidi frejm? zbog dimenzija
+		header = new HeaderView();
+		ProizvodiView bw = new ProizvodiView();  // da on vidi frejm? zbog dimenzija
+		view = bw;
+		
+		//bw = new SviProizvodiPanel();  // da on vidi frejm? zbog dimenzija
 		
 		//setContentPane(glavni);
 		//add(glavni);
 		
-		initHeader();
+		//initHeader();
 
 		split = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
-		split.setTopComponent(p);
+		split.setTopComponent(header);
 		split.setBottomComponent(bw);
 		split.setDividerLocation(0.8);
 		
@@ -71,6 +76,7 @@ public class MainFrame extends JFrame {
 		
 		add(skrol, BevelBorder.RAISED);
 		
+		/*
 		prijava.addActionListener(new ActionListener() {
 
 			@Override
@@ -82,7 +88,10 @@ public class MainFrame extends JFrame {
 				bw.remove(0);
 				bw.updateUI();
 			}
-		});
+		});*/
+		
+		
+		headerController = new HeaderController(header, view); 
 		
 	}
 

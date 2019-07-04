@@ -31,8 +31,8 @@ public class SviProizvodiPanel extends AbstractPanelCM {
 		// ova petlja isto za potrebe gui-ja u ranoj fazi radi vizuelizacije panela/prozora
 		for (int i = 0; i < 18; i++) {
 			Proizvod p  = new Proizvod("proizvod" + i);
-			ProizvodPanel pp = new ProizvodPanel(p);
-			panelSaProizvodima.add(pp);
+			//ProizvodPanel pp = new ProizvodPanel(p, this); //
+			//panelSaProizvodima.add(pp);
 					
 		}
 	}
