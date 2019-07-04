@@ -55,6 +55,12 @@ public class AplikacijaPreduzece {
 	   trenutnoUlogovani = korisnik;
    }
    
+   public boolean proveriLogin(String korisnickoIme, String lozinka) {
+	   if(korisnickoIme.equals("admin") && lozinka.contentEquals("admin")) {
+		   return true;
+	   }
+	   return false;
+   }
    
    /** @pdGenerated default getter */
    public java.util.List<Korisnik> getKorisnici() {

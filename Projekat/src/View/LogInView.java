@@ -7,18 +7,27 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
+import javax.print.attribute.standard.JobMessageFromOperator;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import Controller.LogInController;
+import Model.AplikacijaPreduzece;
+import Model.Korisnik;
 
 public class LogInView extends JPanel {
 	
 	private LogInController loginc;
+	private Korisnik korisnik;
+	private AplikacijaPreduzece app =  new AplikacijaPreduzece();
+	private boolean uspesno;
 	
 	private JPanel pnlContent;
 	private JLabel lblkorisnickoime;
@@ -84,10 +93,47 @@ public class LogInView extends JPanel {
 					//setVisible(false);
 					
 				}
-			});
+		});
+		
+		btnOK.addActionListener(new ActionListener() {
 
+			@Override
+			public void actionPerformed(ActionEvent e) {
+					
+					try {
+						ok();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					
+				}
+		});
 	}
 	
+	private void ok() throws IOException {
+		if (loginc == null) {
+			loginc = new LogInController(this);
+		}
+		
+		String kime = tfkorisnicko.getText();
+		String lozinka = tflozinka.getText();
+		loginc.login(kime, lozinka);
+		System.out.println(kime);
+		System.out.println(lozinka);
+		if(!(app.proveriLogin(kime, lozinka))) {
+			//JDialog neuspesno = new JDialog();
+			String message = "Pogresno uneto korisnicko ime ili lozinka. Pokusajte ponovo.";
+			JOptionPane.showMessageDialog(this, message);
+		}
+		else {
+			ProizvodiView bw = new ProizvodiView();
+			add(bw);
+			remove(0);
+			updateUI();
+		}
+		
+	}
 
 
 }
