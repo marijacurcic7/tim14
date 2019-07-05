@@ -1,6 +1,7 @@
 package View;
 
 
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.io.IOException;
 
@@ -25,7 +26,7 @@ public class ProizvodiView extends BaseView{
 		
 		this.preduzece = preduzece;
 		initProductPanel();
-		//skrol = new JScrollPane(panelSaProizvodima,
+		skrol = new JScrollPane(panelSaProizvodima);
 		//		 JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, 
 		//	        JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		//skrol.setPreferredSize(new Dimension(500, 300));
@@ -35,6 +36,9 @@ public class ProizvodiView extends BaseView{
 		//skrol.set;
 		//add(panelSaProizvodima);
 		//add(panelSaProizvodima);
+		skrol.setPreferredSize(new Dimension(1100, 600));
+		add(skrol);
+		//skrol.setMaximumSize(new Dimension(1000, 400));
 			
 	}
 
@@ -53,7 +57,7 @@ public class ProizvodiView extends BaseView{
 			// ovde dodam kontroler?
 			
 			panelSaProizvodima.add(pp);
-			this.add(panelSaProizvodima);
+			//this.add(panelSaProizvodima);
 		
 		}
 		

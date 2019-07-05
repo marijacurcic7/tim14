@@ -1,8 +1,10 @@
 package Main;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -10,10 +12,9 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.swing.*;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
@@ -64,7 +65,7 @@ public class MainFrame extends JFrame {
 		izgenerisiPreduzece();
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setSize(1000, 800);
+		setSize(1300, 800);
 		setLocationRelativeTo(null);
 		//glavni = new JPanel();	
 		
@@ -86,7 +87,9 @@ public class MainFrame extends JFrame {
 		header = new HeaderView(preduzece);
 		ProizvodiView bw = new ProizvodiView(preduzece);  // da on vidi frejm? zbog dimenzija
 		view = bw;
-		
+		//bw.resize(d);
+		bw.setMaximumSize(new Dimension(1000, 400));
+		//
 		//bw = new SviProizvodiPanel();  // da on vidi frejm? zbog dimenzija
 		
 		//setContentPane(glavni);
@@ -96,7 +99,16 @@ public class MainFrame extends JFrame {
 
 		split = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		split.setTopComponent(header);
+		
+		JPanel panel = new JPanel(new GridLayout(2, 0));
+		JPanel drugiPanel = new JPanel();
+		drugiPanel.setPreferredSize(new Dimension(1100, 300));
+		panel.add(bw);
+		panel.add(drugiPanel);
+		
 		split.setBottomComponent(bw);
+		
+		//split.setBottomComponent(bw);
 		split.setDividerLocation(0.8);
 		
 		skrol = new JScrollPane(split);
@@ -258,6 +270,28 @@ public class MainFrame extends JFrame {
 		
 		preduzece.addProizvod(p2);
 		preduzece.addProizvod(p);
+		
+		//
+		
+		Proizvod p42 = new Proizvod(2, "Viljuska", "plasticna", k1);
+		StavkaCenovnika c42 = new StavkaCenovnika(500, datum, p42);
+		p42.setAktuelnaCena(c42);
+		preduzece.addProizvod(p42);
+		
+
+		Proizvod p44 = new Proizvod(2, "Viljuska", "plasticna", k1);
+		StavkaCenovnika c44 = new StavkaCenovnika(500, datum, p44);
+		p44.setAktuelnaCena(c44);
+		preduzece.addProizvod(p44);
+		
+
+		Proizvod p45 = new Proizvod(2, "Viljuska", "plasticna", k1);
+		StavkaCenovnika c45 = new StavkaCenovnika(500, datum, p45);
+		p45.setAktuelnaCena(c45);
+		preduzece.addProizvod(p45);
+		//
+		
+		
 		// 
 		Proizvod p3 = new Proizvod(3, "Majica", "plava, pamucna", kat2);
 		StavkaCenovnika c3 = new StavkaCenovnika(500, datum, p3);
@@ -272,8 +306,20 @@ public class MainFrame extends JFrame {
 		Proizvod p5 = new Proizvod(5, "Farmerke", "teksas, plave", kat2);
 		StavkaCenovnika c5 = new StavkaCenovnika(10000, datum, p5);
 		p5.setAktuelnaCena(c5);
-		
 		preduzece.addProizvod(p5);
+		
+		
+		Proizvod p6 = new Proizvod(6, "Sal", "narandzasti", kat2);
+		StavkaCenovnika c6 = new StavkaCenovnika(100000, datum, p6);
+		p6.setAktuelnaCena(c6);
+		preduzece.addProizvod(p6);
+		preduzece.addStavkaCenovnika(c6);
+		
+		Proizvod p7 = new Proizvod(7, "Carapice", "pamucne, bijele", kat2);
+		StavkaCenovnika c7 = new StavkaCenovnika(800, datum, p7);
+		p7.setAktuelnaCena(c7);
+		preduzece.addProizvod(p7);
+		preduzece.addStavkaCenovnika(c7);
 		
 		
 		preduzece.addStavkaCenovnika(sc);
