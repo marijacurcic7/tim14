@@ -190,11 +190,17 @@ public class AplikacijaPreduzece {
 	   return true;
    }
    
-   public boolean proveriLogin(String korisnickoIme, String lozinka) {
-	   if(korisnickoIme.equals("admin") && lozinka.contentEquals("admin")) {
-		   return true;
+   public Korisnik proveriLogin(String korisnickoIme, String lozinka) {
+	   if(korisnickoIme.equals("admin") && lozinka.equals("admin")) {
+		   return new Korisnik();  // PROMIJENITI
 	   }
-	   return false;
+	   for (Korisnik k: korisnici) {
+		   if (k.getNalog().getKorisnickoIme().equals(korisnickoIme) && k.getNalog().getLozinka().equals(lozinka)) {
+			   return k;
+		   }
+		   
+	   }
+	   return null;
    }
    
    /** @pdGenerated default getter */

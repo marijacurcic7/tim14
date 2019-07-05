@@ -20,6 +20,7 @@ import Controller.LogInController;
 import Main.MainFrame;
 import Model.AplikacijaPreduzece;
 import Model.Korisnik;
+import Model.TipKorisnika;
 
 public class LogInView extends JPanel {
 	
@@ -116,6 +117,8 @@ public class LogInView extends JPanel {
 		});
 	}
 	
+	
+	// prebaciti u logincontroller!!
 	private void ok() throws IOException {
 		if (loginc == null) {
 			loginc = new LogInController(this);
@@ -127,16 +130,30 @@ public class LogInView extends JPanel {
 		loginc.login(kime, lozinka);
 		System.out.println(kime);
 		System.out.println(lozinka);
-		if(!(preduzece.proveriLogin(kime, lozinka))) {
+		Korisnik k = preduzece.proveriLogin(kime,  lozinka);
+		if(k == null) {
 			//JDialog neuspesno = new JDialog();
 			String message = "Pogresno uneto korisnicko ime ili lozinka. Pokusajte ponovo.";
 			JOptionPane.showMessageDialog(this, message);
 		}
 		else {
+			preduzece.trenutnoUlogovani = k;
+			if (preduzece.trenutnoUlogovani.nalog.getTipKorisnika() == TipKorisnika.kupac) {
+				KupacView kv = new KupacView(preduzece);
+				//
+				frame.getHeader().getPrijava().setText("Odjava");
+				frame.getHeader().updateUI();
+				add(kv);
+				remove(0);
+				updateUI();
+				return;
+			}
+			else  {
 			ProizvodiView bw = new ProizvodiView(preduzece);
 			add(bw);
 			remove(0);
 			updateUI();
+			}
 		}
 		
 	}
