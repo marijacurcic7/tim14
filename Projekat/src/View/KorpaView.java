@@ -33,7 +33,7 @@ public class KorpaView extends JPanel {
 	private void constructGUI() {
 		pnlContent = new JPanel();
 		
-		pnlContent.setLayout(new GridLayout(preduzece.korpa.stavkaNarudzbenice.size() + 1, 1));
+		pnlContent.setLayout(new GridLayout(preduzece.korpa.stavkaNarudzbenice.size(), 1));
 		//pnlContent.setPreferredSize(new Dimension(500, 700));
 		//pnlContent.setLayout(new GridLayout(0, 1));
 		
@@ -47,9 +47,9 @@ public class KorpaView extends JPanel {
 			i+=10;
 		}
 		JPanel linija = new JPanel(new GridLayout(3, 0));
-		linija.add(new JButton("asdasdasd"));
-		linija.add(new JButton("asdasasdd"));
-		linija.add(new JButton("asdasd"));
+		linija.add(new JButton("Kupi"));
+		linija.add(new JButton("Isprazni korpu"));
+		//linija.add(new JButton("asdasd"));
 		//pnlContent.add(linija);
 		scroll = new JScrollPane(pnlContent, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		scroll.setPreferredSize(new Dimension(1000, 600));
