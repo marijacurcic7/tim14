@@ -7,6 +7,8 @@ import java.awt.Insets;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.swing.*;
 import javax.swing.JFrame;
@@ -19,7 +21,10 @@ import javax.swing.border.BevelBorder;
 
 import Controller.HeaderController;
 import Model.AplikacijaPreduzece;
+import Model.Kategorija;
 import Model.Korisnik;
+import Model.Proizvod;
+import Model.StavkaCenovnika;
 import View.BaseView;
 import View.HeaderView;
 import View.ProizvodiView;
@@ -55,6 +60,8 @@ public class MainFrame extends JFrame {
 	public MainFrame() throws IOException {
 		
 		preduzece = new AplikacijaPreduzece();
+		izgenerisiPreduzece();
+		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setSize(1000, 800);
 		setLocationRelativeTo(null);
@@ -216,6 +223,65 @@ public class MainFrame extends JFrame {
 	    
 	    
 	
+	}
+	
+	public void izgenerisiPreduzece() {
+		// prvo napraviti kategorije, pa proizvode, pa stavke cenovnika i dodati kome sta treba
+		
+		Kategorija kat = new Kategorija("Kuhinja");
+		Kategorija k = new Kategorija("Posudje", kat);
+		Kategorija k1 = new Kategorija("Escajg", kat);
+		Kategorija kat2 = new Kategorija("Garderoba");
+		Kategorija k2 = new Kategorija("Zenska garderoba", kat2);
+		Kategorija k22 = new Kategorija("Muska garderoba", kat2);
+		
+		preduzece.addKategorija(kat);
+		preduzece.addKategorija(k);
+		preduzece.addKategorija(k1);
+		preduzece.addKategorija(kat2);
+		preduzece.addKategorija(k2);
+		preduzece.addKategorija(k22);
+		
+		Proizvod p = new Proizvod(1, "Solja", "zelena, velika", k);
+		
+		SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
+		Date datum = new Date(System.currentTimeMillis());
+		//String datstr = f.format(datum);
+		StavkaCenovnika sc = new StavkaCenovnika(100, datum, p);
+		p.setAktuelnaCena(sc);
+		
+		Proizvod p2 = new Proizvod(2, "Viljuska", "plasticna", k1);
+		StavkaCenovnika c2 = new StavkaCenovnika(500, datum, p2);
+		p2.setAktuelnaCena(c2);
+		
+		
+		preduzece.addProizvod(p2);
+		preduzece.addProizvod(p);
+		// 
+		Proizvod p3 = new Proizvod(3, "Majica", "plava, pamucna", kat2);
+		StavkaCenovnika c3 = new StavkaCenovnika(500, datum, p3);
+		p3.setAktuelnaCena(c3);
+		preduzece.addProizvod(p3);
+		
+		Proizvod p4 = new Proizvod(4, "Kosulja", "crna, svilena", kat2);
+		StavkaCenovnika c4 = new StavkaCenovnika(1500, datum, p4);
+		p4.setAktuelnaCena(c4);
+		preduzece.addProizvod(p4);
+		
+		Proizvod p5 = new Proizvod(5, "Farmerke", "teksas, plave", kat2);
+		StavkaCenovnika c5 = new StavkaCenovnika(10000, datum, p5);
+		p5.setAktuelnaCena(c5);
+		
+		preduzece.addProizvod(p5);
+		
+		
+		preduzece.addStavkaCenovnika(sc);
+		preduzece.addStavkaCenovnika(c2);
+		preduzece.addStavkaCenovnika(c3);
+		preduzece.addStavkaCenovnika(c4);
+		preduzece.addStavkaCenovnika(c5);
+		
+		
 	}
 
 	public static void main(String[] args) throws IOException {

@@ -32,6 +32,7 @@ public class AplikacijaPreduzece {
    public Narudzbenica korpa;
    /** @pdRoleInfo migr=no name=StavkaCenovnika assc=association21 coll=java.util.List impl=java.util.ArrayList mult=0..* */
    public java.util.List<StavkaCenovnika> stavkeCenovnika;
+   //public Map<Proizvod, java.util.List<StavkaCenovnika>>
    
    private static String fileString = "korisnici.ser";
    

@@ -45,6 +45,19 @@ public class ProizvodiView extends BaseView{
 		panelSaProizvodima.setLayout(grid);
 		//this.setLayout(grid);
 		
+		for (Proizvod p: preduzece.proizvodi) {
+			ProizvodPanel pp = new ProizvodPanel(p, this, preduzece);
+			ControllerProizvoda cp = new ControllerProizvoda(pp);
+			pp.setController(cp);
+			//pp.updateUI();
+			// ovde dodam kontroler?
+			
+			panelSaProizvodima.add(pp);
+			this.add(panelSaProizvodima);
+		
+		}
+		
+		/*
 		for (int i = 0; i < 18; i++) {
 			//System.out.println("U basic view sta se dsava");
 			//System.out.println(this);
@@ -58,7 +71,7 @@ public class ProizvodiView extends BaseView{
 			panelSaProizvodima.add(pp);
 			this.add(panelSaProizvodima);
 					
-		}
+		}*/
 	}
 	
 	
