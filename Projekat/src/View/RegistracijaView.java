@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
@@ -59,7 +60,8 @@ public class RegistracijaView extends JPanel {
 		tfkorisnicko = new JTextField(20);
 
 		lbllozinka = new JLabel("Lozinka:");
-		tflozinka = new JTextField(20);
+		tflozinka = new JPasswordField(20);
+		//tflozinka = new JTextField(20);
 		
 		lblime = new JLabel("Ime:");
 		tfime = new JTextField(20);
@@ -171,10 +173,11 @@ public class RegistracijaView extends JPanel {
 			// promijeniti zaglavlje, na odjavi
 			JOptionPane.showMessageDialog(parent, message);
 			ProizvodiView bw = new ProizvodiView(preduzece);	// za kupca
+			KupacView kv = new KupacView(preduzece);
 			//
 			frame.getHeader().getPrijava().setText("Odjava");
 			frame.getHeader().updateUI();
-			add(bw);
+			add(kv);
 			remove(0);
 			updateUI();
 			System.out.println(preduzece.trenutnoUlogovani.getIme());

@@ -10,10 +10,10 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import Controller.LogInController;
@@ -53,7 +53,8 @@ public class LogInView extends JPanel {
 		tfkorisnicko = new JTextField(20);
 
 		lbllozinka = new JLabel("Lozinka:");
-		tflozinka = new JTextField(20);
+		tflozinka = new JPasswordField(20);
+		//tflozinka = new JTextField(20);
 
 		pnlOK = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		btnOK = new JButton("OK");
