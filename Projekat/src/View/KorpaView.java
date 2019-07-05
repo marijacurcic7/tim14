@@ -1,5 +1,6 @@
 package View;
 
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
 import java.awt.Insets;
@@ -33,6 +34,7 @@ public class KorpaView extends JPanel {
 		pnlContent = new JPanel();
 		
 		pnlContent.setLayout(new GridLayout(preduzece.korpa.stavkaNarudzbenice.size() + 1, 1));
+		//pnlContent.setPreferredSize(new Dimension(500, 700));
 		//pnlContent.setLayout(new GridLayout(0, 1));
 		
 		int i = 0;
@@ -44,12 +46,14 @@ public class KorpaView extends JPanel {
 			//add(new JLabel(sn.proizvod.getNaziv()));
 			i+=10;
 		}
-		JPanel linija = new JPanel(new GridLayout(0, 3));
+		JPanel linija = new JPanel(new GridLayout(3, 0));
 		linija.add(new JButton("asdasdasd"));
 		linija.add(new JButton("asdasasdd"));
 		linija.add(new JButton("asdasd"));
 		//pnlContent.add(linija);
 		scroll = new JScrollPane(pnlContent, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		scroll.setPreferredSize(new Dimension(1000, 600));
+		
 		add(scroll);
 		add(linija);
 		//add(pnlContent);

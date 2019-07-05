@@ -36,7 +36,7 @@ public class ProizvodiView extends BaseView{
 		//skrol.set;
 		//add(panelSaProizvodima);
 		//add(panelSaProizvodima);
-		skrol.setPreferredSize(new Dimension(1100, 600));
+		skrol.setPreferredSize(new Dimension(1100, 630));
 		add(skrol);
 		//skrol.setMaximumSize(new Dimension(1000, 400));
 			

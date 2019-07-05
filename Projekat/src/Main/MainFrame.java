@@ -65,7 +65,7 @@ public class MainFrame extends JFrame {
 		izgenerisiPreduzece();
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setSize(1300, 800);
+		setSize(1500, 1000);
 		setLocationRelativeTo(null);
 		//glavni = new JPanel();	
 		
@@ -103,10 +103,10 @@ public class MainFrame extends JFrame {
 		JPanel panel = new JPanel(new BorderLayout());
 		JPanel drugiPanel = new JPanel();
 		JPanel gornjiPanel = new JPanel();
-		gornjiPanel.setBackground(new Color(0, 90, 5));
+		gornjiPanel.setBackground(new Color(255, 255, 255));
 		panel.add(gornjiPanel, BorderLayout.PAGE_START);
 		gornjiPanel.setPreferredSize(new Dimension(1100, 20));
-		drugiPanel.setBackground(new Color(100, 100, 100));
+		drugiPanel.setBackground(new Color(255, 100, 255));
 		drugiPanel.setPreferredSize(new Dimension(1100, 200));
 		panel.add(bw);
 		panel.add(bw, BorderLayout.CENTER);
