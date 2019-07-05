@@ -1,7 +1,6 @@
 package View;
 
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -10,10 +9,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 
-import Controller.LogInController;
 import Controller.RegistracijaController;
+import Main.MainFrame;
 import Model.AplikacijaPreduzece;
 import Model.Korisnik;
 
@@ -38,11 +42,16 @@ public class RegistracijaView extends JPanel {
 	private JLabel lbltelefon;
 	private JTextField tftelefon;
 
+	MainFrame frame;
+	
 	private JPanel pnlOK;
 	private JButton btnOK;
 	
-	public RegistracijaView(AplikacijaPreduzece preduzece) {
+	public RegistracijaView(AplikacijaPreduzece preduzece, MainFrame frame) {
 		//setLayout(new FlowLayout());
+		
+		this.frame = frame;
+		
 		this.preduzece = preduzece;
 		pnlContent = new JPanel(new GridBagLayout());
 
@@ -147,7 +156,7 @@ public class RegistracijaView extends JPanel {
 			        if (w != null) {
 			          w.setVisible(false);
 			        }
-			    	RegistracijaView rw = new RegistracijaView(preduzece);
+			    	RegistracijaView rw = new RegistracijaView(preduzece, frame);
 					add(rw);
 					remove(0);
 					updateUI();
@@ -158,8 +167,13 @@ public class RegistracijaView extends JPanel {
 			
 		}
 		else {
+			// gledam koji je tip
+			// promijeniti zaglavlje, na odjavi
 			JOptionPane.showMessageDialog(parent, message);
-			ProizvodiView bw = new ProizvodiView(preduzece);
+			ProizvodiView bw = new ProizvodiView(preduzece);	// za kupca
+			//
+			frame.getHeader().getPrijava().setText("Odjava");
+			frame.getHeader().updateUI();
 			add(bw);
 			remove(0);
 			updateUI();

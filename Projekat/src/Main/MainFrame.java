@@ -120,7 +120,7 @@ public class MainFrame extends JFrame {
 		});*/
 		
 		
-		headerController = new HeaderController(header, view, preduzece); 
+		headerController = new HeaderController(header, view, preduzece, this); 
 		
 	}
 
@@ -296,5 +296,209 @@ public class MainFrame extends JFrame {
 
 	public static void main(String[] args) throws IOException {
 		new MainFrame().setVisible(true);
+	}
+
+
+
+	public JScrollPane getSkrol() {
+		return skrol;
+	}
+
+
+
+	public void setSkrol(JScrollPane skrol) {
+		this.skrol = skrol;
+	}
+
+
+
+	public JButton getLogin() {
+		return login;
+	}
+
+
+
+	public void setLogin(JButton login) {
+		this.login = login;
+	}
+
+
+
+	public JButton getKorpa() {
+		return korpa;
+	}
+
+
+
+	public void setKorpa(JButton korpa) {
+		this.korpa = korpa;
+	}
+
+
+
+	public JLabel getBroj() {
+		return broj;
+	}
+
+
+
+	public void setBroj(JLabel broj) {
+		this.broj = broj;
+	}
+
+
+
+	public JLabel getLabela() {
+		return labela;
+	}
+
+
+
+	public void setLabela(JLabel labela) {
+		this.labela = labela;
+	}
+
+
+
+	public JLabel getNaslov() {
+		return naslov;
+	}
+
+
+
+	public void setNaslov(JLabel naslov) {
+		this.naslov = naslov;
+	}
+
+
+
+	public JPanel getGlavni() {
+		return glavni;
+	}
+
+
+
+	public void setGlavni(JPanel glavni) {
+		this.glavni = glavni;
+	}
+
+
+
+	public JPanel getP() {
+		return p;
+	}
+
+
+
+	public void setP(JPanel p) {
+		this.p = p;
+	}
+
+
+
+	public SviProizvodiPanel getBw() {
+		return bw;
+	}
+
+
+
+	public void setBw(SviProizvodiPanel bw) {
+		this.bw = bw;
+	}
+
+
+
+	public JSplitPane getSplit() {
+		return split;
+	}
+
+
+
+	public void setSplit(JSplitPane split) {
+		this.split = split;
+	}
+
+
+
+	public BaseView getView() {
+		return view;
+	}
+
+
+
+	public void setView(BaseView view) {
+		this.view = view;
+	}
+
+
+
+	public HeaderView getHeader() {
+		return header;
+	}
+
+
+
+	public void setHeader(HeaderView header) {
+		this.header = header;
+	}
+
+
+
+	public HeaderController getHeaderController() {
+		return headerController;
+	}
+
+
+
+	public void setHeaderController(HeaderController headerController) {
+		this.headerController = headerController;
+	}
+
+
+
+	public AplikacijaPreduzece getPreduzece() {
+		return preduzece;
+	}
+
+
+
+	public void setPreduzece(AplikacijaPreduzece preduzece) {
+		this.preduzece = preduzece;
+	}
+
+
+
+	public Korisnik getTrenUlogovani() {
+		return trenUlogovani;
+	}
+
+
+
+	public void setTrenUlogovani(Korisnik trenUlogovani) {
+		this.trenUlogovani = trenUlogovani;
+	}
+
+
+
+	public JButton getPrijava() {
+		return prijava;
+	}
+
+
+
+	public void setPrijava(JButton prijava) {
+		this.prijava = prijava;
+	}
+
+
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+
+
+	public static String getAppTitle() {
+		return APP_TITLE;
 	}
 }

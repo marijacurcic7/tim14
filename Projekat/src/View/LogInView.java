@@ -9,16 +9,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-import javax.print.attribute.standard.JobMessageFromOperator;
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import Controller.LogInController;
+import Main.MainFrame;
 import Model.AplikacijaPreduzece;
 import Model.Korisnik;
 
@@ -28,6 +27,8 @@ public class LogInView extends JPanel {
 	private Korisnik korisnik;
 	private AplikacijaPreduzece preduzece;
 	private boolean uspesno;
+	
+	private MainFrame frame;
 	
 	private JPanel pnlContent;
 	private JLabel lblkorisnickoime;
@@ -40,9 +41,11 @@ public class LogInView extends JPanel {
 	public JButton btnReg;  
 	//
 	
-	public LogInView(AplikacijaPreduzece preduzece) {
+	public LogInView(AplikacijaPreduzece preduzece, MainFrame frame) {
 		//tLayout(new FlowLayout());
 		this.preduzece = preduzece;
+		
+		this.frame = frame;
 
 		pnlContent = new JPanel(new GridBagLayout());
 
@@ -86,7 +89,7 @@ public class LogInView extends JPanel {
 					//loginv.setVisible(false);
 					//System.out.println("");
 					//removeAll();
-					RegistracijaView rv = new RegistracijaView(preduzece);
+					RegistracijaView rv = new RegistracijaView(preduzece, frame);
 					add(rv);
 					remove(0);
 					updateUI();
@@ -116,6 +119,7 @@ public class LogInView extends JPanel {
 		if (loginc == null) {
 			loginc = new LogInController(this);
 		}
+		
 		
 		String kime = tfkorisnicko.getText();
 		String lozinka = tflozinka.getText();

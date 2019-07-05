@@ -3,12 +3,17 @@ package Controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
+import javax.swing.JOptionPane;
+
+import Main.MainFrame;
 import Model.AplikacijaPreduzece;
 import View.BaseView;
 import View.HeaderView;
 import View.KorpaView;
 import View.LogInView;
+import View.ProizvodiView;
 
 
 public class HeaderController {
@@ -17,7 +22,7 @@ public class HeaderController {
 	HeaderView panel;
 	BaseView view;
 
-			
+	MainFrame frame;
 		
 		/*x.addActionListener(
 				  new ActionListener() {
@@ -29,8 +34,11 @@ public class HeaderController {
 				);*/
 	
 
-	public HeaderController(HeaderView panel, BaseView base, AplikacijaPreduzece preduzece) {
+	public HeaderController(HeaderView panel, BaseView base, AplikacijaPreduzece preduzece, MainFrame frame) {
 		super();
+		
+		this.frame = frame;
+		
 		this.preduzece = preduzece;
 		this.panel = panel;
 		this.view = base;
@@ -54,7 +62,27 @@ public class HeaderController {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				//bw.setVisible(false);
-				LogInView lv = new LogInView(preduzece);
+				
+				if (preduzece.trenutnoUlogovani != null) {
+					frame.getHeader().getPrijava().setText("Prijava");
+					frame.getHeader().updateUI();
+					preduzece.trenutnoUlogovani = null;
+					String message = "Uspesno ste se izlogovali.";
+					JOptionPane.showMessageDialog(null, message);
+					ProizvodiView bw = null;
+					try {
+						bw = new ProizvodiView(preduzece);
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					frame.getView().add(bw);
+					frame.getView().remove(0);
+					frame.getView().updateUI();
+					return;
+				}
+				
+				LogInView lv = new LogInView(preduzece, frame);
 				//split.setBottomComponent(lv);
 				view.add(lv);
 				view.remove(0);
