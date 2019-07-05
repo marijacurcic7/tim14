@@ -106,7 +106,7 @@ public class ProizvodPanel extends JPanel {
 		
 		
 		labelaIme = new JLabel(p.getNaziv());
-		labelaCena = new JLabel("1000");  // pokupiti cenu iz stavke cenovnika koja stoji u proizvodu	
+		labelaCena = new JLabel(p.getAktuelnaCena().getRedovnaCena() + "");  // pokupiti cenu iz stavke cenovnika koja stoji u proizvodu	
 		dugmeKorpa = new JButton("Korpa");
 		dugmePregled = new JButton("Pregled");
 		
