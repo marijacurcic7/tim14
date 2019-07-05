@@ -163,6 +163,7 @@ public class RegistracijaView extends JPanel {
 			add(bw);
 			remove(0);
 			updateUI();
+			System.out.println(preduzece.trenutnoUlogovani.getIme());
 		}
 		
 		

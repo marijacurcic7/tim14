@@ -25,6 +25,7 @@ import Model.Kategorija;
 import Model.Korisnik;
 import Model.Proizvod;
 import Model.StavkaCenovnika;
+import Model.StavkaNarudzbenice;
 import View.BaseView;
 import View.HeaderView;
 import View.ProizvodiView;
@@ -280,6 +281,15 @@ public class MainFrame extends JFrame {
 		preduzece.addStavkaCenovnika(c3);
 		preduzece.addStavkaCenovnika(c4);
 		preduzece.addStavkaCenovnika(c5);
+		
+		StavkaNarudzbenice sn1 = new StavkaNarudzbenice(2, p4);
+		StavkaNarudzbenice sn2 = new StavkaNarudzbenice(1, p2);
+		StavkaNarudzbenice sn3 = new StavkaNarudzbenice(3, p5);
+		
+		preduzece.korpa.addStavkaNarudzbenice(sn1);
+		preduzece.korpa.addStavkaNarudzbenice(sn2);
+		preduzece.korpa.addStavkaNarudzbenice(sn3);
+		
 		
 		
 	}

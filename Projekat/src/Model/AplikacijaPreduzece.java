@@ -134,7 +134,8 @@ public class AplikacijaPreduzece {
 		// prodavnica, kategorije, stavkacenovnika, trenutno ulogovani, korpa
 		prodavnice = new ArrayList<Prodavnica>();
 		kategorije = new ArrayList<Kategorija>();
-		trenutnoUlogovani = new Korisnik();
+		//trenutnoUlogovani = new Korisnik();
+		
 		korpa = new Narudzbenica();
 		stavkeCenovnika = new ArrayList<StavkaCenovnika>();
 		try {

@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import Model.AplikacijaPreduzece;
 import View.BaseView;
 import View.HeaderView;
+import View.KorpaView;
 import View.LogInView;
 
 
@@ -37,6 +38,12 @@ public class HeaderController {
 			 public void actionPerformed(ActionEvent e) {
 			      //your code here
 			    	System.out.println("Nesto se desilo");
+			    	//panel.getPrijava().setText("Odjava");
+			    	//panel.updateUI();
+			    	KorpaView kv = new KorpaView(preduzece);
+			    	view.add(kv);
+			    	view.remove(0);
+					view.updateUI();
 			    }
 			
 		});

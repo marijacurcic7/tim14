@@ -74,6 +74,7 @@ public class RegistracijaController {
 		korisnik.setPrezime(prezime);
 		regview.setKorisnik(korisnik);
 		preduzece.korisnici.add(korisnik);
+		preduzece.trenutnoUlogovani = korisnik;
 		
 		return "Uspesno ste se registrovali";
 		

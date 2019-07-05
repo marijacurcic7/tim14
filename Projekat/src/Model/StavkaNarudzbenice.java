@@ -22,10 +22,11 @@ public class StavkaNarudzbenice {
    
    public StavkaNarudzbenice() {}
    
-   public StavkaNarudzbenice(int kolicina, double jedinicnaCena) {
+   public StavkaNarudzbenice(int kolicina, Proizvod proizvod) {
+	   this.proizvod = proizvod;
 	   this.kolicina = kolicina;
-	   this.jedinicnaCena = jedinicnaCena;
-	   this.ukupnaCena = kolicina*jedinicnaCena;
+	   this.jedinicnaCena = proizvod.getAktuelnaCena().getRedovnaCena(); 
+	   this.ukupnaCena = kolicina*this.jedinicnaCena;
    }
 
 	public int getKolicina() {

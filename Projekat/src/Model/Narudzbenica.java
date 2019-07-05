@@ -20,6 +20,7 @@ public class Narudzbenica {
    private String prezime;
    /** @pdOid d17fa62c-3a2e-485b-bda7-c2ed0579ccab */
    private String telefon;
+  
    
    private double ukupanIznos = 0.0;
    
