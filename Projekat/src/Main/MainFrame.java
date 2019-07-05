@@ -1,10 +1,10 @@
 package Main;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -100,13 +100,19 @@ public class MainFrame extends JFrame {
 		split = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		split.setTopComponent(header);
 		
-		JPanel panel = new JPanel(new GridLayout(2, 0));
+		JPanel panel = new JPanel(new BorderLayout());
 		JPanel drugiPanel = new JPanel();
-		drugiPanel.setPreferredSize(new Dimension(1100, 300));
+		JPanel gornjiPanel = new JPanel();
+		gornjiPanel.setBackground(new Color(0, 90, 5));
+		panel.add(gornjiPanel, BorderLayout.PAGE_START);
+		gornjiPanel.setPreferredSize(new Dimension(1100, 20));
+		drugiPanel.setBackground(new Color(100, 100, 100));
+		drugiPanel.setPreferredSize(new Dimension(1100, 200));
 		panel.add(bw);
-		panel.add(drugiPanel);
+		panel.add(bw, BorderLayout.CENTER);
+		panel.add(drugiPanel, BorderLayout.PAGE_END);
 		
-		split.setBottomComponent(bw);
+		split.setBottomComponent(panel);
 		
 		//split.setBottomComponent(bw);
 		split.setDividerLocation(0.8);
