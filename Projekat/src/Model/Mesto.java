@@ -7,10 +7,11 @@
 package Model;
 
 
+import java.io.Serializable;
 import java.util.*;
 
 /** @pdOid 124fa27d-9d75-455f-a9cf-5350fadbfbf0 */
-public class Mesto {
+public class Mesto implements Serializable {
    /** @pdOid b8df4c2e-03ab-41d0-996d-f1d7f2d40a75 */
    private String grad;
    /** @pdOid 65184e57-436b-4e91-b9d7-859bedcb1fd4 */

@@ -6,10 +6,11 @@
 
 package Model;
 
+import java.io.Serializable;
 import java.util.*;
 
 /** @pdOid 4e66f8c6-ae98-405c-9068-ebc791810d08 */
-public class Nalog {
+public class Nalog implements Serializable {
    /** @pdOid 5b8341fb-cfde-45c8-a2ab-084599abfca4 */
    private String korisnickoIme;
    /** @pdOid 712aa551-c618-4445-a732-917251936ff3 */

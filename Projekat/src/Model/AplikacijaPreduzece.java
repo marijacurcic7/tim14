@@ -5,6 +5,13 @@
  ***********************************************************************/
 package Model;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.*;
 
 /** @pdOid a3801020-fe7a-49f9-950a-ee11d9039e33 */
@@ -14,37 +21,131 @@ public class AplikacijaPreduzece {
    /** @pdRoleInfo migr=no name=Narudzbenica assc=association3 coll=java.util.List impl=java.util.ArrayList mult=0..* */
    public java.util.List<Narudzbenica> narudzbenice;
    /** @pdRoleInfo migr=no name=Proizvod assc=association4 coll=java.util.List impl=java.util.ArrayList mult=0..* */
-   public java.util.List<Proizvod> proizvod;
+   public java.util.List<Proizvod> proizvodi;
    /** @pdRoleInfo migr=no name=Prodavnica assc=association5 coll=java.util.List impl=java.util.ArrayList mult=0..* */
-   public java.util.List<Prodavnica> prodavnica;
+   public java.util.List<Prodavnica> prodavnice;
    /** @pdRoleInfo migr=no name=Kategorija assc=association19 coll=java.util.List impl=java.util.ArrayList mult=0..* */
-   public java.util.List<Kategorija> kategorija;
+   public java.util.List<Kategorija> kategorije;
    /** @pdRoleInfo migr=no name=Osoba assc=korisnik mult=0..1 */
    public Korisnik trenutnoUlogovani = null;
    /** @pdRoleInfo migr=no name=Narudzbenica assc=association22 mult=1..1 */
    public Narudzbenica korpa;
    /** @pdRoleInfo migr=no name=StavkaCenovnika assc=association21 coll=java.util.List impl=java.util.ArrayList mult=0..* */
-   public java.util.List<StavkaCenovnika> stavkaCenovnika;
+   public java.util.List<StavkaCenovnika> stavkeCenovnika;
    
+   private static String fileString = "korisnici.ser";
    
+   public int pisanjeUFajl() throws IOException {
+	   File file = new File(fileString);
+	   FileOutputStream fileos;
+	   ObjectOutputStream out;
+	   if(file.exists() && !file.isDirectory()) {
+		   fileos = new FileOutputStream(file); 
+	       out = new ObjectOutputStream(fileos);  
+	   }
+	   else {
+		   fileos = new FileOutputStream(fileString); 
+	       out = new ObjectOutputStream(fileos);  
+	   }
+	   
+         
+       // Method for serialization of object 
+       for(Korisnik k : korisnici) {
+    	   out.writeObject(k); 
+       }
+         
+       out.close(); 
+       fileos.close(); 
+         
+       System.out.println("Object has been serialized");
+       
+       //System.exit(0);
+       
+       return 1; 
+   }
    
+   public void citanjeIzFajla() throws IOException {
+	   File file = new File(fileString);
+	   if(file.exists() && !file.isDirectory()) {
+	       FileInputStream fileis = new FileInputStream(file);
+		   ObjectInputStream in = new ObjectInputStream(fileis); 
+	       
+	       // Method for deserialization of object 
+	       //Korisnik object1 = (Korisnik)in.readObject(); 
+	       //korisnici.add(object1);
+		   
+		   //Proizvod 
+		   
+	       //Object object1 = (Object)in.readObject();
+		   Object object;
+	       try {
+			while((object = (Object)in.readObject()) != null) {
+				   System.out.println("Object has been deserialized "); 
+			       if(object.getClass().equals(Korisnik.class)) {
+			    	   Korisnik k = new Korisnik();
+			    	   k = (Korisnik)object;
+			    	   korisnici.add(k);
+			    	   System.out.println("Korisnik "+k.getIme());
+			       }
+			       else if(object.getClass().equals(Proizvod.class)) {
+			    	   Proizvod p = new Proizvod();
+			    	   p = (Proizvod)object;
+			    	   proizvodi.add(p);
+			    	   System.out.println("Proizvod "+p.getNaziv());
+			       }
+			       else if(object.getClass().equals(Narudzbenica.class)) {
+			    	   Narudzbenica n = new Narudzbenica();
+			    	   n = (Narudzbenica)object;
+			    	   narudzbenice.add(n);
+			    	   System.out.println("Narudzbenica "+n.getId());
+			       }
+			       else if(object.getClass().equals(Kategorija.class)) {
+			    	   Kategorija k = new Kategorija();
+			    	   k = (Kategorija)object;
+			    	   kategorije.add(k);
+			    	   System.out.println("Kategorija "+k.getNaziv());
+			       }else if(object.getClass().equals(Prodavnica.class)) {
+			    	   Prodavnica p = new Prodavnica();
+			    	   p = (Prodavnica)object;
+			    	   prodavnice.add(p);
+			    	   System.out.println("Prodavnica ");
+			       }
+			       
+			   }
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	       
+	       in.close(); 
+	       fileis.close(); 
+	       
+	   }
+
+   }
    
    
    public AplikacijaPreduzece() {
-	super();
-	korisnici = new ArrayList<Korisnik>();
-	narudzbenice = new ArrayList<Narudzbenica>();
-	proizvod = new ArrayList<Proizvod>();
-	// prodavnica, kategorije, stavkacenovnika, trenutno ulogovani, korpa
-	prodavnica = new ArrayList<Prodavnica>();
-	kategorija = new ArrayList<Kategorija>();
-	trenutnoUlogovani = new Korisnik();
-	korpa = new Narudzbenica();
-	stavkaCenovnika = new ArrayList<StavkaCenovnika>();
-	
-}
+		super();
+		korisnici = new ArrayList<Korisnik>();
+		narudzbenice = new ArrayList<Narudzbenica>();
+		proizvodi = new ArrayList<Proizvod>();
+		// prodavnica, kategorije, stavkacenovnika, trenutno ulogovani, korpa
+		prodavnice = new ArrayList<Prodavnica>();
+		kategorije = new ArrayList<Kategorija>();
+		trenutnoUlogovani = new Korisnik();
+		korpa = new Narudzbenica();
+		stavkeCenovnika = new ArrayList<StavkaCenovnika>();
+		try {
+			citanjeIzFajla();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+			System.out.println("End of file");
+		}
+   }
 
-/** @pdOid 88b72526-db73-439f-877b-52c47f05da53 */
+   /** @pdOid 88b72526-db73-439f-877b-52c47f05da53 */
    public void kreirajMenadzera() {
       // TODO: implement
    }
@@ -75,6 +176,15 @@ public class AplikacijaPreduzece {
 	   Korisnik korisnik = new Korisnik(ime, prezime, telefon, mesto, nalog);
 	   trenutnoUlogovani = korisnik;
 	   korisnici.add(korisnik);
+	   return true;
+   }
+   
+   public boolean proveriRegistraciju(String korisnickoIme) {
+	   for(Korisnik k : korisnici) {
+		   if(k.getNalog().getKorisnickoIme().equals(korisnickoIme)) {
+			   return false;
+		   }
+	   }
 	   return true;
    }
    
@@ -183,16 +293,16 @@ public class AplikacijaPreduzece {
    }
    /** @pdGenerated default getter */
    public java.util.List<Proizvod> getProizvod() {
-      if (proizvod == null)
-         proizvod = new java.util.ArrayList<Proizvod>();
-      return proizvod;
+      if (proizvodi == null)
+         proizvodi = new java.util.ArrayList<Proizvod>();
+      return proizvodi;
    }
    
    /** @pdGenerated default iterator getter */
    public java.util.Iterator getIteratorProizvod() {
-      if (proizvod == null)
-         proizvod = new java.util.ArrayList<Proizvod>();
-      return proizvod.iterator();
+      if (proizvodi == null)
+         proizvodi = new java.util.ArrayList<Proizvod>();
+      return proizvodi.iterator();
    }
    
    /** @pdGenerated default setter
@@ -208,10 +318,10 @@ public class AplikacijaPreduzece {
    public void addProizvod(Proizvod newProizvod) {
       if (newProizvod == null)
          return;
-      if (this.proizvod == null)
-         this.proizvod = new java.util.ArrayList<Proizvod>();
-      if (!this.proizvod.contains(newProizvod))
-         this.proizvod.add(newProizvod);
+      if (this.proizvodi == null)
+         this.proizvodi = new java.util.ArrayList<Proizvod>();
+      if (!this.proizvodi.contains(newProizvod))
+         this.proizvodi.add(newProizvod);
    }
    
    /** @pdGenerated default remove
@@ -219,28 +329,28 @@ public class AplikacijaPreduzece {
    public void removeProizvod(Proizvod oldProizvod) {
       if (oldProizvod == null)
          return;
-      if (this.proizvod != null)
-         if (this.proizvod.contains(oldProizvod))
-            this.proizvod.remove(oldProizvod);
+      if (this.proizvodi != null)
+         if (this.proizvodi.contains(oldProizvod))
+            this.proizvodi.remove(oldProizvod);
    }
    
    /** @pdGenerated default removeAll */
    public void removeAllProizvod() {
-      if (proizvod != null)
-         proizvod.clear();
+      if (proizvodi != null)
+         proizvodi.clear();
    }
    /** @pdGenerated default getter */
    public java.util.List<Prodavnica> getProdavnica() {
-      if (prodavnica == null)
-         prodavnica = new java.util.ArrayList<Prodavnica>();
-      return prodavnica;
+      if (prodavnice == null)
+         prodavnice = new java.util.ArrayList<Prodavnica>();
+      return prodavnice;
    }
    
    /** @pdGenerated default iterator getter */
    public java.util.Iterator getIteratorProdavnica() {
-      if (prodavnica == null)
-         prodavnica = new java.util.ArrayList<Prodavnica>();
-      return prodavnica.iterator();
+      if (prodavnice == null)
+         prodavnice = new java.util.ArrayList<Prodavnica>();
+      return prodavnice.iterator();
    }
    
    /** @pdGenerated default setter
@@ -256,10 +366,10 @@ public class AplikacijaPreduzece {
    public void addProdavnica(Prodavnica newProdavnica) {
       if (newProdavnica == null)
          return;
-      if (this.prodavnica == null)
-         this.prodavnica = new java.util.ArrayList<Prodavnica>();
-      if (!this.prodavnica.contains(newProdavnica))
-         this.prodavnica.add(newProdavnica);
+      if (this.prodavnice == null)
+         this.prodavnice = new java.util.ArrayList<Prodavnica>();
+      if (!this.prodavnice.contains(newProdavnica))
+         this.prodavnice.add(newProdavnica);
    }
    
    /** @pdGenerated default remove
@@ -267,28 +377,28 @@ public class AplikacijaPreduzece {
    public void removeProdavnica(Prodavnica oldProdavnica) {
       if (oldProdavnica == null)
          return;
-      if (this.prodavnica != null)
-         if (this.prodavnica.contains(oldProdavnica))
-            this.prodavnica.remove(oldProdavnica);
+      if (this.prodavnice != null)
+         if (this.prodavnice.contains(oldProdavnica))
+            this.prodavnice.remove(oldProdavnica);
    }
    
    /** @pdGenerated default removeAll */
    public void removeAllProdavnica() {
-      if (prodavnica != null)
-         prodavnica.clear();
+      if (prodavnice != null)
+         prodavnice.clear();
    }
    /** @pdGenerated default getter */
    public java.util.List<Kategorija> getKategorija() {
-      if (kategorija == null)
-         kategorija = new java.util.ArrayList<Kategorija>();
-      return kategorija;
+      if (kategorije == null)
+         kategorije = new java.util.ArrayList<Kategorija>();
+      return kategorije;
    }
    
    /** @pdGenerated default iterator getter */
    public java.util.Iterator getIteratorKategorija() {
-      if (kategorija == null)
-         kategorija = new java.util.ArrayList<Kategorija>();
-      return kategorija.iterator();
+      if (kategorije == null)
+         kategorije = new java.util.ArrayList<Kategorija>();
+      return kategorije.iterator();
    }
    
    /** @pdGenerated default setter
@@ -304,10 +414,10 @@ public class AplikacijaPreduzece {
    public void addKategorija(Kategorija newKategorija) {
       if (newKategorija == null)
          return;
-      if (this.kategorija == null)
-         this.kategorija = new java.util.ArrayList<Kategorija>();
-      if (!this.kategorija.contains(newKategorija))
-         this.kategorija.add(newKategorija);
+      if (this.kategorije == null)
+         this.kategorije = new java.util.ArrayList<Kategorija>();
+      if (!this.kategorije.contains(newKategorija))
+         this.kategorije.add(newKategorija);
    }
    
    /** @pdGenerated default remove
@@ -315,28 +425,28 @@ public class AplikacijaPreduzece {
    public void removeKategorija(Kategorija oldKategorija) {
       if (oldKategorija == null)
          return;
-      if (this.kategorija != null)
-         if (this.kategorija.contains(oldKategorija))
-            this.kategorija.remove(oldKategorija);
+      if (this.kategorije != null)
+         if (this.kategorije.contains(oldKategorija))
+            this.kategorije.remove(oldKategorija);
    }
    
    /** @pdGenerated default removeAll */
    public void removeAllKategorija() {
-      if (kategorija != null)
-         kategorija.clear();
+      if (kategorije != null)
+         kategorije.clear();
    }
    /** @pdGenerated default getter */
    public java.util.List<StavkaCenovnika> getStavkaCenovnika() {
-      if (stavkaCenovnika == null)
-         stavkaCenovnika = new java.util.ArrayList<StavkaCenovnika>();
-      return stavkaCenovnika;
+      if (stavkeCenovnika == null)
+         stavkeCenovnika = new java.util.ArrayList<StavkaCenovnika>();
+      return stavkeCenovnika;
    }
    
    /** @pdGenerated default iterator getter */
    public java.util.Iterator getIteratorStavkaCenovnika() {
-      if (stavkaCenovnika == null)
-         stavkaCenovnika = new java.util.ArrayList<StavkaCenovnika>();
-      return stavkaCenovnika.iterator();
+      if (stavkeCenovnika == null)
+         stavkeCenovnika = new java.util.ArrayList<StavkaCenovnika>();
+      return stavkeCenovnika.iterator();
    }
    
    /** @pdGenerated default setter
@@ -352,10 +462,10 @@ public class AplikacijaPreduzece {
    public void addStavkaCenovnika(StavkaCenovnika newStavkaCenovnika) {
       if (newStavkaCenovnika == null)
          return;
-      if (this.stavkaCenovnika == null)
-         this.stavkaCenovnika = new java.util.ArrayList<StavkaCenovnika>();
-      if (!this.stavkaCenovnika.contains(newStavkaCenovnika))
-         this.stavkaCenovnika.add(newStavkaCenovnika);
+      if (this.stavkeCenovnika == null)
+         this.stavkeCenovnika = new java.util.ArrayList<StavkaCenovnika>();
+      if (!this.stavkeCenovnika.contains(newStavkaCenovnika))
+         this.stavkeCenovnika.add(newStavkaCenovnika);
    }
    
    /** @pdGenerated default remove
@@ -363,15 +473,33 @@ public class AplikacijaPreduzece {
    public void removeStavkaCenovnika(StavkaCenovnika oldStavkaCenovnika) {
       if (oldStavkaCenovnika == null)
          return;
-      if (this.stavkaCenovnika != null)
-         if (this.stavkaCenovnika.contains(oldStavkaCenovnika))
-            this.stavkaCenovnika.remove(oldStavkaCenovnika);
+      if (this.stavkeCenovnika != null)
+         if (this.stavkeCenovnika.contains(oldStavkaCenovnika))
+            this.stavkeCenovnika.remove(oldStavkaCenovnika);
    }
    
    /** @pdGenerated default removeAll */
    public void removeAllStavkaCenovnika() {
-      if (stavkaCenovnika != null)
-         stavkaCenovnika.clear();
+      if (stavkeCenovnika != null)
+         stavkeCenovnika.clear();
    }
+
+	public Korisnik getTrenutnoUlogovani() {
+		return trenutnoUlogovani;
+	}
+	
+	public void setTrenutnoUlogovani(Korisnik trenutnoUlogovani) {
+		this.trenutnoUlogovani = trenutnoUlogovani;
+	}
+	
+	public Narudzbenica getKorpa() {
+		return korpa;
+	}
+	
+	public void setKorpa(Narudzbenica korpa) {
+		this.korpa = korpa;
+	}
+   
+   
 
 }

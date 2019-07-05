@@ -33,6 +33,18 @@ public class ProizvodView extends BaseView {
 	BaseView gdjeStoji;
 	// set text
 	
+	public ProizvodView(Proizvod p) {
+		this.p = p;
+		slika = new JLabel();
+		slika.setIcon(new ImageIcon(new ImageIcon("C:\\Windows\\Web\\Wallpaper\\Theme1\\img1.jpg").getImage().getScaledInstance(600, 400, Image.SCALE_DEFAULT)));
+		add(slika);
+		naziv = new JLabel(p.getNaziv());
+		this.add(naziv);
+		int cena = 1;
+		jedinicnaCena = new JLabel(cena + "");
+		this.add(jedinicnaCena);
+	}
+	
 	public ProizvodView(Proizvod p, BaseView bw) {
 		gdjeStoji = bw;
 		this.p = p;

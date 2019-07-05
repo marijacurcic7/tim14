@@ -4,11 +4,14 @@ import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.IOException;
 
-import javax.swing.JButton;
+import javax.swing.*;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
@@ -16,6 +19,7 @@ import javax.swing.border.BevelBorder;
 
 import Controller.HeaderController;
 import Model.AplikacijaPreduzece;
+import Model.Korisnik;
 import View.BaseView;
 import View.HeaderView;
 import View.ProizvodiView;
@@ -44,17 +48,31 @@ public class MainFrame extends JFrame {
 	HeaderController headerController;
 	
 	AplikacijaPreduzece preduzece;
+	Korisnik trenUlogovani;
 	
 	JButton prijava;
 
 	public MainFrame() throws IOException {
 		
+		preduzece = new AplikacijaPreduzece();
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setSize(1000, 800);
 		setLocationRelativeTo(null);
 		//glavni = new JPanel();	
 		
-		preduzece = new AplikacijaPreduzece();
+		//trenUlogovani.getNalog().getTipKorisnika()
+		
+		addWindowListener(new WindowAdapter(){
+            public void windowClosing(WindowEvent e){
+                
+            	try {
+					preduzece.pisanjeUFajl();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+            }
+        });
 		
 		
 		header = new HeaderView(preduzece);

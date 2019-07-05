@@ -5,6 +5,7 @@ import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -14,10 +15,13 @@ import javax.swing.*;
 import Controller.LogInController;
 import Controller.RegistracijaController;
 import Model.AplikacijaPreduzece;
+import Model.Korisnik;
 
 public class RegistracijaView extends JPanel {
 	
 	private AplikacijaPreduzece preduzece;
+	private Korisnik korisnik = null;
+
 	private RegistracijaController regcon;
 	
 	private JPanel pnlContent;
@@ -60,7 +64,7 @@ public class RegistracijaView extends JPanel {
 		lbltelefon = new JLabel("Telefon:");
 		tftelefon = new JTextField(20);
 
-		pnlOK = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+		//pnlOK = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 		btnOK = new JButton("OK");
 		
 		
@@ -92,12 +96,13 @@ public class RegistracijaView extends JPanel {
 				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
 		pnlContent.add(tftelefon, new GridBagConstraints(1, 5, 1, 1, 100, 0, GridBagConstraints.WEST,
 				GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
-
-		pnlOK.add(btnOK);
+		pnlContent.add(btnOK, new GridBagConstraints(1, 7, 1, 1, 100, 0, GridBagConstraints.WEST,
+				GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
+		//pnlOK.add(btnOK);
 
 		add(pnlContent, BorderLayout.CENTER);
 		
-		add(pnlOK, BorderLayout.SOUTH);
+		//add(pnlOK, BorderLayout.SOUTH);
 		
 		btnOK.addActionListener(new ActionListener() {
 
@@ -118,28 +123,73 @@ public class RegistracijaView extends JPanel {
 	
 	private void ok() throws IOException {
 		if (regcon == null) {
-			regcon = new RegistracijaController(this);
+			regcon = new RegistracijaController(this, preduzece);
 		}
 		
+		Window parent = SwingUtilities.getWindowAncestor(this);
+
 		String kime = tfkorisnicko.getText();
 		String lozinka = tflozinka.getText();
 		String ime = tfime.getText();
 		String prezime = tfprezime.getText();
 		String email = tfemail.getText();
 		String telefon = tftelefon.getText();
-		regcon.registrujSe();
+		String message = regcon.registrujSe(kime, lozinka, ime, prezime, email, telefon);
+		String title = "Greska";
 		
-		if(!(preduzece.registracijaKupca(kime, lozinka, email, ime, prezime, telefon, null, null, null, 0))) {
-			//JDialog neuspesno = new JDialog();
-			String message = "Korisnicko ime vec postoji.";
-			JOptionPane.showMessageDialog(this, message);
+		if (korisnik == null){
+			JButton btnOk = new JButton("Ok");
+			btnOk.addActionListener(new ActionListener() {
+			    public void actionPerformed(ActionEvent e) {
+			    	//JOptionPane.
+			    	Window w = SwingUtilities.getWindowAncestor(btnOk);
+
+			        if (w != null) {
+			          w.setVisible(false);
+			        }
+			    	RegistracijaView rw = new RegistracijaView(preduzece);
+					add(rw);
+					remove(0);
+					updateUI();
+			        System.out.println("code excuted");
+			    }
+			}); 
+			JOptionPane.showOptionDialog(parent, message, title, JOptionPane.OK_OPTION, JOptionPane.INFORMATION_MESSAGE, null, new Object[]{btnOk}, btnOk);
+			
 		}
 		else {
+			JOptionPane.showMessageDialog(parent, message);
 			ProizvodiView bw = new ProizvodiView(preduzece);
 			add(bw);
 			remove(0);
 			updateUI();
 		}
+		
+		
+	}
+	
+	public AplikacijaPreduzece getPreduzece() {
+		return preduzece;
+	}
+
+	public void setPreduzece(AplikacijaPreduzece preduzece) {
+		this.preduzece = preduzece;
+	}
+
+	public Korisnik getKorisnik() {
+		return korisnik;
+	}
+
+	public void setKorisnik(Korisnik korisnik) {
+		this.korisnik = korisnik;
+	}
+
+	public RegistracijaController getRegcon() {
+		return regcon;
+	}
+
+	public void setRegcon(RegistracijaController regcon) {
+		this.regcon = regcon;
 	}
 
 }
