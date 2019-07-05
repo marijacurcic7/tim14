@@ -1,17 +1,22 @@
 package Controller;
 
 
+import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
 import Main.MainFrame;
 import Model.AplikacijaPreduzece;
+import Model.TipKorisnika;
 import View.BaseView;
 import View.HeaderView;
 import View.KorpaView;
+import View.KupacView;
 import View.LogInView;
 import View.ProizvodiView;
 
@@ -56,6 +61,37 @@ public class HeaderController {
 			
 		});
 		
+		panel.getNaslov().setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		panel.getNaslov().addMouseListener(new MouseAdapter() {
+			 
+			// ovo svakako u controller
+		    @Override
+		    public void mouseClicked(MouseEvent e) {
+		        
+		    	if (preduzece.getTrenutnoUlogovani() == null) {
+		    		ProizvodiView pw = null;
+		    		try {
+						pw = new ProizvodiView(preduzece);
+						frame.getView().add(pw);
+						frame.getView().remove(0);
+						frame.getView().updateUI();
+						return;
+						
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+		    	}
+		    	else if (preduzece.getTrenutnoUlogovani().getNalog().getTipKorisnika() == TipKorisnika.kupac) {
+		    		KupacView kv = new KupacView(preduzece);
+		    		frame.getView().add(kv);
+					frame.getView().remove(0);
+					frame.getView().updateUI();
+		    		return;
+		    	}
+		    	
+		    	
+		    }});
 		
 		panel.getPrijava().addActionListener(new ActionListener() {
 

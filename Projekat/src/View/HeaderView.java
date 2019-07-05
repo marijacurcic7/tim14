@@ -2,6 +2,7 @@ package View;
 
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -91,7 +92,11 @@ public class HeaderView extends BaseView {
     c.gridheight = 3;
     c.fill = GridBagConstraints.BOTH;
     c.weightx = 1.0;
-    naslov = new JLabel("TITLE");
+    Font font = new Font(Font.SANS_SERIF, Font.PLAIN,60);
+    //naslov = new JLabel("TITLE");
+    naslov = new JLabel("HOME");
+    naslov.setFont(font);
+    
     JPanel pn = new JPanel();
     pn.add(naslov);
     pn.setBackground(new Color(100, 200, 200));
