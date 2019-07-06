@@ -95,8 +95,8 @@ public class HeaderController {
 		    	else if (preduzece.getTrenutnoUlogovani().getNalog().getTipKorisnika() == TipKorisnika.menadzer) {
 		    		MenadzerView mv = new MenadzerView(preduzece);
 		    		// ne radi?
-		    		panel.getKorpa().setVisible(false);
-		    		panel.updateUI();
+		    		//panel.getKorpa().setVisible(false);
+		    		//panel.updateUI();
 		    		frame.getView().add(mv);
 					frame.getView().remove(0);
 					frame.getView().updateUI();
@@ -104,8 +104,9 @@ public class HeaderController {
 		    	}
 		    	else {
 		    		AdminView av = new AdminView(preduzece);
-		    		panel.getKorpa().setVisible(false);
-		    		panel.updateUI();
+		    		//panel.getKorpa().setVisible(false);
+		    		//panel.getKorpa().setText("NOVI");
+		    		//panel.updateUI();
 		    		frame.getView().add(av);
 					frame.getView().remove(0);
 					frame.getView().updateUI();
@@ -123,6 +124,7 @@ public class HeaderController {
 				
 				if (preduzece.trenutnoUlogovani != null) {
 					frame.getHeader().getPrijava().setText("Prijava");
+					frame.getHeader().getKorpa().setVisible(true);
 					frame.getHeader().updateUI();
 					preduzece.trenutnoUlogovani = null;
 					String message = "Uspesno ste se izlogovali.";

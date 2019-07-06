@@ -171,6 +171,7 @@ public class LogInView extends JPanel {
 				MenadzerView mv = new MenadzerView(preduzece);
 				//
 				frame.getHeader().getPrijava().setText("Odjava");
+				frame.getHeader().getKorpa().setVisible(false);
 				frame.getHeader().updateUI();
 				add(mv);
 				remove(0);
@@ -181,7 +182,9 @@ public class LogInView extends JPanel {
 			else  {
 				AdminView av = new AdminView(preduzece);
 				//
+				
 				frame.getHeader().getPrijava().setText("Odjava");
+				frame.getHeader().getKorpa().setVisible(false);
 				frame.getHeader().updateUI();
 				add(av);
 				remove(0);
