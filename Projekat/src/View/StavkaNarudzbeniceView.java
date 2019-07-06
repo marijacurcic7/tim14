@@ -7,6 +7,8 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
@@ -15,6 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Model.AplikacijaPreduzece;
+import Model.Narudzbenica;
 import Model.Proizvod;
 import Model.StavkaNarudzbenice;
 
@@ -27,10 +30,10 @@ public class StavkaNarudzbeniceView extends JPanel {
 	private JButton btnObrisi;
 	private JButton btnPromeniKolicinu;
 	private JPanel pnlContent;
+	private KorpaView kv;
 	
-	public StavkaNarudzbeniceView(StavkaNarudzbenice sn, AplikacijaPreduzece ap) {
-		
-		
+	public StavkaNarudzbeniceView(StavkaNarudzbenice sn, AplikacijaPreduzece ap, KorpaView kv) {
+		this.kv = kv;
 		this.stavkan = sn;
 		this.preduzece = ap;
 		this.proizvod = sn.getProizvod();
@@ -116,6 +119,28 @@ public class StavkaNarudzbeniceView extends JPanel {
 		
 		add(btnObrisi);
 		add(btnPromeniKolicinu);
+		
+		btnObrisi.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				for(StavkaNarudzbenice s : preduzece.korpa.stavkeNarudzbenice) {
+					if(s.equals(stavkan)) {
+						preduzece.korpa.stavkeNarudzbenice.remove(s);
+						break;
+					}
+				}
+				
+				//StavkaNarudzbeniceView sv = new StavkaNarudzbeniceView(null, preduzece);
+				
+				//add(sv);
+				KorpaView kv1 = new KorpaView(preduzece, kv.frame);
+				kv.add(kv1);
+				kv.remove(0);
+				kv.updateUI();
+			}
+		});
 		
 	
 	}

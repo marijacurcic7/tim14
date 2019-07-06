@@ -54,7 +54,7 @@ public class KorpaView extends JPanel {
 		int i = 0;
 		for(StavkaNarudzbenice sn : korpa.getStavkaNarudzbenice()) {
 			
-			StavkaNarudzbeniceView snv = new StavkaNarudzbeniceView(sn, preduzece);
+			StavkaNarudzbeniceView snv = new StavkaNarudzbeniceView(sn, preduzece, this);
 			pnlContent.add(snv, new GridBagConstraints(0, i, 1, 1, 0, 0, GridBagConstraints.WEST,
 					GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
 			//add(new JLabel(sn.proizvod.getNaziv()));
@@ -73,6 +73,19 @@ public class KorpaView extends JPanel {
 		add(pnl);
 		//add(pnlContent);
 		
+		isprazni.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				preduzece.korpa = new Narudzbenica();
+				//korpa = new Narudzbenica();
+				KorpaView kv = new KorpaView(preduzece, frame);
+				add(kv);
+				remove(0);
+				updateUI();
+			}
+		});
+		
 		kupi.addActionListener(new ActionListener() {
 
 			@Override
@@ -87,7 +100,11 @@ public class KorpaView extends JPanel {
 					
 					//nd.show();
 					//nd.setVisible(true);
-					if(preduzece.trenutnoUlogovani == null) {
+					if (korpa.stavkeNarudzbenice.size()==0) {
+						Window w = SwingUtilities.getWindowAncestor(kupi);
+						JOptionPane.showMessageDialog(w, "Korpa je prazna");
+					}
+					else if(preduzece.trenutnoUlogovani == null) {
 						//RegistracijaView rv = new RegistracijaView(preduzece, frame);
 						
 						//login -> nullpointerexception
@@ -103,7 +120,7 @@ public class KorpaView extends JPanel {
 						
 					}
 					else {
-						FormiranjeNarudzbeniceView fnv = new FormiranjeNarudzbeniceView(preduzece);
+						FormiranjeNarudzbeniceView fnv = new FormiranjeNarudzbeniceView(preduzece, frame);
 						add(fnv);
 						remove(0);
 						updateUI();

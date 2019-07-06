@@ -78,6 +78,8 @@ public class FormiranjeNarudzbeniceController {
 		kupac.getNarudzbenice().add(korpa);
 		preduzece.narudzbenice.add(korpa);
 		
+		preduzece.korpa = new Narudzbenica();
+		
 		return "";
 	}
 

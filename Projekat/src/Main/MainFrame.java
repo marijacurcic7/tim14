@@ -25,7 +25,9 @@ import Model.AplikacijaPreduzece;
 import Model.Kategorija;
 import Model.Korisnik;
 import Model.Nalog;
+import Model.Narudzbenica;
 import Model.Proizvod;
+import Model.RegistrovaniKupac;
 import Model.StavkaCenovnika;
 import Model.StavkaNarudzbenice;
 import Model.TipKorisnika;
@@ -65,7 +67,7 @@ public class MainFrame extends JFrame {
 		
 		preduzece = new AplikacijaPreduzece();
 		System.out.println(preduzece.proizvodi.size() + 1);
-		izgenerisiPreduzece();
+		//izgenerisiPreduzece();
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setSize(1500, 1000);
@@ -152,7 +154,9 @@ public class MainFrame extends JFrame {
 		
 		
 		headerController = new HeaderController(header, view, preduzece, this); 
-		
+	    
+		ispis();
+
 	}
 
 	
@@ -253,8 +257,37 @@ public class MainFrame extends JFrame {
 	    c.gridy = 0;
 	    p.add(new JButton("Korpa"), c);
 	    
-	    
 	
+	}
+	
+	public void ispis() {
+		System.out.println("\n\n-----------------------------------------------\n");
+		for(Korisnik k : preduzece.korisnici) {
+			System.out.println(k.nalog.getKorisnickoIme()+" "+k.nalog.getLozinka()+" "+k.nalog.getTipKorisnika());
+			if(k.getClass().equals(RegistrovaniKupac.class)) {
+				RegistrovaniKupac rk = (RegistrovaniKupac)k;
+				for(Narudzbenica n : rk.narudzbenice) {
+					System.out.println("Narudzbenica "+n.getId());
+					for(StavkaNarudzbenice sn : n.stavkeNarudzbenice) {
+						System.out.println(sn.proizvod.getNaziv());
+					}
+				}
+			}
+			System.out.println("");
+		}
+		System.out.println("");
+		for(Narudzbenica n : preduzece.narudzbenice) {
+			System.out.println("Narudzbenica "+n.getId());
+			for(StavkaNarudzbenice sn : n.stavkeNarudzbenice) {
+				System.out.println(sn.proizvod.getNaziv());
+			}
+			System.out.println("");
+		}
+		System.out.println("Korpa");
+		for(StavkaNarudzbenice sn : preduzece.korpa.stavkeNarudzbenice) {
+			System.out.println(sn.proizvod.getNaziv());
+		}
+		System.out.println("");
 	}
 	
 	public void izgenerisiPreduzece() {
@@ -376,6 +409,7 @@ public class MainFrame extends JFrame {
 
 	public static void main(String[] args) throws IOException {
 		new MainFrame().setVisible(true);
+		
 	}
 
 

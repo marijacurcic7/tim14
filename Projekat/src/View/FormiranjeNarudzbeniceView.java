@@ -17,6 +17,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
 import Controller.FormiranjeNarudzbeniceController;
+import Main.MainFrame;
 import Model.AplikacijaPreduzece;
 import Model.Korisnik;
 import Model.Mesto;
@@ -28,11 +29,13 @@ public class FormiranjeNarudzbeniceView extends JPanel {
 	private Korisnik trenutnoUlogovani;
 	private FormiranjeNarudzbeniceController fncon;
 	private Narudzbenica korpa;
+	public MainFrame frame;
 	
 	private JButton btnOK;
 	private JButton btnCancell;
 	
 	private JPanel pnlContent;
+	private JPanel pnl;
 	private JLabel lblime;
 	private JLabel lblprezime;
 	private JLabel lbltelefon;
@@ -49,8 +52,10 @@ public class FormiranjeNarudzbeniceView extends JPanel {
 	private JTextField tfdrzava;
 	private JTextField tfadresa;
 	
-	public FormiranjeNarudzbeniceView(AplikacijaPreduzece ap) {
+	public FormiranjeNarudzbeniceView(AplikacijaPreduzece ap, MainFrame frame) {
 		
+		
+		this.frame = frame;
 		this.preduzece = ap;
 		this.trenutnoUlogovani = ap.trenutnoUlogovani;
 		this.korpa = ap.korpa;
@@ -93,6 +98,7 @@ public class FormiranjeNarudzbeniceView extends JPanel {
 		btnCancell = new JButton("Cancell");
 		
 		pnlContent = new JPanel(new GridBagLayout());
+		pnl = new JPanel();
 		
 		constructGUI();
 	}
@@ -139,12 +145,12 @@ public class FormiranjeNarudzbeniceView extends JPanel {
 		
 		pnlContent.setVisible(true);
 
-		add(pnlContent, BorderLayout.CENTER);
+		pnl.add(pnlContent, BorderLayout.CENTER);
 		
 		//add(pnlOK, BorderLayout.SOUTH);
 		
-		add(btnOK);
-		add(btnCancell);
+		pnl.add(btnOK);
+		pnl.add(btnCancell);
 		
 		btnOK.addActionListener(new ActionListener() {
 
@@ -155,6 +161,8 @@ public class FormiranjeNarudzbeniceView extends JPanel {
 					
 				}
 		});
+		
+		add(pnl);
 	
 	}
 	
@@ -179,6 +187,20 @@ public class FormiranjeNarudzbeniceView extends JPanel {
 		
 		if(message.equals("")) {
 			JOptionPane.showMessageDialog(parent, "Narudzbenica formirana");
+			/*ProizvodiView bw = null;
+			try {
+				bw = new ProizvodiView(preduzece);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			frame.getView().add(bw);
+			frame.getView().remove(0);
+			frame.getView().updateUI();*/
+			KupacView kv = new KupacView(preduzece);
+			add(kv);
+			remove(0);
+			updateUI();
 		}
 		else {
 			JOptionPane.showMessageDialog(parent, message);

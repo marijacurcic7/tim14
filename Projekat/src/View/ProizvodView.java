@@ -11,6 +11,7 @@ import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
 
 import Controller.ProizvodController;
+import Main.MainFrame;
 import Model.AplikacijaPreduzece;
 import Model.Proizvod;
 import Model.TipKorisnika;
@@ -21,6 +22,7 @@ public class ProizvodView extends BaseView {
 	ProizvodController controller;
 	AplikacijaPreduzece preduzece;
 	JSpinner spinner;
+	public MainFrame frame;
 	
 	// imace dugme stavi u korpus
 	
@@ -37,7 +39,8 @@ public class ProizvodView extends BaseView {
 	BaseView gdjeStoji;
 	// set text
 	
-	public ProizvodView(Proizvod p) {
+	public ProizvodView(Proizvod p, MainFrame frame, String g) {
+		this.frame = frame;
 		this.p = p;
 		slika = new JLabel();
 		slika.setIcon(new ImageIcon(new ImageIcon("C:\\Windows\\Web\\Wallpaper\\Theme1\\img1.jpg").getImage().getScaledInstance(600, 400, Image.SCALE_DEFAULT)));
