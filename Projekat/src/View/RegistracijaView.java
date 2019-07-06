@@ -52,8 +52,8 @@ public class RegistracijaView extends JPanel {
 		//setLayout(new FlowLayout());
 		
 		this.frame = frame;
-		
 		this.preduzece = preduzece;
+		
 		pnlContent = new JPanel(new GridBagLayout());
 
 		lblkorisnickoime = new JLabel("Korisnicko ime:");

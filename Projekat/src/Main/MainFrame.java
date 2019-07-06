@@ -351,10 +351,11 @@ public class MainFrame extends JFrame {
 		StavkaNarudzbenice sn2 = new StavkaNarudzbenice(1, p2);
 		StavkaNarudzbenice sn3 = new StavkaNarudzbenice(3, p5);
 		
+		/*
 		preduzece.korpa.addStavkaNarudzbenice(sn1);
 		preduzece.korpa.addStavkaNarudzbenice(sn2);
 		preduzece.korpa.addStavkaNarudzbenice(sn3);
-		
+		*/
 		
 		Nalog nalog = new Nalog();
 		nalog.setKorisnickoIme("menadzer");

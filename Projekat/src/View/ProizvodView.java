@@ -20,6 +20,7 @@ public class ProizvodView extends BaseView {
 	Proizvod p;
 	ProizvodController controller;
 	AplikacijaPreduzece preduzece;
+	JSpinner spinner;
 	
 	// imace dugme stavi u korpus
 	
@@ -80,7 +81,7 @@ public class ProizvodView extends BaseView {
 	                1, //minimum value  
 	                100, //maximum value  
 	                1); //step  
-	    JSpinner spinner = new JSpinner(value);   
+	    spinner = new JSpinner(value);   
 	            spinner.setBounds(100,100,50,30);    
 	            this.add(spinner);    
 	            //f.setSize(300,300);    
@@ -95,6 +96,8 @@ public class ProizvodView extends BaseView {
 		}
 		
 		add(staviUKorpu);
+		//String value1 = spinner.change
+		//System.out.println(value1+"");
 	}
 
 	public Proizvod getP() {
@@ -152,6 +155,32 @@ public class ProizvodView extends BaseView {
 	public void setGdjeStoji(BaseView gdjeStoji) {
 		this.gdjeStoji = gdjeStoji;
 	}
+
+	public AplikacijaPreduzece getPreduzece() {
+		return preduzece;
+	}
+
+	public void setPreduzece(AplikacijaPreduzece preduzece) {
+		this.preduzece = preduzece;
+	}
+
+	public JSpinner getSpinner() {
+		return spinner;
+	}
+
+	public void setSpinner(JSpinner spinner) {
+		this.spinner = spinner;
+	}
+
+	public JLabel getNaziv() {
+		return naziv;
+	}
+
+	public void setNaziv(JLabel naziv) {
+		this.naziv = naziv;
+	}
+	
+	
 	
 
 }

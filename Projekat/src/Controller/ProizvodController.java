@@ -7,20 +7,26 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 import Model.AplikacijaPreduzece;
+import Model.Proizvod;
+import Model.StavkaNarudzbenice;
 import View.ProizvodView;
 
 
 public class ProizvodController extends Controller {
 
-	ProizvodView proizvodView;
-	AplikacijaPreduzece preduzece;
+	private ProizvodView proizvodView;
+	private AplikacijaPreduzece preduzece;
+	private Proizvod proizvod;
+	private int kolicina;
 	
 	
 	public ProizvodController(ProizvodView proizvodView, AplikacijaPreduzece preduzece) {
 		this.proizvodView = proizvodView;
 		this.preduzece = preduzece;
+		this.proizvod = proizvodView.getP();
 		
-		this.proizvodView.getStaviUKorpu().addActionListener(new ActionListener() {
+		
+		/*this.proizvodView.getStaviUKorpu().addActionListener(new ActionListener() {
 			 public void actionPerformed(ActionEvent e) {
 			      //your code here
 			    	//System.out.println("Nesto se desilo");
@@ -31,7 +37,21 @@ public class ProizvodController extends Controller {
 				 
 				 JOptionPane.showMessageDialog(proizvodView, message);
 			    }
+			 	
 			
+		});*/
+		addListeners();
+	}
+	
+	private void addListeners() {
+		proizvodView.getStaviUKorpu().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+					kolicina = Integer.parseInt(proizvodView.getSpinner().getValue().toString());
+					preduzece.korpa.addStavkaNarudzbenice(new StavkaNarudzbenice(kolicina, proizvod));
+					System.out.println(kolicina+" "+proizvod);
+			}
 		});
 	}
 	

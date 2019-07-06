@@ -84,27 +84,56 @@ public class AplikacijaPreduzece {
        System.out.println("Object has been serialized");
        
        //System.exit(0);
+       File file1 = new File("korpa.ser");
+	   FileOutputStream file1os;
+	   ObjectOutputStream out1;
+	   if(file1.exists() && !file1.isDirectory()) {
+		   file1os = new FileOutputStream(file1); 
+	       out1 = new ObjectOutputStream(file1os);  
+	   }
+	   else {
+		   file1os = new FileOutputStream("korpa.ser"); 
+	       out1 = new ObjectOutputStream(file1os);  
+	   }
+	   
+	   out1.writeObject(korpa);
+	   System.out.println("Korpa upisana");
        
        return 1; 
    }
    
    public void citanjeIzFajla() throws IOException {
+	   File file1 = new File("korpa.ser");
+	   if(file1.exists() && !file1.isDirectory()) {
+	       FileInputStream file1is = new FileInputStream(file1);
+		   ObjectInputStream in1 = new ObjectInputStream(file1is);
+		   Object object1;
+		   try {
+			   object1 = (Object)in1.readObject();
+			   //while((object = (Object)in.readObject()) != null)
+			   if((object1 != null) && (object1.getClass().equals(Narudzbenica.class))) {
+		    	   Narudzbenica n = new Narudzbenica();
+		    	   n = (Narudzbenica)object1;
+		    	   korpa = n;
+		    	   System.out.println("Korpa "+n.getId());
+		       }
+			   in1.close(); 
+		       file1is.close();  
+		       System.out.println("korpa");
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
+	   }
+	   
 	   File file = new File(fileString);
 	   if(file.exists() && !file.isDirectory()) {
 	       FileInputStream fileis = new FileInputStream(file);
 		   ObjectInputStream in = new ObjectInputStream(fileis); 
 	       
-	       // Method for deserialization of object 
-	       //Korisnik object1 = (Korisnik)in.readObject(); 
-	       //korisnici.add(object1);
-		   
-		   //Proizvod 
-		   
-	       //Object object1 = (Object)in.readObject();
 		   Object object;
 	       try {
 			while((object = (Object)in.readObject()) != null) {
-				   //System.out.println("Object has been deserialized "); 
 			       if(object.getClass().equals(RegistrovaniKupac.class)) {
 			    	   RegistrovaniKupac k = new RegistrovaniKupac();
 			    	   k = (RegistrovaniKupac)object;
@@ -142,15 +171,13 @@ public class AplikacijaPreduzece {
 			       }
 			       
 			   }
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	       
+	       } catch (ClassNotFoundException e) {
+	    	   e.printStackTrace();
+	       }
 	       in.close(); 
-	       fileis.close(); 
-	       
+	       fileis.close();  
 	   }
+	   
 
    }
    
@@ -167,14 +194,14 @@ public class AplikacijaPreduzece {
 		
 		korpa = new Narudzbenica();
 		stavkeCenovnika = new ArrayList<StavkaCenovnika>();
-		/*
+		
 		try {
 			citanjeIzFajla();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			//e.printStackTrace();
-			System.out.println("End of file");
-		}/*/
+			//System.out.println("End of file");
+		} 
    }
 
    /** @pdOid 88b72526-db73-439f-877b-52c47f05da53 */

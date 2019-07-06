@@ -32,7 +32,10 @@ public class Narudzbenica implements Serializable {
    
    public RegistrovaniKupac regKupac;
    
-   public Narudzbenica() {}
+   public Narudzbenica() {
+	   this.stavkeNarudzbenice = new ArrayList<StavkaNarudzbenice>();
+
+   }
    
    public Narudzbenica(int id, Date datum, String ime, String prezime, String telefon, Mesto mesto) {
 	   this.ime = ime;
@@ -41,6 +44,7 @@ public class Narudzbenica implements Serializable {
 	   this.id = id;
 	   this.telefon = telefon;
 	   this.mesto = mesto;
+	   this.stavkeNarudzbenice = new ArrayList<StavkaNarudzbenice>();
    }
    
    public Narudzbenica(int id, Date datum, String ime, String prezime, String telefon, Mesto mesto, StavkaNarudzbenice sn) {

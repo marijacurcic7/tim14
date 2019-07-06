@@ -180,7 +180,7 @@ public class LogInView extends JPanel {
 				//return;		
 			}
 			else  {
-				AdminView av = new AdminView(preduzece);
+				AdminView av = new AdminView(preduzece, frame);
 				//
 				
 				frame.getHeader().getPrijava().setText("Odjava");

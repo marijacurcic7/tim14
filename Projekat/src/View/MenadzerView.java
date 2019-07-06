@@ -126,6 +126,10 @@ public class MenadzerView extends BaseView {
 		    public void mouseClicked(MouseEvent e) {
 		        // the user clicks on the label
 		    	JOptionPane.showMessageDialog(null, " Unos novog proizvoda ");
+		    	DodavanjeProizvodaView rw = new DodavanjeProizvodaView(preduzece);
+				add(rw);
+				remove(0);
+				updateUI();
 		    }});
 		
 		onoSaStrane.add(dodajNoviProizvod);

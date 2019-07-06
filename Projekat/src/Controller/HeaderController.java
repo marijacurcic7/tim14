@@ -103,7 +103,7 @@ public class HeaderController {
 		    		return;
 		    	}
 		    	else {
-		    		AdminView av = new AdminView(preduzece);
+		    		AdminView av = new AdminView(preduzece, frame);
 		    		//panel.getKorpa().setVisible(false);
 		    		//panel.getKorpa().setText("NOVI");
 		    		//panel.updateUI();
