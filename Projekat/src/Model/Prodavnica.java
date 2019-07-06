@@ -6,10 +6,11 @@
 
 package Model;
 
+import java.io.Serializable;
 import java.util.*;
 
 /** @pdOid 8f4c06cc-78d3-4be8-9cf5-7f68d7acc7c5 */
-public class Prodavnica {
+public class Prodavnica implements Serializable {
    /** @pdOid cf10f5fb-6320-4698-96eb-ef797c8f38d5 */
    private int id;
    

@@ -6,10 +6,11 @@
 
 package Model;
 
+import java.io.Serializable;
 import java.util.*;
 
 /** @pdOid f1031a6e-a25a-4da9-ac9e-8b4738f1370f */
-public class StavkaNarudzbenice {
+public class StavkaNarudzbenice implements Serializable {
    /** @pdOid c8088f35-64f3-4ef8-ae51-36f91ca2935e */
    private int kolicina;
    /** @pdOid 99b9acc7-cb5c-4c29-962b-9c19465520fa */

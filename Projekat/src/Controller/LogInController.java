@@ -84,11 +84,12 @@ public class LogInController {
 		login(kime, lozinka);
 		System.out.println(kime);
 		System.out.println(lozinka);
-		Korisnik k = preduzece.proveriLogin(kime,  lozinka);
+		//Korisnik k = preduzece.proveriLogin(kime,  lozinka);
 		System.out.println("*******************");
 		System.out.println();
 		System.out.println("888888888888888888888");
-		if(k == null) {
+	}
+		/*if(k == null) {
 			//JDialog neuspesno = new JDialog();
 			String message = "Pogresno uneto korisnicko ime ili lozinka. Pokusajte ponovo.";
 			JOptionPane.showMessageDialog(null, message);
@@ -133,7 +134,7 @@ public class LogInController {
 			loginv.updateUI();
 			}}
 		}
-	
+	*/
 	
 	public void login(String kime, String lozinka) {
 		this.korisnickoIme = kime;

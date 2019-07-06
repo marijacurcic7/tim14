@@ -6,10 +6,11 @@
 
 package Model;
 
+import java.io.Serializable;
 import java.util.*;
 
 /** @pdOid 7d690466-1672-4fa2-bf50-08a840f9ef17 */
-public class Narudzbenica {
+public class Narudzbenica implements Serializable {
    /** @pdOid 433982e1-84b9-4fdf-a30a-828bd7c99d5c */
    private int id;
    /** @pdOid a69610ee-ca2a-472f-9399-9ec0b7a792a5 */
@@ -25,7 +26,7 @@ public class Narudzbenica {
    private double ukupanIznos = 0.0;
    
    /** @pdRoleInfo migr=no name=StavkaNarudzbenice assc=association7 coll=java.util.List impl=java.util.ArrayList mult=0..* */
-   public java.util.List<StavkaNarudzbenice> stavkaNarudzbenice;
+   public java.util.List<StavkaNarudzbenice> stavkeNarudzbenice;
    /** @pdRoleInfo migr=no name=Mesto assc=association15 mult=1..1 */
    public Mesto mesto;
    
@@ -49,12 +50,12 @@ public class Narudzbenica {
 	   this.id = id;
 	   this.telefon = telefon;
 	   this.mesto = mesto;
-	   stavkaNarudzbenice.add(sn);
+	   stavkeNarudzbenice.add(sn);
 	   ukupanIznos += sn.getUkupnaCena();
    }
    
    public void dodajUKorpu(StavkaNarudzbenice s) {
-	   stavkaNarudzbenice.add(s);
+	   stavkeNarudzbenice.add(s);
 	   ukupanIznos += s.getUkupnaCena();
    }
    
@@ -93,16 +94,16 @@ public class Narudzbenica {
    
    /** @pdGenerated default getter */
    public java.util.List<StavkaNarudzbenice> getStavkaNarudzbenice() {
-      if (stavkaNarudzbenice == null)
-         stavkaNarudzbenice = new java.util.ArrayList<StavkaNarudzbenice>();
-      return stavkaNarudzbenice;
+      if (stavkeNarudzbenice == null)
+         stavkeNarudzbenice = new java.util.ArrayList<StavkaNarudzbenice>();
+      return stavkeNarudzbenice;
    }
    
    /** @pdGenerated default iterator getter */
    public java.util.Iterator getIteratorStavkaNarudzbenice() {
-      if (stavkaNarudzbenice == null)
-         stavkaNarudzbenice = new java.util.ArrayList<StavkaNarudzbenice>();
-      return stavkaNarudzbenice.iterator();
+      if (stavkeNarudzbenice == null)
+         stavkeNarudzbenice = new java.util.ArrayList<StavkaNarudzbenice>();
+      return stavkeNarudzbenice.iterator();
    }
    
    /** @pdGenerated default setter
@@ -118,10 +119,10 @@ public class Narudzbenica {
    public void addStavkaNarudzbenice(StavkaNarudzbenice newStavkaNarudzbenice) {
       if (newStavkaNarudzbenice == null)
          return;
-      if (this.stavkaNarudzbenice == null)
-         this.stavkaNarudzbenice = new java.util.ArrayList<StavkaNarudzbenice>();
-      if (!this.stavkaNarudzbenice.contains(newStavkaNarudzbenice))
-         this.stavkaNarudzbenice.add(newStavkaNarudzbenice);
+      if (this.stavkeNarudzbenice == null)
+         this.stavkeNarudzbenice = new java.util.ArrayList<StavkaNarudzbenice>();
+      if (!this.stavkeNarudzbenice.contains(newStavkaNarudzbenice))
+         this.stavkeNarudzbenice.add(newStavkaNarudzbenice);
    }
    
    /** @pdGenerated default remove
@@ -129,15 +130,15 @@ public class Narudzbenica {
    public void removeStavkaNarudzbenice(StavkaNarudzbenice oldStavkaNarudzbenice) {
       if (oldStavkaNarudzbenice == null)
          return;
-      if (this.stavkaNarudzbenice != null)
-         if (this.stavkaNarudzbenice.contains(oldStavkaNarudzbenice))
-            this.stavkaNarudzbenice.remove(oldStavkaNarudzbenice);
+      if (this.stavkeNarudzbenice != null)
+         if (this.stavkeNarudzbenice.contains(oldStavkaNarudzbenice))
+            this.stavkeNarudzbenice.remove(oldStavkaNarudzbenice);
    }
    
    /** @pdGenerated default removeAll */
    public void removeAllStavkaNarudzbenice() {
-      if (stavkaNarudzbenice != null)
-         stavkaNarudzbenice.clear();
+      if (stavkeNarudzbenice != null)
+         stavkeNarudzbenice.clear();
    }
 
 public int getId() {

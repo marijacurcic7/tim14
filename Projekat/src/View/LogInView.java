@@ -20,6 +20,7 @@ import Controller.LogInController;
 import Main.MainFrame;
 import Model.AplikacijaPreduzece;
 import Model.Korisnik;
+import Model.RegistrovaniKupac;
 import Model.TipKorisnika;
 
 public class LogInView extends JPanel {
@@ -136,19 +137,23 @@ public class LogInView extends JPanel {
 		loginc.login(kime, lozinka);
 		System.out.println(kime);
 		System.out.println(lozinka);
-		Korisnik k = preduzece.proveriLogin(kime,  lozinka);
+		//Korisnik k = preduzece.proveriLogin(kime,  lozinka);
+		boolean ulogovan = preduzece.login(kime, lozinka);
 		System.out.println("*******************");
-		System.out.println(k);
-		if(k == null) {
+		System.out.println(ulogovan);
+		if(ulogovan == false) {
 			//JDialog neuspesno = new JDialog();
 			String message = "Pogresno uneto korisnicko ime ili lozinka. Pokusajte ponovo.";
 			JOptionPane.showMessageDialog(this, message);
 		}
 		else {
-			preduzece.trenutnoUlogovani = k;
+			//preduzece.trenutnoUlogovani = k;
 			System.out.println("----------------------------------");
-			System.out.println(k.getNalog().getTipKorisnika());
+			//System.out.println(k.getNalog().getTipKorisnika());
 			if (preduzece.trenutnoUlogovani.nalog.getTipKorisnika() == TipKorisnika.kupac) {
+			//if(k.nalog.getTipKorisnika() == TipKorisnika.kupac) {
+				
+				//preduzece.trenutnoUlogovani = k;
 				KupacView kv = new KupacView(preduzece);
 				//
 				frame.getHeader().getPrijava().setText("Odjava");
@@ -156,10 +161,12 @@ public class LogInView extends JPanel {
 				add(kv);
 				remove(0);
 				updateUI();
-				return;
+				//return;
 			}
 			
 			else if (preduzece.trenutnoUlogovani.nalog.getTipKorisnika() == TipKorisnika.menadzer) {
+			//else if(k.nalog.getTipKorisnika() == TipKorisnika.menadzer) {
+				//preduzece.trenutnoUlogovani = k;
 				System.out.println("Menadzer");
 				MenadzerView mv = new MenadzerView(preduzece);
 				//
@@ -169,11 +176,8 @@ public class LogInView extends JPanel {
 				remove(0);
 				System.out.println("OOOOOOOOYYYYYYYYYYYYYYYYY");
 				updateUI();
-				
-				return;
-				
+				//return;		
 			}
-			
 			else  {
 			ProizvodiView bw = new ProizvodiView(preduzece);
 			add(bw);
@@ -181,7 +185,7 @@ public class LogInView extends JPanel {
 			updateUI();
 			}
 		}
-		
+		//System.out.println("Ulogovan: "+preduzece.trenutnoUlogovani.getClass());
 	}
 
 	public LogInController getLoginc() {

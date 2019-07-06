@@ -52,7 +52,14 @@ public class AplikacijaPreduzece {
          
        // Method for serialization of object 
        for(Korisnik k : korisnici) {
-    	   out.writeObject(k); 
+    	   if(k.getClass().equals(RegistrovaniKupac.class)) {
+    		   System.out.println("Upisati kupca");
+    		   RegistrovaniKupac kupac = (RegistrovaniKupac)k;
+    		   out.writeObject(kupac); 
+    	   }
+    	   else {
+    		   out.writeObject(k); 
+    	   }
        }
          
        out.close(); 
@@ -81,12 +88,18 @@ public class AplikacijaPreduzece {
 		   Object object;
 	       try {
 			while((object = (Object)in.readObject()) != null) {
-				   System.out.println("Object has been deserialized "); 
-			       if(object.getClass().equals(Korisnik.class)) {
+				   //System.out.println("Object has been deserialized "); 
+			       if(object.getClass().equals(RegistrovaniKupac.class)) {
+			    	   RegistrovaniKupac k = new RegistrovaniKupac();
+			    	   k = (RegistrovaniKupac)object;
+			    	   korisnici.add(k);
+			    	   System.out.println("Kupac "+k.getNalog().getKorisnickoIme()+" "+k.getNalog().getTipKorisnika());
+			       }
+			       else if(object.getClass().equals(Korisnik.class)) {
 			    	   Korisnik k = new Korisnik();
 			    	   k = (Korisnik)object;
 			    	   korisnici.add(k);
-			    	   System.out.println("Korisnik "+k.getIme());
+			    	   System.out.println("Korisnik "+k.getNalog().getKorisnickoIme()+" "+k.getNalog().getTipKorisnika());
 			       }
 			       else if(object.getClass().equals(Proizvod.class)) {
 			    	   Proizvod p = new Proizvod();
@@ -138,17 +151,13 @@ public class AplikacijaPreduzece {
 		
 		korpa = new Narudzbenica();
 		stavkeCenovnika = new ArrayList<StavkaCenovnika>();
-		/*
 		try {
-			
-			// zasad
-			//System.out.println("okay");
 			citanjeIzFajla();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			//e.printStackTrace();
 			System.out.println("End of file");
-		}*/
+		}
    }
 
    /** @pdOid 88b72526-db73-439f-877b-52c47f05da53 */
@@ -162,10 +171,10 @@ public class AplikacijaPreduzece {
       return 0;
    }
    
-   public void registracijaKorisnika(String korisnickoIme, String lozinka, String email, TipKorisnika tipKorisnika,
+   /*public void registracijaKorisnika(String korisnickoIme, String lozinka, String email, TipKorisnika tipKorisnika,
 		   String ime, String prezime, String telefon, String grad, String drzava, String adresa, int postanskiBroj) {
 	   Nalog nalog = new Nalog(korisnickoIme, lozinka, email, tipKorisnika);
-	   Mesto mesto = new Mesto(grad, drzava, adresa, postanskiBroj);
+	   Mesto mesto = new Mesto(grad, drzava, adresa);
 	   Korisnik korisnik = new Korisnik(ime, prezime, telefon, mesto, nalog);
 	   trenutnoUlogovani = korisnik;
    }
@@ -178,12 +187,12 @@ public class AplikacijaPreduzece {
 		   }
 	   }
 	   Nalog nalog = new Nalog(korisnickoIme, lozinka, email, TipKorisnika.kupac);
-	   Mesto mesto = new Mesto(grad, drzava, adresa, postanskiBroj);
+	   Mesto mesto = new Mesto(grad, drzava, adresa);
 	   Korisnik korisnik = new Korisnik(ime, prezime, telefon, mesto, nalog);
 	   trenutnoUlogovani = korisnik;
 	   korisnici.add(korisnik);
 	   return true;
-   }
+   }*/
    
    public boolean proveriRegistraciju(String korisnickoIme) {
 	   for(Korisnik k : korisnici) {
@@ -194,23 +203,47 @@ public class AplikacijaPreduzece {
 	   return true;
    }
    
-   public Korisnik proveriLogin(String korisnickoIme, String lozinka) {
-	  // if(korisnickoIme.equals("admin") && lozinka.equals("admin")) {
-	//	   //return new Korisnik();  // PROMIJENITI
-		//   Korisnik k = new Korisnik();
-		 //  return k;
-	   //}
-	   System.out.println("99999999");
+   /*public Korisnik proveriLogin(String korisnickoIme, String lozinka) {
+	   if(korisnickoIme.equals("admin") && lozinka.equals("admin")) {
+		   //return new Korisnik();  // PROMIJENITI
+		   Nalog n = new Nalog("admin", "admin", null, TipKorisnika.administrator);
+		   Korisnik k = new Korisnik();
+		   k.setNalog(n);
+		   return k;
+	   }
 	   for (Korisnik k: korisnici) {
-		   System.out.println(k.getNalog());
-		   
 		   if (k.getNalog().getKorisnickoIme().equals(korisnickoIme) && k.getNalog().getLozinka().equals(lozinka)) {
 			   return k;
 		   }
 		   
 	   }
-	   System.out.println("fine");
 	   return null;
+   }*/
+   
+   public boolean login(String korisnickoIme, String lozinka) {
+	   if(korisnickoIme.equals("admin") && lozinka.equals("admin")) {
+		   //return new Korisnik();  // PROMIJENITI
+		   Nalog n = new Nalog("admin", "admin", null, TipKorisnika.administrator);
+		   Korisnik k = new Korisnik();
+		   k.setNalog(n);
+		   trenutnoUlogovani = k;
+		   return true;
+	   }
+	   for (Korisnik k: korisnici) {
+		   if (k.getNalog().getKorisnickoIme().equals(korisnickoIme) && k.getNalog().getLozinka().equals(lozinka)) {
+			   if(k.getClass().equals(RegistrovaniKupac.class)) {
+				   System.out.println("Loguje se kupac");
+				   RegistrovaniKupac kupac = (RegistrovaniKupac)k;
+				   trenutnoUlogovani = kupac;
+			   }
+			   else {
+				   trenutnoUlogovani = k;
+			   }
+			   return true;
+		   }
+		   
+	   }
+	   return false;
    }
    
    /** @pdGenerated default getter */

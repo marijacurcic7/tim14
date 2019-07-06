@@ -4,19 +4,30 @@ import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.Window;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 
+import Controller.FormiranjeNarudzbeniceController;
 import Model.AplikacijaPreduzece;
 import Model.Korisnik;
+import Model.Mesto;
+import Model.Narudzbenica;
 
 public class FormiranjeNarudzbeniceView extends JPanel {
 	
-	AplikacijaPreduzece preduzece;
-	Korisnik trenutnoUlogovani;
+	private AplikacijaPreduzece preduzece;
+	private Korisnik trenutnoUlogovani;
+	private FormiranjeNarudzbeniceController fncon;
+	private Narudzbenica korpa;
 	
 	private JButton btnOK;
 	private JButton btnCancell;
@@ -42,6 +53,7 @@ public class FormiranjeNarudzbeniceView extends JPanel {
 		
 		this.preduzece = ap;
 		this.trenutnoUlogovani = ap.trenutnoUlogovani;
+		this.korpa = ap.korpa;
 		
 		lblime = new JLabel("Ime:");
 		tfime = new JTextField(20);
@@ -134,21 +146,45 @@ public class FormiranjeNarudzbeniceView extends JPanel {
 		add(btnOK);
 		add(btnCancell);
 		
-		/*btnOK.addActionListener(new ActionListener() {
+		btnOK.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 					
-					try {
-						ok();
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
+					ok();
 					
 				}
-		});*/
+		});
 	
+	}
+	
+	private void ok() {
+		if(fncon == null) {
+			fncon = new FormiranjeNarudzbeniceController(this, preduzece);
+		}
+		
+		Window parent = SwingUtilities.getWindowAncestor(this);
+		
+		String ime = tfime.getText();
+		String prezime = tfprezime.getText();
+		//String email = tfemail.getText();
+		String telefon = tftelefon.getText();
+		
+		double cena = korpa.getUkupanIznos();
+		
+		String message = fncon.formirajNarudzbenicu(ime, prezime, telefon, cena, tfgrad.getText(), tfdrzava.getText(), tfadresa.getText());
+		
+		//String message = regcon.registrujSe(kime, lozinka, ime, prezime, email, telefon);
+		//String title = "Greska";
+		
+		if(message.equals("")) {
+			JOptionPane.showMessageDialog(parent, "Narudzbenica formirana");
+		}
+		else {
+			JOptionPane.showMessageDialog(parent, message);
+
+			//ok();
+		}
 	}
 	
 	private void ulogovan() {

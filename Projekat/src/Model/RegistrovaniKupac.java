@@ -15,6 +15,12 @@ public class RegistrovaniKupac extends Korisnik {
 	
 	public RegistrovaniKupac() {
 		super();
+		narudzbenice = new ArrayList<Narudzbenica>();
+	}
+	
+	public RegistrovaniKupac(String ime, String prezime, String telefon, Mesto mesto, Nalog nalog) {
+		super(ime, prezime, telefon, mesto, nalog);
+		narudzbenice = new ArrayList<Narudzbenica>();
 	}
 	
 	public void dodajNarudzbenicu(Narudzbenica n) {

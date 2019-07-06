@@ -19,15 +19,15 @@ public class Mesto implements Serializable {
    /** @pdOid 9689ce6d-08bf-49f3-97e1-1a1d6de636fe */
    private String adresa;
    /** @pdOid 07f4170d-fb6b-40cc-be73-eeb12105be96 */
-   private int ptbroj;
+   //private int ptbroj;
    
    public Mesto() {}
    
-   public Mesto(String grad, String drzava, String adresa, int pbr) {
+   public Mesto(String grad, String drzava, String adresa) {
 	   this.grad = grad;
 	   this.drzava = drzava;
 	   this.adresa = adresa;
-	   this.ptbroj = pbr;
+	   //his.ptbroj = pbr;
    }
 
 public String getGrad() {
@@ -54,13 +54,7 @@ public void setAdresa(String adresa) {
 	this.adresa = adresa;
 }
 
-public int getPtbroj() {
-	return ptbroj;
-}
 
-public void setPtbroj(int ptbroj) {
-	this.ptbroj = ptbroj;
-}
    
    
 

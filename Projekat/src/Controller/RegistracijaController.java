@@ -5,6 +5,7 @@ import javax.swing.JOptionPane;
 import Model.AplikacijaPreduzece;
 import Model.Korisnik;
 import Model.Nalog;
+import Model.RegistrovaniKupac;
 import Model.TipKorisnika;
 import View.RegistracijaView;
 
@@ -66,12 +67,25 @@ public class RegistracijaController {
 			return "Unesite e-mail";
 		}
 		
-		TipKorisnika tip = TipKorisnika.kupac;
+		/*TipKorisnika tip = TipKorisnika.kupac;
 		korisnik = new Korisnik();
 		Nalog nalog = new Nalog(korisnickoIme, lozinka, email, tip);
 		korisnik.setNalog(nalog);
 		korisnik.setIme(ime);
 		korisnik.setPrezime(prezime);
+		regview.setKorisnik(korisnik);
+		preduzece.korisnici.add(korisnik);
+		preduzece.trenutnoUlogovani = korisnik;
+		*/
+		if(preduzece.trenutnoUlogovani == null) {
+			Nalog nalog = new Nalog(korisnickoIme, lozinka, email, TipKorisnika.kupac);
+			korisnik = new RegistrovaniKupac(ime, prezime, telefon, null, nalog);
+		}
+		else if(preduzece.trenutnoUlogovani.nalog.getTipKorisnika() == TipKorisnika.administrator) {
+			Nalog nalog = new Nalog(korisnickoIme, lozinka, email, TipKorisnika.menadzer);
+			korisnik = new Korisnik(ime, prezime, telefon, null, nalog);
+		}
+		
 		regview.setKorisnik(korisnik);
 		preduzece.korisnici.add(korisnik);
 		preduzece.trenutnoUlogovani = korisnik;

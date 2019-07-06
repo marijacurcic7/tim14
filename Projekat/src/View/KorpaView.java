@@ -47,7 +47,7 @@ public class KorpaView extends JPanel {
 	private void constructGUI() {
 		pnlContent = new JPanel();
 		
-		pnlContent.setLayout(new GridLayout(preduzece.korpa.stavkaNarudzbenice.size(), 1));
+		pnlContent.setLayout(new GridLayout(preduzece.korpa.stavkeNarudzbenice.size(), 1));
 		//pnlContent.setPreferredSize(new Dimension(500, 700));
 		//pnlContent.setLayout(new GridLayout(0, 1));
 		
