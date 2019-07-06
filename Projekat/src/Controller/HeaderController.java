@@ -112,6 +112,8 @@ public class HeaderController {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
+					//frame.getView().remove(0);
+					
 					frame.getView().add(bw);
 					frame.getView().remove(0);
 					frame.getView().updateUI();
@@ -120,9 +122,15 @@ public class HeaderController {
 				
 				LogInView lv = new LogInView(preduzece, frame);
 				//split.setBottomComponent(lv);
+				
+				//
+				//
+				//
 				view.add(lv);
 				view.remove(0);
 				view.updateUI();
+				
+				
 			}
 		});
 		
