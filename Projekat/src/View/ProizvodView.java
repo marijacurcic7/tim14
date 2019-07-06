@@ -11,12 +11,15 @@ import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
 
 import Controller.ProizvodController;
+import Model.AplikacijaPreduzece;
 import Model.Proizvod;
+import Model.TipKorisnika;
 
 public class ProizvodView extends BaseView {
 	
 	Proizvod p;
 	ProizvodController controller;
+	AplikacijaPreduzece preduzece;
 	
 	// imace dugme stavi u korpus
 	
@@ -46,7 +49,8 @@ public class ProizvodView extends BaseView {
 		this.add(jedinicnaCena);
 	}
 	
-	public ProizvodView(Proizvod p, BaseView bw) {
+	public ProizvodView(Proizvod p, BaseView bw, AplikacijaPreduzece preduzece) {
+		this.preduzece = preduzece;
 		gdjeStoji = bw;
 		this.p = p;
 		
@@ -83,6 +87,13 @@ public class ProizvodView extends BaseView {
 	            //f.setLayout(null);    
 	            //f.setVisible(true);    
 		staviUKorpu = new JButton("Dodaj u korpu");
+		
+		if (preduzece.trenutnoUlogovani != null) {
+			if (preduzece.trenutnoUlogovani.getNalog().getTipKorisnika() == TipKorisnika.menadzer) {
+				staviUKorpu.setText("Izmeni");
+			}
+		}
+		
 		add(staviUKorpu);
 	}
 

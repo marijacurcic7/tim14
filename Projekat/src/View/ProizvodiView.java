@@ -51,7 +51,7 @@ public class ProizvodiView extends BaseView{
 		
 		for (Proizvod p: preduzece.proizvodi) {
 			ProizvodPanel pp = new ProizvodPanel(p, this, preduzece);
-			ControllerProizvoda cp = new ControllerProizvoda(pp);		// da ovde dobije preduzece, ili mozemo
+			ControllerProizvoda cp = new ControllerProizvoda(pp, preduzece);		// da ovde dobije preduzece, ili mozemo
 			pp.setController(cp);										// ostaviti ovako jer svakako pristupa preduzecu iz view?
 			//pp.updateUI();
 			// ovde dodam kontroler?

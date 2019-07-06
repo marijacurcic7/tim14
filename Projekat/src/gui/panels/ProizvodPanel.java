@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 import Controller.ControllerProizvoda;
 import Model.AplikacijaPreduzece;
 import Model.Proizvod;
+import Model.TipKorisnika;
 import View.BaseView;
 
 
@@ -108,8 +109,16 @@ public class ProizvodPanel extends JPanel {
 		labelaIme = new JLabel(p.getNaziv());
 		labelaCena = new JLabel(p.getAktuelnaCena().getRedovnaCena() + "");  // pokupiti cenu iz stavke cenovnika koja stoji u proizvodu	
 		dugmeKorpa = new JButton("Korpa");
-		dugmePregled = new JButton("Pregled");
 		
+		dugmePregled = new JButton("Pregled - korpa");
+		
+		if (preduzece.getTrenutnoUlogovani() == null) {
+			
+		}
+		
+		else if (preduzece.getTrenutnoUlogovani().getNalog().getTipKorisnika() == TipKorisnika.menadzer) {
+			dugmePregled.setText("Izmeni");
+		}
 		
 		//Image myPicture = ImageIO.read(new File("C:\\Windows\\Web\\Wallpaper\\Theme1\\img1.jpg"));
 		
@@ -131,14 +140,22 @@ public class ProizvodPanel extends JPanel {
 		add(labelaCena, c);
 		
 		c.gridy = 3;
-		GridLayout gridHorizontal = new GridLayout(0,2);
+		GridLayout gridHorizontal = new GridLayout(0,1);
 		JPanel holder = new JPanel();
 		holder.setLayout(gridHorizontal);
-		holder.add(dugmeKorpa);
+		//holder.add(dugmeKorpa);
 		//holder.add(new JPanel());
 		holder.add(dugmePregled);
 		add(holder, c);
 
+	}
+
+	public AplikacijaPreduzece getPreduzece() {
+		return preduzece;
+	}
+
+	public void setPreduzece(AplikacijaPreduzece preduzece) {
+		this.preduzece = preduzece;
 	}
 
 	public ProizvodPanel() {

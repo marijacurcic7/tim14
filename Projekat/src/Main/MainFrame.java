@@ -87,10 +87,20 @@ public class MainFrame extends JFrame {
 		
 		
 		header = new HeaderView(preduzece);
+		
+		
+		// u pregled proizvoda pitati jel null prvo, ako nije pitati jel menadzer
+		
+		//view = new ProizvodiView(preduzece);
 		ProizvodiView bw = new ProizvodiView(preduzece);  // da on vidi frejm? zbog dimenzija
 		view = bw;
+		
 		//bw.resize(d);
+		
 		bw.setMaximumSize(new Dimension(1000, 400));
+		//view.setMaximumSize(new Dimension(1000, 400));
+		
+		
 		//
 		//bw = new SviProizvodiPanel();  // da on vidi frejm? zbog dimenzija
 		

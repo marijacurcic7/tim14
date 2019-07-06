@@ -4,16 +4,20 @@ package Controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import Model.AplikacijaPreduzece;
 import View.ProizvodView;
 import gui.panels.ProizvodPanel;
 
 public class ControllerProizvoda extends Controller {
 
 	ProizvodPanel pp;
+	AplikacijaPreduzece preduzece;
 
-	public ControllerProizvoda(ProizvodPanel pp) {
+	public ControllerProizvoda(ProizvodPanel pp, AplikacijaPreduzece preduzece) {
 		super();
 		this.pp = pp;
+		this.preduzece = preduzece;
+		
 		
 		this.pp.getDugmePregled().addActionListener(new ActionListener() {
 			 public void actionPerformed(ActionEvent e) {
@@ -46,8 +50,8 @@ public class ControllerProizvoda extends Controller {
 		//pp.getGdjeStoji().add(new JButton("Dugme"));
 		
 		
-		ProizvodView novi = new ProizvodView(pp.getProizvod(), pp.getGdjeStoji());
-		ProizvodController noviController = new ProizvodController(novi);
+		ProizvodView novi = new ProizvodView(pp.getProizvod(), pp.getGdjeStoji(), preduzece); //, preduzece);
+		ProizvodController noviController = new ProizvodController(novi, preduzece);
 		novi.setController(noviController);
 		
 		

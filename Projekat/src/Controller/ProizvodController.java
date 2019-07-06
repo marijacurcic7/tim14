@@ -6,15 +6,19 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
+import Model.AplikacijaPreduzece;
 import View.ProizvodView;
 
 
 public class ProizvodController extends Controller {
 
 	ProizvodView proizvodView;
+	AplikacijaPreduzece preduzece;
 	
-	public ProizvodController(ProizvodView proizvodView) {
+	
+	public ProizvodController(ProizvodView proizvodView, AplikacijaPreduzece preduzece) {
 		this.proizvodView = proizvodView;
+		this.preduzece = preduzece;
 		
 		this.proizvodView.getStaviUKorpu().addActionListener(new ActionListener() {
 			 public void actionPerformed(ActionEvent e) {
