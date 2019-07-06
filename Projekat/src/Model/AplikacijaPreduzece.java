@@ -61,6 +61,22 @@ public class AplikacijaPreduzece {
     		   out.writeObject(k); 
     	   }
        }
+       for(Narudzbenica n : narudzbenice) {
+    	   out.writeObject(n);
+       }
+       for(Proizvod p : proizvodi) {
+    	   out.writeObject(p);
+       }
+       for(Prodavnica p : prodavnice) {
+    	   out.writeObject(p);
+       }
+       for(Kategorija k : kategorije) {
+    	   out.writeObject(k);
+       }
+       for(StavkaCenovnika sc : stavkeCenovnika) {
+    	   out.writeObject(sc);
+       }
+       
          
        out.close(); 
        fileos.close(); 
