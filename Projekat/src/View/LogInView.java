@@ -179,10 +179,18 @@ public class LogInView extends JPanel {
 				//return;		
 			}
 			else  {
-			ProizvodiView bw = new ProizvodiView(preduzece);
-			add(bw);
-			remove(0);
-			updateUI();
+				AdminView av = new AdminView(preduzece);
+				//
+				frame.getHeader().getPrijava().setText("Odjava");
+				frame.getHeader().updateUI();
+				add(av);
+				remove(0);
+				//System.out.println("OOOOOOOOYYYYYYYYYYYYYYYYY");
+				updateUI();
+			//ProizvodiView bw = new ProizvodiView(preduzece);
+			//add(bw);
+			//remove(0);
+			//updateUI();
 			}
 		}
 		//System.out.println("Ulogovan: "+preduzece.trenutnoUlogovani.getClass());

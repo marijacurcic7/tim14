@@ -360,14 +360,14 @@ public class MainFrame extends JFrame {
 		nalog.setLozinka("menadzer");
 		nalog.setTipKorisnika(TipKorisnika.menadzer);
 		Korisnik kor = new Korisnik("ime", "prezime", null, null, nalog);
-		//preduzece.addKorisnici(kor);
+		preduzece.addKorisnici(kor);
 		
 		Nalog nalog1 = new Nalog();
 		nalog1.setKorisnickoIme("admin");
 		nalog1.setLozinka("admin");
 		nalog1.setTipKorisnika(TipKorisnika.administrator);
-		//Korisnik kor1 = new Korisnik("admin", "admin", null, null, nalog1);
-		//preduzece.addKorisnici(kor1);
+		Korisnik kor1 = new Korisnik("admin", "admin", null, null, nalog1);
+		preduzece.addKorisnici(kor1);
 		System.out.println("asdas");
 		System.out.println(preduzece.korisnici.size());
 	}
