@@ -53,7 +53,7 @@ public class HeaderController {
 			    	System.out.println("Nesto se desilo");
 			    	//panel.getPrijava().setText("Odjava");
 			    	//panel.updateUI();
-			    	KorpaView kv = new KorpaView(preduzece);
+			    	KorpaView kv = new KorpaView(preduzece, frame);
 			    	view.add(kv);
 			    	view.remove(0);
 					view.updateUI();

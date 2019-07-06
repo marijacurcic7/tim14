@@ -43,7 +43,7 @@ public class RegistracijaView extends JPanel {
 	private JLabel lbltelefon;
 	private JTextField tftelefon;
 
-	MainFrame frame;
+	public MainFrame frame;
 	
 	private JPanel pnlOK;
 	private JButton btnOK;
@@ -162,7 +162,7 @@ public class RegistracijaView extends JPanel {
 					add(rw);
 					remove(0);
 					updateUI();
-			        System.out.println("code excuted");
+			        //System.out.println("code excuted");
 			    }
 			}); 
 			JOptionPane.showOptionDialog(parent, message, title, JOptionPane.OK_OPTION, JOptionPane.INFORMATION_MESSAGE, null, new Object[]{btnOk}, btnOk);
