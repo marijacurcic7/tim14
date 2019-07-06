@@ -88,7 +88,7 @@ public class LogInView extends JPanel {
 		add(pnlContent, BorderLayout.CENTER);
 		
 		
-		/*
+		
 		btnReg.addActionListener(new ActionListener() {
 
 			@Override
@@ -120,10 +120,10 @@ public class LogInView extends JPanel {
 					
 				}
 		});
-		*/
+		
 	}
 	
-	/*
+	
 	// prebaciti u logincontroller!!
 	private void ok() throws IOException {
 		if (loginc == null) {
@@ -182,7 +182,7 @@ public class LogInView extends JPanel {
 			}
 		}
 		
-	}*/
+	}
 
 	public LogInController getLoginc() {
 		return loginc;

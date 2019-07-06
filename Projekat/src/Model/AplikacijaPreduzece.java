@@ -138,6 +138,7 @@ public class AplikacijaPreduzece {
 		
 		korpa = new Narudzbenica();
 		stavkeCenovnika = new ArrayList<StavkaCenovnika>();
+		/*
 		try {
 			
 			// zasad
@@ -147,7 +148,7 @@ public class AplikacijaPreduzece {
 			// TODO Auto-generated catch block
 			//e.printStackTrace();
 			System.out.println("End of file");
-		}
+		}*/
    }
 
    /** @pdOid 88b72526-db73-439f-877b-52c47f05da53 */
@@ -194,15 +195,21 @@ public class AplikacijaPreduzece {
    }
    
    public Korisnik proveriLogin(String korisnickoIme, String lozinka) {
-	   if(korisnickoIme.equals("admin") && lozinka.equals("admin")) {
-		   return new Korisnik();  // PROMIJENITI
-	   }
+	  // if(korisnickoIme.equals("admin") && lozinka.equals("admin")) {
+	//	   //return new Korisnik();  // PROMIJENITI
+		//   Korisnik k = new Korisnik();
+		 //  return k;
+	   //}
+	   System.out.println("99999999");
 	   for (Korisnik k: korisnici) {
+		   System.out.println(k.getNalog());
+		   
 		   if (k.getNalog().getKorisnickoIme().equals(korisnickoIme) && k.getNalog().getLozinka().equals(lozinka)) {
 			   return k;
 		   }
 		   
 	   }
+	   System.out.println("fine");
 	   return null;
    }
    

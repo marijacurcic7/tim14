@@ -37,6 +37,7 @@ public class LogInController {
 			}
 		});*/
 		
+		/*
 		loginv.btnReg.addActionListener(new ActionListener() {
 
 			@Override
@@ -67,7 +68,7 @@ public class LogInController {
 					}
 					
 				}
-		});
+		});*/
 	}
 	
 	
@@ -85,7 +86,8 @@ public class LogInController {
 		System.out.println(lozinka);
 		Korisnik k = preduzece.proveriLogin(kime,  lozinka);
 		System.out.println("*******************");
-		System.out.println(k);
+		System.out.println();
+		System.out.println("888888888888888888888");
 		if(k == null) {
 			//JDialog neuspesno = new JDialog();
 			String message = "Pogresno uneto korisnicko ime ili lozinka. Pokusajte ponovo.";
@@ -94,7 +96,10 @@ public class LogInController {
 		else {
 			preduzece.trenutnoUlogovani = k;
 			System.out.println("----------------------------------");
-			System.out.println(k.getNalog().getTipKorisnika());
+			//System.out.println(k.getNalog().getTipKorisnika());
+			
+			
+			System.out.println("222222222222222222");
 			if (preduzece.trenutnoUlogovani.nalog.getTipKorisnika() == TipKorisnika.kupac) {
 				KupacView kv = new KupacView(preduzece);
 				//
