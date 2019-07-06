@@ -64,6 +64,7 @@ public class MainFrame extends JFrame {
 	public MainFrame() throws IOException {
 		
 		preduzece = new AplikacijaPreduzece();
+		System.out.println(preduzece.proizvodi.size() + 1);
 		izgenerisiPreduzece();
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);

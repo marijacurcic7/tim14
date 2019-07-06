@@ -13,11 +13,13 @@ import javax.swing.JOptionPane;
 import Main.MainFrame;
 import Model.AplikacijaPreduzece;
 import Model.TipKorisnika;
+import View.AdminView;
 import View.BaseView;
 import View.HeaderView;
 import View.KorpaView;
 import View.KupacView;
 import View.LogInView;
+import View.MenadzerView;
 import View.ProizvodiView;
 
 
@@ -57,6 +59,7 @@ public class HeaderController {
 			    	view.add(kv);
 			    	view.remove(0);
 					view.updateUI();
+					frame.split.updateUI();
 			    }
 			
 		});
@@ -85,6 +88,25 @@ public class HeaderController {
 		    	else if (preduzece.getTrenutnoUlogovani().getNalog().getTipKorisnika() == TipKorisnika.kupac) {
 		    		KupacView kv = new KupacView(preduzece);
 		    		frame.getView().add(kv);
+					frame.getView().remove(0);
+					frame.getView().updateUI();
+		    		return;
+		    	}
+		    	else if (preduzece.getTrenutnoUlogovani().getNalog().getTipKorisnika() == TipKorisnika.menadzer) {
+		    		MenadzerView mv = new MenadzerView(preduzece);
+		    		// ne radi?
+		    		panel.getKorpa().setVisible(false);
+		    		panel.updateUI();
+		    		frame.getView().add(mv);
+					frame.getView().remove(0);
+					frame.getView().updateUI();
+		    		return;
+		    	}
+		    	else {
+		    		AdminView av = new AdminView(preduzece);
+		    		panel.getKorpa().setVisible(false);
+		    		panel.updateUI();
+		    		frame.getView().add(av);
 					frame.getView().remove(0);
 					frame.getView().updateUI();
 		    		return;
