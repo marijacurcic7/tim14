@@ -24,9 +24,11 @@ import Controller.HeaderController;
 import Model.AplikacijaPreduzece;
 import Model.Kategorija;
 import Model.Korisnik;
+import Model.Nalog;
 import Model.Proizvod;
 import Model.StavkaCenovnika;
 import Model.StavkaNarudzbenice;
+import Model.TipKorisnika;
 import View.BaseView;
 import View.HeaderView;
 import View.ProizvodiView;
@@ -343,7 +345,12 @@ public class MainFrame extends JFrame {
 		preduzece.korpa.addStavkaNarudzbenice(sn3);
 		
 		
-		
+		Nalog nalog = new Nalog();
+		nalog.setKorisnickoIme("menadzer");
+		nalog.setLozinka("menadzer");
+		nalog.setTipKorisnika(TipKorisnika.menadzer);
+		Korisnik kor = new Korisnik("ime", "prezime", null, null, nalog);
+		preduzece.addKorisnici(kor);
 	}
 
 	public static void main(String[] args) throws IOException {

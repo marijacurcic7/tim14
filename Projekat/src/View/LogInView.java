@@ -62,6 +62,11 @@ public class LogInView extends JPanel {
 		btnReg = new JButton("Registracija");
 		
 		constructGUI();
+		
+		if (loginc == null) {
+			loginc = new LogInController(this, preduzece);
+		}
+		
 	}
 	
 	private void constructGUI() {
@@ -83,7 +88,7 @@ public class LogInView extends JPanel {
 		add(pnlContent, BorderLayout.CENTER);
 		
 		
-		
+		/*
 		btnReg.addActionListener(new ActionListener() {
 
 			@Override
@@ -115,13 +120,14 @@ public class LogInView extends JPanel {
 					
 				}
 		});
+		*/
 	}
 	
-	
+	/*
 	// prebaciti u logincontroller!!
 	private void ok() throws IOException {
 		if (loginc == null) {
-			loginc = new LogInController(this);
+			loginc = new LogInController(this, preduzece);
 		}
 		
 		
@@ -131,6 +137,8 @@ public class LogInView extends JPanel {
 		System.out.println(kime);
 		System.out.println(lozinka);
 		Korisnik k = preduzece.proveriLogin(kime,  lozinka);
+		System.out.println("*******************");
+		System.out.println(k);
 		if(k == null) {
 			//JDialog neuspesno = new JDialog();
 			String message = "Pogresno uneto korisnicko ime ili lozinka. Pokusajte ponovo.";
@@ -138,6 +146,8 @@ public class LogInView extends JPanel {
 		}
 		else {
 			preduzece.trenutnoUlogovani = k;
+			System.out.println("----------------------------------");
+			System.out.println(k.getNalog().getTipKorisnika());
 			if (preduzece.trenutnoUlogovani.nalog.getTipKorisnika() == TipKorisnika.kupac) {
 				KupacView kv = new KupacView(preduzece);
 				//
@@ -148,6 +158,22 @@ public class LogInView extends JPanel {
 				updateUI();
 				return;
 			}
+			
+			else if (preduzece.trenutnoUlogovani.nalog.getTipKorisnika() == TipKorisnika.menadzer) {
+				System.out.println("Menadzer");
+				MenadzerView mv = new MenadzerView(preduzece);
+				//
+				frame.getHeader().getPrijava().setText("Odjava");
+				frame.getHeader().updateUI();
+				add(mv);
+				remove(0);
+				System.out.println("OOOOOOOOYYYYYYYYYYYYYYYYY");
+				updateUI();
+				
+				return;
+				
+			}
+			
 			else  {
 			ProizvodiView bw = new ProizvodiView(preduzece);
 			add(bw);
@@ -156,6 +182,110 @@ public class LogInView extends JPanel {
 			}
 		}
 		
+	}*/
+
+	public LogInController getLoginc() {
+		return loginc;
+	}
+
+	public void setLoginc(LogInController loginc) {
+		this.loginc = loginc;
+	}
+
+	public Korisnik getKorisnik() {
+		return korisnik;
+	}
+
+	public void setKorisnik(Korisnik korisnik) {
+		this.korisnik = korisnik;
+	}
+
+	public AplikacijaPreduzece getPreduzece() {
+		return preduzece;
+	}
+
+	public void setPreduzece(AplikacijaPreduzece preduzece) {
+		this.preduzece = preduzece;
+	}
+
+	public boolean isUspesno() {
+		return uspesno;
+	}
+
+	public void setUspesno(boolean uspesno) {
+		this.uspesno = uspesno;
+	}
+
+	public MainFrame getFrame() {
+		return frame;
+	}
+
+	public void setFrame(MainFrame frame) {
+		this.frame = frame;
+	}
+
+	public JPanel getPnlContent() {
+		return pnlContent;
+	}
+
+	public void setPnlContent(JPanel pnlContent) {
+		this.pnlContent = pnlContent;
+	}
+
+	public JLabel getLblkorisnickoime() {
+		return lblkorisnickoime;
+	}
+
+	public void setLblkorisnickoime(JLabel lblkorisnickoime) {
+		this.lblkorisnickoime = lblkorisnickoime;
+	}
+
+	public JTextField getTfkorisnicko() {
+		return tfkorisnicko;
+	}
+
+	public void setTfkorisnicko(JTextField tfkorisnicko) {
+		this.tfkorisnicko = tfkorisnicko;
+	}
+
+	public JLabel getLbllozinka() {
+		return lbllozinka;
+	}
+
+	public void setLbllozinka(JLabel lbllozinka) {
+		this.lbllozinka = lbllozinka;
+	}
+
+	public JTextField getTflozinka() {
+		return tflozinka;
+	}
+
+	public void setTflozinka(JTextField tflozinka) {
+		this.tflozinka = tflozinka;
+	}
+
+	public JPanel getPnlOK() {
+		return pnlOK;
+	}
+
+	public void setPnlOK(JPanel pnlOK) {
+		this.pnlOK = pnlOK;
+	}
+
+	public JButton getBtnOK() {
+		return btnOK;
+	}
+
+	public void setBtnOK(JButton btnOK) {
+		this.btnOK = btnOK;
+	}
+
+	public JButton getBtnReg() {
+		return btnReg;
+	}
+
+	public void setBtnReg(JButton btnReg) {
+		this.btnReg = btnReg;
 	}
 
 

@@ -7,7 +7,6 @@
 package Model;
 
 import java.io.Serializable;
-import java.util.*;
 
 /** @pdOid f168e367-08e7-4404-af82-a7431f69f0f4 */
 public class Korisnik implements Serializable {

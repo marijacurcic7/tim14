@@ -139,6 +139,9 @@ public class AplikacijaPreduzece {
 		korpa = new Narudzbenica();
 		stavkeCenovnika = new ArrayList<StavkaCenovnika>();
 		try {
+			
+			// zasad
+			//System.out.println("okay");
 			citanjeIzFajla();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
