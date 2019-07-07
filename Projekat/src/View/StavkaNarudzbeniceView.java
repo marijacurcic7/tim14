@@ -93,7 +93,7 @@ public class StavkaNarudzbeniceView extends JPanel {
 		pnlContent.setLayout(new GridBagLayout());
 		
 		JLabel slika = new JLabel();
-		slika.setIcon(new ImageIcon(new ImageIcon("C:\\Windows\\Web\\Wallpaper\\Theme1\\img1.jpg").getImage().getScaledInstance(300, 200, Image.SCALE_DEFAULT)));
+		slika.setIcon(new ImageIcon(new ImageIcon(proizvod.getPutanja()).getImage().getScaledInstance(300, 200, Image.SCALE_DEFAULT)));
 		add(slika);
 		add(slika, BorderLayout.LINE_START);
 		

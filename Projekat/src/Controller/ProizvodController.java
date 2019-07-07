@@ -57,8 +57,17 @@ public class ProizvodController extends Controller {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 					kolicina = Integer.parseInt(proizvodView.getSpinner().getValue().toString());
-					preduzece.korpa.addStavkaNarudzbenice(new StavkaNarudzbenice(kolicina, proizvod));
-					System.out.println(kolicina+" "+proizvod);
+					boolean added = false;
+					for (StavkaNarudzbenice sn: preduzece.korpa.getStavkaNarudzbenice()) {
+						if (sn.getProizvod().getId() == proizvod.getId()) {
+							sn.setKolicina(sn.getKolicina() + kolicina);
+							added = true;
+						}
+					}
+					if (added == false) {
+						preduzece.korpa.addStavkaNarudzbenice(new StavkaNarudzbenice(kolicina, proizvod));
+					}
+						System.out.println(kolicina+" "+proizvod);
 					
 					JOptionPane.showMessageDialog(w, "Dodato");
 					/*try {
