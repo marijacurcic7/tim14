@@ -324,24 +324,24 @@ public class MainFrame extends JFrame {
 		System.out.println(p2.getPutanja());
 		
 		
-		preduzece.addProizvod(p2);
 		preduzece.addProizvod(p);
+		preduzece.addProizvod(p2);
 		
 		//
 		
-		Proizvod p42 = new Proizvod(2, "Viljuska", "plasticna", k1);
+		Proizvod p42 = new Proizvod(3, "Noz", "metalni", k1);
 		StavkaCenovnika c42 = new StavkaCenovnika(500, datum, p42);
 		p42.setAktuelnaCena(c42);
 		preduzece.addProizvod(p42);
 		
 
-		Proizvod p44 = new Proizvod(2, "Viljuska", "plasticna", k1);
+		Proizvod p44 = new Proizvod(4, "Kasicica", "zlatna", k1);
 		StavkaCenovnika c44 = new StavkaCenovnika(500, datum, p44);
 		p44.setAktuelnaCena(c44);
 		preduzece.addProizvod(p44);
 		
 
-		Proizvod p45 = new Proizvod(2, "Viljuska", "plasticna", k1);
+		Proizvod p45 = new Proizvod(5, "Kapa", "vunena", kat2);
 		StavkaCenovnika c45 = new StavkaCenovnika(500, datum, p45);
 		p45.setAktuelnaCena(c45);
 		preduzece.addProizvod(p45);
@@ -349,29 +349,29 @@ public class MainFrame extends JFrame {
 		
 		
 		// 
-		Proizvod p3 = new Proizvod(3, "Majica", "plava, pamucna", kat2);
+		Proizvod p3 = new Proizvod(6, "Majica", "plava, pamucna", kat2);
 		StavkaCenovnika c3 = new StavkaCenovnika(500, datum, p3);
 		p3.setAktuelnaCena(c3);
 		preduzece.addProizvod(p3);
 		
-		Proizvod p4 = new Proizvod(4, "Kosulja", "crna, svilena", kat2);
+		Proizvod p4 = new Proizvod(7, "Kosulja", "crna, svilena", kat2);
 		StavkaCenovnika c4 = new StavkaCenovnika(1500, datum, p4);
 		p4.setAktuelnaCena(c4);
 		preduzece.addProizvod(p4);
 		
-		Proizvod p5 = new Proizvod(5, "Farmerke", "teksas, plave", kat2);
+		Proizvod p5 = new Proizvod(8, "Farmerke", "teksas, plave", kat2);
 		StavkaCenovnika c5 = new StavkaCenovnika(10000, datum, p5);
 		p5.setAktuelnaCena(c5);
 		preduzece.addProizvod(p5);
 		
 		
-		Proizvod p6 = new Proizvod(6, "Sal", "narandzasti", kat2);
+		Proizvod p6 = new Proizvod(9, "Sal", "narandzasti", kat2);
 		StavkaCenovnika c6 = new StavkaCenovnika(100000, datum, p6);
 		p6.setAktuelnaCena(c6);
 		preduzece.addProizvod(p6);
 		preduzece.addStavkaCenovnika(c6);
 		
-		Proizvod p7 = new Proizvod(7, "Carapice", "pamucne, bijele", kat2);
+		Proizvod p7 = new Proizvod(10, "Carapice", "pamucne, bijele", kat2);
 		StavkaCenovnika c7 = new StavkaCenovnika(800, datum, p7);
 		p7.setAktuelnaCena(c7);
 		preduzece.addProizvod(p7);

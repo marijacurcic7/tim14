@@ -38,7 +38,10 @@ public class DodavanjeProizvodaController {
 		}
 		
 		 try { 
-		        Integer.parseInt(idstr); 
+		        id = Integer.parseInt(idstr); 
+		        if (preduzece.validanId(id) == false) {
+		        	return "Vec postoji proizvod sa unetim ID-om!";
+		        }
 		    } catch(NumberFormatException e) { 
 		        return "ID proizvoda mora da bude broj!"; 
 		    }
@@ -78,7 +81,7 @@ public class DodavanjeProizvodaController {
 		}
 		
 		 try { 
-		        Double.parseDouble(cenastr); 
+		        cena = Double.parseDouble(cenastr); 
 		    } catch(NumberFormatException e) { 
 		        return "Niste lepo uneli cenu..."; 
 		    }

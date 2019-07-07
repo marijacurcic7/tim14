@@ -134,9 +134,16 @@ public class ProizvodPanel extends JPanel {
 		c.gridx = 0;
 		c.gridy = 1;
 		
+		JPanel holder1 = new JPanel(new GridLayout(0, 3));
+		holder1.add(labelaIme);
+		holder1.add(new JLabel());
+		holder1.add(new JLabel("Id: " + p.getId() + ""));
+		add(holder1, c);
+		//add(labelaIme, c);
+		//c. gridx = 1;
+		//add(new JLabel("Id: " + p.getId() + ""), c);
 		
-		add(labelaIme, c);
-		
+		c.gridx = 0;
 		c.gridy = 2;
 		add(labelaCena, c);
 		

@@ -77,6 +77,12 @@ public class ProizvodView extends BaseView {
 		jedinicnaCena = new JLabel(p.getAktuelnaCena().getRedovnaCena() + "");
 		this.add(jedinicnaCena);
 		
+		
+		//
+		this.add(new JLabel("Id: " + p.getId() + ""));
+		//
+		
+		
 		//JSpinner spinner = new JSpinner();
 		//SpinnerModel spinner = new SpinnerModel(100, 100, 100);
 		

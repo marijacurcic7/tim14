@@ -597,6 +597,16 @@ public class AplikacijaPreduzece {
 	public void setKorpa(Narudzbenica korpa) {
 		this.korpa = korpa;
 	}
+
+	public boolean validanId(int id) {
+		for (Proizvod p: proizvodi) {
+			if (p.getId() == id) {
+				return false;
+			}
+		}
+		
+		return true;
+	}
    
    
 
