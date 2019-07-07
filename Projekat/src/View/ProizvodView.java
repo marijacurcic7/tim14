@@ -64,7 +64,7 @@ public class ProizvodView extends BaseView {
 		izmeni = new JButton("Izmeni");
 		
 		slika = new JLabel();
-		slika.setIcon(new ImageIcon(new ImageIcon("C:\\Windows\\Web\\Wallpaper\\Theme1\\img1.jpg").getImage().getScaledInstance(600, 400, Image.SCALE_DEFAULT)));
+		slika.setIcon(new ImageIcon(new ImageIcon(p.getPutanja()).getImage().getScaledInstance(600, 400, Image.SCALE_DEFAULT)));
 		//C:\Windows\Web\Wallpaper\Theme1
 		add(slika);
 		

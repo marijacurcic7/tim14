@@ -10,18 +10,17 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import Controller.DodavanjeProizvodaController;
-import Controller.RegistracijaController;
 import Main.MainFrame;
 import Model.AplikacijaPreduzece;
-import Model.Korisnik;
 import Model.Proizvod;
 
 public class DodavanjeProizvodaView extends JPanel {
@@ -42,6 +41,10 @@ public class DodavanjeProizvodaView extends JPanel {
 	private JTextField tfkategorija;
 	private JLabel lblcena;
 	private JTextField tfcena;
+	private JLabel lblslika;
+	private JTextField tfslika;
+	private JFileChooser odabirSlike;
+	private JButton dugmeSlika;
 
 	public MainFrame frame;
 	
@@ -69,6 +72,19 @@ public class DodavanjeProizvodaView extends JPanel {
 		
 		lblcena = new JLabel("Cena:");
 		tfcena = new JTextField(20);
+		
+		
+		// i u konstruktoru provjeriti jel postoji slika na toj putanji, ako ne, defaultna neka neka bude
+		//
+		lblslika = new JLabel("Slika: ");
+		tfslika = new JTextField(10);
+		odabirSlike = new JFileChooser();
+		//odabirSlike.showOpenDialog(this);
+		
+		//
+		dugmeSlika = new JButton("Odabir putanje");
+		
+		
 
 		btnOK = new JButton("OK");
 		
@@ -97,9 +113,27 @@ public class DodavanjeProizvodaView extends JPanel {
 				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
 		pnlContent.add(tfcena, new GridBagConstraints(1, 4, 1, 1, 100, 0, GridBagConstraints.WEST,
 				GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
+		// DODAJEM
 		
-		pnlContent.add(btnOK, new GridBagConstraints(1, 7, 1, 1, 100, 0, GridBagConstraints.WEST,
+		pnlContent.add(lblslika, new GridBagConstraints(0, 5, 1, 1, 0, 0, GridBagConstraints.WEST,
+				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
+		pnlContent.add(tfslika, new GridBagConstraints(1, 5, 1, 1, 100, 0, GridBagConstraints.WEST,
 				GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
+		pnlContent.add(dugmeSlika, new GridBagConstraints(2, 5, 1, 1, 100, 0, GridBagConstraints.WEST,
+				GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
+		
+		
+		
+		//
+		
+		
+		
+		pnlContent.add(btnOK, new GridBagConstraints(1, 8, 1, 1, 100, 0, GridBagConstraints.WEST,
+						GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
+				
+		//
+		//pnlContent.add(btnOK, new GridBagConstraints(1, 7, 1, 1, 100, 0, GridBagConstraints.WEST,
+		//		GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
 		//pnlOK.add(btnOK);
 
 		add(pnlContent, BorderLayout.CENTER);
@@ -120,6 +154,25 @@ public class DodavanjeProizvodaView extends JPanel {
 					
 				}
 		});
+		
+		dugmeSlika.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				odabirSlike = new JFileChooser();
+				FileNameExtensionFilter filter = new FileNameExtensionFilter(
+			        "JPG & GIF Images", "jpg", "gif");
+			    //odabirSlike.setFileFilter(filter);
+				int result = odabirSlike.showOpenDialog(null);
+				if (result == JFileChooser.APPROVE_OPTION) {
+					tfslika.setText(odabirSlike.getSelectedFile().getAbsolutePath());
+				    //createFile();
+				} else if (result == JFileChooser.CANCEL_OPTION) {
+				    System.out.println("Cancel was selected");
+				}
+				
+			}
+			
+		});
 
 	}
 	
@@ -135,8 +188,9 @@ public class DodavanjeProizvodaView extends JPanel {
 		String opis = tfopis.getText();
 		String kategorija = tfkategorija.getText();
 		String cena = tfcena.getText();
+		String putanja = tfslika.getText();
 		
-		String message = dpcon.dodaj(id, naziv, opis, kategorija, cena);
+		String message = dpcon.dodaj(id, naziv, opis, kategorija, cena, putanja);
 		String title = "Greska";
 		
 		if (proizvod == null){

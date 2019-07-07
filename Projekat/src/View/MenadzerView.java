@@ -3,6 +3,7 @@ package View;
 
 import java.awt.BorderLayout;
 import java.awt.Cursor;
+import java.awt.Dimension;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
@@ -101,6 +102,9 @@ public class MenadzerView extends BaseView {
 	
 	private void initOnoSaStrane() {
 		onoSaStrane = new JPanel();
+		
+		// npr
+		//onoSaStrane.setPreferredSize(new Dimension(300, 0));
 		
 		GridBagLayout gbl = new GridBagLayout();
 		setLayout(gbl);

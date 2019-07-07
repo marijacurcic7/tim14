@@ -18,6 +18,8 @@ public class Proizvod implements Serializable {
    /** @pdOid 61ae7609-faea-49e4-8ca8-41b4c83747b9 */
    private String opis;
    
+   private String putanja;
+   
    private Kategorija kategorija;
    
    //private java.util.List<StavkaCenovnika> stavkeCenovnika = new ArrayList<StavkaCenovnika>();
@@ -26,21 +28,41 @@ public class Proizvod implements Serializable {
 public Proizvod(String string) {
 	naziv = string;  // za potrebe gui-ja u ranoj fazi
 	// TODO Auto-generated constructor stub
+	//
+	this.putanja = "C:\\Windows\\Web\\Wallpaper\\Theme1\\img1.jpg";  // defaultna
 }   public Proizvod() {}
    
-   public Proizvod(int id, String naziv, String opis, Kategorija kategorija) {
+   public Proizvod(int id, String naziv, String opis, Kategorija kategorija, String putanja) {
 	   this.id = id;
 	   this.naziv = naziv;
 	   this.opis = opis;
 	   this.kategorija = kategorija;
+	   this.putanja = putanja;
    }
    
-   public Proizvod(int id, String naziv, String opis, StavkaCenovnika sc) {
+   public String getPutanja() {
+	return putanja;
+}
+
+public void setPutanja(String putanja) {
+	this.putanja = putanja;
+}
+
+public Proizvod(int id, String naziv, String opis, StavkaCenovnika sc) {
 	   this.id = id;
 	   this.naziv = naziv;
 	   this.opis = opis;
 	   this.aktuelnaCena = sc;
    }
+
+	public Proizvod(int i, String string, String string2, Kategorija k1) {
+	// TODO Auto-generated constructor stub
+		 this.id = i;
+		   this.naziv = string;
+		   this.opis = string2;
+		   this.kategorija = k1;
+		   this.putanja = "C:\\Windows\\Web\\Wallpaper\\Theme1\\img1.jpg";
+}
 
 	public int getId() {
 		return id;
