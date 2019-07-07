@@ -4,6 +4,7 @@ import javax.swing.JOptionPane;
 
 import Model.AplikacijaPreduzece;
 import Model.Korisnik;
+import Model.Mesto;
 import Model.Nalog;
 import Model.RegistrovaniKupac;
 import Model.TipKorisnika;
@@ -20,7 +21,7 @@ public class RegistracijaController {
 		this.preduzece = preduzece;
 	}
 
-	public String registrujSe(String korisnickoIme, String lozinka, String ime, String prezime, String email, String telefon) {
+	public String registrujSe(String korisnickoIme, String lozinka, String ime, String prezime, String email, String telefon, String grad, String drzava, String adresa) {
 		/*if(!(preduzece.registracijaKupca(korisnickoIme, lozinka, email, ime, prezime, telefon, null, null, null, 0))) {
 			return "Korisnicko ime vec postoji.";
 		}*/
@@ -77,16 +78,17 @@ public class RegistracijaController {
 		preduzece.korisnici.add(korisnik);
 		preduzece.trenutnoUlogovani = korisnik;
 		*/
+		Mesto mesto = new Mesto(grad, drzava, adresa);
+		
 		if(preduzece.trenutnoUlogovani == null) {
 			Nalog nalog = new Nalog(korisnickoIme, lozinka, email, TipKorisnika.kupac);
-			korisnik = new RegistrovaniKupac(ime, prezime, telefon, null, nalog);
-			
+			korisnik = new RegistrovaniKupac(ime, prezime, telefon, mesto, nalog);
 			preduzece.trenutnoUlogovani = korisnik;
 			
 		}
 		else if(preduzece.trenutnoUlogovani.nalog.getTipKorisnika() == TipKorisnika.administrator) {
 			Nalog nalog = new Nalog(korisnickoIme, lozinka, email, TipKorisnika.menadzer);
-			korisnik = new Korisnik(ime, prezime, telefon, null, nalog);
+			korisnik = new Korisnik(ime, prezime, telefon, mesto, nalog);
 
 		}
 		

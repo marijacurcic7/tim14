@@ -10,7 +10,14 @@ import java.util.*;
 
 /** @pdOid 35295fd8-2a4f-4f0d-9a45-f3c22f6673ec */
 public class Poslata extends Stanje {
+	
    /** @pdOid 8dfa4946-7d02-4823-afd9-656aeb850f11 */
+	
+	@Override
+	public String toString() {
+		return "Poslata";
+	}
+	
    public void aktivirajZavrsetak() {
       // TODO: implement
    }

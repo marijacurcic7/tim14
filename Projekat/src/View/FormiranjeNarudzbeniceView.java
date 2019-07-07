@@ -43,6 +43,7 @@ public class FormiranjeNarudzbeniceView extends JPanel {
 	private JLabel lblgrad;
 	private JLabel lbldrzava;
 	private JLabel lbladresa;
+	private JLabel lblkartica;
 	
 	private JTextField tfemail;
 	private JTextField tftelefon;
@@ -51,6 +52,7 @@ public class FormiranjeNarudzbeniceView extends JPanel {
 	private JTextField tfgrad;
 	private JTextField tfdrzava;
 	private JTextField tfadresa;
+	private JTextField tfkartica;
 	
 	public FormiranjeNarudzbeniceView(AplikacijaPreduzece ap, MainFrame frame) {
 		
@@ -75,6 +77,9 @@ public class FormiranjeNarudzbeniceView extends JPanel {
 		lbltelefon = new JLabel("Telefon:");
 		tftelefon = new JTextField(20);
 		tftelefon.setText(trenutnoUlogovani.getTelefon());
+		
+		lblkartica = new JLabel("Broj kartice:");
+		tfkartica = new JTextField(20);
 		
 		lblgrad = new JLabel("Grad:");
 		tfgrad = new JTextField(20);
@@ -124,19 +129,24 @@ public class FormiranjeNarudzbeniceView extends JPanel {
 		pnlContent.add(tftelefon, new GridBagConstraints(1, 3, 1, 1, 100, 0, GridBagConstraints.WEST,
 				GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
 		
-		pnlContent.add(lbldrzava, new GridBagConstraints(0, 4, 1, 1, 0, 0, GridBagConstraints.WEST,
+		pnlContent.add(lblkartica, new GridBagConstraints(0, 4, 1, 1, 0, 0, GridBagConstraints.WEST,
 				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
-		pnlContent.add(tfdrzava, new GridBagConstraints(1, 4, 1, 1, 100, 0, GridBagConstraints.WEST,
+		pnlContent.add(tfkartica, new GridBagConstraints(1, 4, 1, 1, 100, 0, GridBagConstraints.WEST,
 				GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
 		
-		pnlContent.add(lblgrad, new GridBagConstraints(0, 5, 1, 1, 0, 0, GridBagConstraints.WEST,
+		pnlContent.add(lbldrzava, new GridBagConstraints(0, 5, 1, 1, 0, 0, GridBagConstraints.WEST,
 				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
-		pnlContent.add(tfgrad, new GridBagConstraints(1, 5, 1, 1, 100, 0, GridBagConstraints.WEST,
+		pnlContent.add(tfdrzava, new GridBagConstraints(1, 5, 1, 1, 100, 0, GridBagConstraints.WEST,
 				GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
 		
-		pnlContent.add(lbladresa, new GridBagConstraints(0, 6, 1, 1, 0, 0, GridBagConstraints.WEST,
+		pnlContent.add(lblgrad, new GridBagConstraints(0, 6, 1, 1, 0, 0, GridBagConstraints.WEST,
 				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
-		pnlContent.add(tfadresa, new GridBagConstraints(1, 6, 1, 1, 100, 0, GridBagConstraints.WEST,
+		pnlContent.add(tfgrad, new GridBagConstraints(1, 6, 1, 1, 100, 0, GridBagConstraints.WEST,
+				GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
+		
+		pnlContent.add(lbladresa, new GridBagConstraints(0, 7, 1, 1, 0, 0, GridBagConstraints.WEST,
+				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
+		pnlContent.add(tfadresa, new GridBagConstraints(1, 7, 1, 1, 100, 0, GridBagConstraints.WEST,
 				GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
 		
 		/*pnlContent.add(btnOK, new GridBagConstraints(1, 7, 1, 1, 100, 0, GridBagConstraints.WEST,

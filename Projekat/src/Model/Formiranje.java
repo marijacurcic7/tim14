@@ -12,7 +12,13 @@ import java.util.*;
 /** @pdOid 7da5ab4d-355d-49c4-a723-4fda86dec298 */
 public class Formiranje extends Stanje {
    /** @pdOid 5279d3ce-1f96-4f98-a1f7-0ef56972c2dc */
-   public void aktivirajZavrsetak() {
+   
+	@Override
+	public String toString() {
+		return "Formiranje";
+	}
+	
+	public void aktivirajZavrsetak() {
       // TODO: implement
    }
    

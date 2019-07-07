@@ -43,6 +43,13 @@ public class RegistracijaView extends JPanel {
 	private JTextField tfemail;
 	private JLabel lbltelefon;
 	private JTextField tftelefon;
+	
+	private JLabel lblgrad;
+	private JLabel lbldrzava;
+	private JLabel lbladresa;
+	private JTextField tfgrad;
+	private JTextField tfdrzava;
+	private JTextField tfadresa;
 
 	public MainFrame frame;
 	
@@ -76,6 +83,17 @@ public class RegistracijaView extends JPanel {
 
 		lbltelefon = new JLabel("Telefon:");
 		tftelefon = new JTextField(20);
+		
+		lblgrad = new JLabel("Grad:");
+		tfgrad = new JTextField(20);
+		//
+		
+		lbldrzava = new JLabel("Drzava:");
+		tfdrzava = new JTextField(20);
+		//
+		
+		lbladresa = new JLabel("Adresa:");
+		tfadresa = new JTextField(20);
 
 		//pnlOK = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 		btnOK = new JButton("OK");
@@ -89,27 +107,48 @@ public class RegistracijaView extends JPanel {
 				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
 		pnlContent.add(tfkorisnicko, new GridBagConstraints(1, 0, 1, 1, 100, 0, GridBagConstraints.WEST,
 				GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
+		
 		pnlContent.add(lbllozinka, new GridBagConstraints(0, 1, 1, 1, 0, 0, GridBagConstraints.WEST,
 				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
 		pnlContent.add(tflozinka, new GridBagConstraints(1, 1, 1, 1, 100, 0, GridBagConstraints.WEST,
 				GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
+		
 		pnlContent.add(lblime, new GridBagConstraints(0, 2, 1, 1, 0, 0, GridBagConstraints.WEST,
 				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
 		pnlContent.add(tfime, new GridBagConstraints(1, 2, 1, 1, 100, 0, GridBagConstraints.WEST,
 				GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
+		
 		pnlContent.add(lblprezime, new GridBagConstraints(0, 3, 1, 1, 0, 0, GridBagConstraints.WEST,
 				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
 		pnlContent.add(tfprezime, new GridBagConstraints(1, 3, 1, 1, 100, 0, GridBagConstraints.WEST,
 				GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
+		
 		pnlContent.add(lblemail, new GridBagConstraints(0, 4, 1, 1, 0, 0, GridBagConstraints.WEST,
 				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
 		pnlContent.add(tfemail, new GridBagConstraints(1, 4, 1, 1, 100, 0, GridBagConstraints.WEST,
 				GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
+		
 		pnlContent.add(lbltelefon, new GridBagConstraints(0, 5, 1, 1, 0, 0, GridBagConstraints.WEST,
 				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
 		pnlContent.add(tftelefon, new GridBagConstraints(1, 5, 1, 1, 100, 0, GridBagConstraints.WEST,
 				GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
-		pnlContent.add(btnOK, new GridBagConstraints(1, 7, 1, 1, 100, 0, GridBagConstraints.WEST,
+		
+		pnlContent.add(lbldrzava, new GridBagConstraints(0, 6, 1, 1, 0, 0, GridBagConstraints.WEST,
+				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
+		pnlContent.add(tfdrzava, new GridBagConstraints(1, 6, 1, 1, 100, 0, GridBagConstraints.WEST,
+				GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
+		
+		pnlContent.add(lblgrad, new GridBagConstraints(0, 7, 1, 1, 0, 0, GridBagConstraints.WEST,
+				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
+		pnlContent.add(tfgrad, new GridBagConstraints(1, 7, 1, 1, 100, 0, GridBagConstraints.WEST,
+				GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
+		
+		pnlContent.add(lbladresa, new GridBagConstraints(0, 8, 1, 1, 0, 0, GridBagConstraints.WEST,
+				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
+		pnlContent.add(tfadresa, new GridBagConstraints(1, 8, 1, 1, 100, 0, GridBagConstraints.WEST,
+				GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
+		
+		pnlContent.add(btnOK, new GridBagConstraints(1, 9, 1, 1, 100, 0, GridBagConstraints.WEST,
 				GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
 		//pnlOK.add(btnOK);
 
@@ -147,7 +186,8 @@ public class RegistracijaView extends JPanel {
 		String prezime = tfprezime.getText();
 		String email = tfemail.getText();
 		String telefon = tftelefon.getText();
-		String message = regcon.registrujSe(kime, lozinka, ime, prezime, email, telefon);
+		
+		String message = regcon.registrujSe(kime, lozinka, ime, prezime, email, telefon, tfgrad.getText(), tfdrzava.getText(), tfadresa.getText());
 		String title = "Greska";
 		
 		if (korisnik == null){

@@ -34,7 +34,9 @@ public class AplikacijaPreduzece {
    public java.util.List<StavkaCenovnika> stavkeCenovnika;
    //public Map<Proizvod, java.util.List<StavkaCenovnika>>
    
-   private static String fileString = "korisnici.ser";
+   //public ArrayList<Integer> sekvencer;
+   
+   private static String fileString = "preduzece.ser";
    
    public int pisanjeUFajl() throws IOException {
 	   File file = new File(fileString);
@@ -156,6 +158,7 @@ public class AplikacijaPreduzece {
 			    	   Narudzbenica n = new Narudzbenica();
 			    	   n = (Narudzbenica)object;
 			    	   narudzbenice.add(n);
+			    	   //sekvencer.add(n.getId());
 			    	   System.out.println("Narudzbenica "+n.getId());
 			       }
 			       else if(object.getClass().equals(Kategorija.class)) {
@@ -193,6 +196,9 @@ public class AplikacijaPreduzece {
 		//trenutnoUlogovani = new Korisnik();
 		
 		korpa = new Narudzbenica();
+		korpa.setId(0);
+		//sekvencer = new ArrayList<Integer>();
+		//sekvencer.add(0);
 		stavkeCenovnika = new ArrayList<StavkaCenovnika>();
 
 		

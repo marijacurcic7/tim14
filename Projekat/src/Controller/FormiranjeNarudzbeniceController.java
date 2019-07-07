@@ -1,5 +1,8 @@
 package Controller;
 
+import java.util.Collections;
+import java.util.Comparator;
+
 import Model.AplikacijaPreduzece;
 import Model.Korisnik;
 import Model.Mesto;
@@ -78,9 +81,32 @@ public class FormiranjeNarudzbeniceController {
 		korpa.setStanje(new Zavrsena());
 		
 		kupac.getNarudzbenice().add(korpa);
+		
+		
+		/*Integer id;
+		
+		Collections.sort(preduzece.sekvencer, new Comparator<Integer>() 
+		{
+			public int compare(Integer i1, Integer i2) {
+				return Integer.valueOf(i1).compareTo(Integer.valueOf(i2));
+			}
+		});
+		
+		//preduzece.sekvencer.sort();
+		id = preduzece.sekvencer.get(preduzece.sekvencer.size()-1)+1;
+		
+		while(preduzece.sekvencer.contains(id)) {
+			id++;
+		}
+		
+		korpa.setId(id);
+		preduzece.sekvencer.add(id);
+		*/
+		
 		preduzece.narudzbenice.add(korpa);
 		
 		preduzece.korpa = new Narudzbenica();
+		korpa.setId(0);
 		
 		return "";
 	}

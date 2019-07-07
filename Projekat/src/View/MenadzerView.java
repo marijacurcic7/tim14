@@ -9,6 +9,7 @@ import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -18,29 +19,23 @@ import javax.swing.JSplitPane;
 import Controller.Controller;
 import Main.MainFrame;
 import Model.AplikacijaPreduzece;
+import Model.Narudzbenica;
+import Model.Placena;
+import Model.Poslata;
 
 public class MenadzerView extends BaseView {
-
-	// i aplikacija
 	
 	Controller controller;
-	
 	ProizvodiView proizvodi;
 	
 	JPanel onoSaStrane;
-	
-	//
 	JLabel dodajNoviProizvod;
-	
 	JLabel prodavnice;
-	//
 	MainFrame frame;
-	
 	JLabel prikazNarudzbenica;
-	
 	JLabel izmenaPodataka;
-	
 	JSplitPane split;
+	private ArrayList<Narudzbenica> narudzbenice;
 	
 	AplikacijaPreduzece preduzece;
 	
@@ -98,6 +93,13 @@ public class MenadzerView extends BaseView {
 		
 		//this.add(split);
 		
+		this.narudzbenice = new ArrayList<Narudzbenica>();
+		for(Narudzbenica n : preduzece.narudzbenice) {
+			if(n.getStanje().getClass().equals(Placena.class) || n.getStanje().getClass().equals(Poslata.class)) {
+				narudzbenice.add(n);
+			}
+		}
+		
 	}
 	
 	private void initOnoSaStrane() {
@@ -111,7 +113,7 @@ public class MenadzerView extends BaseView {
 		
 	
 		
-		prikazNarudzbenica = new JLabel("  Prikaz mojih narudzbenica  ");
+		prikazNarudzbenica = new JLabel("  Prikaz narudzbenica  ");
 		// prikaz pojedinacne, i opcije za nju, refresh
 		prikazNarudzbenica.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		prikazNarudzbenica.addMouseListener(new MouseAdapter() {
@@ -120,8 +122,14 @@ public class MenadzerView extends BaseView {
 		    @Override
 		    public void mouseClicked(MouseEvent e) {
 		        // the user clicks on the label
-		    	JOptionPane.showMessageDialog(null, "Prikaz liste narudzbenica sa mogucnoscu odabira"
-		    			+ " posiljke narudzbenica koje nisu poslate");
+		    	//JOptionPane.showMessageDialog(null, "Prikaz liste narudzbenica sa mogucnoscu odabira"
+		    	//		+ " posiljke narudzbenica koje nisu poslate");
+		    	
+		    	NarudzbeniceView nv = new NarudzbeniceView(narudzbenice, preduzece);
+		    	remove(1);
+		    	add(nv);
+		    	updateUI();
+		    	
 		    }});
 		onoSaStrane.setLayout(new GridLayout(18, 0));
 		

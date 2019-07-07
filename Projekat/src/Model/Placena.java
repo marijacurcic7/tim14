@@ -11,6 +11,12 @@ import java.util.*;
 /** @pdOid 1d7a6df7-da0c-4648-b017-257b2c155d7d */
 public class Placena extends Stanje {
    /** @pdOid 853558a3-5756-4709-8476-99f86f529cfa */
+	
+	@Override
+	public String toString() {
+		return "Placena";
+	}
+	
    public void aktivirajZavrsetak() {
       // TODO: implement
    }

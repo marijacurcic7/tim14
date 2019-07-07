@@ -13,7 +13,13 @@ import java.util.*;
 /** @pdOid 0ffd72dd-7b45-4aff-9907-e4063d195a0c */
 public class Zavrsena extends Stanje {
    /** @pdOid 370b15d8-39e6-4647-a382-9f90ce6722b3 */
-   public void aktivirajZavrsetak() {
+	
+	@Override
+	public String toString() {
+		return "Zavrsena";
+	}
+   
+	public void aktivirajZavrsetak() {
       // TODO: implement
    }
    
