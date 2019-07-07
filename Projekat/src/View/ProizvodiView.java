@@ -23,9 +23,11 @@ public class ProizvodiView extends BaseView{
 	JScrollPane skrol;
 	AplikacijaPreduzece preduzece;
 	MainFrame frame;
+	JPanel gdeStoji;
 	
-	public ProizvodiView(AplikacijaPreduzece preduzece) throws IOException {
+	public ProizvodiView(JPanel gdeStoji, AplikacijaPreduzece preduzece) throws IOException {
 		
+		this.gdeStoji = gdeStoji;
 		this.preduzece = preduzece;
 		initProductPanel();
 		skrol = new JScrollPane(panelSaProizvodima);
@@ -43,6 +45,8 @@ public class ProizvodiView extends BaseView{
 		//skrol.setMaximumSize(new Dimension(1000, 400));
 			
 	}
+
+
 
 	private void initProductPanel() throws IOException {
 		// TODO Auto-generated method stub

@@ -50,7 +50,7 @@ public class KupacView extends BaseView {
 		this.frame = f;
 		this.kupac = (RegistrovaniKupac)preduzece.trenutnoUlogovani;
 		try {
-			proizvodi = new ProizvodiView(preduzece);   // aplikacija mu treba
+			proizvodi = new ProizvodiView(f.getOvajStoSeMenja(), preduzece);   // aplikacija mu treba
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

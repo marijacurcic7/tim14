@@ -56,9 +56,9 @@ public class HeaderController {
 			    	//panel.getPrijava().setText("Odjava");
 			    	//panel.updateUI();
 			    	KorpaView kv = new KorpaView(preduzece, frame);
-			    	view.add(kv);
-			    	view.remove(0);
-					view.updateUI();
+			    	frame.getOvajStoSeMenja().add(kv);
+			    	frame.getOvajStoSeMenja().remove(0);
+			    	frame.getOvajStoSeMenja().updateUI();
 					frame.split.updateUI();
 			    }
 			
@@ -74,10 +74,10 @@ public class HeaderController {
 		    	if (preduzece.getTrenutnoUlogovani() == null) {
 		    		ProizvodiView pw = null;
 		    		try {
-						pw = new ProizvodiView(preduzece);
-						frame.getView().add(pw);
-						frame.getView().remove(0);
-						frame.getView().updateUI();
+						pw = new ProizvodiView(frame.getOvajStoSeMenja(), preduzece);
+						frame.getOvajStoSeMenja().add(pw);
+						frame.getOvajStoSeMenja().remove(0);
+						frame.getOvajStoSeMenja().updateUI();
 						return;
 						
 					} catch (IOException e1) {
@@ -87,9 +87,9 @@ public class HeaderController {
 		    	}
 		    	else if (preduzece.getTrenutnoUlogovani().getNalog().getTipKorisnika() == TipKorisnika.kupac) {
 		    		KupacView kv = new KupacView(preduzece, frame);
-		    		frame.getView().add(kv);
-					frame.getView().remove(0);
-					frame.getView().updateUI();
+		    		frame.getOvajStoSeMenja().add(kv);
+					frame.getOvajStoSeMenja().remove(0);
+					frame.getOvajStoSeMenja().updateUI();
 		    		return;
 		    	}
 		    	else if (preduzece.getTrenutnoUlogovani().getNalog().getTipKorisnika() == TipKorisnika.menadzer) {
@@ -97,9 +97,9 @@ public class HeaderController {
 		    		// ne radi?
 		    		//panel.getKorpa().setVisible(false);
 		    		//panel.updateUI();
-		    		frame.getView().add(mv);
-					frame.getView().remove(0);
-					frame.getView().updateUI();
+		    		frame.getOvajStoSeMenja().add(mv);
+					frame.getOvajStoSeMenja().remove(0);
+					frame.getOvajStoSeMenja().updateUI();
 		    		return;
 		    	}
 		    	else {
@@ -107,9 +107,9 @@ public class HeaderController {
 		    		//panel.getKorpa().setVisible(false);
 		    		//panel.getKorpa().setText("NOVI");
 		    		//panel.updateUI();
-		    		frame.getView().add(av);
-					frame.getView().remove(0);
-					frame.getView().updateUI();
+		    		frame.getOvajStoSeMenja().add(av);
+					frame.getOvajStoSeMenja().remove(0);
+					frame.getOvajStoSeMenja().updateUI();
 		    		return;
 		    	}
 		    	
@@ -131,16 +131,16 @@ public class HeaderController {
 					JOptionPane.showMessageDialog(null, message);
 					ProizvodiView bw = null;
 					try {
-						bw = new ProizvodiView(preduzece);
+						bw = new ProizvodiView(frame.getOvajStoSeMenja(), preduzece);
 					} catch (IOException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 					//frame.getView().remove(0);
 					
-					frame.getView().add(bw);
-					frame.getView().remove(0);
-					frame.getView().updateUI();
+					frame.getOvajStoSeMenja().add(bw);
+					frame.getOvajStoSeMenja().remove(0);
+					frame.getOvajStoSeMenja().updateUI();
 					return;
 				}
 				
@@ -150,9 +150,12 @@ public class HeaderController {
 				//
 				//
 				//
-				view.add(lv);
-				view.remove(0);
-				view.updateUI();
+				//view.add(lv);
+				//view.remove(0);
+				//view.updateUI();
+				frame.getOvajStoSeMenja().add(lv);
+				frame.getOvajStoSeMenja().remove(0);;
+				frame.getOvajStoSeMenja().updateUI();
 				
 				
 			}

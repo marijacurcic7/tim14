@@ -53,6 +53,7 @@ public class MainFrame extends JFrame {
 	JPanel p;
 	SviProizvodiPanel bw;
 	public JSplitPane split;
+	JPanel ovajStoSeMenja;
 	
 	BaseView view;
 	HeaderView header;
@@ -62,6 +63,18 @@ public class MainFrame extends JFrame {
 	Korisnik trenUlogovani;
 	
 	JButton prijava;
+
+	public JPanel getOvajStoSeMenja() {
+		return ovajStoSeMenja;
+	}
+
+
+
+	public void setOvajStoSeMenja(JPanel ovajStoSeMenja) {
+		this.ovajStoSeMenja = ovajStoSeMenja;
+	}
+
+
 
 	public MainFrame() throws IOException {
 		
@@ -91,12 +104,17 @@ public class MainFrame extends JFrame {
 		
 		header = new HeaderView(preduzece);
 		
+		ovajStoSeMenja = new JPanel();
+		ovajStoSeMenja.setPreferredSize(new Dimension(1600, 600));
 		
 		// u pregled proizvoda pitati jel null prvo, ako nije pitati jel menadzer
 		
 		//view = new ProizvodiView(preduzece);
-		ProizvodiView bw = new ProizvodiView(preduzece);  // da on vidi frejm? zbog dimenzija
+		ProizvodiView bw = new ProizvodiView(ovajStoSeMenja, preduzece);  // da on vidi frejm? zbog dimenzija
 		view = bw;
+		//view = ovajStoSeMenja;
+		
+		ovajStoSeMenja.add(new ProizvodiView(ovajStoSeMenja, preduzece)); 	// izmeniti
 		
 		//bw.resize(d);
 		
@@ -124,7 +142,9 @@ public class MainFrame extends JFrame {
 		drugiPanel.setBackground(new Color(255, 100, 255));
 		drugiPanel.setPreferredSize(new Dimension(1100, 200));
 		panel.add(bw);
-		panel.add(bw, BorderLayout.CENTER);
+		//panel.add(bw, BorderLayout.CENTER);
+		
+		panel.add(ovajStoSeMenja, BorderLayout.CENTER);
 		panel.add(drugiPanel, BorderLayout.PAGE_END);
 		
 		split.setBottomComponent(panel);
