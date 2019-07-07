@@ -46,9 +46,12 @@ public class NarudzbeniceView extends JPanel {
 			i+=10;
 		}
 		System.out.println(preduzece.korpa);
-		NarudzbenicaView nv = new NarudzbenicaView(preduzece.korpa, preduzece);
-		pnlContent.add(nv, new GridBagConstraints(0, i, 1, 1, 0, 0, GridBagConstraints.WEST,
-				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
+		if(!preduzece.korpa.stavkeNarudzbenice.isEmpty()) {
+			NarudzbenicaView nv = new NarudzbenicaView(preduzece.korpa, preduzece);
+			pnlContent.add(nv, new GridBagConstraints(0, i, 1, 1, 0, 0, GridBagConstraints.WEST,
+					GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
+		}
+		
 		scroll = new JScrollPane(pnlContent, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		scroll.setPreferredSize(new Dimension(1000, 600));
 		

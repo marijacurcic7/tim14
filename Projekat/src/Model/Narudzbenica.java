@@ -35,6 +35,7 @@ public class Narudzbenica implements Serializable {
    
    public Narudzbenica() {
 	   this.stavkeNarudzbenice = new ArrayList<StavkaNarudzbenice>();
+	   this.ukupanIznos = 0;
 	   this.stanje = new Formiranje();
 
    }
@@ -47,6 +48,7 @@ public class Narudzbenica implements Serializable {
 	   this.telefon = telefon;
 	   this.mesto = mesto;
 	   this.stavkeNarudzbenice = new ArrayList<StavkaNarudzbenice>();
+	   this.ukupanIznos = 0;
 	   this.stanje = new Formiranje();
    }
    
@@ -62,11 +64,10 @@ public class Narudzbenica implements Serializable {
 	   this.stanje = new Formiranje();
    }
    
-   public void dodajUKorpu(StavkaNarudzbenice s) {
+   /*public void dodajUKorpu(StavkaNarudzbenice s) {
 	   stavkeNarudzbenice.add(s);
 	   ukupanIznos += s.getUkupnaCena();
-   }
-   
+   }*/
    /** @pdOid 7f329260-9504-4d66-b24f-291c5a27d786 */
    public void aktivirajZavrsetak() {
       // TODO: implement
@@ -129,8 +130,10 @@ public class Narudzbenica implements Serializable {
          return;
       if (this.stavkeNarudzbenice == null)
          this.stavkeNarudzbenice = new java.util.ArrayList<StavkaNarudzbenice>();
-      if (!this.stavkeNarudzbenice.contains(newStavkaNarudzbenice))
-         this.stavkeNarudzbenice.add(newStavkaNarudzbenice);
+      /*if (!this.stavkeNarudzbenice.contains(newStavkaNarudzbenice))
+         this.stavkeNarudzbenice.add(newStavkaNarudzbenice);*/
+      this.stavkeNarudzbenice.add(newStavkaNarudzbenice);
+      this.ukupanIznos += newStavkaNarudzbenice.getUkupnaCena();
    }
    
    /** @pdGenerated default remove
@@ -148,86 +151,94 @@ public class Narudzbenica implements Serializable {
       if (stavkeNarudzbenice != null)
          stavkeNarudzbenice.clear();
    }
+   
+   public double update() {
+	   ukupanIznos = 0;
+	   for(StavkaNarudzbenice sn : stavkeNarudzbenice) {
+		   ukupanIznos+=sn.getUkupnaCena();
+	   }
+	   return ukupanIznos;
+   }
 
-public int getId() {
-	return id;
-}
-
-public void setId(int id) {
-	this.id = id;
-}
-
-public Date getDatum() {
-	return datum;
-}
-
-public void setDatum(Date datum) {
-	this.datum = datum;
-}
-
-public String getIme() {
-	return ime;
-}
-
-public void setIme(String ime) {
-	this.ime = ime;
-}
-
-public String getPrezime() {
-	return prezime;
-}
-
-public void setPrezime(String prezime) {
-	this.prezime = prezime;
-}
-
-public String getTelefon() {
-	return telefon;
-}
-
-public void setTelefon(String telefon) {
-	this.telefon = telefon;
-}
-
-public double getUkupanIznos() {
-	return ukupanIznos;
-}
-
-public void setUkupanIznos(double ukupanIznos) {
-	this.ukupanIznos = ukupanIznos;
-}
-
-public Mesto getMesto() {
-	return mesto;
-}
-
-public void setMesto(Mesto mesto) {
-	this.mesto = mesto;
-}
-
-public RegistrovaniKupac getRegKupac() {
-	return regKupac;
-}
-
-public void setRegKupac(RegistrovaniKupac regKupac) {
-	this.regKupac = regKupac;
-}
-
-public java.util.List<StavkaNarudzbenice> getStavkeNarudzbenice() {
-	return stavkeNarudzbenice;
-}
-
-public void setStavkeNarudzbenice(java.util.List<StavkaNarudzbenice> stavkeNarudzbenice) {
-	this.stavkeNarudzbenice = stavkeNarudzbenice;
-}
-
-public Stanje getStanje() {
-	return stanje;
-}
-
-public void setStanje(Stanje stanje) {
-	this.stanje = stanje;
-}
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public Date getDatum() {
+		return datum;
+	}
+	
+	public void setDatum(Date datum) {
+		this.datum = datum;
+	}
+	
+	public String getIme() {
+		return ime;
+	}
+	
+	public void setIme(String ime) {
+		this.ime = ime;
+	}
+	
+	public String getPrezime() {
+		return prezime;
+	}
+	
+	public void setPrezime(String prezime) {
+		this.prezime = prezime;
+	}
+	
+	public String getTelefon() {
+		return telefon;
+	}
+	
+	public void setTelefon(String telefon) {
+		this.telefon = telefon;
+	}
+	
+	public double getUkupanIznos() {
+		return ukupanIznos;
+	}
+	
+	public void setUkupanIznos(double ukupanIznos) {
+		this.ukupanIznos = ukupanIznos;
+	}
+	
+	public Mesto getMesto() {
+		return mesto;
+	}
+	
+	public void setMesto(Mesto mesto) {
+		this.mesto = mesto;
+	}
+	
+	public RegistrovaniKupac getRegKupac() {
+		return regKupac;
+	}
+	
+	public void setRegKupac(RegistrovaniKupac regKupac) {
+		this.regKupac = regKupac;
+	}
+	
+	public java.util.List<StavkaNarudzbenice> getStavkeNarudzbenice() {
+		return stavkeNarudzbenice;
+	}
+	
+	public void setStavkeNarudzbenice(java.util.List<StavkaNarudzbenice> stavkeNarudzbenice) {
+		this.stavkeNarudzbenice = stavkeNarudzbenice;
+	}
+	
+	public Stanje getStanje() {
+		return stanje;
+	}
+	
+	public void setStanje(Stanje stanje) {
+		this.stanje = stanje;
+	}
    
    
 

@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -29,6 +30,7 @@ public class KorpaView extends JPanel {
 	private JButton kupi;
 	private JButton isprazni;
 	private JPanel pnl;
+	private JLabel ukupnaCena;
 	
 	MainFrame frame;
 	
@@ -60,7 +62,9 @@ public class KorpaView extends JPanel {
 			//add(new JLabel(sn.proizvod.getNaziv()));
 			i+=10;
 		}
+		ukupnaCena = new JLabel("Ukupan iznos: "+korpa.getUkupanIznos());
 		JPanel linija = new JPanel(new GridLayout(3, 0));
+		linija.add(ukupnaCena);
 		linija.add(kupi);
 		linija.add(isprazni);
 		//linija.add(new JButton("asdasd"));

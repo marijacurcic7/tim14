@@ -128,6 +128,7 @@ public class StavkaNarudzbeniceView extends JPanel {
 				for(StavkaNarudzbenice s : preduzece.korpa.stavkeNarudzbenice) {
 					if(s.equals(stavkan)) {
 						preduzece.korpa.stavkeNarudzbenice.remove(s);
+						preduzece.korpa.update();
 						break;
 					}
 				}

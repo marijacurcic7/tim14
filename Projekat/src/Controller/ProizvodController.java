@@ -52,6 +52,7 @@ public class ProizvodController extends Controller {
 	
 	private void addListeners() {
 		Window w = SwingUtilities.getWindowAncestor(proizvodView);
+		
 		proizvodView.getStaviUKorpu().addActionListener(new ActionListener() {
 
 			@Override
@@ -61,13 +62,22 @@ public class ProizvodController extends Controller {
 					for (StavkaNarudzbenice sn: preduzece.korpa.getStavkaNarudzbenice()) {
 						if (sn.getProizvod().getId() == proizvod.getId()) {
 							sn.setKolicina(sn.getKolicina() + kolicina);
+							double cenaUkorpi = preduzece.korpa.getUkupanIznos();
+							preduzece.korpa.update();
+							//double novaCena = 
+							//sn.setUkupnaCena(novaCena);
+							System.out.println("Ukupna cena: "+sn.getUkupnaCena());
+							System.out.println("Cena u korpi: "+preduzece.korpa.getUkupanIznos());
 							added = true;
 						}
 					}
 					if (added == false) {
 						preduzece.korpa.addStavkaNarudzbenice(new StavkaNarudzbenice(kolicina, proizvod));
 					}
-						System.out.println(kolicina+" "+proizvod);
+					System.out.println(kolicina+" "+proizvod);
+					SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
+					Date datum = new Date(System.currentTimeMillis());
+					preduzece.korpa.setDatum(datum);
 					
 					JOptionPane.showMessageDialog(w, "Dodato");
 					/*try {
