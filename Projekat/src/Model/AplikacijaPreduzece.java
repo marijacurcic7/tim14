@@ -195,7 +195,7 @@ public class AplikacijaPreduzece {
 		korpa = new Narudzbenica();
 		stavkeCenovnika = new ArrayList<StavkaCenovnika>();
 
-		/*
+		
 		try {
 			
 			citanjeIzFajla();
@@ -204,7 +204,7 @@ public class AplikacijaPreduzece {
 			//e.printStackTrace();
 			//System.out.println("End of file");
 		} 
-		*/
+		
    }
 
    /** @pdOid 88b72526-db73-439f-877b-52c47f05da53 */

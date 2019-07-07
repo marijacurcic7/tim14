@@ -171,13 +171,13 @@ public class RegistracijaView extends JPanel {
 		else {
 			// gledam koji je tip
 			// promijeniti zaglavlje, na odjavi
-			JOptionPane.showMessageDialog(parent, message);
+			JOptionPane.showMessageDialog(parent, "Dodat je menadzer");
 			ProizvodiView bw = new ProizvodiView(preduzece);	// za kupca
-			KupacView kv = new KupacView(preduzece, frame);
+			AdminView av = new AdminView(preduzece, frame);
 			//
 			frame.getHeader().getPrijava().setText("Odjava");
 			frame.getHeader().updateUI();
-			add(kv);
+			add(av);
 			remove(0);
 			updateUI();
 			System.out.println(preduzece.trenutnoUlogovani.getIme());
