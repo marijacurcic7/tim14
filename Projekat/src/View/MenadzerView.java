@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 
 import Controller.Controller;
+import Main.MainFrame;
 import Model.AplikacijaPreduzece;
 
 public class MenadzerView extends BaseView {
@@ -32,7 +33,7 @@ public class MenadzerView extends BaseView {
 	
 	JLabel prodavnice;
 	//
-	
+	MainFrame frame;
 	
 	JLabel prikazNarudzbenica;
 	
@@ -43,7 +44,10 @@ public class MenadzerView extends BaseView {
 	AplikacijaPreduzece preduzece;
 	
 	// trebace mi i frejm da vidim gdje stoji i da mijenjam
-	public MenadzerView(AplikacijaPreduzece preduzece) {
+	public MenadzerView(AplikacijaPreduzece preduzece, MainFrame frame) {
+		
+		this.frame = frame;
+		this.preduzece = preduzece;
 		// napravim proizvode
 		// ono sa strane
 		// splitpane
@@ -126,7 +130,7 @@ public class MenadzerView extends BaseView {
 		    public void mouseClicked(MouseEvent e) {
 		        // the user clicks on the label
 		    	JOptionPane.showMessageDialog(null, " Unos novog proizvoda ");
-		    	DodavanjeProizvodaView rw = new DodavanjeProizvodaView(preduzece);
+		    	DodavanjeProizvodaView rw = new DodavanjeProizvodaView(preduzece, frame);
 				add(rw);
 				remove(0);
 				updateUI();

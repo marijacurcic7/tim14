@@ -5,12 +5,15 @@ import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 import Model.AplikacijaPreduzece;
 import Model.Proizvod;
+import Model.StavkaCenovnika;
 import Model.StavkaNarudzbenice;
 import View.ProizvodView;
 import View.ProizvodiView;
@@ -48,6 +51,7 @@ public class ProizvodController extends Controller {
 	}
 	
 	private void addListeners() {
+		Window w = SwingUtilities.getWindowAncestor(proizvodView);
 		proizvodView.getStaviUKorpu().addActionListener(new ActionListener() {
 
 			@Override
@@ -55,7 +59,7 @@ public class ProizvodController extends Controller {
 					kolicina = Integer.parseInt(proizvodView.getSpinner().getValue().toString());
 					preduzece.korpa.addStavkaNarudzbenice(new StavkaNarudzbenice(kolicina, proizvod));
 					System.out.println(kolicina+" "+proizvod);
-					Window w = SwingUtilities.getWindowAncestor(proizvodView);
+					
 					JOptionPane.showMessageDialog(w, "Dodato");
 					/*try {
 						ProizvodiView pv = new ProizvodiView(preduzece);
@@ -76,6 +80,61 @@ public class ProizvodController extends Controller {
 					proizvodView.getGdjeStoji().add(bw);
 					proizvodView.getGdjeStoji().remove(0);
 					proizvodView.getGdjeStoji().updateUI();
+			}
+		});
+		
+		proizvodView.getObrisi().addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Obrisi");
+				for(Proizvod p : preduzece.proizvodi) {
+					if(p.equals(proizvod)) {
+						preduzece.proizvodi.remove(proizvod);
+						JOptionPane.showMessageDialog(w, "Proizvod je izbrisan");
+						break;
+					}
+				}
+				ProizvodiView bw = null;
+				try {
+					bw = new ProizvodiView(preduzece);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				//frame.getView().remove(0);
+				
+				proizvodView.getGdjeStoji().add(bw);
+				proizvodView.getGdjeStoji().remove(0);
+				proizvodView.getGdjeStoji().updateUI();
+			}
+						
+		});
+		
+		proizvodView.getIzmeni().addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Izmeni");
+				String cenastr = JOptionPane.showInputDialog("Nova cena: ");
+				System.out.println(cenastr);
+				double cena = Double.parseDouble(cenastr);
+				SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
+				Date datum = new Date(System.currentTimeMillis());
+				StavkaCenovnika sc = new StavkaCenovnika(cena, datum, proizvod);
+				proizvod.setAktuelnaCena(sc);
+				ProizvodiView bw = null;
+				try {
+					bw = new ProizvodiView(preduzece);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				//frame.getView().remove(0);
+				
+				proizvodView.getGdjeStoji().add(bw);
+				proizvodView.getGdjeStoji().remove(0);
+				proizvodView.getGdjeStoji().updateUI();
 			}
 		});
 	}

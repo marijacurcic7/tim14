@@ -288,6 +288,9 @@ public class MainFrame extends JFrame {
 			System.out.println(sn.proizvod.getNaziv());
 		}
 		System.out.println("");
+		for(Kategorija k : preduzece.kategorije) {
+			System.out.println(k.getNaziv());
+		}
 	}
 	
 	public void izgenerisiPreduzece() {

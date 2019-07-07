@@ -6,10 +6,14 @@
 
 package Model;
 
+import java.io.Serializable;
 import java.util.*;
 
 /** @pdOid a49c780f-73a9-40c6-999c-f1a59f436de9 */
-public abstract class Stanje {
+public abstract class Stanje implements Serializable {
+	
+	
+	
    /** @pdOid 764340dd-3d82-48c7-9b38-782e73e3a912 */
    public void aktivirajZavrsetak() {
       // TODO: implement

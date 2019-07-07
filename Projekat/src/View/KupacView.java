@@ -5,6 +5,7 @@ import java.awt.BorderLayout;
 import java.awt.Cursor;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Window;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
@@ -13,13 +14,18 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
+import javax.swing.SwingUtilities;
 
 import Controller.Controller;
+import Main.MainFrame;
 import Model.AplikacijaPreduzece;
+import Model.RegistrovaniKupac;
 
 public class KupacView extends BaseView {
 
 	// i aplikacija
+	RegistrovaniKupac kupac;
+	MainFrame frame;
 	
 	Controller controller;
 	
@@ -36,10 +42,13 @@ public class KupacView extends BaseView {
 	AplikacijaPreduzece preduzece;
 	
 	// trebace mi i frejm da vidim gdje stoji i da mijenjam
-	public KupacView(AplikacijaPreduzece preduzece) {
+	public KupacView(AplikacijaPreduzece preduzece, MainFrame f) {
 		// napravim proizvode
 		// ono sa strane
 		// splitpane
+		this.preduzece = preduzece;
+		this.frame = f;
+		this.kupac = (RegistrovaniKupac)preduzece.trenutnoUlogovani;
 		try {
 			proizvodi = new ProizvodiView(preduzece);   // aplikacija mu treba
 		} catch (IOException e) {
@@ -98,6 +107,7 @@ public class KupacView extends BaseView {
 		
 		prikazNarudzbenica = new JLabel("  Prikaz mojih narudzbenica  ");
 		// prikaz pojedinacne, i opcije za nju, refresh
+		
 		prikazNarudzbenica.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		prikazNarudzbenica.addMouseListener(new MouseAdapter() {
 			 
@@ -105,7 +115,15 @@ public class KupacView extends BaseView {
 		    @Override
 		    public void mouseClicked(MouseEvent e) {
 		        // the user clicks on the label
+		    	//Window w =SwingUtilities.getWindowAncestor(prikazNarudzbenica);
 		    	JOptionPane.showMessageDialog(null, "Prikaz narudzbenica");
+		    	NarudzbeniceView nv = new NarudzbeniceView(kupac.narudzbenice, preduzece);
+		    	proizvodi.add(nv);
+		    	proizvodi.remove(0);
+		    	proizvodi.updateUI();
+		    	/*frame.getView().add(nv);
+				frame.getView().remove(0);
+				frame.getView().updateUI();*/
 		    }});
 		onoSaStrane.setLayout(new GridLayout(18, 0));
 		

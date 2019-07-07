@@ -86,14 +86,14 @@ public class HeaderController {
 					}
 		    	}
 		    	else if (preduzece.getTrenutnoUlogovani().getNalog().getTipKorisnika() == TipKorisnika.kupac) {
-		    		KupacView kv = new KupacView(preduzece);
+		    		KupacView kv = new KupacView(preduzece, frame);
 		    		frame.getView().add(kv);
 					frame.getView().remove(0);
 					frame.getView().updateUI();
 		    		return;
 		    	}
 		    	else if (preduzece.getTrenutnoUlogovani().getNalog().getTipKorisnika() == TipKorisnika.menadzer) {
-		    		MenadzerView mv = new MenadzerView(preduzece);
+		    		MenadzerView mv = new MenadzerView(preduzece, frame);
 		    		// ne radi?
 		    		//panel.getKorpa().setVisible(false);
 		    		//panel.updateUI();

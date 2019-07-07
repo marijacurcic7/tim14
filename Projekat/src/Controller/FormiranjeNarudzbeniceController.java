@@ -5,6 +5,7 @@ import Model.Korisnik;
 import Model.Mesto;
 import Model.Narudzbenica;
 import Model.RegistrovaniKupac;
+import Model.Zavrsena;
 import View.FormiranjeNarudzbeniceView;
 
 
@@ -74,6 +75,7 @@ public class FormiranjeNarudzbeniceController {
 		korpa.setTelefon(telefon);
 		korpa.setUkupanIznos(cena);
 		korpa.setMesto(mesto);
+		korpa.setStanje(new Zavrsena());
 		
 		kupac.getNarudzbenice().add(korpa);
 		preduzece.narudzbenice.add(korpa);

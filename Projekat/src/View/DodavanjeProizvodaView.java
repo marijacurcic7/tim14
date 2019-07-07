@@ -48,9 +48,10 @@ public class DodavanjeProizvodaView extends JPanel {
 	private JPanel pnlOK;
 	private JButton btnOK;
 	
-	public DodavanjeProizvodaView(AplikacijaPreduzece preduzece) {
+	public DodavanjeProizvodaView(AplikacijaPreduzece preduzece, MainFrame frame) {
 		// TODO Auto-generated constructor stub
 		this.preduzece = preduzece;
+		this.frame = frame;
 		
 		pnlContent = new JPanel(new GridBagLayout());
 
@@ -148,7 +149,7 @@ public class DodavanjeProizvodaView extends JPanel {
 			        if (w != null) {
 			          w.setVisible(false);
 			        }
-			    	DodavanjeProizvodaView rw = new DodavanjeProizvodaView(preduzece);
+			    	DodavanjeProizvodaView rw = new DodavanjeProizvodaView(preduzece, frame);
 					add(rw);
 					remove(0);
 					updateUI();
@@ -162,16 +163,21 @@ public class DodavanjeProizvodaView extends JPanel {
 			// gledam koji je tip
 			// promijeniti zaglavlje, na odjavi
 			JOptionPane.showMessageDialog(parent, message);
-			ProizvodiView bw = new ProizvodiView(preduzece);	// za kupca
 			//KupacView kv = new KupacView(preduzece);
 			//
-			MenadzerView mv = new MenadzerView(preduzece);
-			frame.getHeader().getPrijava().setText("Odjava");
-			frame.getHeader().updateUI();
-			add(mv);
-			remove(0);
-			updateUI();
-			System.out.println(preduzece.trenutnoUlogovani.getIme());
+			preduzece = dpcon.getPreduzece();
+			//ProizvodiView bw = new ProizvodiView(preduzece);
+			MenadzerView mv = new MenadzerView(preduzece, frame);
+			//frame.getHeader().getPrijava().setText("Odjava");
+			//frame.getHeader().updateUI();
+			//Window w = SwingUtilities.getWindowAncestor(this);
+			//add(w);
+			//remove(0);
+			//updateUI();
+			frame.getView().add(mv);
+			frame.getView().remove(0);
+			frame.getView().updateUI();
+			//System.out.println(preduzece.trenutnoUlogovani.getIme());
 		}
 		
 		

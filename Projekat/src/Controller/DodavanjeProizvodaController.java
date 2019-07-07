@@ -70,6 +70,7 @@ public class DodavanjeProizvodaController {
 		for(Kategorija k : preduzece.kategorije) {
 			if(k.getNaziv().equals(nazivKategorije)) {
 				kategorija = k;
+				break;
 			}
 		}
 		if(kategorija == null) {
@@ -84,7 +85,35 @@ public class DodavanjeProizvodaController {
 		p.setAktuelnaCena(sc);
 		
 		dpview.setProizvod(p);
+		preduzece.addProizvod(p);
 		
 		// TODO Auto-generated method stub
 		return "Proizvod je uspesno kreiran";
-	}}
+	}
+
+	public AplikacijaPreduzece getPreduzece() {
+		return preduzece;
+	}
+
+	public void setPreduzece(AplikacijaPreduzece preduzece) {
+		this.preduzece = preduzece;
+	}
+
+	public Proizvod getProizvod() {
+		return proizvod;
+	}
+
+	public void setProizvod(Proizvod proizvod) {
+		this.proizvod = proizvod;
+	}
+
+	public DodavanjeProizvodaView getDpview() {
+		return dpview;
+	}
+
+	public void setDpview(DodavanjeProizvodaView dpview) {
+		this.dpview = dpview;
+	}
+	
+	
+}

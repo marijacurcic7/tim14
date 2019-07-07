@@ -22,7 +22,6 @@ public class Narudzbenica implements Serializable {
    /** @pdOid d17fa62c-3a2e-485b-bda7-c2ed0579ccab */
    private String telefon;
   
-   
    private double ukupanIznos = 0.0;
    
    /** @pdRoleInfo migr=no name=StavkaNarudzbenice assc=association7 coll=java.util.List impl=java.util.ArrayList mult=0..* */
@@ -32,8 +31,11 @@ public class Narudzbenica implements Serializable {
    
    public RegistrovaniKupac regKupac;
    
+   private Stanje stanje;
+   
    public Narudzbenica() {
 	   this.stavkeNarudzbenice = new ArrayList<StavkaNarudzbenice>();
+	   this.stanje = new Formiranje();
 
    }
    
@@ -45,6 +47,7 @@ public class Narudzbenica implements Serializable {
 	   this.telefon = telefon;
 	   this.mesto = mesto;
 	   this.stavkeNarudzbenice = new ArrayList<StavkaNarudzbenice>();
+	   this.stanje = new Formiranje();
    }
    
    public Narudzbenica(int id, Date datum, String ime, String prezime, String telefon, Mesto mesto, StavkaNarudzbenice sn) {
@@ -56,6 +59,7 @@ public class Narudzbenica implements Serializable {
 	   this.mesto = mesto;
 	   stavkeNarudzbenice.add(sn);
 	   ukupanIznos += sn.getUkupnaCena();
+	   this.stanje = new Formiranje();
    }
    
    public void dodajUKorpu(StavkaNarudzbenice s) {
@@ -207,6 +211,22 @@ public RegistrovaniKupac getRegKupac() {
 
 public void setRegKupac(RegistrovaniKupac regKupac) {
 	this.regKupac = regKupac;
+}
+
+public java.util.List<StavkaNarudzbenice> getStavkeNarudzbenice() {
+	return stavkeNarudzbenice;
+}
+
+public void setStavkeNarudzbenice(java.util.List<StavkaNarudzbenice> stavkeNarudzbenice) {
+	this.stavkeNarudzbenice = stavkeNarudzbenice;
+}
+
+public Stanje getStanje() {
+	return stanje;
+}
+
+public void setStanje(Stanje stanje) {
+	this.stanje = stanje;
 }
    
    

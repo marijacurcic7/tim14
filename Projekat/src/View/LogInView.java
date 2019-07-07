@@ -154,7 +154,7 @@ public class LogInView extends JPanel {
 			//if(k.nalog.getTipKorisnika() == TipKorisnika.kupac) {
 				
 				//preduzece.trenutnoUlogovani = k;
-				KupacView kv = new KupacView(preduzece);
+				KupacView kv = new KupacView(preduzece, frame);
 				//
 				frame.getHeader().getPrijava().setText("Odjava");
 				frame.getHeader().updateUI();
@@ -168,7 +168,7 @@ public class LogInView extends JPanel {
 			//else if(k.nalog.getTipKorisnika() == TipKorisnika.menadzer) {
 				//preduzece.trenutnoUlogovani = k;
 				System.out.println("Menadzer");
-				MenadzerView mv = new MenadzerView(preduzece);
+				MenadzerView mv = new MenadzerView(preduzece, frame);
 				//
 				frame.getHeader().getPrijava().setText("Odjava");
 				frame.getHeader().getKorpa().setVisible(false);

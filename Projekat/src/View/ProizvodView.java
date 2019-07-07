@@ -31,6 +31,8 @@ public class ProizvodView extends BaseView {
 	// dugme da se sve brise iz narudzbenice?
 	
 	JButton staviUKorpu;
+	JButton obrisi;
+	JButton izmeni;
 	JLabel slika;
 	JLabel naziv;
 	// slicica
@@ -58,6 +60,8 @@ public class ProizvodView extends BaseView {
 		gdjeStoji = bw;
 		this.p = p;
 		
+		obrisi = new JButton("Obrisi");
+		izmeni = new JButton("Izmeni");
 		
 		slika = new JLabel();
 		slika.setIcon(new ImageIcon(new ImageIcon("C:\\Windows\\Web\\Wallpaper\\Theme1\\img1.jpg").getImage().getScaledInstance(600, 400, Image.SCALE_DEFAULT)));
@@ -85,16 +89,20 @@ public class ProizvodView extends BaseView {
 	                100, //maximum value  
 	                1); //step  
 	    spinner = new JSpinner(value);   
-	            spinner.setBounds(100,100,50,30);    
-	            this.add(spinner);    
-	            //f.setSize(300,300);    
-	            //f.setLayout(null);    
-	            //f.setVisible(true);    
+        spinner.setBounds(100,100,50,30);    
+        this.add(spinner);    
+        //f.setSize(300,300);    
+        //f.setLayout(null);    
+        //f.setVisible(true);    
 		staviUKorpu = new JButton("Dodaj u korpu");
 		
 		if (preduzece.trenutnoUlogovani != null) {
 			if (preduzece.trenutnoUlogovani.getNalog().getTipKorisnika() == TipKorisnika.menadzer) {
-				staviUKorpu.setText("Izmeni");
+				//staviUKorpu.setText("Izmeni");
+				staviUKorpu.setVisible(false);
+				add(obrisi);
+				add(izmeni);
+				spinner.setVisible(false);
 			}
 		}
 		
@@ -181,6 +189,30 @@ public class ProizvodView extends BaseView {
 
 	public void setNaziv(JLabel naziv) {
 		this.naziv = naziv;
+	}
+
+	public MainFrame getFrame() {
+		return frame;
+	}
+
+	public void setFrame(MainFrame frame) {
+		this.frame = frame;
+	}
+
+	public JButton getObrisi() {
+		return obrisi;
+	}
+
+	public void setObrisi(JButton obrisi) {
+		this.obrisi = obrisi;
+	}
+
+	public JButton getIzmeni() {
+		return izmeni;
+	}
+
+	public void setIzmeni(JButton izmeni) {
+		this.izmeni = izmeni;
 	}
 	
 	
