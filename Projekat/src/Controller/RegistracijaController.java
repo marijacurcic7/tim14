@@ -80,15 +80,19 @@ public class RegistracijaController {
 		if(preduzece.trenutnoUlogovani == null) {
 			Nalog nalog = new Nalog(korisnickoIme, lozinka, email, TipKorisnika.kupac);
 			korisnik = new RegistrovaniKupac(ime, prezime, telefon, null, nalog);
+			
+			preduzece.trenutnoUlogovani = korisnik;
+			
 		}
 		else if(preduzece.trenutnoUlogovani.nalog.getTipKorisnika() == TipKorisnika.administrator) {
 			Nalog nalog = new Nalog(korisnickoIme, lozinka, email, TipKorisnika.menadzer);
 			korisnik = new Korisnik(ime, prezime, telefon, null, nalog);
+
 		}
 		
 		regview.setKorisnik(korisnik);
 		preduzece.korisnici.add(korisnik);
-		preduzece.trenutnoUlogovani = korisnik;
+
 		
 		return "Uspesno ste se registrovali";
 		

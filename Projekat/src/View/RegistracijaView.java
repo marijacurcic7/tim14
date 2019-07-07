@@ -21,6 +21,7 @@ import Controller.RegistracijaController;
 import Main.MainFrame;
 import Model.AplikacijaPreduzece;
 import Model.Korisnik;
+import Model.TipKorisnika;
 
 public class RegistracijaView extends JPanel {
 	
@@ -53,6 +54,7 @@ public class RegistracijaView extends JPanel {
 		
 		this.frame = frame;
 		this.preduzece = preduzece;
+		//this.korisnik = preduzece.trenutnoUlogovani;
 		
 		pnlContent = new JPanel(new GridBagLayout());
 
@@ -168,7 +170,19 @@ public class RegistracijaView extends JPanel {
 			JOptionPane.showOptionDialog(parent, message, title, JOptionPane.OK_OPTION, JOptionPane.INFORMATION_MESSAGE, null, new Object[]{btnOk}, btnOk);
 			
 		}
-		else {
+		else if (preduzece.trenutnoUlogovani.nalog.getTipKorisnika().equals(TipKorisnika.kupac)) {
+			JOptionPane.showMessageDialog(parent, message);
+			ProizvodiView bw = new ProizvodiView(preduzece);	// za kupca
+			KupacView kv = new KupacView(preduzece, frame);
+			//
+			frame.getHeader().getPrijava().setText("Odjava");
+			frame.getHeader().updateUI();
+			add(kv);
+			remove(0);
+			updateUI();
+			System.out.println(preduzece.trenutnoUlogovani.getIme());
+		}
+		else if (preduzece.trenutnoUlogovani.nalog.getTipKorisnika().equals(TipKorisnika.administrator)){
 			// gledam koji je tip
 			// promijeniti zaglavlje, na odjavi
 			JOptionPane.showMessageDialog(parent, "Dodat je menadzer");
