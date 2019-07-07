@@ -17,6 +17,7 @@ import Model.AplikacijaPreduzece;
 import Model.Proizvod;
 import Model.TipKorisnika;
 import View.BaseView;
+import View.ProizvodiView;
 
 
 public class ProizvodPanel extends JPanel {
@@ -29,7 +30,7 @@ public class ProizvodPanel extends JPanel {
 	JButton dugmeKorpa;
 	JButton dugmePregled;
 	JLabel slika;
-	BaseView gdjeStoji; // wtf?
+	ProizvodiView gdjeStoji; // wtf?
 	
 	public ControllerProizvoda getController() {
 		return controller;
@@ -87,15 +88,15 @@ public class ProizvodPanel extends JPanel {
 		this.slika = slika;
 	}
 
-	public BaseView getGdjeStoji() {
+	public ProizvodiView getGdjeStoji() {
 		return gdjeStoji;
 	}
 
-	public void setGdjeStoji(BaseView gdjeStoji) {
+	public void setGdjeStoji(ProizvodiView gdjeStoji) {
 		this.gdjeStoji = gdjeStoji;
 	}
 
-	public ProizvodPanel(Proizvod p, BaseView bw, AplikacijaPreduzece preduzece) throws IOException {
+	public ProizvodPanel(Proizvod p, ProizvodiView bw, AplikacijaPreduzece preduzece) throws IOException {
 		this.preduzece = preduzece;
 		gdjeStoji = bw;
 		proizvod = p;

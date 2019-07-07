@@ -48,7 +48,7 @@ public class MenadzerView extends BaseView {
 		// ono sa strane
 		// splitpane
 		try {
-			proizvodi = new ProizvodiView(frame.getOvajStoSeMenja(), preduzece);   // aplikacija mu treba
+			proizvodi = new ProizvodiView(this, preduzece);   // aplikacija mu treba
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -81,6 +81,9 @@ public class MenadzerView extends BaseView {
 		panel.add(proizvodi);
 		this.add(panel);
 		this.show();
+		
+		
+		
 		
 		//add(proizvodi);
 		//split.getLeftComponent().CENTER_ALIGNMENT

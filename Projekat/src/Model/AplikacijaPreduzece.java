@@ -273,6 +273,10 @@ public class AplikacijaPreduzece {
 	   return null;
    }*/
    
+   
+   
+ 
+   
    public boolean login(String korisnickoIme, String lozinka) {
 	   if(korisnickoIme.equals("admin") && lozinka.equals("admin")) {
 		   //return new Korisnik();  // PROMIJENITI

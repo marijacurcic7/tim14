@@ -153,14 +153,19 @@ public class LogInView extends JPanel {
 			if (preduzece.trenutnoUlogovani.nalog.getTipKorisnika() == TipKorisnika.kupac) {
 			//if(k.nalog.getTipKorisnika() == TipKorisnika.kupac) {
 				
+				//JPanel holder = frame.getOvajStoSeMenja();
+				
 				//preduzece.trenutnoUlogovani = k;
 				KupacView kv = new KupacView(preduzece, frame);
 				//
+				//frame.setOvajStoSeMenja(holder);
+			
 				frame.getHeader().getPrijava().setText("Odjava");
 				frame.getHeader().updateUI();
-				add(kv);
-				remove(0);
-				updateUI();
+				// dodala.frame.getovajstosemenja()
+				frame.getOvajStoSeMenja().add(kv);
+				frame.getOvajStoSeMenja().remove(0);
+				frame.getOvajStoSeMenja().updateUI();
 				//return;
 			}
 			
@@ -173,10 +178,9 @@ public class LogInView extends JPanel {
 				frame.getHeader().getPrijava().setText("Odjava");
 				frame.getHeader().getKorpa().setVisible(false);
 				frame.getHeader().updateUI();
-				add(mv);
-				remove(0);
-				System.out.println("OOOOOOOOYYYYYYYYYYYYYYYYY");
-				updateUI();
+				frame.getOvajStoSeMenja().add(mv);
+				frame.getOvajStoSeMenja().remove(0);
+				frame.getOvajStoSeMenja().updateUI();
 				//return;		
 			}
 			else  {
@@ -186,10 +190,9 @@ public class LogInView extends JPanel {
 				frame.getHeader().getPrijava().setText("Odjava");
 				frame.getHeader().getKorpa().setVisible(false);
 				frame.getHeader().updateUI();
-				add(av);
-				remove(0);
-				//System.out.println("OOOOOOOOYYYYYYYYYYYYYYYYY");
-				updateUI();
+				frame.getOvajStoSeMenja().add(av);
+				frame.getOvajStoSeMenja().remove(0);
+				frame.getOvajStoSeMenja().updateUI();
 			//ProizvodiView bw = new ProizvodiView(preduzece);
 			//add(bw);
 			//remove(0);

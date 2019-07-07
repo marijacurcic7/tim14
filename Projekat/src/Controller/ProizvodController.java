@@ -15,6 +15,7 @@ import Model.AplikacijaPreduzece;
 import Model.Proizvod;
 import Model.StavkaCenovnika;
 import Model.StavkaNarudzbenice;
+import View.KupacView;
 import View.ProizvodView;
 import View.ProizvodiView;
 
@@ -96,9 +97,22 @@ public class ProizvodController extends Controller {
 					}
 					//frame.getView().remove(0);
 					
+					System.out.println("tuuuuuuuuuuuuuuu");
+					// is this okay?
+					if (preduzece.trenutnoUlogovani == null) {
 					proizvodView.getGdjeStoji().add(bw);
 					proizvodView.getGdjeStoji().remove(0);
 					proizvodView.getGdjeStoji().updateUI();
+					}
+					else {
+						KupacView stoji = (KupacView) proizvodView.getGdjeStoji();
+						
+						return;
+						//proizvodView.getGdjeStoji().add(bw);
+						//proizvodView.getGdjeStoji().remove(0);
+						//proizvodView.getGdjeStoji().updateUI();
+						
+					}
 			}
 		});
 		
@@ -153,6 +167,7 @@ public class ProizvodController extends Controller {
 				
 				proizvodView.getGdjeStoji().add(bw);
 				proizvodView.getGdjeStoji().remove(0);
+				
 				proizvodView.getGdjeStoji().updateUI();
 			}
 		});

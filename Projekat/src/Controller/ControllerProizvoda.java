@@ -50,18 +50,42 @@ public class ControllerProizvoda extends Controller {
 		//pp.getGdjeStoji().add(new JButton("Dugme"));
 		
 		
-		ProizvodView novi = new ProizvodView(pp.getProizvod(), pp.getGdjeStoji(), preduzece); //, preduzece);
+		// ako je kupac, ovaj stoji u kupacview, ako nije, onda stoji solo
+		
+		ProizvodView novi = new ProizvodView(pp.getProizvod(), pp.getGdjeStoji().getGdeStoji(), preduzece); //, preduzece);
 		ProizvodController noviController = new ProizvodController(novi, preduzece);
 		novi.setController(noviController);
 		
+		// sa 1 radi??nel, kupac ima ono lijevo i panel obviously
+		//System.out.println(pp.getGdjeStoji().getGdeStoji().getComponent(1));
+		System.out.println("ASDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD");
+		//pp.getGdjeStoji().getGdeStoji().remove(1);
 		
-		pp.getGdjeStoji().remove(0);
-		pp.getGdjeStoji().add(novi);
-		pp.getGdjeStoji().updateUI();
+		System.out.println(pp.getGdjeStoji());
+		
+		System.out.println(pp.getGdjeStoji().getGdeStoji());
+		
+		System.out.println();
+		
+		//System.out.println(pp.getGdjeStoji());
+		
+		// drugacije mi ije gdje stoji u odnosu na ulogovanog kupca? ne?
+		// vamo stoji solo, vamo stoji u kupac view
+		if (preduzece.trenutnoUlogovani != null) {
+		//pp.getComponents()
+		pp.getGdjeStoji().getGdeStoji().remove(1);
+		}
+		else {
+			pp.getGdjeStoji().getGdeStoji().remove(0);
+		}
+		//pp.getGdjeStoji().getGdeStoji().remove(0);
+		pp.getGdjeStoji().getGdeStoji().add(novi);
+		pp.getGdjeStoji().getGdeStoji().updateUI();
 		//pp.setGdjeStoji(ppp);
 		//pp.getGdjeStoji().updateUI();
 		//pp.getGdjeStoji().updateUI();
 		//pp.getGdjeStoji().show();
+		
 		
 	}
 	

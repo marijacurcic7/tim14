@@ -55,6 +55,20 @@ public class MainFrame extends JFrame {
 	public JSplitPane split;
 	JPanel ovajStoSeMenja;
 	
+	JPanel menja;
+	
+	public JPanel getMenja() {
+		return menja;
+	}
+
+
+
+	public void setMenja(JPanel menja) {
+		this.menja = menja;
+	}
+
+
+
 	BaseView view;
 	HeaderView header;
 	HeaderController headerController;
@@ -101,7 +115,7 @@ public class MainFrame extends JFrame {
             }
         });
 		
-		
+		menja = new JPanel();
 		header = new HeaderView(preduzece);
 		
 		ovajStoSeMenja = new JPanel();

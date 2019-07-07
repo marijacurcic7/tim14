@@ -57,7 +57,16 @@ public class HeaderController {
 			    	//panel.updateUI();
 			    	KorpaView kv = new KorpaView(preduzece, frame);
 			    	frame.getOvajStoSeMenja().add(kv);
+			    	//frame.getMenja().removeAll();
 			    	frame.getOvajStoSeMenja().remove(0);
+			    	//frame.getMenja().add(kv);
+			    	
+			    	//frame.getOvajStoSeMenja().add(kv);
+			    	//frame.getMenja().removeAll();
+			    	//frame.getOvajStoSeMenja().remove(0);
+			    	//frame.getMenja().updateUI();
+			    	
+			    	
 			    	frame.getOvajStoSeMenja().updateUI();
 					frame.split.updateUI();
 			    }

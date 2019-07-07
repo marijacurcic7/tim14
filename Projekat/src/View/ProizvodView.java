@@ -6,6 +6,7 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
@@ -38,7 +39,7 @@ public class ProizvodView extends BaseView {
 	// slicica
 	JLabel opis;
 	JLabel jedinicnaCena;
-	BaseView gdjeStoji;
+	JPanel gdjeStoji;
 	// set text
 	
 	public ProizvodView(Proizvod p, MainFrame frame, String g) {
@@ -55,7 +56,7 @@ public class ProizvodView extends BaseView {
 		this.add(jedinicnaCena);
 	}
 	
-	public ProizvodView(Proizvod p, BaseView bw, AplikacijaPreduzece preduzece) {
+	public ProizvodView(Proizvod p, JPanel bw, AplikacijaPreduzece preduzece) {
 		this.preduzece = preduzece;
 		gdjeStoji = bw;
 		this.p = p;
@@ -165,11 +166,11 @@ public class ProizvodView extends BaseView {
 		this.jedinicnaCena = jedinicnaCena;
 	}
 
-	public BaseView getGdjeStoji() {
+	public JPanel getGdjeStoji() {
 		return gdjeStoji;
 	}
 
-	public void setGdjeStoji(BaseView gdjeStoji) {
+	public void setGdjeStoji(JPanel gdjeStoji) {
 		this.gdjeStoji = gdjeStoji;
 	}
 

@@ -49,8 +49,8 @@ public class KupacView extends BaseView {
 		this.preduzece = preduzece;
 		this.frame = f;
 		this.kupac = (RegistrovaniKupac)preduzece.trenutnoUlogovani;
-		try {
-			proizvodi = new ProizvodiView(f.getOvajStoSeMenja(), preduzece);   // aplikacija mu treba
+		try {			// ili f.onajsto se menja
+			proizvodi = new ProizvodiView(this, preduzece);   // aplikacija mu treba
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -83,6 +83,8 @@ public class KupacView extends BaseView {
 		panel.add(proizvodi);
 		this.add(panel);
 		this.show();
+		
+		this.frame.setMenja(proizvodi);
 		
 		//add(proizvodi);
 		//split.getLeftComponent().CENTER_ALIGNMENT
@@ -118,9 +120,12 @@ public class KupacView extends BaseView {
 		    	//Window w =SwingUtilities.getWindowAncestor(prikazNarudzbenica);
 		    	JOptionPane.showMessageDialog(null, "Prikaz narudzbenica");
 		    	NarudzbeniceView nv = new NarudzbeniceView(kupac.narudzbenice, preduzece);
-		    	proizvodi.add(nv);
-		    	proizvodi.remove(0);
-		    	proizvodi.updateUI();
+		    	proizvodi.getGdeStoji().remove(1);
+		    	proizvodi.getGdeStoji().add(nv);
+		    	proizvodi.getGdeStoji().updateUI();
+		    	//proizvodi.add(nv);
+		    	//proizvodi.remove(0);
+		    	//proizvodi.updateUI();
 		    	/*frame.getView().add(nv);
 				frame.getView().remove(0);
 				frame.getView().updateUI();*/
