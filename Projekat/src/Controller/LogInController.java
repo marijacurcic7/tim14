@@ -75,7 +75,6 @@ public class LogInController {
 	
 	
 	private void addListeners() {
-		// TODO Auto-generated method stub
 		
 		loginv.btnReg.addActionListener(new ActionListener() {
 
@@ -146,7 +145,9 @@ public class LogInController {
 				//frame.setOvajStoSeMenja(holder);
 			
 				// 
-				loginv.getFrame().getHeader().getPrijava().setText("Odjava");
+				loginv.getFrame().getHeader().getPrijava().setVisible(false);
+				loginv.getFrame().getHeader().getOdjava().setVisible(true);
+				//loginv.getFrame().getHeader().getPrijava().setText("Odjava");
 				loginv.getFrame().getHeader().updateUI();
 				// dodala.frame.getovajstosemenja()
 				System.out.println(loginv.getFrame().getOvajStoSeMenja());
@@ -166,7 +167,9 @@ public class LogInController {
 				System.out.println("Menadzer");
 				MenadzerView mv = new MenadzerView(preduzece, loginv.getFrame());
 				//
-				loginv.getFrame().getHeader().getPrijava().setText("Odjava");
+				//loginv.getFrame().getHeader().getPrijava().setText("Odjava");
+				loginv.getFrame().getHeader().getPrijava().setVisible(false);
+				loginv.getFrame().getHeader().getOdjava().setVisible(true);
 				loginv.getFrame().getHeader().getKorpa().setVisible(false);
 				loginv.getFrame().getHeader().updateUI();
 				loginv.getFrame().getCentralni().add(mv);
@@ -182,7 +185,9 @@ public class LogInController {
 				AdminView av = new AdminView(preduzece, loginv.getFrame());
 				//
 				
-				loginv.getFrame().getHeader().getPrijava().setText("Odjava");
+				//loginv.getFrame().getHeader().getPrijava().setText("Odjava");
+				loginv.getFrame().getHeader().getPrijava().setVisible(false);
+				loginv.getFrame().getHeader().getOdjava().setVisible(true);
 				loginv.getFrame().getHeader().getKorpa().setVisible(false);
 				loginv.getFrame().getHeader().updateUI();
 				loginv.getFrame().getCentralni().add(av);
@@ -207,17 +212,17 @@ public class LogInController {
 		//	loginc = new LogInController(this, preduzece);
 		//}
 		
-		System.out.println("yup im here");
-		System.out.println("yaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+		//System.out.println("yup im here");
+		//System.out.println("yaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 		String kime = loginv.getTfkorisnicko().getText();
 		String lozinka = loginv.getTflozinka().getText();
 		login(kime, lozinka);
-		System.out.println(kime);
-		System.out.println(lozinka);
+		//System.out.println(kime);
+		//System.out.println(lozinka);
 		//Korisnik k = preduzece.proveriLogin(kime,  lozinka);
-		System.out.println("*******************");
-		System.out.println();
-		System.out.println("888888888888888888888");
+		//System.out.println("*******************");
+		//System.out.println();
+		//System.out.println("888888888888888888888");
 	}
 		/*if(k == null) {
 			//JDialog neuspesno = new JDialog();

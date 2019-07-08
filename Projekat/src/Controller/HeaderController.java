@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 
 import Main.MainFrame;
 import Model.AplikacijaPreduzece;
+import Model.Placena;
 import Model.TipKorisnika;
 import View.AdminView;
 import View.BaseView;
@@ -49,6 +50,7 @@ public class HeaderController {
 		this.preduzece = preduzece;
 		this.panel = panel;
 		this.view = base;
+		
 		this.panel.getKorpa().addActionListener(new ActionListener() {
 			 public void actionPerformed(ActionEvent e) {
 			      //your code here
@@ -166,8 +168,49 @@ public class HeaderController {
 			public void actionPerformed(ActionEvent e) {
 				//bw.setVisible(false);
 				
-				if (preduzece.trenutnoUlogovani != null) {
-					frame.getHeader().getPrijava().setText("Prijava");
+				/*if (preduzece.trenutnoUlogovani != null) {
+					ProizvodiView bw = null;
+					try {
+						//bw = new ProizvodiView(frame.getOvajStoSeMenja(), preduzece);
+						bw = new ProizvodiView(frame.getCentralni(), preduzece, preduzece.proizvodi);
+						
+						frame.setOvajStoSeMenja(bw);  ///? ili on gde stoji
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					int dialogbtn = JOptionPane.YES_NO_OPTION;
+					int dialogrez = JOptionPane.showConfirmDialog(bw, "Da li ste sigurni da zelite da se odjavite?", "Odjava", dialogbtn);
+					if(dialogrez == JOptionPane.YES_OPTION) {
+						//frame.getHeader().getPrijava().setText("Prijava");
+						frame.getHeader().getKorpa().setVisible(true);
+						frame.getHeader().updateUI();
+						preduzece.trenutnoUlogovani = null;
+						String message = "Uspesno ste se izlogovali.";
+						//JOptionPane.showMessageDialog(null, message);
+						/*ProizvodiView bw = null;
+						try {
+							//bw = new ProizvodiView(frame.getOvajStoSeMenja(), preduzece);
+							bw = new ProizvodiView(frame.getCentralni(), preduzece, preduzece.proizvodi);
+							
+							frame.setOvajStoSeMenja(bw);  ///? ili on gde stoji
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}*/
+				
+				/*
+						frame.getCentralni().add(bw);
+						frame.getCentralni().remove(0);
+						frame.getCentralni().updateUI();
+						
+						return;
+					}
+					else {
+						
+					}
+					
+					/*frame.getHeader().getPrijava().setText("Prijava");
 					frame.getHeader().getKorpa().setVisible(true);
 					frame.getHeader().updateUI();
 					preduzece.trenutnoUlogovani = null;
@@ -182,20 +225,25 @@ public class HeaderController {
 					} catch (IOException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
-					}
+					}*/
+					
 					//frame.getView().remove(0);
 					
 					//frame.getOvajStoSeMenja().add(bw);
 					//frame.getOvajStoSeMenja().remove(0);
 					//frame.getOvajStoSeMenja().updateUI();
+					/*
 					frame.getCentralni().add(bw);
 					frame.getCentralni().remove(0);
 					frame.getCentralni().updateUI();
 					
 					return;
-				}
+				}*/
 				
 				LogInView lv = new LogInView(preduzece, frame);
+				/*if(preduzece.trenutnoUlogovani != null) {
+					panel.getPrijava().setVisible(false);
+				}*/
 				//split.setBottomComponent(lv);
 				
 				//
@@ -214,6 +262,44 @@ public class HeaderController {
 				
 				
 			}
+		});
+		
+		panel.getOdjava().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ProizvodiView bw = null;
+				try {
+					//bw = new ProizvodiView(frame.getOvajStoSeMenja(), preduzece);
+					bw = new ProizvodiView(frame.getCentralni(), preduzece, preduzece.proizvodi);
+					
+					frame.setOvajStoSeMenja(bw);  ///? ili on gde stoji
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				int dialogbtn = JOptionPane.YES_NO_OPTION;
+				int dialogrez = JOptionPane.showConfirmDialog(bw, "Da li ste sigurni da zelite da se odjavite?", "Odjava", dialogbtn);
+				if(dialogrez == JOptionPane.YES_OPTION) {
+					//frame.getHeader().getPrijava().setText("Prijava");
+					
+					//panel.getOdjava().setVisible(false);
+					//panel.getPrijava().setVisible(true);
+					
+					frame.getHeader().getPrijava().setVisible(true);
+					frame.getHeader().getOdjava().setVisible(false);
+					frame.getHeader().getKorpa().setVisible(true);
+					frame.getHeader().updateUI();
+					preduzece.trenutnoUlogovani = null;
+					frame.getCentralni().add(bw);
+					frame.getCentralni().remove(0);
+					frame.getCentralni().updateUI();
+					
+					return;
+				}
+			
+			}
+				
 		});
 		
 	}

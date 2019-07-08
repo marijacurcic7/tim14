@@ -192,7 +192,7 @@ public class RegistracijaView extends JPanel {
 		String title = "Greska";
 		
 		if (korisnik == null){
-			JButton btnOk = new JButton("Ok");
+			/*JButton btnOk = new JButton("Ok");
 			btnOk.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
 			    	//JOptionPane.
@@ -209,7 +209,8 @@ public class RegistracijaView extends JPanel {
 			    }
 			}); 
 			JOptionPane.showOptionDialog(parent, message, title, JOptionPane.OK_OPTION, JOptionPane.INFORMATION_MESSAGE, null, new Object[]{btnOk}, btnOk);
-			
+			*/
+			JOptionPane.showMessageDialog(parent, message);
 		}
 		else if (preduzece.trenutnoUlogovani.nalog.getTipKorisnika().equals(TipKorisnika.kupac)) {
 			JOptionPane.showMessageDialog(parent, message);

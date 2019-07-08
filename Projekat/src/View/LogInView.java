@@ -165,7 +165,9 @@ public class LogInView extends JPanel {
 				//frame.setOvajStoSeMenja(holder);
 			
 				// 
-				frame.getHeader().getPrijava().setText("Odjava");
+				//frame.getHeader().getPrijava().setText("Odjava");
+				frame.getHeader().getPrijava().setVisible(false);
+				frame.getHeader().getOdjava().setVisible(true);
 				frame.getHeader().updateUI();
 				// dodala.frame.getovajstosemenja()
 				System.out.println(frame.getOvajStoSeMenja());
@@ -185,7 +187,9 @@ public class LogInView extends JPanel {
 				System.out.println("Menadzer");
 				MenadzerView mv = new MenadzerView(preduzece, frame);
 				//
-				frame.getHeader().getPrijava().setText("Odjava");
+				//frame.getHeader().getPrijava().setText("Odjava");
+				frame.getHeader().getPrijava().setVisible(false);
+				frame.getHeader().getOdjava().setVisible(true);
 				frame.getHeader().getKorpa().setVisible(false);
 				frame.getHeader().updateUI();
 				frame.getCentralni().add(mv);
@@ -200,8 +204,9 @@ public class LogInView extends JPanel {
 			else  {
 				AdminView av = new AdminView(preduzece, frame);
 				//
-				
-				frame.getHeader().getPrijava().setText("Odjava");
+				frame.getHeader().getPrijava().setVisible(false);
+				frame.getHeader().getOdjava().setVisible(true);
+				//frame.getHeader().getPrijava().setText("Odjava");
 				frame.getHeader().getKorpa().setVisible(false);
 				frame.getHeader().updateUI();
 				frame.getCentralni().add(av);

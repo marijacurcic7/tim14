@@ -18,6 +18,7 @@ public class HeaderView extends BaseView {
 	//JPanel p;
 	JButton korpa;
 	JButton prijava;
+	JButton odjava;
 	JLabel labela1;
 	JLabel labela2;
 	JLabel naslov;
@@ -25,7 +26,6 @@ public class HeaderView extends BaseView {
 	
 	public HeaderView(AplikacijaPreduzece preduzece){
 		this.preduzece = preduzece;
-	//p = new JPanel(new GridBagLayout());
 		this.setLayout(new GridBagLayout());
     /*
 		this.setPreferredSize(new Dimension(1800, 120));
@@ -148,7 +148,23 @@ public class HeaderView extends BaseView {
     c.gridy = 0;
     
     prijava = new JButton("Prijava");
+    odjava = new JButton("Odjava");
+    this.add(odjava, c);
     this.add(prijava, c);
+    
+    if(preduzece.trenutnoUlogovani==null) {
+    	 odjava.setVisible(false);
+    	 prijava.setVisible(true);
+    	 //this.add(prijava);
+    	 
+    }
+    else {
+    	prijava.setVisible(false);
+    	odjava.setVisible(true);
+    	//this.add(odjava);
+    }
+    
+   
     
     c.gridy = 2;
     this.add(new JPanel(),c);
@@ -198,6 +214,14 @@ public class HeaderView extends BaseView {
 
 	public void setNaslov(JLabel naslov) {
 		this.naslov = naslov;
+	}
+
+	public JButton getOdjava() {
+		return odjava;
+	}
+
+	public void setOdjava(JButton odjava) {
+		this.odjava = odjava;
 	}
 	
 	

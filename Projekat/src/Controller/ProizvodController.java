@@ -126,6 +126,11 @@ public class ProizvodController extends Controller {
 				for(Proizvod p : preduzece.proizvodi) {
 					if(p.equals(proizvod)) {
 						preduzece.proizvodi.remove(proizvod);
+						for(StavkaNarudzbenice sn : preduzece.korpa.stavkeNarudzbenice) {
+							if(sn.proizvod.equals(p)) {
+								preduzece.korpa.removeStavkaNarudzbenice(sn);
+							}
+						}
 						JOptionPane.showMessageDialog(w, "Proizvod je izbrisan");
 						break;
 					}

@@ -74,7 +74,7 @@ public class MainFrame extends JFrame {
 		
 		preduzece = new AplikacijaPreduzece();
 		System.out.println(preduzece.proizvodi.size() + 1);
-		izgenerisiPreduzece();
+		//izgenerisiPreduzece();
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
