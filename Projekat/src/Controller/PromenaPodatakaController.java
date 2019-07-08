@@ -1,5 +1,13 @@
 package Controller;
 
+import java.awt.Window;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+
 import Model.AplikacijaPreduzece;
 import Model.Korisnik;
 import Model.Mesto;
@@ -18,6 +26,60 @@ public class PromenaPodatakaController {
 		this.ppview = ppv;
 		this.preduzece = preduzece;
 		this.promenjen = false;
+		
+		ppview.getBtnOK().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+					
+				ok();
+					
+					
+				}
+		});
+
+		
+	}
+
+	protected void ok() {
+		Window parent = SwingUtilities.getWindowAncestor(ppview);
+
+		String lozinka = ppview.getTflozinka().getText();
+		String ime = ppview.getTfime().getText();
+		String prezime = ppview.getTfprezime().getText();
+		String email = ppview.getTfemail().getText();
+		String telefon = ppview.getTftelefon().getText();
+		
+		String message = promeni(lozinka, ime, prezime, email, telefon, ppview.getTfgrad().getText(), ppview.getTfdrzava().getText(), ppview.getTfadresa().getText());
+		String title = "Greska";
+		
+		JOptionPane.showMessageDialog(parent, message);
+		if (isPromenjen()){
+			//JButton btnOk = new JButton("Ok");
+			ppview.getBtnOK().addActionListener(new ActionListener() {
+			    public void actionPerformed(ActionEvent e) {
+			    	PromenaPodatakaView ppv = new PromenaPodatakaView(preduzece, ppview.getFrame());
+			    	
+			    	//JOptionPane.
+
+			        /*if (w != null) {
+			          w.setVisible(false);
+			        }*/
+					ppview.add(ppv);
+					ppview.remove(0);
+					ppview.updateUI();
+			        //System.out.println("code excuted");
+			    }
+			}); 
+			//JOptionPane.showOptionDialog(parent, message, title, JOptionPane.OK_OPTION, JOptionPane.INFORMATION_MESSAGE, null, new Object[]{btnOk}, btnOk);
+			
+		}
+		/*else {
+			JOptionPane.showMessageDialog(parent, message);
+			
+		}*/
+		
+
 		
 	}
 

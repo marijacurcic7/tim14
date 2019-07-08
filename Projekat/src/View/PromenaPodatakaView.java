@@ -112,6 +112,7 @@ public class PromenaPodatakaView extends JPanel {
 		
 		
 		constructGUI();
+		ppcon = new PromenaPodatakaController(this, preduzece);
 	}
 	
 	private void constructGUI() {
@@ -165,7 +166,7 @@ public class PromenaPodatakaView extends JPanel {
 		add(pnlContent, BorderLayout.CENTER);
 		
 		//add(pnlOK, BorderLayout.SOUTH);
-		
+		/*
 		btnOK.addActionListener(new ActionListener() {
 
 			@Override
@@ -180,13 +181,13 @@ public class PromenaPodatakaView extends JPanel {
 					
 				}
 		});
-
+		*/
 	}
 	
 	private void ok() throws IOException {
-		if (ppcon == null) {
-			ppcon = new PromenaPodatakaController(this, preduzece);
-		}
+		//if (ppcon == null) {
+		//	ppcon = new PromenaPodatakaController(this, preduzece);
+		//}
 		
 		Window parent = SwingUtilities.getWindowAncestor(this);
 
@@ -227,6 +228,198 @@ public class PromenaPodatakaView extends JPanel {
 		
 		
 		
+	}
+
+	public AplikacijaPreduzece getPreduzece() {
+		return preduzece;
+	}
+
+	public void setPreduzece(AplikacijaPreduzece preduzece) {
+		this.preduzece = preduzece;
+	}
+
+	public Korisnik getKorisnik() {
+		return korisnik;
+	}
+
+	public void setKorisnik(Korisnik korisnik) {
+		this.korisnik = korisnik;
+	}
+
+	public PromenaPodatakaController getPpcon() {
+		return ppcon;
+	}
+
+	public void setPpcon(PromenaPodatakaController ppcon) {
+		this.ppcon = ppcon;
+	}
+
+	public JPanel getPnlContent() {
+		return pnlContent;
+	}
+
+	public void setPnlContent(JPanel pnlContent) {
+		this.pnlContent = pnlContent;
+	}
+
+	public JLabel getLblkorisnickoime() {
+		return lblkorisnickoime;
+	}
+
+	public void setLblkorisnickoime(JLabel lblkorisnickoime) {
+		this.lblkorisnickoime = lblkorisnickoime;
+	}
+
+	public JLabel getLbllozinka() {
+		return lbllozinka;
+	}
+
+	public void setLbllozinka(JLabel lbllozinka) {
+		this.lbllozinka = lbllozinka;
+	}
+
+	public JTextField getTflozinka() {
+		return tflozinka;
+	}
+
+	public void setTflozinka(JTextField tflozinka) {
+		this.tflozinka = tflozinka;
+	}
+
+	public JLabel getLblime() {
+		return lblime;
+	}
+
+	public void setLblime(JLabel lblime) {
+		this.lblime = lblime;
+	}
+
+	public JTextField getTfime() {
+		return tfime;
+	}
+
+	public void setTfime(JTextField tfime) {
+		this.tfime = tfime;
+	}
+
+	public JLabel getLblprezime() {
+		return lblprezime;
+	}
+
+	public void setLblprezime(JLabel lblprezime) {
+		this.lblprezime = lblprezime;
+	}
+
+	public JTextField getTfprezime() {
+		return tfprezime;
+	}
+
+	public void setTfprezime(JTextField tfprezime) {
+		this.tfprezime = tfprezime;
+	}
+
+	public JLabel getLblemail() {
+		return lblemail;
+	}
+
+	public void setLblemail(JLabel lblemail) {
+		this.lblemail = lblemail;
+	}
+
+	public JTextField getTfemail() {
+		return tfemail;
+	}
+
+	public void setTfemail(JTextField tfemail) {
+		this.tfemail = tfemail;
+	}
+
+	public JLabel getLbltelefon() {
+		return lbltelefon;
+	}
+
+	public void setLbltelefon(JLabel lbltelefon) {
+		this.lbltelefon = lbltelefon;
+	}
+
+	public JTextField getTftelefon() {
+		return tftelefon;
+	}
+
+	public void setTftelefon(JTextField tftelefon) {
+		this.tftelefon = tftelefon;
+	}
+
+	public JLabel getLblgrad() {
+		return lblgrad;
+	}
+
+	public void setLblgrad(JLabel lblgrad) {
+		this.lblgrad = lblgrad;
+	}
+
+	public JLabel getLbldrzava() {
+		return lbldrzava;
+	}
+
+	public void setLbldrzava(JLabel lbldrzava) {
+		this.lbldrzava = lbldrzava;
+	}
+
+	public JLabel getLbladresa() {
+		return lbladresa;
+	}
+
+	public void setLbladresa(JLabel lbladresa) {
+		this.lbladresa = lbladresa;
+	}
+
+	public JTextField getTfgrad() {
+		return tfgrad;
+	}
+
+	public void setTfgrad(JTextField tfgrad) {
+		this.tfgrad = tfgrad;
+	}
+
+	public JTextField getTfdrzava() {
+		return tfdrzava;
+	}
+
+	public void setTfdrzava(JTextField tfdrzava) {
+		this.tfdrzava = tfdrzava;
+	}
+
+	public JTextField getTfadresa() {
+		return tfadresa;
+	}
+
+	public void setTfadresa(JTextField tfadresa) {
+		this.tfadresa = tfadresa;
+	}
+
+	public MainFrame getFrame() {
+		return frame;
+	}
+
+	public void setFrame(MainFrame frame) {
+		this.frame = frame;
+	}
+
+	public JPanel getPnlOK() {
+		return pnlOK;
+	}
+
+	public void setPnlOK(JPanel pnlOK) {
+		this.pnlOK = pnlOK;
+	}
+
+	public JButton getBtnOK() {
+		return btnOK;
+	}
+
+	public void setBtnOK(JButton btnOK) {
+		this.btnOK = btnOK;
 	}
 
 }
