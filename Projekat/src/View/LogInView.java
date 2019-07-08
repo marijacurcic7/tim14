@@ -64,9 +64,9 @@ public class LogInView extends JPanel {
 		
 		constructGUI();
 		
-		if (loginc == null) {
+		//if (loginc == null) {
 			loginc = new LogInController(this, preduzece);
-		}
+		//}
 		
 	}
 	
@@ -89,7 +89,7 @@ public class LogInView extends JPanel {
 		add(pnlContent, BorderLayout.CENTER);
 		
 		
-		
+		/*
 		btnReg.addActionListener(new ActionListener() {
 
 			@Override
@@ -120,7 +120,7 @@ public class LogInView extends JPanel {
 					}
 					
 				}
-		});
+		});*/
 		
 	}
 	
