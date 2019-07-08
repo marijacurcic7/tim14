@@ -3,9 +3,9 @@ package View;
 
 import java.awt.BorderLayout;
 import java.awt.Cursor;
+import java.awt.Dimension;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
-import java.awt.Window;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
@@ -14,7 +14,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
-import javax.swing.SwingUtilities;
 
 import Controller.Controller;
 import Main.MainFrame;
@@ -108,7 +107,7 @@ public class KupacView extends BaseView {
 		GridBagLayout gbl = new GridBagLayout();
 		setLayout(gbl);
 		
-	
+		onoSaStrane.setPreferredSize(new Dimension(200, 600));
 		
 		prikazNarudzbenica = new JLabel("  Prikaz mojih narudzbenica  ");
 		// prikaz pojedinacne, i opcije za nju, refresh
@@ -123,6 +122,7 @@ public class KupacView extends BaseView {
 		    	//Window w =SwingUtilities.getWindowAncestor(prikazNarudzbenica);
 		    	JOptionPane.showMessageDialog(null, "Prikaz narudzbenica");
 		    	NarudzbeniceView nv = new NarudzbeniceView(kupac.narudzbenice, preduzece);
+		    	//nv.setPreferredSize(new Dimension(1000, 600));  // skrolbar preferred size,
 		    	proizvodi.getGdeStoji().remove(1);
 		    	proizvodi.getGdeStoji().add(nv);
 		    	proizvodi.getGdeStoji().updateUI();
