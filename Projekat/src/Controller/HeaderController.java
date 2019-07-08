@@ -100,7 +100,7 @@ public class HeaderController {
 		    	if (preduzece.getTrenutnoUlogovani() == null) {
 		    		ProizvodiView pw = null;
 		    		try {
-						pw = new ProizvodiView(frame.getOvajStoSeMenja(), preduzece);
+						pw = new ProizvodiView(frame.getOvajStoSeMenja(), preduzece, preduzece.proizvodi);
 						
 						frame.getCentralni().add(pw);
 						frame.getCentralni().remove(0);
@@ -176,7 +176,7 @@ public class HeaderController {
 					ProizvodiView bw = null;
 					try {
 						//bw = new ProizvodiView(frame.getOvajStoSeMenja(), preduzece);
-						bw = new ProizvodiView(frame.getCentralni(), preduzece);
+						bw = new ProizvodiView(frame.getCentralni(), preduzece, preduzece.proizvodi);
 						
 						frame.setOvajStoSeMenja(bw);  ///? ili on gde stoji
 					} catch (IOException e1) {

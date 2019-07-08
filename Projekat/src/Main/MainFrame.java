@@ -129,11 +129,11 @@ public class MainFrame extends JFrame {
 		// u pregled proizvoda pitati jel null prvo, ako nije pitati jel menadzer
 		
 		//view = new ProizvodiView(preduzece);
-		ProizvodiView bw = new ProizvodiView(ovajStoSeMenja, preduzece);  // da on vidi frejm? zbog dimenzija
+		ProizvodiView bw = new ProizvodiView(ovajStoSeMenja, preduzece, preduzece.proizvodi);  // da on vidi frejm? zbog dimenzija
 		view = bw;
 		//view = ovajStoSeMenja;
 		
-		centralni.add(new ProizvodiView(centralni, preduzece)); 	// izmeniti
+		centralni.add(new ProizvodiView(centralni, preduzece, preduzece.proizvodi)); 	// izmeniti
 		
 		
 		//ovajStoSeMenja.add(new ProizvodiView(ovajStoSeMenja, preduzece)); 	// izmeniti

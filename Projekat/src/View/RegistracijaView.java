@@ -212,7 +212,7 @@ public class RegistracijaView extends JPanel {
 		}
 		else if (preduzece.trenutnoUlogovani.nalog.getTipKorisnika().equals(TipKorisnika.kupac)) {
 			JOptionPane.showMessageDialog(parent, message);
-			ProizvodiView bw = new ProizvodiView(frame.getOvajStoSeMenja(), preduzece);	// za kupca
+			ProizvodiView bw = new ProizvodiView(frame.getOvajStoSeMenja(), preduzece, preduzece.proizvodi);	// za kupca
 			KupacView kv = new KupacView(preduzece, frame);
 			//
 			frame.getHeader().getPrijava().setText("Odjava");
@@ -226,7 +226,7 @@ public class RegistracijaView extends JPanel {
 			// gledam koji je tip
 			// promijeniti zaglavlje, na odjavi
 			JOptionPane.showMessageDialog(parent, "Dodat je menadzer");
-			ProizvodiView bw = new ProizvodiView(frame.getOvajStoSeMenja(), preduzece);	// za kupca
+			ProizvodiView bw = new ProizvodiView(frame.getOvajStoSeMenja(), preduzece, preduzece.proizvodi);	// za kupca
 			AdminView av = new AdminView(preduzece, frame);
 			//
 			frame.getHeader().getPrijava().setText("Odjava");

@@ -38,7 +38,7 @@ public class NarudzbenicaView extends JPanel {
 	Narudzbenica narudzbenica;
 	
 	public NarudzbenicaView(Narudzbenica n, AplikacijaPreduzece ap, NarudzbeniceView nev) {
-		setPreferredSize(new Dimension(500, 150));
+		setPreferredSize(new Dimension(500, 200));
 		
 		//add(new JLabel("Narudzbenica"));
 		

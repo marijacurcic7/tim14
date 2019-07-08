@@ -3,18 +3,25 @@ package View;
 
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.util.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.KeyStroke;
 
 import Controller.ControllerProizvoda;
 import Main.MainFrame;
 import Model.AplikacijaPreduzece;
+import Model.Kategorija;
 import Model.Proizvod;
 import gui.panels.ProizvodPanel;
 
@@ -30,15 +37,17 @@ public class ProizvodiView extends BaseView{
 	MainFrame frame;
 	JPanel gdeStoji;
 	
-	
+	JMenuBar meni;
 	JPanel desniDugmici;
 	JButton sortiraj;
 	JButton pretrazi;
+	JMenu kategorije;
 	
-	public ProizvodiView(JPanel gdeStoji, AplikacijaPreduzece preduzece) throws IOException {
+	public ProizvodiView(JPanel gdeStoji, AplikacijaPreduzece preduzece, List<Proizvod> proizvodi) throws IOException {
 		this.gdeStoji = gdeStoji;
 		this.preduzece = preduzece;
-		this.proizvodi = (ArrayList) preduzece.proizvodi;
+		//this.proizvodi = (ArrayList) preduzece.proizvodi;
+		this.proizvodi = (ArrayList<Proizvod>) proizvodi;
 		initProductPanel();
 		skrol = new JScrollPane(panelSaProizvodima);
 		//		 JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, 
@@ -88,6 +97,107 @@ public class ProizvodiView extends BaseView{
 		pretrazi = new JButton("Pretrazi");
 		desniDugmici.add(sortiraj);
 		desniDugmici.add(pretrazi);
+		meni = new JMenuBar();
+		kategorije = new JMenu("Kategorije");
+		kategorije.setMnemonic(KeyEvent.VK_A);
+		meni.add(kategorije);
+		desniDugmici.add(meni);
+		kreirajKategorije();
+
+	}
+	
+	private void kreirajKategorije() {
+		for(Kategorija k : preduzece.kategorije) {
+			if(k.getNadkategorija()==null) {
+				if(k.getPodkategorije().size()!=0) {
+					JMenu kat = new JMenu(k.getNaziv());
+					//JMenuItem kat = new JMenuItem(k.getNaziv());
+					kat.setMnemonic(KeyEvent.VK_A);
+					JMenuItem katitem1 = new JMenuItem(k.getNaziv());
+					katitem1.setAccelerator(KeyStroke.getKeyStroke(
+					        KeyEvent.VK_K, ActionEvent.CTRL_MASK));
+					katitem1.addActionListener(new ActionListener() {
+						
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							System.out.println(">>>>>>>>>>> Kategorija: "+k.getNaziv());
+							prikazKategorije(k);
+							
+						}
+					});
+					kat.add(katitem1);
+					for(Kategorija kk : k.getPodkategorije()) {
+						JMenuItem katitem = new JMenuItem(kk.getNaziv());
+						katitem.setAccelerator(KeyStroke.getKeyStroke(
+						        KeyEvent.VK_K, ActionEvent.CTRL_MASK));
+						katitem.addActionListener(new ActionListener() {
+							
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								System.out.println(">>>>>>>>>>> Kategorija: "+kk.getNaziv());
+								prikazKategorije(kk);
+								
+							}
+						});
+						kat.add(katitem);
+					}
+					kat.addActionListener(new ActionListener() {
+						
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							System.out.println(">>>>>>>>>>> Kategorija: "+k.getNaziv());
+							prikazKategorije(k);
+							
+						}
+					});
+					
+					kategorije.add(kat);
+				}
+				else {
+					JMenuItem katitem = new JMenuItem(k.getNaziv());
+					katitem.setAccelerator(KeyStroke.getKeyStroke(
+					        KeyEvent.VK_K, ActionEvent.CTRL_MASK));
+					katitem.addActionListener(new ActionListener() {
+						
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							System.out.println(">>>>>> Kategorija: "+k.getNaziv());
+							
+						}
+					});
+					kategorije.add(katitem);
+				}
+				
+				
+				//kategorije.addSeparator();
+				//System.out.println("Kategorija: "+k.getNaziv());
+			}
+		}
+	}
+	
+	private void prikazKategorije(Kategorija k) {
+		ArrayList<Proizvod> novaLista = new ArrayList<Proizvod>();
+		for(Proizvod p : preduzece.proizvodi) {
+			if(p.getKategorija().equals(k)) {
+				novaLista.add(p);
+			}
+			if(p.getKategorija().getNadkategorija()!=null) {
+				 if(p.getKategorija().getNadkategorija().equals(k)) {
+					 novaLista.add(p);
+				 }
+			}
+		}
+		ProizvodiView pv;
+		try {
+			pv = new ProizvodiView(gdeStoji, preduzece, novaLista);
+			gdeStoji.add(pv);
+			gdeStoji.remove(0);
+			gdeStoji.updateUI();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 	private void initProductPanel() throws IOException {

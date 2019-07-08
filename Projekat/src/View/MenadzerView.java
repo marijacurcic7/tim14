@@ -48,7 +48,7 @@ public class MenadzerView extends BaseView {
 		// ono sa strane
 		// splitpane
 		try {
-			proizvodi = new ProizvodiView(this, preduzece);   // aplikacija mu treba
+			proizvodi = new ProizvodiView(this, preduzece, preduzece.proizvodi);   // aplikacija mu treba
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

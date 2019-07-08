@@ -91,7 +91,7 @@ public class ProizvodController extends Controller {
 					}*/
 					ProizvodiView bw = null;
 					try {
-						bw = new ProizvodiView(proizvodView.getGdjeStoji(), preduzece);
+						bw = new ProizvodiView(proizvodView.getGdjeStoji(), preduzece, preduzece.proizvodi);
 					} catch (IOException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -132,7 +132,7 @@ public class ProizvodController extends Controller {
 				}
 				ProizvodiView bw = null;
 				try {
-					bw = new ProizvodiView(proizvodView.getGdjeStoji(), preduzece);
+					bw = new ProizvodiView(proizvodView.getGdjeStoji(), preduzece, preduzece.proizvodi);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -166,7 +166,7 @@ public class ProizvodController extends Controller {
 				proizvod.setAktuelnaCena(sc);
 				ProizvodiView bw = null;
 				try {
-					bw = new ProizvodiView(proizvodView.getGdjeStoji(), preduzece);
+					bw = new ProizvodiView(proizvodView.getGdjeStoji(), preduzece, preduzece.proizvodi);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
