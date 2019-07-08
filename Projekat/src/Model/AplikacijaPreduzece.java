@@ -428,8 +428,14 @@ public class AplikacijaPreduzece {
          return;
       if (this.proizvodi == null)
          this.proizvodi = new java.util.ArrayList<Proizvod>();
-      if (!this.proizvodi.contains(newProizvod))
-         this.proizvodi.add(newProizvod);
+      //if (!this.proizvodi.contains(newProizvod))
+      //   this.proizvodi.add(newProizvod);
+      for (Proizvod p: this.proizvodi) {
+    	  if (newProizvod.getId() == p.getId()) {
+    		  return;
+    	  }
+      }
+      this.proizvodi.add(newProizvod);
    }
    
    /** @pdGenerated default remove
