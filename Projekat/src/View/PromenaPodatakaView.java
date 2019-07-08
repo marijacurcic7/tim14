@@ -162,50 +162,6 @@ public class PromenaPodatakaView extends JPanel {
 		
 	}
 	
-	/*private void ok() throws IOException {
-		
-		
-		Window parent = SwingUtilities.getWindowAncestor(this);
-
-		String lozinka = tflozinka.getText();
-		String ime = tfime.getText();
-		String prezime = tfprezime.getText();
-		String email = tfemail.getText();
-		String telefon = tftelefon.getText();
-		
-		String message = ppcon.promeni(lozinka, ime, prezime, email, telefon, tfgrad.getText(), tfdrzava.getText(), tfadresa.getText());
-		String title = "Greska";
-		
-		JOptionPane.showMessageDialog(parent, message);
-		if (ppcon.isPromenjen()){
-			//JButton btnOk = new JButton("Ok");
-			btnOK.addActionListener(new ActionListener() {
-			    public void actionPerformed(ActionEvent e) {
-			    	PromenaPodatakaView ppv = new PromenaPodatakaView(preduzece, frame);
-			    	
-			    	//JOptionPane.
-
-			        /*if (w != null) {
-			          w.setVisible(false);
-			        }*/
-					/*add(ppv);
-					remove(0);
-					updateUI();
-			        //System.out.println("code excuted");
-			    }
-			}); */
-			//JOptionPane.showOptionDialog(parent, message, title, JOptionPane.OK_OPTION, JOptionPane.INFORMATION_MESSAGE, null, new Object[]{btnOk}, btnOk);
-			
-		//}
-		/*else {
-			JOptionPane.showMessageDialog(parent, message);
-			
-		}*/
-		
-		
-		
-	//}
-
 	public AplikacijaPreduzece getPreduzece() {
 		return preduzece;
 	}

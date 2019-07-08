@@ -222,7 +222,7 @@ public class AplikacijaPreduzece {
 	   for (Korisnik k: korisnici) {
 		   if (k.getNalog().getKorisnickoIme().equals(korisnickoIme) && k.getNalog().getLozinka().equals(lozinka)) {
 			   if(k.getClass().equals(RegistrovaniKupac.class)) {
-				   System.out.println("Loguje se kupac");
+				   
 				   RegistrovaniKupac kupac = (RegistrovaniKupac)k;
 				   trenutnoUlogovani = kupac;
 			   }

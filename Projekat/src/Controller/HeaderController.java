@@ -50,11 +50,11 @@ public class HeaderController {
 		this.panel.getKorpa().addActionListener(new ActionListener() {
 			 public void actionPerformed(ActionEvent e) {
 				 
-			    	System.out.println("Nesto se desilo");
+			    	
 			    	
 			    	KorpaView kv = new KorpaView(preduzece, frame);
 			    	
-			    	System.out.println(frame.getOvajStoSeMenja());
+			    	
 			    	
 			    	if (preduzece.trenutnoUlogovani == null ) {
 			    		frame.getCentralni().add(kv);

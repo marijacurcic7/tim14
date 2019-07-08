@@ -38,7 +38,7 @@ import Model.TipKorisnika;
 import View.BaseView;
 import View.HeaderView;
 import View.ProizvodiView;
-import gui.panels.SviProizvodiPanel;
+
 // commit
 
 public class MainFrame extends JFrame {
@@ -54,7 +54,6 @@ public class MainFrame extends JFrame {
 	JLabel naslov;
 	JPanel glavni;
 	JPanel p;
-	SviProizvodiPanel bw;
 	public JSplitPane split;
 	JPanel ovajStoSeMenja;
 	JPanel centralni;
@@ -73,7 +72,7 @@ public class MainFrame extends JFrame {
 		
 		preduzece = new AplikacijaPreduzece();
 		System.out.println(preduzece.proizvodi.size() + 1);
-		//izgenerisiPreduzece();
+		izgenerisiPreduzece();
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -364,14 +363,6 @@ public class MainFrame extends JFrame {
 
 	public void setP(JPanel p) {
 		this.p = p;
-	}
-
-	public SviProizvodiPanel getBw() {
-		return bw;
-	}
-
-	public void setBw(SviProizvodiPanel bw) {
-		this.bw = bw;
 	}
 
 	public JSplitPane getSplit() {

@@ -85,7 +85,7 @@ public class LogInController {
 				loginv.getFrame().getHeader().getPrijava().setVisible(false);
 				loginv.getFrame().getHeader().getOdjava().setVisible(true);
 				loginv.getFrame().getHeader().updateUI();
-				System.out.println(loginv.getFrame().getOvajStoSeMenja());
+				
 				loginv.getFrame().getCentralni().add(kv);
 				loginv.getFrame().getCentralni().remove(0);
 				loginv.getFrame().getCentralni().updateUI();
@@ -93,7 +93,7 @@ public class LogInController {
 			}
 			
 			else if (preduzece.trenutnoUlogovani.nalog.getTipKorisnika() == TipKorisnika.menadzer) {
-				System.out.println("Menadzer");
+				
 				MenadzerView mv = new MenadzerView(preduzece, loginv.getFrame());
 				
 				loginv.getFrame().getHeader().getOdjava().setVisible(true);

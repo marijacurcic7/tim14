@@ -194,7 +194,7 @@ public class DodavanjeProizvodaController {
 		if (result == JFileChooser.APPROVE_OPTION) {
 			dpview.getTfslika().setText(dpview.getOdabirSlike().getSelectedFile().getAbsolutePath());
 		} else if (result == JFileChooser.CANCEL_OPTION) {
-		    System.out.println("Cancel was selected");
+		   // System.out.println("Cancel was selected");
 		}
 	}
 

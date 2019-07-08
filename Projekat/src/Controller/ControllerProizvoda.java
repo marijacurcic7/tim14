@@ -8,7 +8,7 @@ import Model.AplikacijaPreduzece;
 import View.ProizvodView;
 import gui.panels.ProizvodPanel;
 
-public class ControllerProizvoda extends Controller {
+public class ControllerProizvoda {
 
 	ProizvodPanel pp;
 	AplikacijaPreduzece preduzece;
@@ -22,7 +22,6 @@ public class ControllerProizvoda extends Controller {
 		this.pp.getDugmePregled().addActionListener(new ActionListener() {
 			 public void actionPerformed(ActionEvent e) {
 			      //your code here
-			    	System.out.println("Nesto se desiloooo");
 			    	pregledKliknuto();
 			    }
 			
@@ -46,8 +45,6 @@ public class ControllerProizvoda extends Controller {
 		pp.getGdjeStoji().getGdeStoji().remove(1);
 		}
 		else {
-			System.out.println("Kolko ih ima");
-			System.out.println(pp.getGdjeStoji().getGdeStoji().getComponentCount());
 			pp.getGdjeStoji().getGdeStoji().remove(0);
 		}
 		pp.getGdjeStoji().getGdeStoji().add(novi);

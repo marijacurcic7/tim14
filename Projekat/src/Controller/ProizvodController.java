@@ -21,7 +21,7 @@ import View.ProizvodView;
 import View.ProizvodiView;
 
 
-public class ProizvodController extends Controller {
+public class ProizvodController {
 
 	private ProizvodView proizvodView;
 	private AplikacijaPreduzece preduzece;
@@ -78,7 +78,7 @@ public class ProizvodController extends Controller {
 					proizvodView.getGdjeStoji().updateUI();
 					}
 					else {
-						KupacView stoji = (KupacView) proizvodView.getGdjeStoji();
+						//KupacView stoji = (KupacView) proizvodView.getGdjeStoji();
 						
 						return;
 						
@@ -90,7 +90,7 @@ public class ProizvodController extends Controller {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Obrisi");
+				
 				for(Proizvod p : preduzece.proizvodi) {
 					if(p.equals(proizvod)) {
 						preduzece.proizvodi.remove(proizvod);
@@ -124,9 +124,9 @@ public class ProizvodController extends Controller {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Izmeni");
+				
 				String cenastr = JOptionPane.showInputDialog("Nova cena: ");
-				System.out.println(cenastr);
+				
 				double cena = Double.parseDouble(cenastr);
 				SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
 				Date datum = new Date(System.currentTimeMillis());

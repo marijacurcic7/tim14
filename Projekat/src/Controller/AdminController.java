@@ -7,7 +7,7 @@ import Model.AplikacijaPreduzece;
 import View.AdminView;
 import View.RegistracijaView;
 
-public class AdminController extends Controller {
+public class AdminController {
 	
 	AplikacijaPreduzece preduzece;
 	AdminView view;

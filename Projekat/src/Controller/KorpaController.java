@@ -17,7 +17,7 @@ public class KorpaController {
 	
 	private KorpaView kv;
 	private AplikacijaPreduzece preduzece;
-	private Narudzbenica korpa;
+	
 	
 	public KorpaController(KorpaView kv, AplikacijaPreduzece ap) {
 		

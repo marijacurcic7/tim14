@@ -13,7 +13,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 
-import Controller.Controller;
 import Controller.MenadzerController;
 import Main.MainFrame;
 import Model.AplikacijaPreduzece;

@@ -14,7 +14,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 
-import Controller.Controller;
 import Controller.KupacController;
 import Main.MainFrame;
 import Model.AplikacijaPreduzece;

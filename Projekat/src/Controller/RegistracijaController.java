@@ -57,7 +57,7 @@ public class RegistracijaController {
 		String telefon = regview.getTftelefon().getText();
 		
 		String message = registrujSe(kime, lozinka, ime, prezime, email, telefon, regview.getTfgrad().getText(), regview.getTfdrzava().getText(), regview.getTfadresa().getText());
-		String title = "Greska";
+		//String title = "Greska";
 		
 		if (regview.getKorisnik() == null){
 			
@@ -66,7 +66,7 @@ public class RegistracijaController {
 		}
 		else if (preduzece.trenutnoUlogovani.nalog.getTipKorisnika().equals(TipKorisnika.kupac)) {
 			JOptionPane.showMessageDialog(parent, message);
-			ProizvodiView bw = new ProizvodiView(regview.getFrame().getOvajStoSeMenja(), preduzece, regview.getPreduzece().proizvodi);	// za kupca
+			//ProizvodiView bw = new ProizvodiView(regview.getFrame().getOvajStoSeMenja(), preduzece, regview.getPreduzece().proizvodi);	// za kupca
 			KupacView kv = new KupacView(preduzece, regview.getFrame());
 			
 			regview.getFrame().getHeader().getOdjava().setVisible(false);
@@ -75,12 +75,12 @@ public class RegistracijaController {
 			regview.add(kv);
 			regview.remove(0);
 			regview.updateUI();
-			System.out.println(preduzece.trenutnoUlogovani.getIme());
+			
 		}
 		else if (preduzece.trenutnoUlogovani.nalog.getTipKorisnika().equals(TipKorisnika.administrator)){
 			
 			JOptionPane.showMessageDialog(parent, "Dodat je menadzer");
-			ProizvodiView bw = new ProizvodiView(regview.getFrame().getOvajStoSeMenja(), preduzece, regview.getPreduzece().proizvodi);	// za kupca
+			//ProizvodiView bw = new ProizvodiView(regview.getFrame().getOvajStoSeMenja(), preduzece, regview.getPreduzece().proizvodi);	// za kupca
 			AdminView av = new AdminView(preduzece, regview.getFrame());
 			
 			regview.getFrame().getHeader().getPrijava().setVisible(false);
@@ -89,7 +89,7 @@ public class RegistracijaController {
 			regview.add(av);
 			regview.remove(0);
 			regview.updateUI();
-			System.out.println(preduzece.trenutnoUlogovani.getIme());
+			
 		}
 
 	}
