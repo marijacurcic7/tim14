@@ -187,10 +187,12 @@ public class FormiranjeNarudzbeniceView extends JPanel {
 		String prezime = tfprezime.getText();
 		//String email = tfemail.getText();
 		String telefon = tftelefon.getText();
+		String karticastr = tfkartica.getText();
+		
 		
 		double cena = korpa.getUkupanIznos();
 		
-		String message = fncon.formirajNarudzbenicu(ime, prezime, telefon, cena, tfgrad.getText(), tfdrzava.getText(), tfadresa.getText());
+		String message = fncon.formirajNarudzbenicu(ime, prezime, telefon, karticastr, cena, tfgrad.getText(), tfdrzava.getText(), tfadresa.getText());
 		
 		//String message = regcon.registrujSe(kime, lozinka, ime, prezime, email, telefon);
 		//String title = "Greska";
@@ -207,7 +209,7 @@ public class FormiranjeNarudzbeniceView extends JPanel {
 			frame.getView().add(bw);
 			frame.getView().remove(0);
 			frame.getView().updateUI();*/
-			doSth();
+			//doSth();
 			//KupacView kv = new KupacView(preduzece, frame);
 			//add(kv);
 			//remove(0);

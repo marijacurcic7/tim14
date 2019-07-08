@@ -191,7 +191,12 @@ public class ProizvodiView extends BaseView{
 		try {
 			pv = new ProizvodiView(gdeStoji, preduzece, novaLista);
 			gdeStoji.add(pv);
-			gdeStoji.remove(0);
+			if(preduzece.trenutnoUlogovani == null) {
+				gdeStoji.remove(0);
+			}
+			else {
+				gdeStoji.remove(1);
+			}
 			gdeStoji.updateUI();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

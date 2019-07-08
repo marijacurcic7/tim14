@@ -21,6 +21,7 @@ public class Narudzbenica implements Serializable {
    private String prezime;
    /** @pdOid d17fa62c-3a2e-485b-bda7-c2ed0579ccab */
    private String telefon;
+   private int kartica;
   
    private double ukupanIznos = 0.0;
    
@@ -238,6 +239,14 @@ public class Narudzbenica implements Serializable {
 	
 	public void setStanje(Stanje stanje) {
 		this.stanje = stanje;
+	}
+
+	public int getKartica() {
+		return kartica;
+	}
+
+	public void setKartica(int kartica) {
+		this.kartica = kartica;
 	}
    
    

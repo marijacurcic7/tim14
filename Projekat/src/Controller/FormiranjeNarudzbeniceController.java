@@ -30,7 +30,7 @@ public class FormiranjeNarudzbeniceController {
 		
 	}
 	
-	public String formirajNarudzbenicu(String ime, String prezime, String telefon, double cena, String drzava, String grad, String adresa) {
+	public String formirajNarudzbenicu(String ime, String prezime, String telefon, String karticastr, double cena, String drzava, String grad, String adresa) {
 		
 		if (ime == null) {
 			return "Unesite ime";
@@ -47,6 +47,19 @@ public class FormiranjeNarudzbeniceController {
 		if (prezime.isEmpty()) {
 			return "Unesite prezime";
 		}
+		
+		int brKartice;
+		karticastr = karticastr.trim();
+		if (karticastr.isEmpty()) {
+			return "Unesite karticu";
+		}
+		
+		 try { 
+			brKartice = Integer.parseInt(karticastr); 
+		    } catch(NumberFormatException e) { 
+		        return "Niste lepo uneli karticu..."; 
+		    }
+		
 		
 		if (drzava == null) {
 			return "Unesite drzavu";
@@ -79,6 +92,7 @@ public class FormiranjeNarudzbeniceController {
 		korpa.setUkupanIznos(cena);
 		korpa.setMesto(mesto);
 		korpa.setStanje(new Zavrsena());
+		korpa.setKartica(brKartice);
 		
 		kupac.getNarudzbenice().add(korpa);
 		//

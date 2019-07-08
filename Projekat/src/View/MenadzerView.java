@@ -171,6 +171,11 @@ public class MenadzerView extends BaseView {
 		    public void mouseClicked(MouseEvent e) {
 		        // the user clicks on the label
 		    	JOptionPane.showMessageDialog(null, "Izmena podataka");
+		    	PromenaPodatakaView ppv = new PromenaPodatakaView(preduzece, frame);
+				
+				remove(1);
+				add(ppv);
+				updateUI();
 		    }});
 		
 		onoSaStrane.add(izmenaPodataka);
