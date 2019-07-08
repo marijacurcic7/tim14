@@ -17,6 +17,7 @@ import javax.swing.JButton;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
@@ -79,14 +80,63 @@ public class ProizvodiView extends BaseView{
 			      //your code here
 			    	// skloniti i desno i panel, pa dodati i desno i panel
 				 sortirajCenaRastuce();
-				 	remove(0);
-				 	remove(0);
+				 //remove(0);
+				 //remove(0);
 				 	//add(Proiz)
-				 	updateUI();
+				 //updateUI();
+				 	
 			    }
 			
 		});
 		
+		pretrazi.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				pretrazi();
+				
+				
+			}
+			
+		});
+		
+		
+		
+	}
+	protected void pretrazi() {
+		String trazeno = pretragaTxt.getText().toLowerCase();
+		proizvodi = new ArrayList<Proizvod>();
+		
+		for (Proizvod p: preduzece.proizvodi) {
+			if (p.getNaziv().toLowerCase().contains(trazeno)) {
+				proizvodi.add(p);
+			}
+		}
+		
+		if (proizvodi.isEmpty()) {
+			JOptionPane.showMessageDialog(null, "Nije pronadjen nijedan proizvod sa unetim nazivom.");
+			pretragaTxt.setText("");
+			return;
+		}
+		
+		ProizvodiView pv;
+		try {
+			pv = new ProizvodiView(gdeStoji, preduzece, proizvodi);
+			gdeStoji.add(pv);
+			if(preduzece.trenutnoUlogovani == null) {
+				gdeStoji.remove(0);
+			}
+			else {
+				gdeStoji.remove(1);
+			}
+			//remove(0);
+		 	//remove(0);
+		 	
+			//add(Proiz)
+		 	updateUI();
+			gdeStoji.updateUI();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		
 	}
@@ -118,6 +168,11 @@ public class ProizvodiView extends BaseView{
 				else {
 					gdeStoji.remove(1);
 				}
+				//remove(0);
+			 	//remove(0);
+			 	
+				//add(Proiz)
+			 	updateUI();
 				gdeStoji.updateUI();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
@@ -141,7 +196,7 @@ public class ProizvodiView extends BaseView{
 		
 		
 		JPanel holder = new JPanel(new FlowLayout());
-		pretragaTxt = new JTextField(15);
+		pretragaTxt = new JTextField(12);
 		holder.add(pretragaTxt);
 		holder.add(pretrazi);
  		desniDugmici.add(holder);
@@ -264,6 +319,13 @@ public class ProizvodiView extends BaseView{
 		GridLayout grid = new GridLayout(0, 3, 50, 50);
 		panelSaProizvodima.setLayout(grid);
 		//this.setLayout(grid);
+		
+		//if (proizvodi.isEmpty()) {
+		//	JPanel panel = new JPanel(new BorderLayout());
+		//	panel.add(new JLabel("Nema nijednog proizvoda."), BorderLayout.CENTER);
+		//	panelSaProizvodima.add(panel);
+		//	return;
+		//}
 		
 		for (Proizvod p: this.proizvodi) {
 			ProizvodPanel pp = new ProizvodPanel(p, this, preduzece);

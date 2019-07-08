@@ -74,7 +74,7 @@ public class MainFrame extends JFrame {
 		
 		preduzece = new AplikacijaPreduzece();
 		System.out.println(preduzece.proizvodi.size() + 1);
-		//izgenerisiPreduzece();
+		izgenerisiPreduzece();
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -89,7 +89,9 @@ public class MainFrame extends JFrame {
             public void windowClosing(WindowEvent e){
                 
             	try {
-					preduzece.pisanjeUFajl();
+            		
+            		preduzece.pisanjeUFajl();
+            		
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -356,7 +358,8 @@ public class MainFrame extends JFrame {
 		System.out.println(put);
 		String fld = currentDir.getAbsolutePath() + sep + "slike" + sep;
 		System.out.println("ooooooooooooooooooooo");
-		
+		//fld = "..\\slike\\";
+		// ako nema fajl tu, da postavi defaultnu
 		
 		Kategorija kat = new Kategorija("Kuhinja");
 		Kategorija k = new Kategorija("Posudje", kat);
