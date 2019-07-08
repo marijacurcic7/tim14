@@ -164,6 +164,7 @@ public class LogInView extends JPanel {
 				
 				//frame.setOvajStoSeMenja(holder);
 			
+				// 
 				frame.getHeader().getPrijava().setText("Odjava");
 				frame.getHeader().updateUI();
 				// dodala.frame.getovajstosemenja()

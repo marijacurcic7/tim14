@@ -50,8 +50,8 @@ public class ProizvodView extends BaseView {
 		add(slika);
 		naziv = new JLabel(p.getNaziv());
 		this.add(naziv);
-		//int cena = 1;
-		System.out.println("asdadas");
+		//int cena = 1;  /
+		System.out.println("asdadas");  
 		jedinicnaCena = new JLabel(p.getAktuelnaCena().getRedovnaCena() + "");
 		this.add(jedinicnaCena);
 	}

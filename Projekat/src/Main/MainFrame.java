@@ -154,7 +154,7 @@ public class MainFrame extends JFrame {
 
 		split = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		split.setTopComponent(header);
-		
+		//
 		JPanel panel = new JPanel(new BorderLayout());
 		JPanel drugiPanel = new JPanel();
 		JPanel gornjiPanel = new JPanel();

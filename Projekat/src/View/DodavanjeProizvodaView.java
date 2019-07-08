@@ -230,7 +230,7 @@ public class DodavanjeProizvodaView extends JPanel {
 			//updateUI();
 			frame.getCentralni().add(mv);
 			frame.getCentralni().remove(0);
-			frame.getCentralni().updateUI();
+			frame.getCentralni().updateUI(); 
 			//frame.getView().add(mv);
 			//frame.getView().remove(0);
 			//frame.getView().updateUI();

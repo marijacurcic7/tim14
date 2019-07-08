@@ -207,16 +207,23 @@ public class FormiranjeNarudzbeniceView extends JPanel {
 			frame.getView().add(bw);
 			frame.getView().remove(0);
 			frame.getView().updateUI();*/
-			KupacView kv = new KupacView(preduzece, frame);
-			add(kv);
-			remove(0);
-			updateUI();
+			doSth();
+			//KupacView kv = new KupacView(preduzece, frame);
+			//add(kv);
+			//remove(0);
+			//updateUI();
 		}
 		else {
 			JOptionPane.showMessageDialog(parent, message);
 
 			//ok();
 		}
+	}
+	
+	
+	private void doSth() {
+		//KupacView kv = new KupacView(preduzece, frame);
+		
 	}
 	
 	private void ulogovan() {
