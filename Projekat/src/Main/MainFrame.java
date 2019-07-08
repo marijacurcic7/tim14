@@ -47,7 +47,6 @@ public class MainFrame extends JFrame {
 	public static final String APP_TITLE = "Nas WebShop";
 
 	JScrollPane skrol;
-	//SviProizvodiPanel view; // on ce se mijenjati, a view cce imati svog kontrolera
 	JButton login;
 	JButton korpa;
 	JLabel broj;
@@ -78,69 +77,40 @@ public class MainFrame extends JFrame {
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		//setSize(1500, 1050);
 		setSize(screenSize);
 		setLocationRelativeTo(null);
-		//glavni = new JPanel();	
 		
-		//trenUlogovani.getNalog().getTipKorisnika()
 		
 		addWindowListener(new WindowAdapter(){
             public void windowClosing(WindowEvent e){
                 
             	try {
-            		
             		preduzece.pisanjeUFajl();
             		
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
             }
         });
 		
-		//menja = new JPanel();
 		header = new HeaderView(preduzece);
 		
 		centralni = new JPanel();
 		centralni.setPreferredSize(new Dimension(1600, 600));
 		
 		ovajStoSeMenja = new JPanel();
-		//ovajStoSeMenja.setPreferredSize(new Dimension(1600, 600));
 		
-		// u pregled proizvoda pitati jel null prvo, ako nije pitati jel menadzer
-		
-		//view = new ProizvodiView(preduzece);
 		ProizvodiView bw = new ProizvodiView(ovajStoSeMenja, preduzece, preduzece.proizvodi);  // da on vidi frejm? zbog dimenzija
 		view = bw;
-		//view = ovajStoSeMenja;
 		
 		centralni.add(new ProizvodiView(centralni, preduzece, preduzece.proizvodi)); 	// izmeniti
 		
-		
-		//ovajStoSeMenja.add(new ProizvodiView(ovajStoSeMenja, preduzece)); 	// izmeniti
-		
-		//bw.resize(d);
-		
 		bw.setMaximumSize(new Dimension(1000, 400));
-		//view.setMaximumSize(new Dimension(1000, 400));
-		
-		
-		//
-		//bw = new SviProizvodiPanel();  // da on vidi frejm? zbog dimenzija
-		
-		//setContentPane(glavni);
-		//add(glavni);
-		
-		//initHeader();
-
 		
 		split = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		split.setTopComponent(header);
-		//
 		
 		JLabel slika = new JLabel();
-		//slika.setIcon(new ImageIcon(new ImageIcon("C:\\\\Windows\\\\Web\\\\Wallpaper\\\\Theme1\\\\img1.jpg").getImage().getScaledInstance(300, 200, Image.SCALE_DEFAULT)));
 		
 		File currentDir = new File("");
 		String sep = File.separator;
@@ -148,170 +118,31 @@ public class MainFrame extends JFrame {
 		
 		slika.setIcon(new ImageIcon(new ImageIcon(backgr).getImage().getScaledInstance(2000, 200, Image.SCALE_DEFAULT)));
 		
-		
-		
 		JPanel panel = new JPanel(new BorderLayout());
 		JPanel drugiPanel = new JPanel();
 		JPanel gornjiPanel = new JPanel();
-		//gornjiPanel.setBackground(new Color(255, 255, 255));
 		panel.add(gornjiPanel, BorderLayout.PAGE_START);
 		gornjiPanel.setPreferredSize(new Dimension(1100, 30));
-		//drugiPanel.setBackground(new Color(255, 100, 255));
 		drugiPanel.add(slika);
 		drugiPanel.setPreferredSize(new Dimension(0, 200));
 		panel.add(bw);
-		//panel.add(bw, BorderLayout.CENTER);
 		
 		panel.add(centralni, BorderLayout.CENTER);
-		//panel.add(ovajStoSeMenja, BorderLayout.CENTER);
 		panel.add(drugiPanel, BorderLayout.PAGE_END);
 		
 		ovajStoSeMenja = centralni;
 		
 		split.setBottomComponent(panel);
-		
-		//split.setBottomComponent(bw);
 		split.setDividerLocation(0.8);
 		
-		skrol = new JScrollPane(split);
-		
-		//add(skrol, BorderLayout.CENTER); probala sam da stavim slicno sa swing
-		
-		add(skrol, BevelBorder.RAISED);
-		
-		/*
-		prijava.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				//bw.setVisible(false);
-				LogInView lv = new LogInView();
-				//split.setBottomComponent(lv);
-				bw.add(lv);
-				bw.remove(0);
-				bw.updateUI();
-			}
-		});*/
-		
+		skrol = new JScrollPane(split);	
+		add(skrol, BevelBorder.RAISED);		
 		
 		headerController = new HeaderController(header, view, preduzece, this); 
 	    
-		ispis();
-
+		//ispis();
 	}
 
-	
-	
-	public JPanel getCentralni() {
-		return centralni;
-	}
-
-
-
-	public void setCentralni(JPanel centralni) {
-		this.centralni = centralni;
-	}
-
-
-
-	private void initHeader() {
-		p = new JPanel(new GridBagLayout());
-
-	    p.setLayout(new GridBagLayout());
-	    GridBagConstraints c = new GridBagConstraints();
-	    c.insets = new Insets(4, 4, 4, 4);
-	    c.weighty = 1.0;
-	    c.weightx = 0.0;
-	    c.gridx = 0;
-	    c.gridy = 0;
-	    c.gridwidth = 3;
-	    //c.fill = GridBagConstraints.BOTH;
-	    c.anchor = GridBagConstraints.CENTER; // place component on the North
-	    System.out.println("java dugme");
-	    System.out.println(c.gridx + ", a y " + c.gridy);
-	    //p.add(new JButton("Java"), c);
-	    //p.add(new JPanel(), c);
-	    c.gridx = 0;
-	    c.gridy = 1;
-	    c.gridheight = 1;
-	    c.gridwidth = 1;
-	    c.anchor = GridBagConstraints.CENTER;
-	    System.out.println("izvor dugme");
-	    System.out.println(c.gridx + ", a y " + c.gridy);
-	    p.add(new JLabel("Labela1"), c);
-	    //p.add(new JPanel(), c);
-	    c.gridy = 2;
-	    c.gridwidth = 1;
-	    c.anchor = GridBagConstraints.CENTER; // remember to rest to center
-	    System.out.println("I");
-	    System.out.println(c.gridx + ", a y " + c.gridy);
-	    p.add(new JPanel(), c);
-	    
-	    c.gridx = 1;
-	    c.gridy = 0;
-	    c.gridwidth = 1;
-	    c.anchor = GridBagConstraints.CENTER; // remember to rest to center
-	    p.add(new JPanel(), c);
-	    
-	    c.gridy = 1;
-	    p.add(new JLabel("Labela2"), c);
-	    
-	    c.gridy = 2;
-	    p.add(new JPanel(),c);
-	    
-	    c.gridx = 2;
-	    
-	    c.gridy = 0;
-	    c.gridwidth = 1;
-	    c.anchor = GridBagConstraints.CENTER; // remember to rest to center
-	    p.add(new JPanel(), c);
-	    
-	    c.gridy = 1;
-
-	    //p.add(new JButton("Dugme2"), c);
-	    
-	    p.add(new JPanel(), c);
-	    
-	    c.gridy = 2;
-	    p.add(new JPanel(),c);
-	    
-	    
-	    c.gridx = 3;
-	    c.gridy = 0;
-	    c.gridheight = 3;
-	    c.fill = GridBagConstraints.BOTH;
-	    c.weightx = 1.0;
-	    JLabel lab= new JLabel("TITLE");
-	    JPanel pn = new JPanel();
-	    pn.add(lab);
-	    pn.setBackground(new Color(100, 200, 200));
-	    p.add(pn, c);
-	    
-	    c.fill = GridBagConstraints.NONE;
-	    
-	    c.gridx = 4;
-	    
-	    //c.gridy = 0;
-	    //c.gridwidth = 1;
-	   
-	    c.anchor = GridBagConstraints.CENTER; // remember to rest to center
-	    //p.add(new JPanel(), c);
-	    
-	    c.weightx = 0.0;
-	    c.gridy = 0;
-	    //p.add(new JButton("Prijava"), c);
-	    prijava = new JButton("Prijava");
-	    p.add(prijava, c);
-	    
-	    c.gridy = 2;
-	    p.add(new JPanel(),c);
-	    
-	    c.gridx = 5;
-	    c.gridy = 0;
-	    p.add(new JButton("Korpa"), c);
-	    
-	
-	}
 	
 	public void ispis() {
 		System.out.println("\n\n-----------------------------------------------\n");
@@ -347,19 +178,13 @@ public class MainFrame extends JFrame {
 	}
 	
 	public void izgenerisiPreduzece() {
-		// prvo napraviti kategorije, pa proizvode, pa stavke cenovnika i dodati kome sta treba
 		
 		File currentDir = new File("");
-		System.out.println("kkkkkkkkkkkkkkkkkkkk");
 		String sep = File.separator;
 		String put = currentDir.getAbsolutePath() + sep + "slike" + sep + "solja.jpg";
-		System.out.println(put);
 		//put = "C:\\Users\\Korisnik\\Desktop\\sims_webshop\\tim14\\Projekat\\slike\\solja.jpg";
-		System.out.println(put);
 		String fld = currentDir.getAbsolutePath() + sep + "slike" + sep;
-		System.out.println("ooooooooooooooooooooo");
-		//fld = "..\\slike\\";
-		// ako nema fajl tu, da postavi defaultnu
+
 		
 		Kategorija kat = new Kategorija("Kuhinja");
 		Kategorija k = new Kategorija("Posudje", kat);
@@ -379,7 +204,6 @@ public class MainFrame extends JFrame {
 		
 		SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
 		Date datum = new Date(System.currentTimeMillis());
-		//String datstr = f.format(datum);
 		StavkaCenovnika sc = new StavkaCenovnika(100, datum, p);
 		p.setAktuelnaCena(sc);
 		
@@ -460,13 +284,22 @@ public class MainFrame extends JFrame {
 		nalog1.setTipKorisnika(TipKorisnika.administrator);
 		Korisnik kor1 = new Korisnik("admin", "admin", null, null, nalog1);
 		preduzece.addKorisnici(kor1);
-		System.out.println("asdas");
-		System.out.println(preduzece.korisnici.size());
+		//System.out.println("asdas");
+		//System.out.println(preduzece.korisnici.size());
 	}
 
 	public static void main(String[] args) throws IOException {
 		new MainFrame().setVisible(true);
 		
+	}
+	
+	public JPanel getCentralni() {
+		return centralni;
+	}
+
+
+	public void setCentralni(JPanel centralni) {
+		this.centralni = centralni;
 	}
 
 	public JScrollPane getSkrol() {

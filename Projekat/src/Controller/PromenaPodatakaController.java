@@ -55,31 +55,17 @@ public class PromenaPodatakaController {
 		
 		JOptionPane.showMessageDialog(parent, message);
 		if (isPromenjen()){
-			//JButton btnOk = new JButton("Ok");
 			ppview.getBtnOK().addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
 			    	PromenaPodatakaView ppv = new PromenaPodatakaView(preduzece, ppview.getFrame());
 			    	
-			    	//JOptionPane.
-
-			        /*if (w != null) {
-			          w.setVisible(false);
-			        }*/
 					ppview.add(ppv);
 					ppview.remove(0);
 					ppview.updateUI();
-			        //System.out.println("code excuted");
 			    }
 			}); 
-			//JOptionPane.showOptionDialog(parent, message, title, JOptionPane.OK_OPTION, JOptionPane.INFORMATION_MESSAGE, null, new Object[]{btnOk}, btnOk);
 			
 		}
-		/*else {
-			JOptionPane.showMessageDialog(parent, message);
-			
-		}*/
-		
-
 		
 	}
 

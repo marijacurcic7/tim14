@@ -38,7 +38,6 @@ public class NarudzbenicaDialog extends JDialog {
 	private JTextField tfadresa;
 	
 	static JFrame parent = new JFrame();
-	//protected JFrame parent;
 	
 	
 	public NarudzbenicaDialog() {
@@ -108,34 +107,16 @@ public class NarudzbenicaDialog extends JDialog {
 				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
 		pnlContent.add(tfadresa, new GridBagConstraints(1, 6, 1, 1, 100, 0, GridBagConstraints.WEST,
 				GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
-		
-		/*pnlContent.add(btnOK, new GridBagConstraints(1, 7, 1, 1, 100, 0, GridBagConstraints.WEST,
-				GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));*/
-		//pnlOK.add(btnOK);
+
 		
 		pnlContent.setVisible(true);
 
 		add(pnlContent, BorderLayout.CENTER);
 		
-		//add(pnlOK, BorderLayout.SOUTH);
 		
 		add(btnOK);
 		add(btnCancell);
 		
-		/*btnOK.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-					
-					try {
-						ok();
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-					
-				}
-		});*/
-	
+		
 	}
 }

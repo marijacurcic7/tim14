@@ -31,7 +31,6 @@ public class PromenaPodatakaView extends JPanel {
 	
 	private JPanel pnlContent;
 	private JLabel lblkorisnickoime;
-	//private JTextField tfkorisnicko;
 	private JLabel lbllozinka;
 	private JTextField tflozinka;
 	private JLabel lblime;
@@ -56,19 +55,16 @@ public class PromenaPodatakaView extends JPanel {
 	private JButton btnOK;
 	
 	public PromenaPodatakaView(AplikacijaPreduzece preduzece, MainFrame frame) {
-		//setLayout(new FlowLayout());
 		
 		this.frame = frame;
 		this.preduzece = preduzece;
 		this.korisnik = preduzece.trenutnoUlogovani;
-		//this.korisnik = preduzece.trenutnoUlogovani;
 		
 		pnlContent = new JPanel(new GridBagLayout());
 		
 		lblkorisnickoime = new JLabel("Korisnicko ime: "+korisnik.getNalog().getKorisnickoIme());
 
 		lbllozinka = new JLabel("Lozinka:");
-		//tflozinka = new JPasswordField(20);
 		tflozinka = new JTextField(20);
 		tflozinka.setText(korisnik.nalog.getLozinka());
 		
@@ -107,7 +103,6 @@ public class PromenaPodatakaView extends JPanel {
 		}
 		
 		
-		//pnlOK = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 		btnOK = new JButton("OK");
 		
 		
@@ -161,33 +156,14 @@ public class PromenaPodatakaView extends JPanel {
 		
 		pnlContent.add(btnOK, new GridBagConstraints(1, 9, 1, 1, 100, 0, GridBagConstraints.WEST,
 				GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
-		//pnlOK.add(btnOK);
 
 		add(pnlContent, BorderLayout.CENTER);
 		
-		//add(pnlOK, BorderLayout.SOUTH);
-		/*
-		btnOK.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-					
-					try {
-						ok();
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-					
-				}
-		});
-		*/
+		
 	}
 	
-	private void ok() throws IOException {
-		//if (ppcon == null) {
-		//	ppcon = new PromenaPodatakaController(this, preduzece);
-		//}
+	/*private void ok() throws IOException {
+		
 		
 		Window parent = SwingUtilities.getWindowAncestor(this);
 
@@ -212,15 +188,15 @@ public class PromenaPodatakaView extends JPanel {
 			        /*if (w != null) {
 			          w.setVisible(false);
 			        }*/
-					add(ppv);
+					/*add(ppv);
 					remove(0);
 					updateUI();
 			        //System.out.println("code excuted");
 			    }
-			}); 
+			}); */
 			//JOptionPane.showOptionDialog(parent, message, title, JOptionPane.OK_OPTION, JOptionPane.INFORMATION_MESSAGE, null, new Object[]{btnOk}, btnOk);
 			
-		}
+		//}
 		/*else {
 			JOptionPane.showMessageDialog(parent, message);
 			
@@ -228,7 +204,7 @@ public class PromenaPodatakaView extends JPanel {
 		
 		
 		
-	}
+	//}
 
 	public AplikacijaPreduzece getPreduzece() {
 		return preduzece;

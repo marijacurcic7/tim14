@@ -14,7 +14,6 @@ public class SviProizvodiPanel extends AbstractPanelCM {
 	JScrollPane skrol;
 	
 	public SviProizvodiPanel() throws IOException {
-		// lose the panelSaProizvodima?
 		initProductPanel();
 		
 		add(panelSaProizvodima);
@@ -22,17 +21,14 @@ public class SviProizvodiPanel extends AbstractPanelCM {
 	}
 
 	private void initProductPanel() throws IOException {
-		// ovaj treba da kupi iz aplikacije listu proizvoda
 		
 		panelSaProizvodima = new JPanel();
 		GridLayout grid = new GridLayout(0, 4, 50, 50);
 		panelSaProizvodima.setLayout(grid);
 		
-		// ova petlja isto za potrebe gui-ja u ranoj fazi radi vizuelizacije panela/prozora
 		for (int i = 0; i < 18; i++) {
 			Proizvod p  = new Proizvod("proizvod" + i);
-			//ProizvodPanel pp = new ProizvodPanel(p, this); //
-			//panelSaProizvodima.add(pp);
+			
 					
 		}
 	}

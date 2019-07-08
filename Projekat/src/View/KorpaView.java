@@ -34,7 +34,6 @@ public class KorpaView extends JPanel {
 	
 	MainFrame frame;
 	
-	// jscrollpane ce primiti pnlContent, a u pnlContent redamo stavke narudzbenice
 	private JPanel pnlContent;
 	
 	public KorpaView(AplikacijaPreduzece ap, MainFrame mf) {
@@ -51,8 +50,6 @@ public class KorpaView extends JPanel {
 		pnlContent = new JPanel();
 		
 		pnlContent.setLayout(new GridLayout(preduzece.korpa.stavkeNarudzbenice.size(), 1));
-		//pnlContent.setPreferredSize(new Dimension(500, 700));
-		//pnlContent.setLayout(new GridLayout(0, 1));
 		
 		int i = 0;
 		for(StavkaNarudzbenice sn : korpa.getStavkaNarudzbenice()) {
@@ -60,7 +57,6 @@ public class KorpaView extends JPanel {
 			StavkaNarudzbeniceView snv = new StavkaNarudzbeniceView(sn, preduzece, this);
 			pnlContent.add(snv, new GridBagConstraints(0, i, 1, 1, 0, 0, GridBagConstraints.WEST,
 					GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
-			//add(new JLabel(sn.proizvod.getNaziv()));
 			i+=10;
 		}
 		ukupnaCena = new JLabel("Ukupan iznos: "+korpa.getUkupanIznos());
@@ -68,76 +64,14 @@ public class KorpaView extends JPanel {
 		linija.add(ukupnaCena);
 		linija.add(kupi);
 		linija.add(isprazni);
-		//linija.add(new JButton("asdasd"));
-		//pnlContent.add(linija);
+		
 		scroll = new JScrollPane(pnlContent, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		scroll.setPreferredSize(new Dimension(1000, 600));
 		
 		pnl.add(scroll);
 		pnl.add(linija);
 		add(pnl);
-		//add(pnlContent);
-		/*
-		isprazni.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				preduzece.korpa = new Narudzbenica();
-				//korpa = new Narudzbenica();
-				KorpaView kv = new KorpaView(preduzece, frame);
-				add(kv);
-				remove(0);
-				updateUI();
-			}
-		});
 		
-		kupi.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-					//loginv.setVisible(false);
-					//System.out.println("");
-					//removeAll();
-					//NarudzbenicaDialog nd = new NarudzbenicaDialog();
-					
-					//JOptionPane.showOptionDialog(this, nd, "Narudzbenica", JOptionPane.OK_OPTION, JOptionPane.INFORMATION_MESSAGE, null, new Object[]{}, null);
-					//add(nd);
-					
-					//nd.show();
-					//nd.setVisible(true);
-					if (korpa.stavkeNarudzbenice.size()==0) {
-						Window w = SwingUtilities.getWindowAncestor(kupi);
-						JOptionPane.showMessageDialog(w, "Korpa je prazna");
-					}
-					else if(preduzece.trenutnoUlogovani == null) {
-						//RegistracijaView rv = new RegistracijaView(preduzece, frame);
-						
-						//login -> nullpointerexception
-						///*LogInView rv = new LogInView(preduzece, frame);
-						//add(rv);
-						//remove(0);
-						//updateUI();
-						
-						//samo poruka
-						
-						Window w = SwingUtilities.getWindowAncestor(kupi);
-						JOptionPane.showMessageDialog(w, "Ulogujte se");
-						
-					}
-					else {
-						FormiranjeNarudzbeniceView fnv = new FormiranjeNarudzbeniceView(preduzece, frame);
-						add(fnv);
-						remove(0);
-						updateUI();
-					}
-				
-					
-					
-					//rv.setVisible(true);
-					//setVisible(false);
-					
-				
-		});*/
 	}
 
 	public KorpaController getKorpacon() {

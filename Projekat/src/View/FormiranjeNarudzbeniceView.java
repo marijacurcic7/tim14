@@ -161,16 +161,6 @@ public class FormiranjeNarudzbeniceView extends JPanel {
 		pnl.add(btnOK);
 		pnl.add(btnCancell);
 		
-		/*btnOK.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-					
-					ok();
-					
-				}
-		});
-		*/
 		
 		add(pnl);
 	
@@ -185,7 +175,6 @@ public class FormiranjeNarudzbeniceView extends JPanel {
 		
 		String ime = tfime.getText();
 		String prezime = tfprezime.getText();
-		//String email = tfemail.getText();
 		String telefon = tftelefon.getText();
 		String karticastr = tfkartica.getText();
 		
@@ -194,12 +183,8 @@ public class FormiranjeNarudzbeniceView extends JPanel {
 		
 		String message = fncon.formirajNarudzbenicu(ime, prezime, telefon, karticastr, cena, tfgrad.getText(), tfdrzava.getText(), tfadresa.getText());
 		
-		//String message = regcon.registrujSe(kime, lozinka, ime, prezime, email, telefon);
-		//String title = "Greska";
 		
 		if(message.equals("")) {
-			//JOptionPane.showMessageDialog(parent, "Narudzbenica formirana");
-			//JOptionPane.showConfirmDialog(this, "Plati");
 			
 			int dialogbtn = JOptionPane.YES_NO_OPTION;
 			int dialogrez = JOptionPane.showConfirmDialog(this, "Plati", "Narudzbenica je formirana", dialogbtn);
@@ -209,21 +194,6 @@ public class FormiranjeNarudzbeniceView extends JPanel {
 			
 			preduzece.narudzbenice.add(narudzbenica);
 
-			/*ProizvodiView bw = null;
-			try {
-				bw = new ProizvodiView(frame.getView(), preduzece, preduzece.proizvodi);
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			frame.getView().remove(1);
-			frame.getView().add(bw);
-			
-			frame.getView().updateUI();*/
-			//doSth();
-			//KupacView kv = new KupacView(preduzece, frame);
-			//remove(0);
-			//add(kv);
 			
 			updateUI();
 		}

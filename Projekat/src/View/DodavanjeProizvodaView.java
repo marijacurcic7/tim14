@@ -121,56 +121,11 @@ public class DodavanjeProizvodaView extends JPanel {
 		
 		pnlContent.add(btnOK, new GridBagConstraints(1, 8, 1, 1, 100, 0, GridBagConstraints.WEST,
 						GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
-				
-		
+					
 		add(pnlContent, BorderLayout.CENTER);
 
-
-	}
-	/*
-	public void ok() throws IOException {
-		
-		Window parent = SwingUtilities.getWindowAncestor(this);
-
-		String id = tfid.getText();
-		String naziv = tfnaziv.getText();
-		String opis = tfopis.getText();
-		String kategorija = tfkategorija.getText();
-		String cena = tfcena.getText();
-		String putanja = tfslika.getText();
-		
-		String message = dpcon.dodaj(id, naziv, opis, kategorija, cena, putanja);
-		
-		if (proizvod == null){
-			
-			JOptionPane.showMessageDialog(parent, message);
-		}
-		else {
-			
-			JOptionPane.showMessageDialog(parent, message);
-			
-			preduzece = dpcon.getPreduzece();
-			MenadzerView mv = new MenadzerView(preduzece, frame);
-			
-			frame.getCentralni().add(mv);
-			frame.getCentralni().remove(0);
-			frame.getCentralni().updateUI(); 
-			
-		}
 	}
 	
-	public void slika() {
-		odabirSlike = new JFileChooser();
-		//FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG & GIF Images", "jpg", "gif");
-	    //odabirSlike.setFileFilter(filter);
-		int result = odabirSlike.showOpenDialog(null);
-		if (result == JFileChooser.APPROVE_OPTION) {
-			tfslika.setText(odabirSlike.getSelectedFile().getAbsolutePath());
-		    //createFile();
-		} else if (result == JFileChooser.CANCEL_OPTION) {
-		    System.out.println("Cancel was selected");
-		}
-	} */
 
 	public AplikacijaPreduzece getPreduzece() {
 		return preduzece;

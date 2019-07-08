@@ -35,20 +35,6 @@ public class ProizvodController extends Controller {
 		this.proizvod = proizvodView.getP();
 		
 		
-		/*this.proizvodView.getStaviUKorpu().addActionListener(new ActionListener() {
-			 public void actionPerformed(ActionEvent e) {
-			      //your code here
-			    	//System.out.println("Nesto se desilo");
-			    String message = "Na osnovu modela pogledati\n"
-			    		+ " da li ima dovoljno proizvoda, \n"
-			    		+ "dodati ih u narudzbenicu, skinuti sa nekog"
-			    		+ "stanja\ni jos nesto probs, ugl azurirati model!";	
-				 
-				 JOptionPane.showMessageDialog(proizvodView, message);
-			    }
-			 	
-			
-		});*/
 		addListeners();
 	}
 	
@@ -66,40 +52,26 @@ public class ProizvodController extends Controller {
 							sn.setKolicina(sn.getKolicina() + kolicina);
 							double cenaUkorpi = preduzece.korpa.getUkupanIznos();
 							preduzece.korpa.update();
-							//double novaCena = 
-							//sn.setUkupnaCena(novaCena);
-							//System.out.println("Ukupna cena: "+sn.getUkupnaCena());
-							//System.out.println("Cena u korpi: "+preduzece.korpa.getUkupanIznos());
+							
 							added = true;
 						}
 					}
 					if (added == false) {
 						preduzece.korpa.addStavkaNarudzbenice(new StavkaNarudzbenice(kolicina, proizvod));
 					}
-					//System.out.println(kolicina+" "+proizvod);
 					SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
 					Date datum = new Date(System.currentTimeMillis());
 					preduzece.korpa.setDatum(datum);
 					
 					JOptionPane.showMessageDialog(w, "Dodato");
-					/*try {
-						ProizvodiView pv = new ProizvodiView(preduzece);
-						add(pv);
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}*/
+					
 					ProizvodiView bw = null;
 					try {
 						bw = new ProizvodiView(proizvodView.getGdjeStoji(), preduzece, preduzece.proizvodi);
 					} catch (IOException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-					//frame.getView().remove(0);
 					
-					//System.out.println("tuuuuuuuuuuuuuuu");
-					// is this okay?
 					if (preduzece.trenutnoUlogovani == null) {
 					proizvodView.getGdjeStoji().add(bw);
 					proizvodView.getGdjeStoji().remove(0);
@@ -108,11 +80,7 @@ public class ProizvodController extends Controller {
 					else {
 						KupacView stoji = (KupacView) proizvodView.getGdjeStoji();
 						
-						
 						return;
-						//proizvodView.getGdjeStoji().add(bw);
-						//proizvodView.getGdjeStoji().remove(0);
-						//proizvodView.getGdjeStoji().updateUI();
 						
 					}
 			}
@@ -142,17 +110,12 @@ public class ProizvodController extends Controller {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				//frame.getView().remove(0);
 				
 				proizvodView.getGdjeStoji().remove(1);
 				proizvodView.getGdjeStoji().add(bw);
 				
 				proizvodView.getGdjeStoji().updateUI();
 			
-				
-				//proizvodView.getGdjeStoji().add(bw);
-				//proizvodView.getGdjeStoji().remove(0);
-				//proizvodView.getGdjeStoji().updateUI();
 			}
 						
 		});
@@ -176,12 +139,7 @@ public class ProizvodController extends Controller {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				//frame.getView().remove(0);
 				
-				//proizvodView.getGdjeStoji().add(new JButton("DUGME"));
-				//proizvodView.getGdjeStoji().add(bw);
-				//proizvodView.getGdjeStoji().remove(0);
-				//?
 				proizvodView.getGdjeStoji().remove(1);
 				proizvodView.getGdjeStoji().add(bw);
 				

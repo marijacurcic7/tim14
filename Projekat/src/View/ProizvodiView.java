@@ -46,8 +46,7 @@ public class ProizvodiView extends BaseView{
 	JButton sortiraj;
 	JButton sortirajCOpadajuce;
 	JButton pretrazi;
-	//JButton sortNazRast;
-	//JButton sortNazOp;
+	
 	JTextField pretragaTxt;
 	JMenu kategorije;
 	
@@ -128,18 +127,14 @@ public class ProizvodiView extends BaseView{
 	
 	@SuppressWarnings("unchecked")
 	protected void sortirajCenaRastuce() {
-		// TODO Auto-generated method stub
 		 Collections.sort(proizvodi, new Comparator() {
 
           public int compare(Object o1, Object o2) {
 	          Proizvod sa = (Proizvod)o1;
 	          Proizvod sb = (Proizvod)o2;
 	
-	          //int v = sa.getAktuelnaCena().getRedovnaCena().compareTo(sb.getAktuelnaCena().getRedovnaCena());
-	
 	          return Double.compare(sa.getAktuelnaCena().getRedovnaCena(), sb.getAktuelnaCena().getRedovnaCena());           
 	
-	              // it can also return 0, and 1
 	          } 
           });
 		 ProizvodiView pv;
@@ -163,18 +158,14 @@ public class ProizvodiView extends BaseView{
 	
 	@SuppressWarnings("unchecked")
 	protected void sortirajCenaOpadajuce() {
-		// TODO Auto-generated method stub
 		 Collections.sort(proizvodi, new Comparator() {
 
           public int compare(Object o1, Object o2) {
 	          Proizvod sa = (Proizvod)o1;
 	          Proizvod sb = (Proizvod)o2;
-	
-	          //int v = sa.getAktuelnaCena().getRedovnaCena().compareTo(sb.getAktuelnaCena().getRedovnaCena());
-	
+		
 	          return Double.compare(sb.getAktuelnaCena().getRedovnaCena(), sa.getAktuelnaCena().getRedovnaCena());           
 	
-	              // it can also return 0, and 1
 	          } 
           });
 		 ProizvodiView pv;
@@ -201,9 +192,6 @@ public class ProizvodiView extends BaseView{
 		desniDugmici = new JPanel(new GridLayout(15, 0));
 		desniDugmici.setPreferredSize(new Dimension(300, 600));
 		sortiraj = new JButton("Sortiraj po ceni rastuce");
-		//sortiraj.setPreferredSize(new Dimension(10, 0));
-		//sortNazRast = new JButton("Sortiraj po nazivu rastuce");
-		//sortNazOp = new JButton("Sortiraj po nazivu opadajuce");
 		pretrazi = new JButton("Pretrazi");
 		sortirajCOpadajuce = new JButton("Sortiraj po ceni opadajuce");
 		
@@ -220,16 +208,6 @@ public class ProizvodiView extends BaseView{
  		p2.add(sortirajCOpadajuce);
 		desniDugmici.add(p2);
  		
-		//JPanel p4 = new JPanel();
-		//JPanel p5 = new JPanel();
-		//p4.add(sortNazRast);
-		//p5.add(sortNazOp);
-		//desniDugmici.add(p4);
-		//desniDugmici.add(p5);
-		//Dimension d = sortNazOp.getSize();
-		//sortiraj.setPreferredSize(d);
-		//sortirajCOpadajuce.setPreferredSize(d);
-		//sortNazRast.setPreferredSize(d);
 		
 		JPanel p3 = new JPanel();
  		meni = new JMenuBar();
@@ -333,8 +311,8 @@ public class ProizvodiView extends BaseView{
 		
 		for (Proizvod p: this.proizvodi) {
 			ProizvodPanel pp = new ProizvodPanel(p, this, preduzece);
-			ControllerProizvoda cp = new ControllerProizvoda(pp, preduzece);		// da ovde dobije preduzece, ili mozemo
-			pp.setController(cp);										// ostaviti ovako jer svakako pristupa preduzecu iz view?
+			ControllerProizvoda cp = new ControllerProizvoda(pp, preduzece);		
+			pp.setController(cp);										
 			
 			panelSaProizvodima.add(pp);
 		

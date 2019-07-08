@@ -15,7 +15,6 @@ import Model.AplikacijaPreduzece;
 
 public class HeaderView extends BaseView {
 
-	//JPanel p;
 	JButton korpa;
 	JButton prijava;
 	JButton odjava;
@@ -41,7 +40,6 @@ public class HeaderView extends BaseView {
 	    c.gridx = 0;
 	    c.gridy = 0;
 	    c.gridwidth = 3;
-	    //c.fill = GridBagConstraints.BOTH;
 	    c.anchor = GridBagConstraints.CENTER; // place component on the North
 	    System.out.println("java dugme");
 	    System.out.println(c.gridx + ", a y " + c.gridy);
@@ -53,9 +51,8 @@ public class HeaderView extends BaseView {
 	    c.anchor = GridBagConstraints.CENTER;
 	    System.out.println("izvor dugme");
 	    System.out.println(c.gridx + ", a y " + c.gridy);
-	    labela1 = new JLabel("Labela1");
-	    //this.add(labela1, c);
-	    //p.add(new JPanel(), c);
+	    
+	    
 	    c.gridy = 2;
 	    c.gridwidth = 1;
 	    c.anchor = GridBagConstraints.CENTER; // remember to rest to center
@@ -66,12 +63,10 @@ public class HeaderView extends BaseView {
 	    c.gridx = 1;
 	    c.gridy = 0;
 	    c.gridwidth = 1;
-	    c.anchor = GridBagConstraints.CENTER; // remember to rest to center
+	    c.anchor = GridBagConstraints.CENTER; 
 	    this.add(new JPanel(), c);
 	    
 	    c.gridy = 1;
-	    labela2 = new JLabel("Labela2");
-	    //this.add(labela2, c);
 	    
 	    c.gridy = 2;
 	    this.add(new JPanel(),c);
@@ -80,7 +75,7 @@ public class HeaderView extends BaseView {
 	    
 	    c.gridy = 0;
 	    c.gridwidth = 1;
-	    c.anchor = GridBagConstraints.CENTER; // remember to rest to center
+	    c.anchor = GridBagConstraints.CENTER;
 	    this.add(new JPanel(), c);
 	    
 	    c.gridy = 1;
@@ -103,9 +98,7 @@ public class HeaderView extends BaseView {
 	    JPanel pn = new JPanel();
 	    pn.add(naslov);
 	    Color color = this.getBackground();
-	    //pn.setBackground(new Color(255, 255, 240));
 	    pn.setBackground(new Color(color.getRed(), color.getGreen() + 5, 255));
-	    //pn.setBackground(color.);
 	    this.add(pn, c);
 	    
 	    c.fill = GridBagConstraints.NONE;
@@ -113,7 +106,7 @@ public class HeaderView extends BaseView {
 	    c.weightx = 1.0;
 	    c.gridx = 4;
 
-	    c.anchor = GridBagConstraints.CENTER; // remember to rest to center
+	    c.anchor = GridBagConstraints.CENTER; 
 	    
 	    c.weightx = 0.0;
 	    c.gridy = 0;

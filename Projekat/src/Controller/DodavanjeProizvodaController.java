@@ -120,7 +120,6 @@ public class DodavanjeProizvodaController {
 			return "Fajl nevalidnog formata";
 		}
  				
-		//SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
 		Date datum = new Date(System.currentTimeMillis());
 		
 		Proizvod p = new Proizvod(id, naziv, opis, kategorija, putanja);
@@ -157,7 +156,7 @@ public class DodavanjeProizvodaController {
 		});
 	}
 	
-public void ok() throws IOException {
+	public void ok() throws IOException {
 		
 		Window parent = SwingUtilities.getWindowAncestor(dpview);
 
@@ -190,12 +189,10 @@ public void ok() throws IOException {
 	
 	public void slika() {
 		dpview.setOdabirSlike(new JFileChooser()); //= new JFileChooser();
-		//FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG & GIF Images", "jpg", "gif");
-	    //odabirSlike.setFileFilter(filter);
+		
 		int result = dpview.getOdabirSlike().showOpenDialog(null);
 		if (result == JFileChooser.APPROVE_OPTION) {
 			dpview.getTfslika().setText(dpview.getOdabirSlike().getSelectedFile().getAbsolutePath());
-		    //createFile();
 		} else if (result == JFileChooser.CANCEL_OPTION) {
 		    System.out.println("Cancel was selected");
 		}

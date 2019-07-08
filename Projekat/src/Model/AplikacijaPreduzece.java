@@ -32,9 +32,7 @@ public class AplikacijaPreduzece {
    public Narudzbenica korpa;
    /** @pdRoleInfo migr=no name=StavkaCenovnika assc=association21 coll=java.util.List impl=java.util.ArrayList mult=0..* */
    public java.util.List<StavkaCenovnika> stavkeCenovnika;
-   //public Map<Proizvod, java.util.List<StavkaCenovnika>>
    
-   //public ArrayList<Integer> sekvencer;
    
    private static String fileString = "preduzece.ser";
    
@@ -52,7 +50,6 @@ public class AplikacijaPreduzece {
 	   }
 	   
          
-       // Method for serialization of object 
        for(Korisnik k : korisnici) {
     	   if(k.getClass().equals(RegistrovaniKupac.class)) {
     		   System.out.println("Upisati kupca");
@@ -85,7 +82,6 @@ public class AplikacijaPreduzece {
          
        System.out.println("Object has been serialized");
        
-       //System.exit(0);
        File file1 = new File("korpa.ser");
 	   FileOutputStream file1os;
 	   ObjectOutputStream out1;
@@ -112,7 +108,6 @@ public class AplikacijaPreduzece {
 		   Object object1;
 		   try {
 			   object1 = (Object)in1.readObject();
-			   //while((object = (Object)in.readObject()) != null)
 			   if((object1 != null) && (object1.getClass().equals(Narudzbenica.class))) {
 		    	   Narudzbenica n = new Narudzbenica();
 		    	   n = (Narudzbenica)object1;
@@ -123,7 +118,6 @@ public class AplikacijaPreduzece {
 		       file1is.close();  
 		       System.out.println("korpa");
 			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} 
 	   }
@@ -140,37 +134,31 @@ public class AplikacijaPreduzece {
 			    	   RegistrovaniKupac k = new RegistrovaniKupac();
 			    	   k = (RegistrovaniKupac)object;
 			    	   korisnici.add(k);
-			    	 //  System.out.println("Kupac "+k.getNalog().getKorisnickoIme()+" "+k.getNalog().getTipKorisnika());
 			       }
 			       else if(object.getClass().equals(Korisnik.class)) {
 			    	   Korisnik k = new Korisnik();
 			    	   k = (Korisnik)object;
 			    	   korisnici.add(k);
-			    	   //System.out.println("Korisnik "+k.getNalog().getKorisnickoIme()+" "+k.getNalog().getTipKorisnika());
 			       }
 			       else if(object.getClass().equals(Proizvod.class)) {
 			    	   Proizvod p = new Proizvod();
 			    	   p = (Proizvod)object;
 			    	   proizvodi.add(p);
-			    	//   System.out.println("Proizvod "+p.getNaziv());
 			       }
 			       else if(object.getClass().equals(Narudzbenica.class)) {
 			    	   Narudzbenica n = new Narudzbenica();
 			    	   n = (Narudzbenica)object;
 			    	   narudzbenice.add(n);
-			    	   //sekvencer.add(n.getId());
-			    	//   System.out.println("Narudzbenica "+n.getId());
+			    	   
 			       }
 			       else if(object.getClass().equals(Kategorija.class)) {
 			    	   Kategorija k = new Kategorija();
 			    	   k = (Kategorija)object;
 			    	   kategorije.add(k);
-			    	//   System.out.println("Kategorija "+k.getNaziv());
 			       }else if(object.getClass().equals(Prodavnica.class)) {
 			    	   Prodavnica p = new Prodavnica();
 			    	   p = (Prodavnica)object;
 			    	   prodavnice.add(p);
-			    	  // System.out.println("Prodavnica ");
 			       }
 			       
 			   }
@@ -181,7 +169,6 @@ public class AplikacijaPreduzece {
 	       fileis.close();  
 	   }
 	   
-
    }
    
    
@@ -190,15 +177,12 @@ public class AplikacijaPreduzece {
 		korisnici = new ArrayList<Korisnik>();
 		narudzbenice = new ArrayList<Narudzbenica>();
 		proizvodi = new ArrayList<Proizvod>();
-		// prodavnica, kategorije, stavkacenovnika, trenutno ulogovani, korpa
 		prodavnice = new ArrayList<Prodavnica>();
 		kategorije = new ArrayList<Kategorija>();
-		//trenutnoUlogovani = new Korisnik();
 		
 		korpa = new Narudzbenica();
 		korpa.setId(0);
-		//sekvencer = new ArrayList<Integer>();
-		//sekvencer.add(0);
+		
 		stavkeCenovnika = new ArrayList<StavkaCenovnika>();
 
 		
@@ -224,28 +208,6 @@ public class AplikacijaPreduzece {
       return 0;
    }
    
-   /*public void registracijaKorisnika(String korisnickoIme, String lozinka, String email, TipKorisnika tipKorisnika,
-		   String ime, String prezime, String telefon, String grad, String drzava, String adresa, int postanskiBroj) {
-	   Nalog nalog = new Nalog(korisnickoIme, lozinka, email, tipKorisnika);
-	   Mesto mesto = new Mesto(grad, drzava, adresa);
-	   Korisnik korisnik = new Korisnik(ime, prezime, telefon, mesto, nalog);
-	   trenutnoUlogovani = korisnik;
-   }
-   
-   public boolean registracijaKupca(String korisnickoIme, String lozinka, String email,
-		   String ime, String prezime, String telefon, String grad, String drzava, String adresa, int postanskiBroj) {
-	   for(Korisnik k : korisnici) {
-		   if(k.getNalog().getKorisnickoIme().equals(korisnickoIme)) {
-			   return false;
-		   }
-	   }
-	   Nalog nalog = new Nalog(korisnickoIme, lozinka, email, TipKorisnika.kupac);
-	   Mesto mesto = new Mesto(grad, drzava, adresa);
-	   Korisnik korisnik = new Korisnik(ime, prezime, telefon, mesto, nalog);
-	   trenutnoUlogovani = korisnik;
-	   korisnici.add(korisnik);
-	   return true;
-   }*/
    
    public boolean proveriRegistraciju(String korisnickoIme) {
 	   for(Korisnik k : korisnici) {
@@ -255,31 +217,10 @@ public class AplikacijaPreduzece {
 	   }
 	   return true;
    }
-   
-   /*public Korisnik proveriLogin(String korisnickoIme, String lozinka) {
-	   if(korisnickoIme.equals("admin") && lozinka.equals("admin")) {
-		   //return new Korisnik();  // PROMIJENITI
-		   Nalog n = new Nalog("admin", "admin", null, TipKorisnika.administrator);
-		   Korisnik k = new Korisnik();
-		   k.setNalog(n);
-		   return k;
-	   }
-	   for (Korisnik k: korisnici) {
-		   if (k.getNalog().getKorisnickoIme().equals(korisnickoIme) && k.getNalog().getLozinka().equals(lozinka)) {
-			   return k;
-		   }
-		   
-	   }
-	   return null;
-   }*/
-   
-   
-   
- 
+
    
    public boolean login(String korisnickoIme, String lozinka) {
 	   if(korisnickoIme.equals("admin") && lozinka.equals("admin")) {
-		   //return new Korisnik();  // PROMIJENITI
 		   Nalog n = new Nalog("admin", "admin", null, TipKorisnika.administrator);
 		   Korisnik k = new Korisnik();
 		   k.setNalog(n);

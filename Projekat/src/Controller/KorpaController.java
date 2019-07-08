@@ -29,14 +29,12 @@ public class KorpaController {
 	}
 	
 	private void addListeners() {
-		// TODO Auto-generated method stub
 		
 		kv.getKupi().addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 					kupi();
-					//fnview.ok();
 				}
 		});
 		
@@ -44,7 +42,6 @@ public class KorpaController {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 					isprazni();
-					//fnview.ok();
 				}
 			
 		});
@@ -57,15 +54,7 @@ public class KorpaController {
 			JOptionPane.showMessageDialog(w, "Korpa je prazna");
 		}
 		else if(preduzece.trenutnoUlogovani == null) {
-			//RegistracijaView rv = new RegistracijaView(preduzece, frame);
 			
-			//login -> nullpointerexception
-			/*LogInView rv = new LogInView(preduzece, frame);
-			add(rv);
-			remove(0);
-			updateUI();*/
-			
-			//samo poruka
 			
 			Window w = SwingUtilities.getWindowAncestor(kv.getKupi());
 			JOptionPane.showMessageDialog(w, "Ulogujte se");
@@ -82,7 +71,6 @@ public class KorpaController {
 
 	protected void isprazni() {
 		preduzece.korpa = new Narudzbenica();
-		//korpa = new Narudzbenica();
 		KorpaView kv1 = new KorpaView(preduzece, kv.getFrame());
 		kv.add(kv1);
 		kv.remove(0);
@@ -96,15 +84,7 @@ public class KorpaController {
 			JOptionPane.showMessageDialog(w, "Korpa je prazna");
 		}
 		else if(preduzece.trenutnoUlogovani == null) {
-			//RegistracijaView rv = new RegistracijaView(preduzece, frame);
 			
-			//login -> nullpointerexception
-			/*LogInView rv = new LogInView(preduzece, frame);
-			add(rv);
-			remove(0);
-			updateUI();*/
-			
-			//samo poruka
 			
 			Window w = SwingUtilities.getWindowAncestor(kv.getKupi());
 			JOptionPane.showMessageDialog(w, "Ulogujte se");

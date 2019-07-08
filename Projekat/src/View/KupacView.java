@@ -24,79 +24,43 @@ public class KupacView extends BaseView {
 
 	RegistrovaniKupac kupac;
 	MainFrame frame;
-	
 	KupacController kontroler;
-	
 	ProizvodiView proizvodi;
-	
-	JPanel onoSaStrane;
-	
-	JLabel prikazNarudzbenica;
-	
+	JPanel onoSaStrane;	
+	JLabel prikazNarudzbenica;	
 	JLabel izmenaPodataka;
-	
-	JSplitPane split;
-	
+	JSplitPane split;	
 	AplikacijaPreduzece preduzece;
 	
-	// trebace mi i frejm da vidim gdje stoji i da mijenjam
+	
 	public KupacView(AplikacijaPreduzece preduzece, MainFrame f) {
-		// napravim proizvode
-		// ono sa strane
-		// splitpane
+		
 		this.preduzece = preduzece;
 		this.frame = f;
 		this.kupac = (RegistrovaniKupac)preduzece.trenutnoUlogovani;
-		try {			// ili f.onajsto se menja
-			proizvodi = new ProizvodiView(this, preduzece, preduzece.proizvodi);   // aplikacija mu treba
+		try {		
+			proizvodi = new ProizvodiView(this, preduzece, preduzece.proizvodi);   
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		initOnoSaStrane();
-		//this.add()
 		JSplitPane split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 		this.setLayout(new BorderLayout());
-		//split.setTopComponent(onoSaStrane);  // ili p 
-		//split.setResizeWeight(1.0);
-		//Dimension minimumSize = new Dimension(0, 0);
-		//onoSaStrane.setMinimumSize(minimumSize);
-		//onoSaStrane.setMaximumSize(new Dimension(100, 0));
-		//proizvodi.setMinimumSize(minimumSize);
-		
-		//onoSaStrane.setPreferredSize(preferredSize);
-		// uzeti y koordinatu ili x i postaviti
 		
 		JPanel left = new JPanel(new BorderLayout());
-		//onoSaStrane.setPreferredSize(new Dimension(120, 100));
 		left.add(onoSaStrane, BorderLayout.LINE_END);
-		//this.add(onoSaStrane, BorderLayout.LINE_START);
-		//this.add(proizvodi);
-		//this.setPreferredSize(new Dimension(500, 500));
-		//this.add(new JLabel("proziv"));
-		//System.out.println(this.proizvodi);
+		
 		JPanel panel = new JPanel();
 		
 		this.add(left, BorderLayout.LINE_START);
 		panel.add(proizvodi);
 		this.add(panel);
 		this.show();
-		
-		//this.frame.setMenja(proizvodi);
-		
-		
-		this.frame.setOvajStoSeMenja(this);
-		
-		//add(proizvodi);
-		//split.getLeftComponent().CENTER_ALIGNMENT
-		//split.setLeftComponent(onoSaStrane);
-		//split.setBottomComponent(proizvodi);
-		//split.setRightComponent(proizvodi);
-		//split.setDividerLocation(0.9);
+
+		this.frame.setOvajStoSeMenja(this);		
 		
 		kontroler = new KupacController(this, preduzece);
 		
-		//this.add(split);
 		
 	}
 	
@@ -109,59 +73,16 @@ public class KupacView extends BaseView {
 		onoSaStrane.setPreferredSize(new Dimension(200, 600));
 		
 		prikazNarudzbenica = new JLabel("  Prikaz mojih narudzbenica  ");
-		// prikaz pojedinacne, i opcije za nju, refresh
-		
 		prikazNarudzbenica.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		
-		
-		//prikazNarudzbenica.addMouseListener(new MouseAdapter() {
-			 
-			// ovo svakako u controller
-		//    @Override
-		 //   public void mouseClicked(MouseEvent e) {
-		  //      // the user clicks on the label
-		  //  	//Window w =SwingUtilities.getWindowAncestor(prikazNarudzbenica);
-		  //  	//JOptionPane.showMessageDialog(null, "Prikaz narudzbenica");
-		  // 	NarudzbeniceView nv = new NarudzbeniceView(kupac.narudzbenice, preduzece);
-		  //  	//nv.setPreferredSize(new Dimension(1000, 600));  // skrolbar preferred size,
-		   // 	proizvodi.getGdeStoji().remove(1);
-		  //  	proizvodi.getGdeStoji().add(nv);
-		   // 	proizvodi.getGdeStoji().updateUI();
-		    	//proizvodi.add(nv);
-		    	//proizvodi.remove(0);
-		    	//proizvodi.updateUI();
-		    	/*frame.getView().add(nv);
-				frame.getView().remove(0);
-				frame.getView().updateUI();*/
-		   // }}); 
 		onoSaStrane.setLayout(new GridLayout(18, 0));
-		
 		onoSaStrane.add(prikazNarudzbenica);
-		
 		
 		izmenaPodataka = new JLabel("  Izmena mojih podataka  ");
 		izmenaPodataka.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		/*
-		izmenaPodataka.addMouseListener(new MouseAdapter() {
-			 
-			// ovo svakako u controller
-		    @Override
-		    public void mouseClicked(MouseEvent e) {
-		        // the user clicks on the label
-		    	//JOptionPane.showMessageDialog(null, "Izmena podataka");
-		    	PromenaPodatakaView ppv = new PromenaPodatakaView(preduzece, frame);
-				
-				remove(1);
-				add(ppv);
-				updateUI();
-		    }});*/
 		
 		onoSaStrane.add(izmenaPodataka);
-		//onoSaStrane.add(new JLabel("  Labela 3  "));
-		//onoSaStrane.add(new JLabel("  Labela 4  "));
-		
-		
-		
+
 	}
 
 	public RegistrovaniKupac getKupac() {
@@ -179,8 +100,6 @@ public class KupacView extends BaseView {
 	public void setFrame(MainFrame frame) {
 		this.frame = frame;
 	}
-
-	
 
 	public ProizvodiView getProizvodi() {
 		return proizvodi;

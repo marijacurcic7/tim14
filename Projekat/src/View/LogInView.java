@@ -44,7 +44,6 @@ public class LogInView extends JPanel {
 	//
 	
 	public LogInView(AplikacijaPreduzece preduzece, MainFrame frame) {
-		//tLayout(new FlowLayout());
 		this.preduzece = preduzece;
 		
 		this.frame = frame;
@@ -56,7 +55,6 @@ public class LogInView extends JPanel {
 
 		lbllozinka = new JLabel("Lozinka:");
 		tflozinka = new JPasswordField(20);
-		//tflozinka = new JTextField(20);
 
 		pnlOK = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		btnOK = new JButton("OK");
@@ -64,9 +62,7 @@ public class LogInView extends JPanel {
 		
 		constructGUI();
 		
-		//if (loginc == null) {
-			loginc = new LogInController(this, preduzece);
-		//}
+		loginc = new LogInController(this, preduzece);
 		
 	}
 	
@@ -82,51 +78,16 @@ public class LogInView extends JPanel {
 
 		pnlOK.add(btnOK);
 		pnlOK.add(btnReg);
-		//add(pnlOK, BorderLayout.SOUTH);
 		
 		pnlContent.add(pnlOK);
 
 		add(pnlContent, BorderLayout.CENTER);
 		
-		
-		/*
-		btnReg.addActionListener(new ActionListener() {
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-					//loginv.setVisible(false);
-					//System.out.println("");
-					//removeAll();
-					RegistracijaView rv = new RegistracijaView(preduzece, frame);
-					add(rv);
-					remove(0);
-					updateUI();
-					//rv.setVisible(true);
-					//setVisible(false);
-					
-				}
-		});
-		
-		btnOK.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-					
-					try {
-						ok();
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-					
-				}
-		});*/
-		
 	}
 	
 	
-	// prebaciti u logincontroller!!
-	private void ok() throws IOException {
+	/*private void ok() throws IOException {
 		if (loginc == null) {
 			loginc = new LogInController(this, preduzece);
 		}
@@ -223,7 +184,7 @@ public class LogInView extends JPanel {
 			}
 		}
 		//System.out.println("Ulogovan: "+preduzece.trenutnoUlogovani.getClass());
-	}
+	}*/
 
 	public LogInController getLoginc() {
 		return loginc;

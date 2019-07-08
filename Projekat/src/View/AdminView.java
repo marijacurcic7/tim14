@@ -32,20 +32,6 @@ public class AdminView extends BaseView {
 		
 		admincon = new AdminController(this, preduzece);
 		
-		/*
-		dodajMenadzera.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-					
-					RegistracijaView rv = new RegistracijaView(preduzece, frame);
-					add(rv);
-					remove(0);
-					updateUI();
-					
-					
-				}
-		});*/
 	}
 
 	public JButton getDodajMenadzera() {

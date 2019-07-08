@@ -148,10 +148,7 @@ public class StavkaNarudzbeniceView extends JPanel {
 		if(narudzbenicav.narudzbenica.getStanje().getClass().equals(Formiranje.class)) {
 			add(btnObrisi);
 			add(btnPromeniKolicinu);
-			
 		}
-		
-		
 		
 		btnObrisi.addActionListener(new ActionListener() {
 			
@@ -186,8 +183,7 @@ public class StavkaNarudzbeniceView extends JPanel {
 				
 			}
 		});
-		
-	
+
 	}
 
 	public StavkaNarudzbenice getStavkan() {

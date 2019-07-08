@@ -28,20 +28,16 @@ public class NarudzbenicaView extends JPanel {
 	private NarudzbenicaController ncon;
 	NarudzbeniceView nev;
 	private AplikacijaPreduzece preduzece;
-	//private JScrollPane scroll;
 	private JButton plati;
 	private JButton pregled;
 	private JButton isporuci;
 	private JPanel pnl;
-	//public MainFrame frame;
 	private JPanel pnlContent;
 	Narudzbenica narudzbenica;
 	
 	public NarudzbenicaView(Narudzbenica n, AplikacijaPreduzece ap, NarudzbeniceView nev) {
 		setPreferredSize(new Dimension(500, 200));
-		
-		//add(new JLabel("Narudzbenica"));
-		
+				
 		this.preduzece = ap;
 		this.nev = nev;
 		this.plati = new JButton("Plati");
@@ -49,7 +45,6 @@ public class NarudzbenicaView extends JPanel {
 		this.isporuci = new JButton("Isporuci");
 		this.pnl = new JPanel();
 		this.narudzbenica = n;
-		
 		
 		constructGUI();
 		
@@ -59,12 +54,9 @@ public class NarudzbenicaView extends JPanel {
 	private void constructGUI() {
 		pnlContent = new JPanel();
 		
-		//pnlContent.setLayout(new GridBagLayout());
-		
 		pnlContent.setLayout(new FlowLayout());
 		
 		JPanel podaci = new JPanel(new GridLayout(0, 1)); 	// fiksiramo, vamo dva dugmeta
-		//podaci.add(comp)
 		podaci.setPreferredSize(new Dimension(300, 180));
 		pnlContent.add(podaci);
 		

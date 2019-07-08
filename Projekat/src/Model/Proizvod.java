@@ -22,15 +22,15 @@ public class Proizvod implements Serializable {
    
    private Kategorija kategorija;
    
-   //private java.util.List<StavkaCenovnika> stavkeCenovnika = new ArrayList<StavkaCenovnika>();
    private StavkaCenovnika aktuelnaCena;
 
-public Proizvod(String string) {
-	naziv = string;  // za potrebe gui-ja u ranoj fazi
-	// TODO Auto-generated constructor stub
-	//
-	this.putanja = "C:\\Windows\\Web\\Wallpaper\\Theme1\\img1.jpg";  // defaultna
-}   public Proizvod() {}
+	public Proizvod(String string) {
+		naziv = string;  
+		
+		this.putanja = "C:\\Windows\\Web\\Wallpaper\\Theme1\\img1.jpg";  // defaultna
+	}   
+	
+	public Proizvod() {}
    
    public Proizvod(int id, String naziv, String opis, Kategorija kategorija, String putanja) {
 	   this.id = id;

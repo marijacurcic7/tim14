@@ -25,7 +25,6 @@ public class MenadzerController {
 		
 		view.getDodajNoviProizvod().addMouseListener(new MouseAdapter() {
 			 
-			// ovo svakako u controller
 		    @Override
 		    public void mouseClicked(MouseEvent e) {
 		    	dodajNoviProizvod();
@@ -37,9 +36,7 @@ public class MenadzerController {
 			 
 		    @Override
 		    public void mouseClicked(MouseEvent e) {
-		        // the user clicks on the label
-		    	//JOptionPane.showMessageDialog(null, "Prikaz liste narudzbenica sa mogucnoscu odabira"
-		    	//		+ " posiljke narudzbenica koje nisu poslate");
+		       
 		    	
 		    	prikazNarudzbenica();
 		    	
@@ -47,7 +44,6 @@ public class MenadzerController {
 		
 		view.getIzmenaPodataka().addMouseListener(new MouseAdapter() {
 			 
-			// ovo svakako u controller
 		    @Override
 		    public void mouseClicked(MouseEvent e) {
 		    	izmenaPodataka();
@@ -63,9 +59,7 @@ public class MenadzerController {
 	
 	private void dodajNoviProizvod() {
 		DodavanjeProizvodaView rw = new DodavanjeProizvodaView(preduzece, view.getFrame());
-		//proizvodi.add(rw);
-		//proizvodi.remove(0);
-		//proizvodi.updateUI();
+		
 		view.remove(1);
 		view.add(rw);
 		view.updateUI();

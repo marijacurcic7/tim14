@@ -121,19 +121,12 @@ public class ProizvodPanel extends JPanel {
 			dugmePregled.setText("Izmeni");
 		}
 		
-		//Image myPicture = ImageIO.read(new File("C:\\Windows\\Web\\Wallpaper\\Theme1\\img1.jpg"));
-		
-		//slika = new JLabel(new ImageIcon(myPicture));
-		
 		slika = new JLabel();
-		//slika.setIcon(new ImageIcon(new ImageIcon("C:\\Windows\\Web\\Wallpaper\\Theme1\\img1.jpg").getImage().getScaledInstance(300, 200, Image.SCALE_DEFAULT)));
 		System.out.println(proizvod.getPutanja());
 		slika.setIcon(new ImageIcon(new ImageIcon(proizvod.getPutanja()).getImage().getScaledInstance(300, 200, Image.SCALE_DEFAULT)));
 		
 		
-		//C:\Windows\Web\Wallpaper\Theme1
 		add(slika);
-		//add(slika);
 
 		c.gridx = 0;
 		c.gridy = 1;
@@ -143,9 +136,6 @@ public class ProizvodPanel extends JPanel {
 		holder1.add(new JLabel());
 		holder1.add(new JLabel("Id: " + p.getId() + ""));
 		add(holder1, c);
-		//add(labelaIme, c);
-		//c. gridx = 1;
-		//add(new JLabel("Id: " + p.getId() + ""), c);
 		
 		c.gridx = 0;
 		c.gridy = 2;
@@ -155,8 +145,7 @@ public class ProizvodPanel extends JPanel {
 		GridLayout gridHorizontal = new GridLayout(0,1);
 		JPanel holder = new JPanel();
 		holder.setLayout(gridHorizontal);
-		//holder.add(dugmeKorpa);
-		//holder.add(new JPanel());
+		
 		holder.add(dugmePregled);
 		add(holder, c);
 

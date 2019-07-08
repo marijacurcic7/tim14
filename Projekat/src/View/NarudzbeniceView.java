@@ -26,7 +26,6 @@ public class NarudzbeniceView extends JPanel {
 	private JScrollPane scroll;
 	private JButton plati;
 	private JPanel pnl;
-	//public MainFrame frame;
 	private JPanel pnlContent;
 	ArrayList<Narudzbenica> narudzbenice;
 	

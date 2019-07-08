@@ -28,7 +28,6 @@ public class NarudzbenicaController {
 	}
 	
 	private void addListeners() {
-		// TODO Auto-generated method stub
 		
 		view.getPlati().addActionListener(new ActionListener() {
 			
@@ -54,7 +53,6 @@ public class NarudzbenicaController {
 			}
 		});
 		
-		//Window w = SwingUtilities.getWindowAncestor(this);
 		NarudzbenicaView naview = view;
 		
 		view.getPregled().addActionListener(new ActionListener() {
@@ -63,19 +61,15 @@ public class NarudzbenicaController {
 			public void actionPerformed(ActionEvent e) {
 				
 				JPanel pnl2 = new JPanel();
-				//pnl2.setPreferredSize(new Dimension(1000, 600));
 				
 				JScrollPane scroll = new JScrollPane(pnl2);
 				scroll.setPreferredSize(new Dimension(1100, 600));
-				//pnl2.setLayout(new GridLayout(preduzece.korpa.stavkeNarudzbenice.size(), 1));
 				pnl2.setLayout(new GridLayout(0, 1));
 				int i = 0;
 				for(StavkaNarudzbenice sn : view.getNarudzbenica().stavkeNarudzbenice) {
 					StavkaNarudzbeniceView snv = new StavkaNarudzbeniceView(sn, preduzece, naview);
-					//pnl2.add(snv, new GridBagConstraints(0, i, 1, 1, 0, 0, GridBagConstraints.WEST,
-					//		GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
+					
 					pnl2.add(snv);
-					//add(new JLabel(sn.proizvod.getNaziv()));
 					i+=10;
 				}
 				view.getNev().add(scroll);
