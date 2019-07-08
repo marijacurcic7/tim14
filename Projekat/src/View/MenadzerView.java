@@ -93,6 +93,7 @@ public class MenadzerView extends BaseView {
 		//split.setDividerLocation(0.9);
 		
 		
+		this.frame.setOvajStoSeMenja(this);
 		
 		//this.add(split);
 		
@@ -109,7 +110,7 @@ public class MenadzerView extends BaseView {
 		onoSaStrane = new JPanel();
 		
 		// npr
-		//onoSaStrane.setPreferredSize(new Dimension(300, 0));
+		onoSaStrane.setPreferredSize(new Dimension(300, 600));
 		
 		GridBagLayout gbl = new GridBagLayout();
 		setLayout(gbl);

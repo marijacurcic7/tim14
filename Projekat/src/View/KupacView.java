@@ -84,7 +84,10 @@ public class KupacView extends BaseView {
 		this.add(panel);
 		this.show();
 		
-		this.frame.setMenja(proizvodi);
+		//this.frame.setMenja(proizvodi);
+		
+		
+		this.frame.setOvajStoSeMenja(this);
 		
 		//add(proizvodi);
 		//split.getLeftComponent().CENTER_ALIGNMENT

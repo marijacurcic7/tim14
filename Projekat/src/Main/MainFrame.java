@@ -54,6 +54,8 @@ public class MainFrame extends JFrame {
 	SviProizvodiPanel bw;
 	public JSplitPane split;
 	JPanel ovajStoSeMenja;
+	JPanel centralni;
+	
 	
 	JPanel menja;
 	
@@ -118,8 +120,11 @@ public class MainFrame extends JFrame {
 		menja = new JPanel();
 		header = new HeaderView(preduzece);
 		
+		centralni = new JPanel();
+		centralni.setPreferredSize(new Dimension(1600, 600));
+		
 		ovajStoSeMenja = new JPanel();
-		ovajStoSeMenja.setPreferredSize(new Dimension(1600, 600));
+		//ovajStoSeMenja.setPreferredSize(new Dimension(1600, 600));
 		
 		// u pregled proizvoda pitati jel null prvo, ako nije pitati jel menadzer
 		
@@ -128,7 +133,10 @@ public class MainFrame extends JFrame {
 		view = bw;
 		//view = ovajStoSeMenja;
 		
-		ovajStoSeMenja.add(new ProizvodiView(ovajStoSeMenja, preduzece)); 	// izmeniti
+		centralni.add(new ProizvodiView(ovajStoSeMenja, preduzece)); 	// izmeniti
+		
+		
+		//ovajStoSeMenja.add(new ProizvodiView(ovajStoSeMenja, preduzece)); 	// izmeniti
 		
 		//bw.resize(d);
 		
@@ -158,8 +166,11 @@ public class MainFrame extends JFrame {
 		panel.add(bw);
 		//panel.add(bw, BorderLayout.CENTER);
 		
-		panel.add(ovajStoSeMenja, BorderLayout.CENTER);
+		panel.add(centralni, BorderLayout.CENTER);
+		//panel.add(ovajStoSeMenja, BorderLayout.CENTER);
 		panel.add(drugiPanel, BorderLayout.PAGE_END);
+		
+		ovajStoSeMenja = centralni;
 		
 		split.setBottomComponent(panel);
 		
@@ -195,6 +206,18 @@ public class MainFrame extends JFrame {
 
 	
 	
+	public JPanel getCentralni() {
+		return centralni;
+	}
+
+
+
+	public void setCentralni(JPanel centralni) {
+		this.centralni = centralni;
+	}
+
+
+
 	private void initHeader() {
 		p = new JPanel(new GridBagLayout());
 

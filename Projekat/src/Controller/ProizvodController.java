@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
@@ -107,6 +108,7 @@ public class ProizvodController extends Controller {
 					else {
 						KupacView stoji = (KupacView) proizvodView.getGdjeStoji();
 						
+						
 						return;
 						//proizvodView.getGdjeStoji().add(bw);
 						//proizvodView.getGdjeStoji().remove(0);
@@ -137,9 +139,15 @@ public class ProizvodController extends Controller {
 				}
 				//frame.getView().remove(0);
 				
+				proizvodView.getGdjeStoji().remove(1);
 				proizvodView.getGdjeStoji().add(bw);
-				proizvodView.getGdjeStoji().remove(0);
+				
 				proizvodView.getGdjeStoji().updateUI();
+			
+				
+				//proizvodView.getGdjeStoji().add(bw);
+				//proizvodView.getGdjeStoji().remove(0);
+				//proizvodView.getGdjeStoji().updateUI();
 			}
 						
 		});
@@ -165,8 +173,11 @@ public class ProizvodController extends Controller {
 				}
 				//frame.getView().remove(0);
 				
+				//proizvodView.getGdjeStoji().add(new JButton("DUGME"));
+				//proizvodView.getGdjeStoji().add(bw);
+				//proizvodView.getGdjeStoji().remove(0);
+				proizvodView.getGdjeStoji().remove(1);
 				proizvodView.getGdjeStoji().add(bw);
-				proizvodView.getGdjeStoji().remove(0);
 				
 				proizvodView.getGdjeStoji().updateUI();
 			}

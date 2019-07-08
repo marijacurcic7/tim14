@@ -158,14 +158,23 @@ public class LogInView extends JPanel {
 				//preduzece.trenutnoUlogovani = k;
 				KupacView kv = new KupacView(preduzece, frame);
 				//
+				//?
+				//kv.frame.setOvajStoSeMenja(kv);
+				//?    
+				
 				//frame.setOvajStoSeMenja(holder);
 			
 				frame.getHeader().getPrijava().setText("Odjava");
 				frame.getHeader().updateUI();
 				// dodala.frame.getovajstosemenja()
-				frame.getOvajStoSeMenja().add(kv);
-				frame.getOvajStoSeMenja().remove(0);
-				frame.getOvajStoSeMenja().updateUI();
+				System.out.println(frame.getOvajStoSeMenja());
+				frame.getCentralni().add(kv);
+				frame.getCentralni().remove(0);
+				frame.getCentralni().updateUI();
+				
+				//frame.getOvajStoSeMenja().add(kv);
+				//frame.getOvajStoSeMenja().remove(0);
+				//frame.getOvajStoSeMenja().updateUI();
 				//return;
 			}
 			
@@ -178,9 +187,13 @@ public class LogInView extends JPanel {
 				frame.getHeader().getPrijava().setText("Odjava");
 				frame.getHeader().getKorpa().setVisible(false);
 				frame.getHeader().updateUI();
-				frame.getOvajStoSeMenja().add(mv);
-				frame.getOvajStoSeMenja().remove(0);
-				frame.getOvajStoSeMenja().updateUI();
+				frame.getCentralni().add(mv);
+				frame.getCentralni().remove(0);
+				frame.getCentralni().updateUI();
+				
+				//frame.getOvajStoSeMenja().add(mv);
+				//frame.getOvajStoSeMenja().remove(0);
+				//frame.getOvajStoSeMenja().updateUI();
 				//return;		
 			}
 			else  {
@@ -190,9 +203,13 @@ public class LogInView extends JPanel {
 				frame.getHeader().getPrijava().setText("Odjava");
 				frame.getHeader().getKorpa().setVisible(false);
 				frame.getHeader().updateUI();
-				frame.getOvajStoSeMenja().add(av);
-				frame.getOvajStoSeMenja().remove(0);
-				frame.getOvajStoSeMenja().updateUI();
+				frame.getCentralni().add(av);
+				frame.getCentralni().remove(0);
+				frame.getCentralni().updateUI();
+				
+				//frame.getOvajStoSeMenja().add(av);
+				//frame.getOvajStoSeMenja().remove(0);
+				//frame.getOvajStoSeMenja().updateUI();
 			//ProizvodiView bw = new ProizvodiView(preduzece);
 			//add(bw);
 			//remove(0);
