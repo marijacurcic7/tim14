@@ -48,11 +48,9 @@ public class AplikacijaPreduzece {
 		   fileos = new FileOutputStream(fileString); 
 	       out = new ObjectOutputStream(fileos);  
 	   }
-	   
          
        for(Korisnik k : korisnici) {
     	   if(k.getClass().equals(RegistrovaniKupac.class)) {
-    		   System.out.println("Upisati kupca");
     		   RegistrovaniKupac kupac = (RegistrovaniKupac)k;
     		   out.writeObject(kupac); 
     	   }
@@ -75,12 +73,9 @@ public class AplikacijaPreduzece {
        for(StavkaCenovnika sc : stavkeCenovnika) {
     	   out.writeObject(sc);
        }
-       
          
        out.close(); 
        fileos.close(); 
-         
-       System.out.println("Object has been serialized");
        
        File file1 = new File("korpa.ser");
 	   FileOutputStream file1os;
@@ -95,7 +90,6 @@ public class AplikacijaPreduzece {
 	   }
 	   
 	   out1.writeObject(korpa);
-	   System.out.println("Korpa upisana");
        
        return 1; 
    }
@@ -112,11 +106,9 @@ public class AplikacijaPreduzece {
 		    	   Narudzbenica n = new Narudzbenica();
 		    	   n = (Narudzbenica)object1;
 		    	   korpa = n;
-		    	   System.out.println("Korpa "+n.getId());
 		       }
 			   in1.close(); 
 		       file1is.close();  
-		       System.out.println("korpa");
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
 			} 
