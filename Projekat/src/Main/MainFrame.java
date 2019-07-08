@@ -99,7 +99,7 @@ public class MainFrame extends JFrame {
 		
 		preduzece = new AplikacijaPreduzece();
 		System.out.println(preduzece.proizvodi.size() + 1);
-		izgenerisiPreduzece();
+		//izgenerisiPreduzece();
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setSize(1500, 1000);
@@ -425,7 +425,7 @@ public class MainFrame extends JFrame {
 		preduzece.addProizvod(p44);
 		
 
-		Proizvod p45 = new Proizvod(5, "Kapa", "vunena", k22, fld + "kravata.jpg");
+		Proizvod p45 = new Proizvod(5, "Kravata", "vunena", k22, fld + "kravata.jpg");
 		StavkaCenovnika c45 = new StavkaCenovnika(500, datum, p45);
 		p45.setAktuelnaCena(c45);
 		preduzece.addProizvod(p45);
