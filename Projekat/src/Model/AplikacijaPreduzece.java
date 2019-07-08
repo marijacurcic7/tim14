@@ -530,8 +530,14 @@ public class AplikacijaPreduzece {
          return;
       if (this.kategorije == null)
          this.kategorije = new java.util.ArrayList<Kategorija>();
-      if (!this.kategorije.contains(newKategorija))
-         this.kategorije.add(newKategorija);
+      //if (!this.kategorije.contains(newKategorija))
+      //   this.kategorije.add(newKategorija);
+      for (Kategorija kat: kategorije) {
+    	  if (kat.getNaziv().equals(newKategorija.getNaziv())) {
+    		  return;
+    	  }
+      }
+      this.kategorije.add(newKategorija);
    }
    
    /** @pdGenerated default remove
