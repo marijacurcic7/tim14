@@ -133,7 +133,7 @@ public class MainFrame extends JFrame {
 		view = bw;
 		//view = ovajStoSeMenja;
 		
-		centralni.add(new ProizvodiView(ovajStoSeMenja, preduzece)); 	// izmeniti
+		centralni.add(new ProizvodiView(centralni, preduzece)); 	// izmeniti
 		
 		
 		//ovajStoSeMenja.add(new ProizvodiView(ovajStoSeMenja, preduzece)); 	// izmeniti

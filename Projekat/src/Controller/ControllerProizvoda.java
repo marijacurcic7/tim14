@@ -76,6 +76,8 @@ public class ControllerProizvoda extends Controller {
 		pp.getGdjeStoji().getGdeStoji().remove(1);
 		}
 		else {
+			System.out.println("Kolko ih ima");
+			System.out.println(pp.getGdjeStoji().getGdeStoji().getComponentCount());
 			pp.getGdjeStoji().getGdeStoji().remove(0);
 		}
 		//pp.getGdjeStoji().getGdeStoji().remove(0);
