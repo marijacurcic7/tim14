@@ -6,17 +6,15 @@ import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 
 import Controller.Controller;
+import Controller.MenadzerController;
 import Main.MainFrame;
 import Model.AplikacijaPreduzece;
 import Model.Narudzbenica;
@@ -25,7 +23,7 @@ import Model.Poslata;
 
 public class MenadzerView extends BaseView {
 	
-	Controller controller;
+	MenadzerController kontroler;
 	ProizvodiView proizvodi;
 	
 	JPanel onoSaStrane;
@@ -82,7 +80,7 @@ public class MenadzerView extends BaseView {
 		this.add(panel);
 		this.show();
 		
-		
+		kontroler = new MenadzerController(this, preduzece);
 		
 		
 		//add(proizvodi);
@@ -104,6 +102,7 @@ public class MenadzerView extends BaseView {
 			}
 		}
 		
+		
 	}
 	
 	private void initOnoSaStrane() {
@@ -118,41 +117,41 @@ public class MenadzerView extends BaseView {
 		// prikaz pojedinacne, i opcije za nju, refresh
 		prikazNarudzbenica.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		
-		prikazNarudzbenica.addMouseListener(new MouseAdapter() {
+		//prikazNarudzbenica.addMouseListener(new MouseAdapter() {
 			 
-		    @Override
-		    public void mouseClicked(MouseEvent e) {
+		//    @Override
+		 //   public void mouseClicked(MouseEvent e) {
 		        // the user clicks on the label
 		    	//JOptionPane.showMessageDialog(null, "Prikaz liste narudzbenica sa mogucnoscu odabira"
 		    	//		+ " posiljke narudzbenica koje nisu poslate");
 		    	
-		    	NarudzbeniceView nv = new NarudzbeniceView(narudzbenice, preduzece);
-		    	remove(1);
-		    	add(nv);
-		    	updateUI();
+		 //   	NarudzbeniceView nv = new NarudzbeniceView(narudzbenice, preduzece);
+		 //   	remove(1);
+		 //   	add(nv);
+		 //   	updateUI();
 		    	
-		    }});
+		  //  }});
 		onoSaStrane.setLayout(new GridLayout(18, 0));
 		
 		dodajNoviProizvod = new JLabel("  Dodaj novi proizvod  ");
 		dodajNoviProizvod.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		
-		dodajNoviProizvod.addMouseListener(new MouseAdapter() {
+		//dodajNoviProizvod.addMouseListener(new MouseAdapter() {
 			 
 			// ovo svakako u controller
-		    @Override
-		    public void mouseClicked(MouseEvent e) {
+	//	    @Override
+	//	    public void mouseClicked(MouseEvent e) {
 		        // the user clicks on the label
 		    	//JOptionPane.showMessageDialog(null, " Unos novog proizvoda ");
-		    	DodavanjeProizvodaView rw = new DodavanjeProizvodaView(preduzece, frame);
+//		    	DodavanjeProizvodaView rw = new DodavanjeProizvodaView(preduzece, frame);
 				//proizvodi.add(rw);
 				//proizvodi.remove(0);
 				//proizvodi.updateUI();
-				remove(1);
-				add(rw);
-				updateUI();
+	//			remove(1);
+		//		add(rw);
+	//			updateUI();
 				// ili frame.getviiew();
-		    }});
+	//	    }});
 		
 		onoSaStrane.add(dodajNoviProizvod);
 		
@@ -163,19 +162,19 @@ public class MenadzerView extends BaseView {
 		izmenaPodataka = new JLabel("  Izmena mojih podataka  ");
 		izmenaPodataka.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		
-		izmenaPodataka.addMouseListener(new MouseAdapter() {
+	//	izmenaPodataka.addMouseListener(new MouseAdapter() {
 			 
 			// ovo svakako u controller
-		    @Override
-		    public void mouseClicked(MouseEvent e) {
+		//    @Override
+		//    public void mouseClicked(MouseEvent e) {
 		        // the user clicks on the label
 		    	//JOptionPane.showMessageDialog(null, "Izmena podataka");
-		    	PromenaPodatakaView ppv = new PromenaPodatakaView(preduzece, frame);
+		 //   	PromenaPodatakaView ppv = new PromenaPodatakaView(preduzece, frame);
 				
-				remove(1);
-				add(ppv);
-				updateUI();
-		    }});
+		//		remove(1);
+		//		add(ppv);
+		//		updateUI();
+		 //   }});
 		
 		onoSaStrane.add(izmenaPodataka);
 		onoSaStrane.add(new JLabel("  Rad sa kategorijama  "));
@@ -183,6 +182,88 @@ public class MenadzerView extends BaseView {
 		
 		
 		
+	}
+
+	
+
+	public ProizvodiView getProizvodi() {
+		return proizvodi;
+	}
+
+	public void setProizvodi(ProizvodiView proizvodi) {
+		this.proizvodi = proizvodi;
+	}
+
+	public JPanel getOnoSaStrane() {
+		return onoSaStrane;
+	}
+
+	public void setOnoSaStrane(JPanel onoSaStrane) {
+		this.onoSaStrane = onoSaStrane;
+	}
+
+	public JLabel getDodajNoviProizvod() {
+		return dodajNoviProizvod;
+	}
+
+	public void setDodajNoviProizvod(JLabel dodajNoviProizvod) {
+		this.dodajNoviProizvod = dodajNoviProizvod;
+	}
+
+	public JLabel getProdavnice() {
+		return prodavnice;
+	}
+
+	public void setProdavnice(JLabel prodavnice) {
+		this.prodavnice = prodavnice;
+	}
+
+	public MainFrame getFrame() {
+		return frame;
+	}
+
+	public void setFrame(MainFrame frame) {
+		this.frame = frame;
+	}
+
+	public JLabel getPrikazNarudzbenica() {
+		return prikazNarudzbenica;
+	}
+
+	public void setPrikazNarudzbenica(JLabel prikazNarudzbenica) {
+		this.prikazNarudzbenica = prikazNarudzbenica;
+	}
+
+	public JLabel getIzmenaPodataka() {
+		return izmenaPodataka;
+	}
+
+	public void setIzmenaPodataka(JLabel izmenaPodataka) {
+		this.izmenaPodataka = izmenaPodataka;
+	}
+
+	public JSplitPane getSplit() {
+		return split;
+	}
+
+	public void setSplit(JSplitPane split) {
+		this.split = split;
+	}
+
+	public ArrayList<Narudzbenica> getNarudzbenice() {
+		return narudzbenice;
+	}
+
+	public void setNarudzbenice(ArrayList<Narudzbenica> narudzbenice) {
+		this.narudzbenice = narudzbenice;
+	}
+
+	public AplikacijaPreduzece getPreduzece() {
+		return preduzece;
+	}
+
+	public void setPreduzece(AplikacijaPreduzece preduzece) {
+		this.preduzece = preduzece;
 	}
 	
 }

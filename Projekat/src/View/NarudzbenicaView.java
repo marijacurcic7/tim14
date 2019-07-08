@@ -52,6 +52,8 @@ public class NarudzbenicaView extends JPanel {
 		
 		
 		constructGUI();
+		
+		ncon = new NarudzbenicaController(this, preduzece);
 	}
 	
 	private void constructGUI() {
@@ -111,7 +113,7 @@ public class NarudzbenicaView extends JPanel {
 		dugmici.add(pregled);
 		pnlContent.add(dugmici);
 		add(pnl);
-		
+		/*
 		plati.addActionListener(new ActionListener() {
 			
 			@Override
@@ -164,8 +166,80 @@ public class NarudzbenicaView extends JPanel {
 				nev.remove(0);
 				nev.updateUI();
 			}
-		});
+		});*/
 		
+	}
+
+	public NarudzbenicaController getNcon() {
+		return ncon;
+	}
+
+	public void setNcon(NarudzbenicaController ncon) {
+		this.ncon = ncon;
+	}
+
+	public NarudzbeniceView getNev() {
+		return nev;
+	}
+
+	public void setNev(NarudzbeniceView nev) {
+		this.nev = nev;
+	}
+
+	public AplikacijaPreduzece getPreduzece() {
+		return preduzece;
+	}
+
+	public void setPreduzece(AplikacijaPreduzece preduzece) {
+		this.preduzece = preduzece;
+	}
+
+	public JButton getPlati() {
+		return plati;
+	}
+
+	public void setPlati(JButton plati) {
+		this.plati = plati;
+	}
+
+	public JButton getPregled() {
+		return pregled;
+	}
+
+	public void setPregled(JButton pregled) {
+		this.pregled = pregled;
+	}
+
+	public JButton getIsporuci() {
+		return isporuci;
+	}
+
+	public void setIsporuci(JButton isporuci) {
+		this.isporuci = isporuci;
+	}
+
+	public JPanel getPnl() {
+		return pnl;
+	}
+
+	public void setPnl(JPanel pnl) {
+		this.pnl = pnl;
+	}
+
+	public JPanel getPnlContent() {
+		return pnlContent;
+	}
+
+	public void setPnlContent(JPanel pnlContent) {
+		this.pnlContent = pnlContent;
+	}
+
+	public Narudzbenica getNarudzbenica() {
+		return narudzbenica;
+	}
+
+	public void setNarudzbenica(Narudzbenica narudzbenica) {
+		this.narudzbenica = narudzbenica;
 	}
 
 }
