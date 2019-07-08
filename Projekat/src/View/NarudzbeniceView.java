@@ -54,7 +54,7 @@ public class NarudzbeniceView extends JPanel {
 			pnlContent.add(nv);
 			i+=10;
 		}
-		System.out.println(preduzece.korpa);
+		
 		if(!preduzece.korpa.stavkeNarudzbenice.isEmpty()) {
 			NarudzbenicaView nv = new NarudzbenicaView(preduzece.korpa, preduzece, this);
 			

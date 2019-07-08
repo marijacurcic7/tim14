@@ -71,7 +71,7 @@ public class MainFrame extends JFrame {
 	public MainFrame() throws IOException {
 		
 		preduzece = new AplikacijaPreduzece();
-		System.out.println(preduzece.proizvodi.size() + 1);
+		
 		izgenerisiPreduzece();
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -180,7 +180,7 @@ public class MainFrame extends JFrame {
 		
 		File currentDir = new File("");
 		String sep = File.separator;
-		String put = currentDir.getAbsolutePath() + sep + "slike" + sep + "solja.jpg";
+		//String put = currentDir.getAbsolutePath() + sep + "slike" + sep + "solja.jpg";
 		//put = "C:\\Users\\Korisnik\\Desktop\\sims_webshop\\tim14\\Projekat\\slike\\solja.jpg";
 		String fld = currentDir.getAbsolutePath() + sep + "slike" + sep;
 
@@ -201,7 +201,7 @@ public class MainFrame extends JFrame {
 		
 		Proizvod p = new Proizvod(1, "Solja", "bela, velika", k, fld + "solja.jpg");
 		
-		SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
+		//SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
 		Date datum = new Date(System.currentTimeMillis());
 		StavkaCenovnika sc = new StavkaCenovnika(100, datum, p);
 		p.setAktuelnaCena(sc);
@@ -209,7 +209,7 @@ public class MainFrame extends JFrame {
 		Proizvod p2 = new Proizvod(2, "Viljuska", "metalna", k1, fld + "viljuska.jpg");
 		StavkaCenovnika c2 = new StavkaCenovnika(500, datum, p2);
 		p2.setAktuelnaCena(c2);
-		System.out.println(p2.getPutanja());
+		
 		
 		
 		preduzece.addProizvod(p);

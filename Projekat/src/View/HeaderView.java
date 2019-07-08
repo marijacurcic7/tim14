@@ -41,23 +41,21 @@ public class HeaderView extends BaseView {
 	    c.gridy = 0;
 	    c.gridwidth = 3;
 	    c.anchor = GridBagConstraints.CENTER; // place component on the North
-	    System.out.println("java dugme");
-	    System.out.println(c.gridx + ", a y " + c.gridy);
+	    
+	    
 	
 	    c.gridx = 0;
 	    c.gridy = 1;
 	    c.gridheight = 1;
 	    c.gridwidth = 1;
 	    c.anchor = GridBagConstraints.CENTER;
-	    System.out.println("izvor dugme");
-	    System.out.println(c.gridx + ", a y " + c.gridy);
 	    
 	    
 	    c.gridy = 2;
 	    c.gridwidth = 1;
 	    c.anchor = GridBagConstraints.CENTER; // remember to rest to center
-	    System.out.println("I");
-	    System.out.println(c.gridx + ", a y " + c.gridy);
+	    
+	    
 	    this.add(new JPanel(), c);
 	    
 	    c.gridx = 1;
