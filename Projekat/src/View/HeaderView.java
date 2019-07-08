@@ -26,7 +26,7 @@ public class HeaderView extends BaseView {
 	public HeaderView(AplikacijaPreduzece preduzece){
 		this.preduzece = preduzece;
 	//p = new JPanel(new GridBagLayout());
-    this.setLayout(new GridBagLayout());
+		this.setLayout(new GridBagLayout());
     /*
 		this.setPreferredSize(new Dimension(1800, 120));
     
@@ -76,7 +76,7 @@ public class HeaderView extends BaseView {
     System.out.println("izvor dugme");
     System.out.println(c.gridx + ", a y " + c.gridy);
     labela1 = new JLabel("Labela1");
-    this.add(labela1, c);
+    //this.add(labela1, c);
     //p.add(new JPanel(), c);
     c.gridy = 2;
     c.gridwidth = 1;
@@ -93,7 +93,7 @@ public class HeaderView extends BaseView {
     
     c.gridy = 1;
     labela2 = new JLabel("Labela2");
-    this.add(labela2, c);
+    //this.add(labela2, c);
     
     c.gridy = 2;
     this.add(new JPanel(),c);
@@ -122,7 +122,7 @@ public class HeaderView extends BaseView {
     c.weightx = 0.5;
     Font font = new Font(Font.SANS_SERIF, Font.PLAIN,60);
     //naslov = new JLabel("TITLE");
-    naslov = new JLabel("HOME");
+    naslov = new JLabel("WEB SHOP");
     naslov.setFont(font);
     
     JPanel pn = new JPanel();

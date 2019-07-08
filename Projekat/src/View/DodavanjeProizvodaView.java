@@ -52,7 +52,7 @@ public class DodavanjeProizvodaView extends JPanel {
 	private JButton btnOK;
 	
 	public DodavanjeProizvodaView(AplikacijaPreduzece preduzece, MainFrame frame) {
-		// TODO Auto-generated constructor stub
+
 		this.preduzece = preduzece;
 		this.frame = frame;
 		
@@ -72,24 +72,21 @@ public class DodavanjeProizvodaView extends JPanel {
 		
 		lblcena = new JLabel("Cena:");
 		tfcena = new JTextField(20);
-		
-		
-		// i u konstruktoru provjeriti jel postoji slika na toj putanji, ako ne, defaultna neka neka bude
-		//
+
 		lblslika = new JLabel("Slika: ");
 		tfslika = new JTextField(10);
 		odabirSlike = new JFileChooser();
-		//odabirSlike.showOpenDialog(this);
-		
-		//
+
 		dugmeSlika = new JButton("Odabir putanje");
-		
-		
 
 		btnOK = new JButton("OK");
-		
-		
+
 		constructGUI();
+		
+		if (dpcon == null) {
+			dpcon = new DodavanjeProizvodaController(this, preduzece);
+		}
+		
 	}
 	
 	private void constructGUI() {
@@ -113,7 +110,6 @@ public class DodavanjeProizvodaView extends JPanel {
 				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
 		pnlContent.add(tfcena, new GridBagConstraints(1, 4, 1, 1, 100, 0, GridBagConstraints.WEST,
 				GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
-		// DODAJEM
 		
 		pnlContent.add(lblslika, new GridBagConstraints(0, 5, 1, 1, 0, 0, GridBagConstraints.WEST,
 				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
@@ -121,65 +117,18 @@ public class DodavanjeProizvodaView extends JPanel {
 				GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
 		pnlContent.add(dugmeSlika, new GridBagConstraints(2, 5, 1, 1, 100, 0, GridBagConstraints.WEST,
 				GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
-		
-		
-		
-		//
-		
-		
+
 		
 		pnlContent.add(btnOK, new GridBagConstraints(1, 8, 1, 1, 100, 0, GridBagConstraints.WEST,
 						GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
 				
-		//
-		//pnlContent.add(btnOK, new GridBagConstraints(1, 7, 1, 1, 100, 0, GridBagConstraints.WEST,
-		//		GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
-		//pnlOK.add(btnOK);
-
+		
 		add(pnlContent, BorderLayout.CENTER);
-		
-		//add(pnlOK, BorderLayout.SOUTH);
-		
-		btnOK.addActionListener(new ActionListener() {
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-					
-					try {
-						ok();
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-					
-				}
-		});
-		
-		dugmeSlika.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				odabirSlike = new JFileChooser();
-				FileNameExtensionFilter filter = new FileNameExtensionFilter(
-			        "JPG & GIF Images", "jpg", "gif");
-			    //odabirSlike.setFileFilter(filter);
-				int result = odabirSlike.showOpenDialog(null);
-				if (result == JFileChooser.APPROVE_OPTION) {
-					tfslika.setText(odabirSlike.getSelectedFile().getAbsolutePath());
-				    //createFile();
-				} else if (result == JFileChooser.CANCEL_OPTION) {
-				    System.out.println("Cancel was selected");
-				}
-				
-			}
-			
-		});
 
 	}
 	
-	private void ok() throws IOException {
-		if (dpcon == null) {
-			dpcon = new DodavanjeProizvodaController(this, preduzece);
-		}
+	public void ok() throws IOException {
 		
 		Window parent = SwingUtilities.getWindowAncestor(this);
 
@@ -191,53 +140,36 @@ public class DodavanjeProizvodaView extends JPanel {
 		String putanja = tfslika.getText();
 		
 		String message = dpcon.dodaj(id, naziv, opis, kategorija, cena, putanja);
-		String title = "Greska";
 		
 		if (proizvod == null){
-			JButton btnOk = new JButton("Ok");
-			btnOk.addActionListener(new ActionListener() {
-			    public void actionPerformed(ActionEvent e) {
-			    	//JOptionPane.
-			    	Window w = SwingUtilities.getWindowAncestor(btnOk);
-
-			        if (w != null) {
-			          w.setVisible(false);
-			        }
-			    	DodavanjeProizvodaView rw = new DodavanjeProizvodaView(preduzece, frame);
-					add(rw);
-					remove(0);
-					updateUI();
-			        //System.out.println("code excuted");
-			    }
-			}); 
-			JOptionPane.showOptionDialog(parent, message, title, JOptionPane.OK_OPTION, JOptionPane.INFORMATION_MESSAGE, null, new Object[]{btnOk}, btnOk);
 			
+			JOptionPane.showMessageDialog(parent, message);
 		}
 		else {
-			// gledam koji je tip
-			// promijeniti zaglavlje, na odjavi
+			
 			JOptionPane.showMessageDialog(parent, message);
-			//KupacView kv = new KupacView(preduzece);
-			//
+			
 			preduzece = dpcon.getPreduzece();
-			//ProizvodiView bw = new ProizvodiView(preduzece);
 			MenadzerView mv = new MenadzerView(preduzece, frame);
-			//frame.getHeader().getPrijava().setText("Odjava");
-			//frame.getHeader().updateUI();
-			//Window w = SwingUtilities.getWindowAncestor(this);
-			//add(w);
-			//remove(0);
-			//updateUI();
+			
 			frame.getCentralni().add(mv);
 			frame.getCentralni().remove(0);
 			frame.getCentralni().updateUI(); 
-			//frame.getView().add(mv);
-			//frame.getView().remove(0);
-			//frame.getView().updateUI();
-			//System.out.println(preduzece.trenutnoUlogovani.getIme());
+			
 		}
-		
-		
+	}
+	
+	public void slika() {
+		odabirSlike = new JFileChooser();
+		//FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG & GIF Images", "jpg", "gif");
+	    //odabirSlike.setFileFilter(filter);
+		int result = odabirSlike.showOpenDialog(null);
+		if (result == JFileChooser.APPROVE_OPTION) {
+			tfslika.setText(odabirSlike.getSelectedFile().getAbsolutePath());
+		    //createFile();
+		} else if (result == JFileChooser.CANCEL_OPTION) {
+		    System.out.println("Cancel was selected");
+		}
 	}
 
 	public AplikacijaPreduzece getPreduzece() {
@@ -375,6 +307,40 @@ public class DodavanjeProizvodaView extends JPanel {
 	public void setBtnOK(JButton btnOK) {
 		this.btnOK = btnOK;
 	}
+
+	public JLabel getLblslika() {
+		return lblslika;
+	}
+
+	public void setLblslika(JLabel lblslika) {
+		this.lblslika = lblslika;
+	}
+
+	public JTextField getTfslika() {
+		return tfslika;
+	}
+
+	public void setTfslika(JTextField tfslika) {
+		this.tfslika = tfslika;
+	}
+
+	public JFileChooser getOdabirSlike() {
+		return odabirSlike;
+	}
+
+	public void setOdabirSlike(JFileChooser odabirSlike) {
+		this.odabirSlike = odabirSlike;
+	}
+
+	public JButton getDugmeSlika() {
+		return dugmeSlika;
+	}
+
+	public void setDugmeSlika(JButton dugmeSlika) {
+		this.dugmeSlika = dugmeSlika;
+	}
+	
+	
 	
 	
 

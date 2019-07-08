@@ -180,32 +180,25 @@ public class ProizvodiView extends BaseView{
 			if(k.getNadkategorija()==null) {
 				if(k.getPodkategorije().size()!=0) {
 					JMenu kat = new JMenu(k.getNaziv());
-					//JMenuItem kat = new JMenuItem(k.getNaziv());
 					kat.setMnemonic(KeyEvent.VK_A);
 					JMenuItem katitem1 = new JMenuItem(k.getNaziv());
-					katitem1.setAccelerator(KeyStroke.getKeyStroke(
-					        KeyEvent.VK_K, ActionEvent.CTRL_MASK));
+					katitem1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_K, ActionEvent.CTRL_MASK));
 					katitem1.addActionListener(new ActionListener() {
 						
 						@Override
 						public void actionPerformed(ActionEvent e) {
-							System.out.println(">>>>>>>>>>> Kategorija: "+k.getNaziv());
 							prikazKategorije(k);
-							
 						}
 					});
 					kat.add(katitem1);
 					for(Kategorija kk : k.getPodkategorije()) {
 						JMenuItem katitem = new JMenuItem(kk.getNaziv());
-						katitem.setAccelerator(KeyStroke.getKeyStroke(
-						        KeyEvent.VK_K, ActionEvent.CTRL_MASK));
+						katitem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_K, ActionEvent.CTRL_MASK));
 						katitem.addActionListener(new ActionListener() {
 							
 							@Override
 							public void actionPerformed(ActionEvent e) {
-								System.out.println(">>>>>>>>>>> Kategorija: "+kk.getNaziv());
 								prikazKategorije(kk);
-								
 							}
 						});
 						kat.add(katitem);
@@ -214,9 +207,7 @@ public class ProizvodiView extends BaseView{
 						
 						@Override
 						public void actionPerformed(ActionEvent e) {
-							System.out.println(">>>>>>>>>>> Kategorija: "+k.getNaziv());
 							prikazKategorije(k);
-							
 						}
 					});
 					
@@ -224,22 +215,17 @@ public class ProizvodiView extends BaseView{
 				}
 				else {
 					JMenuItem katitem = new JMenuItem(k.getNaziv());
-					katitem.setAccelerator(KeyStroke.getKeyStroke(
-					        KeyEvent.VK_K, ActionEvent.CTRL_MASK));
+					katitem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_K, ActionEvent.CTRL_MASK));
 					katitem.addActionListener(new ActionListener() {
 						
 						@Override
 						public void actionPerformed(ActionEvent e) {
-							System.out.println(">>>>>> Kategorija: "+k.getNaziv());
-							
+							//System.out.println(">>>>>> Kategorija: "+k.getNaziv());
+							prikazKategorije(k);
 						}
 					});
 					kategorije.add(katitem);
 				}
-				
-				
-				//kategorije.addSeparator();
-				//System.out.println("Kategorija: "+k.getNaziv());
 			}
 		}
 	}
@@ -268,14 +254,12 @@ public class ProizvodiView extends BaseView{
 			}
 			gdeStoji.updateUI();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 	}
 
 	private void initProductPanel() throws IOException {
-		// TODO Auto-generated method stub
 		panelSaProizvodima = new JPanel();
 		GridLayout grid = new GridLayout(0, 3, 50, 50);
 		panelSaProizvodima.setLayout(grid);
@@ -293,21 +277,6 @@ public class ProizvodiView extends BaseView{
 		
 		}
 		
-		/*
-		for (int i = 0; i < 18; i++) {
-			//System.out.println("U basic view sta se dsava");
-			//System.out.println(this);
-			Proizvod p  = new Proizvod("proizvod" + i);
-			ProizvodPanel pp = new ProizvodPanel(p, this, preduzece);
-			ControllerProizvoda cp = new ControllerProizvoda(pp);
-			pp.setController(cp);
-			//pp.updateUI();
-			// ovde dodam kontroler?
-			
-			panelSaProizvodima.add(pp);
-			this.add(panelSaProizvodima);
-					
-		}*/
 	}
 
 

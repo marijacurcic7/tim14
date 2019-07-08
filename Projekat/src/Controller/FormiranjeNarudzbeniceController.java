@@ -1,7 +1,11 @@
 package Controller;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Collections;
 import java.util.Comparator;
+
+import javax.swing.JOptionPane;
 
 import Model.AplikacijaPreduzece;
 import Model.Korisnik;
@@ -27,7 +31,7 @@ public class FormiranjeNarudzbeniceController {
 		this.trenutnoUlogovani = ap.trenutnoUlogovani;
 		this.korpa = ap.korpa;
 		kupac = (RegistrovaniKupac)trenutnoUlogovani;
-		
+		addListeners();
 	}
 	
 	public String formirajNarudzbenicu(String ime, String prezime, String telefon, String karticastr, double cena, String drzava, String grad, String adresa) {
@@ -119,12 +123,26 @@ public class FormiranjeNarudzbeniceController {
 		preduzece.sekvencer.add(id);
 		*/
 		
-		preduzece.narudzbenice.add(korpa);
+		//preduzece.narudzbenice.add(korpa);
+		fnview.setNarudzbenica(korpa);
 		
 		preduzece.korpa = new Narudzbenica();
 		korpa.setId(0);
 		
 		return "";
+	}
+	
+	private void addListeners() {
+		
+		fnview.getBtnOK().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+					
+					fnview.ok();
+				}
+		});
+		
 	}
 
 }

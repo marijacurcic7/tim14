@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
+import Controller.AdminController;
 import Controller.Controller;
 import Main.MainFrame;
 import Model.AplikacijaPreduzece;
@@ -14,7 +15,8 @@ import Model.AplikacijaPreduzece;
 public class AdminView extends BaseView {
 
 	JButton dodajMenadzera;
-	Controller controller;  // ovo dodati, zasad akciju na dugme ostaviti ovdje
+	//Controller controller;  // ovo dodati, zasad akciju na dugme ostaviti ovdje
+	//AdminController admincon;
 	AplikacijaPreduzece preduzece;
 	MainFrame frame;
 	

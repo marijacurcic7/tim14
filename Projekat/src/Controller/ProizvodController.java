@@ -68,15 +68,15 @@ public class ProizvodController extends Controller {
 							preduzece.korpa.update();
 							//double novaCena = 
 							//sn.setUkupnaCena(novaCena);
-							System.out.println("Ukupna cena: "+sn.getUkupnaCena());
-							System.out.println("Cena u korpi: "+preduzece.korpa.getUkupanIznos());
+							//System.out.println("Ukupna cena: "+sn.getUkupnaCena());
+							//System.out.println("Cena u korpi: "+preduzece.korpa.getUkupanIznos());
 							added = true;
 						}
 					}
 					if (added == false) {
 						preduzece.korpa.addStavkaNarudzbenice(new StavkaNarudzbenice(kolicina, proizvod));
 					}
-					System.out.println(kolicina+" "+proizvod);
+					//System.out.println(kolicina+" "+proizvod);
 					SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
 					Date datum = new Date(System.currentTimeMillis());
 					preduzece.korpa.setDatum(datum);
@@ -98,7 +98,7 @@ public class ProizvodController extends Controller {
 					}
 					//frame.getView().remove(0);
 					
-					System.out.println("tuuuuuuuuuuuuuuu");
+					//System.out.println("tuuuuuuuuuuuuuuu");
 					// is this okay?
 					if (preduzece.trenutnoUlogovani == null) {
 					proizvodView.getGdjeStoji().add(bw);

@@ -22,6 +22,7 @@ import Model.AplikacijaPreduzece;
 import Model.Korisnik;
 import Model.Mesto;
 import Model.Narudzbenica;
+import Model.Placena;
 
 public class FormiranjeNarudzbeniceView extends JPanel {
 	
@@ -29,6 +30,7 @@ public class FormiranjeNarudzbeniceView extends JPanel {
 	private Korisnik trenutnoUlogovani;
 	private FormiranjeNarudzbeniceController fncon;
 	private Narudzbenica korpa;
+	private Narudzbenica narudzbenica;
 	public MainFrame frame;
 	
 	private JButton btnOK;
@@ -56,7 +58,6 @@ public class FormiranjeNarudzbeniceView extends JPanel {
 	
 	public FormiranjeNarudzbeniceView(AplikacijaPreduzece ap, MainFrame frame) {
 		
-		
 		this.frame = frame;
 		this.preduzece = ap;
 		this.trenutnoUlogovani = ap.trenutnoUlogovani;
@@ -83,11 +84,9 @@ public class FormiranjeNarudzbeniceView extends JPanel {
 		
 		lblgrad = new JLabel("Grad:");
 		tfgrad = new JTextField(20);
-		//
 		
 		lbldrzava = new JLabel("Drzava:");
 		tfdrzava = new JTextField(20);
-		//
 		
 		lbladresa = new JLabel("Adresa:");
 		tfadresa = new JTextField(20);
@@ -97,8 +96,7 @@ public class FormiranjeNarudzbeniceView extends JPanel {
 			tfdrzava.setText(trenutnoUlogovani.getMesto().getDrzava());
 			tfadresa.setText(trenutnoUlogovani.getMesto().getAdresa());
 		}
-		//
-
+		
 		btnOK = new JButton("OK");
 		btnCancell = new JButton("Cancell");
 		
@@ -106,6 +104,10 @@ public class FormiranjeNarudzbeniceView extends JPanel {
 		pnl = new JPanel();
 		
 		constructGUI();
+		
+		if(fncon == null) {
+			fncon = new FormiranjeNarudzbeniceController(this, preduzece);
+		}
 	}
 	
 	private void constructGUI() {
@@ -149,20 +151,17 @@ public class FormiranjeNarudzbeniceView extends JPanel {
 		pnlContent.add(tfadresa, new GridBagConstraints(1, 7, 1, 1, 100, 0, GridBagConstraints.WEST,
 				GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
 		
-		/*pnlContent.add(btnOK, new GridBagConstraints(1, 7, 1, 1, 100, 0, GridBagConstraints.WEST,
-				GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));*/
-		//pnlOK.add(btnOK);
+		
 		
 		pnlContent.setVisible(true);
 
 		pnl.add(pnlContent, BorderLayout.CENTER);
 		
-		//add(pnlOK, BorderLayout.SOUTH);
 		
 		pnl.add(btnOK);
 		pnl.add(btnCancell);
 		
-		btnOK.addActionListener(new ActionListener() {
+		/*btnOK.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -171,12 +170,13 @@ public class FormiranjeNarudzbeniceView extends JPanel {
 					
 				}
 		});
+		*/
 		
 		add(pnl);
 	
 	}
 	
-	private void ok() {
+	public void ok() {
 		if(fncon == null) {
 			fncon = new FormiranjeNarudzbeniceController(this, preduzece);
 		}
@@ -198,40 +198,250 @@ public class FormiranjeNarudzbeniceView extends JPanel {
 		//String title = "Greska";
 		
 		if(message.equals("")) {
-			JOptionPane.showMessageDialog(parent, "Narudzbenica formirana");
+			//JOptionPane.showMessageDialog(parent, "Narudzbenica formirana");
+			//JOptionPane.showConfirmDialog(this, "Plati");
+			
+			int dialogbtn = JOptionPane.YES_NO_OPTION;
+			int dialogrez = JOptionPane.showConfirmDialog(this, "Plati", "Narudzbenica je formirana", dialogbtn);
+			if(dialogrez == JOptionPane.YES_OPTION) {
+				narudzbenica.setStanje(new Placena());
+			}
+			
+			preduzece.narudzbenice.add(narudzbenica);
+
 			/*ProizvodiView bw = null;
 			try {
-				bw = new ProizvodiView(preduzece);
+				bw = new ProizvodiView(frame.getView(), preduzece, preduzece.proizvodi);
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+			frame.getView().remove(1);
 			frame.getView().add(bw);
-			frame.getView().remove(0);
+			
 			frame.getView().updateUI();*/
 			//doSth();
 			//KupacView kv = new KupacView(preduzece, frame);
-			//add(kv);
 			//remove(0);
-			//updateUI();
+			//add(kv);
+			
+			updateUI();
 		}
 		else {
 			JOptionPane.showMessageDialog(parent, message);
 
-			//ok();
 		}
 	}
 	
 	
-	private void doSth() {
-		//KupacView kv = new KupacView(preduzece, frame);
-		
+
+
+	public AplikacijaPreduzece getPreduzece() {
+		return preduzece;
 	}
-	
-	private void ulogovan() {
-		if(preduzece.trenutnoUlogovani == null) {
-			//n
-		}
+
+	public void setPreduzece(AplikacijaPreduzece preduzece) {
+		this.preduzece = preduzece;
+	}
+
+	public Korisnik getTrenutnoUlogovani() {
+		return trenutnoUlogovani;
+	}
+
+	public void setTrenutnoUlogovani(Korisnik trenutnoUlogovani) {
+		this.trenutnoUlogovani = trenutnoUlogovani;
+	}
+
+	public FormiranjeNarudzbeniceController getFncon() {
+		return fncon;
+	}
+
+	public void setFncon(FormiranjeNarudzbeniceController fncon) {
+		this.fncon = fncon;
+	}
+
+	public Narudzbenica getKorpa() {
+		return korpa;
+	}
+
+	public void setKorpa(Narudzbenica korpa) {
+		this.korpa = korpa;
+	}
+
+	public MainFrame getFrame() {
+		return frame;
+	}
+
+	public void setFrame(MainFrame frame) {
+		this.frame = frame;
+	}
+
+	public JButton getBtnOK() {
+		return btnOK;
+	}
+
+	public void setBtnOK(JButton btnOK) {
+		this.btnOK = btnOK;
+	}
+
+	public JButton getBtnCancell() {
+		return btnCancell;
+	}
+
+	public void setBtnCancell(JButton btnCancell) {
+		this.btnCancell = btnCancell;
+	}
+
+	public JPanel getPnlContent() {
+		return pnlContent;
+	}
+
+	public void setPnlContent(JPanel pnlContent) {
+		this.pnlContent = pnlContent;
+	}
+
+	public JPanel getPnl() {
+		return pnl;
+	}
+
+	public void setPnl(JPanel pnl) {
+		this.pnl = pnl;
+	}
+
+	public JLabel getLblime() {
+		return lblime;
+	}
+
+	public void setLblime(JLabel lblime) {
+		this.lblime = lblime;
+	}
+
+	public JLabel getLblprezime() {
+		return lblprezime;
+	}
+
+	public void setLblprezime(JLabel lblprezime) {
+		this.lblprezime = lblprezime;
+	}
+
+	public JLabel getLbltelefon() {
+		return lbltelefon;
+	}
+
+	public void setLbltelefon(JLabel lbltelefon) {
+		this.lbltelefon = lbltelefon;
+	}
+
+	public JLabel getLblemail() {
+		return lblemail;
+	}
+
+	public void setLblemail(JLabel lblemail) {
+		this.lblemail = lblemail;
+	}
+
+	public JLabel getLblgrad() {
+		return lblgrad;
+	}
+
+	public void setLblgrad(JLabel lblgrad) {
+		this.lblgrad = lblgrad;
+	}
+
+	public JLabel getLbldrzava() {
+		return lbldrzava;
+	}
+
+	public void setLbldrzava(JLabel lbldrzava) {
+		this.lbldrzava = lbldrzava;
+	}
+
+	public JLabel getLbladresa() {
+		return lbladresa;
+	}
+
+	public void setLbladresa(JLabel lbladresa) {
+		this.lbladresa = lbladresa;
+	}
+
+	public JLabel getLblkartica() {
+		return lblkartica;
+	}
+
+	public void setLblkartica(JLabel lblkartica) {
+		this.lblkartica = lblkartica;
+	}
+
+	public JTextField getTfemail() {
+		return tfemail;
+	}
+
+	public void setTfemail(JTextField tfemail) {
+		this.tfemail = tfemail;
+	}
+
+	public JTextField getTftelefon() {
+		return tftelefon;
+	}
+
+	public void setTftelefon(JTextField tftelefon) {
+		this.tftelefon = tftelefon;
+	}
+
+	public JTextField getTfime() {
+		return tfime;
+	}
+
+	public void setTfime(JTextField tfime) {
+		this.tfime = tfime;
+	}
+
+	public JTextField getTfprezime() {
+		return tfprezime;
+	}
+
+	public void setTfprezime(JTextField tfprezime) {
+		this.tfprezime = tfprezime;
+	}
+
+	public JTextField getTfgrad() {
+		return tfgrad;
+	}
+
+	public void setTfgrad(JTextField tfgrad) {
+		this.tfgrad = tfgrad;
+	}
+
+	public JTextField getTfdrzava() {
+		return tfdrzava;
+	}
+
+	public void setTfdrzava(JTextField tfdrzava) {
+		this.tfdrzava = tfdrzava;
+	}
+
+	public JTextField getTfadresa() {
+		return tfadresa;
+	}
+
+	public void setTfadresa(JTextField tfadresa) {
+		this.tfadresa = tfadresa;
+	}
+
+	public JTextField getTfkartica() {
+		return tfkartica;
+	}
+
+	public void setTfkartica(JTextField tfkartica) {
+		this.tfkartica = tfkartica;
+	}
+
+	public Narudzbenica getNarudzbenica() {
+		return narudzbenica;
+	}
+
+	public void setNarudzbenica(Narudzbenica narudzbenica) {
+		this.narudzbenica = narudzbenica;
 	}
 
 }

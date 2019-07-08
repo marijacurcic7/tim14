@@ -109,20 +109,17 @@ public class MenadzerView extends BaseView {
 	private void initOnoSaStrane() {
 		onoSaStrane = new JPanel();
 		
-		// npr
 		onoSaStrane.setPreferredSize(new Dimension(300, 600));
 		
 		GridBagLayout gbl = new GridBagLayout();
 		setLayout(gbl);
-		
-	
-		
+
 		prikazNarudzbenica = new JLabel("  Prikaz narudzbenica  ");
 		// prikaz pojedinacne, i opcije za nju, refresh
 		prikazNarudzbenica.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		
 		prikazNarudzbenica.addMouseListener(new MouseAdapter() {
 			 
-			// ovo svakako u controller
 		    @Override
 		    public void mouseClicked(MouseEvent e) {
 		        // the user clicks on the label
@@ -139,13 +136,14 @@ public class MenadzerView extends BaseView {
 		
 		dodajNoviProizvod = new JLabel("  Dodaj novi proizvod  ");
 		dodajNoviProizvod.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		
 		dodajNoviProizvod.addMouseListener(new MouseAdapter() {
 			 
 			// ovo svakako u controller
 		    @Override
 		    public void mouseClicked(MouseEvent e) {
 		        // the user clicks on the label
-		    	JOptionPane.showMessageDialog(null, " Unos novog proizvoda ");
+		    	//JOptionPane.showMessageDialog(null, " Unos novog proizvoda ");
 		    	DodavanjeProizvodaView rw = new DodavanjeProizvodaView(preduzece, frame);
 				//proizvodi.add(rw);
 				//proizvodi.remove(0);
@@ -164,13 +162,14 @@ public class MenadzerView extends BaseView {
 		
 		izmenaPodataka = new JLabel("  Izmena mojih podataka  ");
 		izmenaPodataka.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		
 		izmenaPodataka.addMouseListener(new MouseAdapter() {
 			 
 			// ovo svakako u controller
 		    @Override
 		    public void mouseClicked(MouseEvent e) {
 		        // the user clicks on the label
-		    	JOptionPane.showMessageDialog(null, "Izmena podataka");
+		    	//JOptionPane.showMessageDialog(null, "Izmena podataka");
 		    	PromenaPodatakaView ppv = new PromenaPodatakaView(preduzece, frame);
 				
 				remove(1);
@@ -179,8 +178,8 @@ public class MenadzerView extends BaseView {
 		    }});
 		
 		onoSaStrane.add(izmenaPodataka);
-		onoSaStrane.add(new JLabel("  Labela 3  "));
-		onoSaStrane.add(new JLabel("  Labela 4  "));
+		onoSaStrane.add(new JLabel("  Rad sa kategorijama  "));
+		onoSaStrane.add(new JLabel("  Rad sa prodavnicama  "));
 		
 		
 		

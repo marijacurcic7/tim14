@@ -1,8 +1,14 @@
 package Controller;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import Model.AplikacijaPreduzece;
 import Model.Kategorija;
@@ -20,9 +26,10 @@ public class DodavanjeProizvodaController {
 	private DodavanjeProizvodaView dpview;
 	
 	public DodavanjeProizvodaController(DodavanjeProizvodaView dpview, AplikacijaPreduzece preduzece) {
-		// TODO Auto-generated constructor stub
 		this.preduzece = preduzece;
 		this.dpview = dpview;
+		
+		addListeners();
 	}
 
 	public String dodaj(String idstr, String naziv, String opis, String nazivKategorije, String cenastr, String putanja) {
@@ -65,8 +72,7 @@ public class DodavanjeProizvodaController {
 		if (nazivKategorije == null) {
 			return "Unesite kategoriju";
 		}
-		// vidjeti da li postoji kategorije
-		// dodavanje kategorije!!
+		
 		nazivKategorije = nazivKategorije.trim();
 		if (nazivKategorije.isEmpty()) {
 			return "Unesite kategoriju";
@@ -82,23 +88,24 @@ public class DodavanjeProizvodaController {
 		
 		 try { 
 		        cena = Double.parseDouble(cenastr); 
-		    } catch(NumberFormatException e) { 
+		 } catch(NumberFormatException e) { 
 		        return "Niste lepo uneli cenu..."; 
-		    }
-		
-		// provjeriti postoji li fajl na toj putanji
+		 }
 		
 		Kategorija kategorija = new Kategorija();
-		//int id = Integer.parseInt(idstr);
-		//double cena = Double.parseDouble(cenastr);
+		
+		int i = 0;
 		for(Kategorija k : preduzece.kategorije) {
 			if(k.getNaziv().equals(nazivKategorije)) {
 				kategorija = k;
+				i=1;
 				break;
 			}
 		}
-		if(kategorija == null) {
+		
+		if(i == 0) {
 			kategorija = new Kategorija(nazivKategorije);
+			preduzece.kategorije.add(kategorija);
 		}
 		
 		File file = new File(putanja);
@@ -108,10 +115,8 @@ public class DodavanjeProizvodaController {
 		if (!(putanja.endsWith("jpg") || putanja.endsWith("jpeg") || putanja.endsWith("png"))) {
 			return "Fajl nevalidnog formata";
 		}
- 		
-		// provjeriti jesu li floatovi i to; da li postoji fajl na putanji itd itd
-		
-		SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
+ 				
+		//SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
 		Date datum = new Date(System.currentTimeMillis());
 		
 		Proizvod p = new Proizvod(id, naziv, opis, kategorija, putanja);
@@ -121,9 +126,34 @@ public class DodavanjeProizvodaController {
 		dpview.setProizvod(p);
 		preduzece.addProizvod(p);
 		
-		// TODO Auto-generated method stub
 		return "Proizvod je uspesno kreiran";
 	}
+	
+	private void addListeners() {
+		dpview.getBtnOK().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+					
+					try {
+						dpview.ok();
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
+					
+				}
+		});
+		
+		dpview.getDugmeSlika().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dpview.slika();
+			}
+			
+		});
+	}
+	
+	
 
 	public AplikacijaPreduzece getPreduzece() {
 		return preduzece;

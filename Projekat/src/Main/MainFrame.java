@@ -59,21 +59,6 @@ public class MainFrame extends JFrame {
 	public JSplitPane split;
 	JPanel ovajStoSeMenja;
 	JPanel centralni;
-	
-	
-	JPanel menja;
-	
-	public JPanel getMenja() {
-		return menja;
-	}
-
-
-
-	public void setMenja(JPanel menja) {
-		this.menja = menja;
-	}
-
-
 
 	BaseView view;
 	HeaderView header;
@@ -83,17 +68,6 @@ public class MainFrame extends JFrame {
 	Korisnik trenUlogovani;
 	
 	JButton prijava;
-
-	public JPanel getOvajStoSeMenja() {
-		return ovajStoSeMenja;
-	}
-
-
-
-	public void setOvajStoSeMenja(JPanel ovajStoSeMenja) {
-		this.ovajStoSeMenja = ovajStoSeMenja;
-	}
-
 
 
 	public MainFrame() throws IOException {
@@ -123,7 +97,7 @@ public class MainFrame extends JFrame {
             }
         });
 		
-		menja = new JPanel();
+		//menja = new JPanel();
 		header = new HeaderView(preduzece);
 		
 		centralni = new JPanel();
@@ -377,6 +351,7 @@ public class MainFrame extends JFrame {
 		System.out.println("kkkkkkkkkkkkkkkkkkkk");
 		String sep = File.separator;
 		String put = currentDir.getAbsolutePath() + sep + "slike" + sep + "solja.jpg";
+		System.out.println(put);
 		//put = "C:\\Users\\Korisnik\\Desktop\\sims_webshop\\tim14\\Projekat\\slike\\solja.jpg";
 		System.out.println(put);
 		String fld = currentDir.getAbsolutePath() + sep + "slike" + sep;
@@ -397,7 +372,7 @@ public class MainFrame extends JFrame {
 		preduzece.addKategorija(k2);
 		preduzece.addKategorija(k22);
 		
-		Proizvod p = new Proizvod(1, "Solja", "zelena, velika", k, fld + "solja.jpg");
+		Proizvod p = new Proizvod(1, "Solja", "bela, velika", k, fld + "solja.jpg");
 		
 		SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
 		Date datum = new Date(System.currentTimeMillis());
@@ -413,8 +388,7 @@ public class MainFrame extends JFrame {
 		
 		preduzece.addProizvod(p);
 		preduzece.addProizvod(p2);
-		
-		//
+
 		
 		Proizvod p42 = new Proizvod(3, "Noz", "metalni", k1, fld + "noz.jpg");
 		StavkaCenovnika c42 = new StavkaCenovnika(500, datum, p42);
@@ -432,10 +406,8 @@ public class MainFrame extends JFrame {
 		StavkaCenovnika c45 = new StavkaCenovnika(500, datum, p45);
 		p45.setAktuelnaCena(c45);
 		preduzece.addProizvod(p45);
-		//
 		
 		
-		// 
 		Proizvod p3 = new Proizvod(6, "Case", "staklene", k, fld +  "case.jpg");
 		StavkaCenovnika c3 = new StavkaCenovnika(500, datum, p3);
 		p3.setAktuelnaCena(c3);
@@ -452,7 +424,7 @@ public class MainFrame extends JFrame {
 		preduzece.addProizvod(p5);
 		
 		
-		Proizvod p6 = new Proizvod(9, "Mikrovalna", "narandzasti", kat, fld + "mikrovalna.jpg");
+		Proizvod p6 = new Proizvod(9, "Mikrovalna", "crna", kat, fld + "mikrovalna.jpg");
 		StavkaCenovnika c6 = new StavkaCenovnika(100000, datum, p6);
 		p6.setAktuelnaCena(c6);
 		preduzece.addProizvod(p6);
@@ -471,15 +443,6 @@ public class MainFrame extends JFrame {
 		preduzece.addStavkaCenovnika(c4);
 		preduzece.addStavkaCenovnika(c5);
 		
-		StavkaNarudzbenice sn1 = new StavkaNarudzbenice(2, p4);
-		StavkaNarudzbenice sn2 = new StavkaNarudzbenice(1, p2);
-		StavkaNarudzbenice sn3 = new StavkaNarudzbenice(3, p5);
-		
-		/*
-		preduzece.korpa.addStavkaNarudzbenice(sn1);
-		preduzece.korpa.addStavkaNarudzbenice(sn2);
-		preduzece.korpa.addStavkaNarudzbenice(sn3);
-		*/
 		
 		Nalog nalog = new Nalog();
 		nalog.setKorisnickoIme("menadzer");
@@ -503,207 +466,148 @@ public class MainFrame extends JFrame {
 		
 	}
 
-
-
 	public JScrollPane getSkrol() {
 		return skrol;
 	}
-
-
 
 	public void setSkrol(JScrollPane skrol) {
 		this.skrol = skrol;
 	}
 
-
-
 	public JButton getLogin() {
 		return login;
 	}
-
-
 
 	public void setLogin(JButton login) {
 		this.login = login;
 	}
 
-
-
 	public JButton getKorpa() {
 		return korpa;
 	}
-
-
-
+	
 	public void setKorpa(JButton korpa) {
 		this.korpa = korpa;
 	}
-
-
 
 	public JLabel getBroj() {
 		return broj;
 	}
 
-
-
 	public void setBroj(JLabel broj) {
 		this.broj = broj;
 	}
-
-
 
 	public JLabel getLabela() {
 		return labela;
 	}
 
-
-
 	public void setLabela(JLabel labela) {
 		this.labela = labela;
 	}
-
-
 
 	public JLabel getNaslov() {
 		return naslov;
 	}
 
-
-
 	public void setNaslov(JLabel naslov) {
 		this.naslov = naslov;
 	}
-
-
 
 	public JPanel getGlavni() {
 		return glavni;
 	}
 
-
-
 	public void setGlavni(JPanel glavni) {
 		this.glavni = glavni;
 	}
-
-
 
 	public JPanel getP() {
 		return p;
 	}
 
-
-
 	public void setP(JPanel p) {
 		this.p = p;
 	}
-
-
 
 	public SviProizvodiPanel getBw() {
 		return bw;
 	}
 
-
-
 	public void setBw(SviProizvodiPanel bw) {
 		this.bw = bw;
 	}
-
-
 
 	public JSplitPane getSplit() {
 		return split;
 	}
 
-
-
 	public void setSplit(JSplitPane split) {
 		this.split = split;
 	}
-
-
 
 	public BaseView getView() {
 		return view;
 	}
 
-
-
 	public void setView(BaseView view) {
 		this.view = view;
 	}
-
-
 
 	public HeaderView getHeader() {
 		return header;
 	}
 
-
-
 	public void setHeader(HeaderView header) {
 		this.header = header;
 	}
-
-
 
 	public HeaderController getHeaderController() {
 		return headerController;
 	}
 
-
-
 	public void setHeaderController(HeaderController headerController) {
 		this.headerController = headerController;
 	}
-
-
 
 	public AplikacijaPreduzece getPreduzece() {
 		return preduzece;
 	}
 
-
-
 	public void setPreduzece(AplikacijaPreduzece preduzece) {
 		this.preduzece = preduzece;
 	}
-
-
 
 	public Korisnik getTrenUlogovani() {
 		return trenUlogovani;
 	}
 
-
-
 	public void setTrenUlogovani(Korisnik trenUlogovani) {
 		this.trenUlogovani = trenUlogovani;
 	}
-
-
 
 	public JButton getPrijava() {
 		return prijava;
 	}
 
-
-
 	public void setPrijava(JButton prijava) {
 		this.prijava = prijava;
 	}
-
-
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
 
-
-
 	public static String getAppTitle() {
 		return APP_TITLE;
 	}
+	
+	public JPanel getOvajStoSeMenja() {
+		return ovajStoSeMenja;
+	}
+
+	public void setOvajStoSeMenja(JPanel ovajStoSeMenja) {
+		this.ovajStoSeMenja = ovajStoSeMenja;
+	}
+
 }

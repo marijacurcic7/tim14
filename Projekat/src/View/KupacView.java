@@ -22,7 +22,6 @@ import Model.RegistrovaniKupac;
 
 public class KupacView extends BaseView {
 
-	// i aplikacija
 	RegistrovaniKupac kupac;
 	MainFrame frame;
 	
@@ -120,7 +119,7 @@ public class KupacView extends BaseView {
 		    public void mouseClicked(MouseEvent e) {
 		        // the user clicks on the label
 		    	//Window w =SwingUtilities.getWindowAncestor(prikazNarudzbenica);
-		    	JOptionPane.showMessageDialog(null, "Prikaz narudzbenica");
+		    	//JOptionPane.showMessageDialog(null, "Prikaz narudzbenica");
 		    	NarudzbeniceView nv = new NarudzbeniceView(kupac.narudzbenice, preduzece);
 		    	//nv.setPreferredSize(new Dimension(1000, 600));  // skrolbar preferred size,
 		    	proizvodi.getGdeStoji().remove(1);
@@ -146,7 +145,7 @@ public class KupacView extends BaseView {
 		    @Override
 		    public void mouseClicked(MouseEvent e) {
 		        // the user clicks on the label
-		    	JOptionPane.showMessageDialog(null, "Izmena podataka");
+		    	//JOptionPane.showMessageDialog(null, "Izmena podataka");
 		    	PromenaPodatakaView ppv = new PromenaPodatakaView(preduzece, frame);
 				
 				remove(1);
@@ -155,8 +154,8 @@ public class KupacView extends BaseView {
 		    }});
 		
 		onoSaStrane.add(izmenaPodataka);
-		onoSaStrane.add(new JLabel("  Labela 3  "));
-		onoSaStrane.add(new JLabel("  Labela 4  "));
+		//onoSaStrane.add(new JLabel("  Labela 3  "));
+		//onoSaStrane.add(new JLabel("  Labela 4  "));
 		
 		
 		
