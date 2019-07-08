@@ -228,9 +228,12 @@ public class DodavanjeProizvodaView extends JPanel {
 			//add(w);
 			//remove(0);
 			//updateUI();
-			frame.getView().add(mv);
-			frame.getView().remove(0);
-			frame.getView().updateUI();
+			frame.getCentralni().add(mv);
+			frame.getCentralni().remove(0);
+			frame.getCentralni().updateUI();
+			//frame.getView().add(mv);
+			//frame.getView().remove(0);
+			//frame.getView().updateUI();
 			//System.out.println(preduzece.trenutnoUlogovani.getIme());
 		}
 		
