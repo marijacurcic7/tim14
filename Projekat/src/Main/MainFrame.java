@@ -7,6 +7,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.awt.Insets;
+import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
@@ -102,7 +103,9 @@ public class MainFrame extends JFrame {
 		//izgenerisiPreduzece();
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setSize(1500, 1000);
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		//setSize(1500, 1050);
+		setSize(screenSize);
 		setLocationRelativeTo(null);
 		//glavni = new JPanel();	
 		
@@ -174,12 +177,12 @@ public class MainFrame extends JFrame {
 		JPanel panel = new JPanel(new BorderLayout());
 		JPanel drugiPanel = new JPanel();
 		JPanel gornjiPanel = new JPanel();
-		gornjiPanel.setBackground(new Color(255, 255, 255));
+		//gornjiPanel.setBackground(new Color(255, 255, 255));
 		panel.add(gornjiPanel, BorderLayout.PAGE_START);
-		gornjiPanel.setPreferredSize(new Dimension(1100, 20));
+		gornjiPanel.setPreferredSize(new Dimension(1100, 30));
 		//drugiPanel.setBackground(new Color(255, 100, 255));
 		drugiPanel.add(slika);
-		drugiPanel.setPreferredSize(new Dimension(1100, 200));
+		drugiPanel.setPreferredSize(new Dimension(0, 200));
 		panel.add(bw);
 		//panel.add(bw, BorderLayout.CENTER);
 		

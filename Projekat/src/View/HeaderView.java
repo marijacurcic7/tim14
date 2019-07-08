@@ -27,6 +27,34 @@ public class HeaderView extends BaseView {
 		this.preduzece = preduzece;
 	//p = new JPanel(new GridBagLayout());
     this.setLayout(new GridBagLayout());
+    /*
+		this.setPreferredSize(new Dimension(1800, 120));
+    
+    this.setLayout(new FlowLayout());
+    JPanel dugmici = new JPanel();
+    dugmici.setLayout(new  BorderLayout());
+    dugmici.add(new JButton("Dugme 1"));
+    dugmici.add(new JButton("Dugme 2"));
+ */
+      
+    //korpa = new JButton("Korpa");
+    //prijava = new JButton("Prijava");
+    //naslov = new JLabel("Naslov");
+    
+    //Font font = new Font(Font.SANS_SERIF, Font.PLAIN,60);
+    //naslov = new JLabel("TITLE");
+    //naslov = new JLabel("Web Shop");
+    //naslov.setFont(font);
+    
+    //JPanel pn = new JPanel();
+    //pn.add(naslov);
+    //pn.setBackground(new Color(100, 200, 200));
+    //this.add(pn, c);
+    //this.add(new JLabel("levo"), BorderLayout.WEST);
+    //this.add(pn, BorderLayout.CENTER);
+   // this.add(dugmici, BorderLayout.EAST);
+     
+    
     GridBagConstraints c = new GridBagConstraints();
     c.insets = new Insets(4, 4, 4, 4);
     c.weighty = 1.0;
@@ -91,7 +119,7 @@ public class HeaderView extends BaseView {
     c.gridy = 0;
     c.gridheight = 3;
     c.fill = GridBagConstraints.BOTH;
-    c.weightx = 1.0;
+    c.weightx = 0.5;
     Font font = new Font(Font.SANS_SERIF, Font.PLAIN,60);
     //naslov = new JLabel("TITLE");
     naslov = new JLabel("HOME");
@@ -99,11 +127,15 @@ public class HeaderView extends BaseView {
     
     JPanel pn = new JPanel();
     pn.add(naslov);
-    pn.setBackground(new Color(100, 200, 200));
+    Color color = this.getBackground();
+    //pn.setBackground(new Color(255, 255, 240));
+    pn.setBackground(new Color(color.getRed(), color.getGreen() + 5, 255));
+    //pn.setBackground(color.);
     this.add(pn, c);
     
     c.fill = GridBagConstraints.NONE;
     
+    c.weightx = 1.0;
     c.gridx = 4;
     
     //c.gridy = 0;
@@ -125,6 +157,7 @@ public class HeaderView extends BaseView {
     c.gridy = 0;
     korpa = new JButton("Korpa");
     this.add(korpa, c);
+    
 	}
 
 	public JButton getKorpa() {

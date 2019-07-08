@@ -2,13 +2,16 @@ package View;
 
 
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import java.util.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JMenu;
@@ -16,6 +19,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 import javax.swing.KeyStroke;
 
 import Controller.ControllerProizvoda;
@@ -40,7 +44,11 @@ public class ProizvodiView extends BaseView{
 	JMenuBar meni;
 	JPanel desniDugmici;
 	JButton sortiraj;
+	JButton sortirajCOpadajuce;
 	JButton pretrazi;
+	JButton sortNazRast;
+	JButton sortNazOp;
+	JTextField pretragaTxt;
 	JMenu kategorije;
 	
 	public ProizvodiView(JPanel gdeStoji, AplikacijaPreduzece preduzece, List<Proizvod> proizvodi) throws IOException {
@@ -70,7 +78,7 @@ public class ProizvodiView extends BaseView{
 			 public void actionPerformed(ActionEvent e) {
 			      //your code here
 			    	// skloniti i desno i panel, pa dodati i desno i panel
-				 sortiraj();
+				 sortirajCenaRastuce();
 				 	remove(0);
 				 	remove(0);
 				 	//add(Proiz)
@@ -84,24 +92,85 @@ public class ProizvodiView extends BaseView{
 	}
 
 	
-	protected void sortiraj() {
+	protected void sortirajCenaRastuce() {
 		// TODO Auto-generated method stub
+		 Collections.sort(proizvodi, new Comparator() 
+         {
+
+          public int compare(Object o1, Object o2) 
+          {
+          Proizvod sa = (Proizvod)o1;
+          Proizvod sb = (Proizvod)o2;
+
+          //int v = sa.getAktuelnaCena().getRedovnaCena().compareTo(sb.getAktuelnaCena().getRedovnaCena());
+
+          return Double.compare(sa.getAktuelnaCena().getRedovnaCena(), sb.getAktuelnaCena().getRedovnaCena());           
+
+              // it can also return 0, and 1
+          } }   );
+		 ProizvodiView pv;
+			try {
+				pv = new ProizvodiView(gdeStoji, preduzece, proizvodi);
+				gdeStoji.add(pv);
+				if(preduzece.trenutnoUlogovani == null) {
+					gdeStoji.remove(0);
+				}
+				else {
+					gdeStoji.remove(1);
+				}
+				gdeStoji.updateUI();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
 		
 	}
 
 
 	private void initDesno() {
 		desniDugmici = new JPanel(new GridLayout(15, 0));
-		desniDugmici.setPreferredSize(new Dimension(100, 600));
-		sortiraj = new JButton("Sortiraj");
+		desniDugmici.setPreferredSize(new Dimension(300, 600));
+		sortiraj = new JButton("Sortiraj po ceni rastuce");
+		//sortiraj.setPreferredSize(new Dimension(10, 0));
+		sortNazRast = new JButton("Sortiraj po nazivu rastuce");
+		sortNazOp = new JButton("Sortiraj po nazivu opadajuce");
 		pretrazi = new JButton("Pretrazi");
-		desniDugmici.add(sortiraj);
-		desniDugmici.add(pretrazi);
-		meni = new JMenuBar();
+		sortirajCOpadajuce = new JButton("Sortiraj po ceni opadajuce");
+		// nek pretrazuje uvijek sve
+		
+		
+		JPanel holder = new JPanel(new FlowLayout());
+		pretragaTxt = new JTextField(15);
+		holder.add(pretragaTxt);
+		holder.add(pretrazi);
+ 		desniDugmici.add(holder);
+		
+ 		JPanel p1 = new JPanel();
+ 		p1.add(sortiraj);
+ 		desniDugmici.add(p1);
+ 		JPanel p2 = new JPanel();
+ 		p2.add(sortirajCOpadajuce);
+		desniDugmici.add(p2);
+ 		
+		JPanel p4 = new JPanel();
+		JPanel p5 = new JPanel();
+		p4.add(sortNazRast);
+		p5.add(sortNazOp);
+		desniDugmici.add(p4);
+		desniDugmici.add(p5);
+		Dimension d = sortNazOp.getSize();
+		//sortiraj.setPreferredSize(d);
+		//sortirajCOpadajuce.setPreferredSize(d);
+		//sortNazRast.setPreferredSize(d);
+		
+		JPanel p3 = new JPanel();
+ 		meni = new JMenuBar();
 		kategorije = new JMenu("Kategorije");
 		kategorije.setMnemonic(KeyEvent.VK_A);
 		meni.add(kategorije);
-		desniDugmici.add(meni);
+		p3.add(meni);
+		desniDugmici.add(p3);
 		kreirajKategorije();
 
 	}
