@@ -176,6 +176,7 @@ public class ProizvodController extends Controller {
 				//proizvodView.getGdjeStoji().add(new JButton("DUGME"));
 				//proizvodView.getGdjeStoji().add(bw);
 				//proizvodView.getGdjeStoji().remove(0);
+				//?
 				proizvodView.getGdjeStoji().remove(1);
 				proizvodView.getGdjeStoji().add(bw);
 				
