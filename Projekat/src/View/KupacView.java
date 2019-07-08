@@ -11,11 +11,11 @@ import java.awt.event.MouseEvent;
 import java.io.IOException;
 
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 
 import Controller.Controller;
+import Controller.KupacController;
 import Main.MainFrame;
 import Model.AplikacijaPreduzece;
 import Model.RegistrovaniKupac;
@@ -25,7 +25,7 @@ public class KupacView extends BaseView {
 	RegistrovaniKupac kupac;
 	MainFrame frame;
 	
-	Controller controller;
+	KupacController kontroler;
 	
 	ProizvodiView proizvodi;
 	
@@ -94,7 +94,7 @@ public class KupacView extends BaseView {
 		//split.setRightComponent(proizvodi);
 		//split.setDividerLocation(0.9);
 		
-		
+		kontroler = new KupacController(this, preduzece);
 		
 		//this.add(split);
 		
@@ -112,26 +112,28 @@ public class KupacView extends BaseView {
 		// prikaz pojedinacne, i opcije za nju, refresh
 		
 		prikazNarudzbenica.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		prikazNarudzbenica.addMouseListener(new MouseAdapter() {
+		
+		
+		//prikazNarudzbenica.addMouseListener(new MouseAdapter() {
 			 
 			// ovo svakako u controller
-		    @Override
-		    public void mouseClicked(MouseEvent e) {
-		        // the user clicks on the label
-		    	//Window w =SwingUtilities.getWindowAncestor(prikazNarudzbenica);
-		    	//JOptionPane.showMessageDialog(null, "Prikaz narudzbenica");
-		    	NarudzbeniceView nv = new NarudzbeniceView(kupac.narudzbenice, preduzece);
-		    	//nv.setPreferredSize(new Dimension(1000, 600));  // skrolbar preferred size,
-		    	proizvodi.getGdeStoji().remove(1);
-		    	proizvodi.getGdeStoji().add(nv);
-		    	proizvodi.getGdeStoji().updateUI();
+		//    @Override
+		 //   public void mouseClicked(MouseEvent e) {
+		  //      // the user clicks on the label
+		  //  	//Window w =SwingUtilities.getWindowAncestor(prikazNarudzbenica);
+		  //  	//JOptionPane.showMessageDialog(null, "Prikaz narudzbenica");
+		  // 	NarudzbeniceView nv = new NarudzbeniceView(kupac.narudzbenice, preduzece);
+		  //  	//nv.setPreferredSize(new Dimension(1000, 600));  // skrolbar preferred size,
+		   // 	proizvodi.getGdeStoji().remove(1);
+		  //  	proizvodi.getGdeStoji().add(nv);
+		   // 	proizvodi.getGdeStoji().updateUI();
 		    	//proizvodi.add(nv);
 		    	//proizvodi.remove(0);
 		    	//proizvodi.updateUI();
 		    	/*frame.getView().add(nv);
 				frame.getView().remove(0);
 				frame.getView().updateUI();*/
-		    }});
+		   // }}); 
 		onoSaStrane.setLayout(new GridLayout(18, 0));
 		
 		onoSaStrane.add(prikazNarudzbenica);
@@ -139,6 +141,7 @@ public class KupacView extends BaseView {
 		
 		izmenaPodataka = new JLabel("  Izmena mojih podataka  ");
 		izmenaPodataka.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		/*
 		izmenaPodataka.addMouseListener(new MouseAdapter() {
 			 
 			// ovo svakako u controller
@@ -151,7 +154,7 @@ public class KupacView extends BaseView {
 				remove(1);
 				add(ppv);
 				updateUI();
-		    }});
+		    }});*/
 		
 		onoSaStrane.add(izmenaPodataka);
 		//onoSaStrane.add(new JLabel("  Labela 3  "));
@@ -159,6 +162,72 @@ public class KupacView extends BaseView {
 		
 		
 		
+	}
+
+	public RegistrovaniKupac getKupac() {
+		return kupac;
+	}
+
+	public void setKupac(RegistrovaniKupac kupac) {
+		this.kupac = kupac;
+	}
+
+	public MainFrame getFrame() {
+		return frame;
+	}
+
+	public void setFrame(MainFrame frame) {
+		this.frame = frame;
+	}
+
+	
+
+	public ProizvodiView getProizvodi() {
+		return proizvodi;
+	}
+
+	public void setProizvodi(ProizvodiView proizvodi) {
+		this.proizvodi = proizvodi;
+	}
+
+	public JPanel getOnoSaStrane() {
+		return onoSaStrane;
+	}
+
+	public void setOnoSaStrane(JPanel onoSaStrane) {
+		this.onoSaStrane = onoSaStrane;
+	}
+
+	public JLabel getPrikazNarudzbenica() {
+		return prikazNarudzbenica;
+	}
+
+	public void setPrikazNarudzbenica(JLabel prikazNarudzbenica) {
+		this.prikazNarudzbenica = prikazNarudzbenica;
+	}
+
+	public JLabel getIzmenaPodataka() {
+		return izmenaPodataka;
+	}
+
+	public void setIzmenaPodataka(JLabel izmenaPodataka) {
+		this.izmenaPodataka = izmenaPodataka;
+	}
+
+	public JSplitPane getSplit() {
+		return split;
+	}
+
+	public void setSplit(JSplitPane split) {
+		this.split = split;
+	}
+
+	public AplikacijaPreduzece getPreduzece() {
+		return preduzece;
+	}
+
+	public void setPreduzece(AplikacijaPreduzece preduzece) {
+		this.preduzece = preduzece;
 	}
 	
 }

@@ -127,7 +127,7 @@ public class DodavanjeProizvodaView extends JPanel {
 
 
 	}
-	
+	/*
 	public void ok() throws IOException {
 		
 		Window parent = SwingUtilities.getWindowAncestor(this);
@@ -170,7 +170,7 @@ public class DodavanjeProizvodaView extends JPanel {
 		} else if (result == JFileChooser.CANCEL_OPTION) {
 		    System.out.println("Cancel was selected");
 		}
-	}
+	} */
 
 	public AplikacijaPreduzece getPreduzece() {
 		return preduzece;

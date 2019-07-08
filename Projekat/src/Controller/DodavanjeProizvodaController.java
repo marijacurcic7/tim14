@@ -1,5 +1,6 @@
 package Controller;
 
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -8,6 +9,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import Model.AplikacijaPreduzece;
@@ -15,6 +18,7 @@ import Model.Kategorija;
 import Model.Proizvod;
 import Model.StavkaCenovnika;
 import View.DodavanjeProizvodaView;
+import View.MenadzerView;
 
 
 
@@ -136,7 +140,7 @@ public class DodavanjeProizvodaController {
 			public void actionPerformed(ActionEvent e) {
 					
 					try {
-						dpview.ok();
+						ok();
 					} catch (IOException e1) {
 						e1.printStackTrace();
 					}
@@ -147,11 +151,56 @@ public class DodavanjeProizvodaController {
 		dpview.getDugmeSlika().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				dpview.slika();
+				slika();
 			}
 			
 		});
 	}
+	
+public void ok() throws IOException {
+		
+		Window parent = SwingUtilities.getWindowAncestor(dpview);
+
+		String id = dpview.getTfid().getText();
+		String naziv = dpview.getTfnaziv().getText();
+		String opis = dpview.getTfopis().getText();
+		String kategorija = dpview.getTfkategorija().getText();
+		String cena = dpview.getTfcena().getText();
+		String putanja = dpview.getTfslika().getText();
+		
+		String message = dodaj(id, naziv, opis, kategorija, cena, putanja);
+		
+		if (dpview.getProizvod() == null){
+			
+			JOptionPane.showMessageDialog(parent, message);
+		}
+		else {
+			
+			JOptionPane.showMessageDialog(parent, message);
+			
+			dpview.setPreduzece(this.preduzece);//dpcon.getPreduzece();
+			MenadzerView mv = new MenadzerView(preduzece, dpview.getFrame());
+			
+			dpview.getFrame().getCentralni().add(mv);
+			dpview.getFrame().getCentralni().remove(0);
+			dpview.getFrame().getCentralni().updateUI(); 
+			
+		}
+	}
+	
+	public void slika() {
+		dpview.setOdabirSlike(new JFileChooser()); //= new JFileChooser();
+		//FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG & GIF Images", "jpg", "gif");
+	    //odabirSlike.setFileFilter(filter);
+		int result = dpview.getOdabirSlike().showOpenDialog(null);
+		if (result == JFileChooser.APPROVE_OPTION) {
+			dpview.getTfslika().setText(dpview.getOdabirSlike().getSelectedFile().getAbsolutePath());
+		    //createFile();
+		} else if (result == JFileChooser.CANCEL_OPTION) {
+		    System.out.println("Cancel was selected");
+		}
+	}
+
 	
 	
 

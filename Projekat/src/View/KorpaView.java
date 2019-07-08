@@ -44,6 +44,7 @@ public class KorpaView extends JPanel {
 		this.isprazni = new JButton("Isprazni korpu");
 		this.pnl = new JPanel();
 		constructGUI();
+		this.korpacon = new KorpaController(this, preduzece);
 	}
 	
 	private void constructGUI() {
@@ -76,7 +77,7 @@ public class KorpaView extends JPanel {
 		pnl.add(linija);
 		add(pnl);
 		//add(pnlContent);
-		
+		/*
 		isprazni.addActionListener(new ActionListener() {
 			
 			@Override
@@ -112,10 +113,10 @@ public class KorpaView extends JPanel {
 						//RegistracijaView rv = new RegistracijaView(preduzece, frame);
 						
 						//login -> nullpointerexception
-						/*LogInView rv = new LogInView(preduzece, frame);
-						add(rv);
-						remove(0);
-						updateUI();*/
+						///*LogInView rv = new LogInView(preduzece, frame);
+						//add(rv);
+						//remove(0);
+						//updateUI();
 						
 						//samo poruka
 						
@@ -135,8 +136,88 @@ public class KorpaView extends JPanel {
 					//rv.setVisible(true);
 					//setVisible(false);
 					
-				}
-		});
+				
+		});*/
+	}
+
+	public KorpaController getKorpacon() {
+		return korpacon;
+	}
+
+	public void setKorpacon(KorpaController korpacon) {
+		this.korpacon = korpacon;
+	}
+
+	public AplikacijaPreduzece getPreduzece() {
+		return preduzece;
+	}
+
+	public void setPreduzece(AplikacijaPreduzece preduzece) {
+		this.preduzece = preduzece;
+	}
+
+	public Narudzbenica getKorpa() {
+		return korpa;
+	}
+
+	public void setKorpa(Narudzbenica korpa) {
+		this.korpa = korpa;
+	}
+
+	public JScrollPane getScroll() {
+		return scroll;
+	}
+
+	public void setScroll(JScrollPane scroll) {
+		this.scroll = scroll;
+	}
+
+	public JButton getKupi() {
+		return kupi;
+	}
+
+	public void setKupi(JButton kupi) {
+		this.kupi = kupi;
+	}
+
+	public JButton getIsprazni() {
+		return isprazni;
+	}
+
+	public void setIsprazni(JButton isprazni) {
+		this.isprazni = isprazni;
+	}
+
+	public JPanel getPnl() {
+		return pnl;
+	}
+
+	public void setPnl(JPanel pnl) {
+		this.pnl = pnl;
+	}
+
+	public JLabel getUkupnaCena() {
+		return ukupnaCena;
+	}
+
+	public void setUkupnaCena(JLabel ukupnaCena) {
+		this.ukupnaCena = ukupnaCena;
+	}
+
+	public MainFrame getFrame() {
+		return frame;
+	}
+
+	public void setFrame(MainFrame frame) {
+		this.frame = frame;
+	}
+
+	public JPanel getPnlContent() {
+		return pnlContent;
+	}
+
+	public void setPnlContent(JPanel pnlContent) {
+		this.pnlContent = pnlContent;
 	}
 
 }

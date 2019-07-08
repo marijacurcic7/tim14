@@ -1,16 +1,17 @@
 package Controller;
 
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Collections;
-import java.util.Comparator;
 
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 import Model.AplikacijaPreduzece;
 import Model.Korisnik;
 import Model.Mesto;
 import Model.Narudzbenica;
+import Model.Placena;
 import Model.RegistrovaniKupac;
 import Model.Zavrsena;
 import View.FormiranjeNarudzbeniceView;
@@ -138,11 +139,72 @@ public class FormiranjeNarudzbeniceController {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-					
-					fnview.ok();
+					ok();
+					//fnview.ok();
 				}
 		});
 		
 	}
+	
+	
+	public void ok() {
+		//if(fncon == null) {
+		//	fncon = new FormiranjeNarudzbeniceController(this, preduzece);
+		//}
+		
+		Window parent = SwingUtilities.getWindowAncestor(fnview);
+		
+		String ime = fnview.getTfime().getText();
+		String prezime = fnview.getTfprezime().getText();
+		//String email = tfemail.getText();
+		String telefon = fnview.getTftelefon().getText();
+		String karticastr = fnview.getTfkartica().getText();
+		
+		
+		double cena = korpa.getUkupanIznos();
+		
+		String message = formirajNarudzbenicu(ime, prezime, telefon, karticastr, cena, fnview.getTfgrad().getText(), fnview.getTfdrzava().getText(), fnview.getTfadresa().getText());
+		
+		//String message = regcon.registrujSe(kime, lozinka, ime, prezime, email, telefon);
+		//String title = "Greska";
+		
+		if(message.equals("")) {
+			//JOptionPane.showMessageDialog(parent, "Narudzbenica formirana");
+			//JOptionPane.showConfirmDialog(this, "Plati");
+			
+			int dialogbtn = JOptionPane.YES_NO_OPTION;
+			int dialogrez = JOptionPane.showConfirmDialog(fnview, "Plati", "Narudzbenica je formirana", dialogbtn);
+			if(dialogrez == JOptionPane.YES_OPTION) {
+				fnview.getNarudzbenica().setStanje(new Placena());
+			}
+			
+			preduzece.narudzbenice.add(fnview.getNarudzbenica());
+
+			/*ProizvodiView bw = null;
+			try {
+				bw = new ProizvodiView(frame.getView(), preduzece, preduzece.proizvodi);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			frame.getView().remove(1);
+			frame.getView().add(bw);
+			
+			frame.getView().updateUI();*/
+			//doSth();
+			//KupacView kv = new KupacView(preduzece, frame);
+			//remove(0);
+			//add(kv);
+			
+			fnview.updateUI();
+		}
+		else {
+			JOptionPane.showMessageDialog(parent, message);
+
+		}
+	}
+
+	
+	
 
 }
