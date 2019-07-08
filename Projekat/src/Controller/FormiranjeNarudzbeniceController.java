@@ -81,6 +81,8 @@ public class FormiranjeNarudzbeniceController {
 		korpa.setStanje(new Zavrsena());
 		
 		kupac.getNarudzbenice().add(korpa);
+		//
+		//preduzece.getNarudzbenice().add(korpa);
 		
 		
 		/*Integer id;
