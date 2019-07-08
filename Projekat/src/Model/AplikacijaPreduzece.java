@@ -140,37 +140,37 @@ public class AplikacijaPreduzece {
 			    	   RegistrovaniKupac k = new RegistrovaniKupac();
 			    	   k = (RegistrovaniKupac)object;
 			    	   korisnici.add(k);
-			    	   System.out.println("Kupac "+k.getNalog().getKorisnickoIme()+" "+k.getNalog().getTipKorisnika());
+			    	 //  System.out.println("Kupac "+k.getNalog().getKorisnickoIme()+" "+k.getNalog().getTipKorisnika());
 			       }
 			       else if(object.getClass().equals(Korisnik.class)) {
 			    	   Korisnik k = new Korisnik();
 			    	   k = (Korisnik)object;
 			    	   korisnici.add(k);
-			    	   System.out.println("Korisnik "+k.getNalog().getKorisnickoIme()+" "+k.getNalog().getTipKorisnika());
+			    	   //System.out.println("Korisnik "+k.getNalog().getKorisnickoIme()+" "+k.getNalog().getTipKorisnika());
 			       }
 			       else if(object.getClass().equals(Proizvod.class)) {
 			    	   Proizvod p = new Proizvod();
 			    	   p = (Proizvod)object;
 			    	   proizvodi.add(p);
-			    	   System.out.println("Proizvod "+p.getNaziv());
+			    	//   System.out.println("Proizvod "+p.getNaziv());
 			       }
 			       else if(object.getClass().equals(Narudzbenica.class)) {
 			    	   Narudzbenica n = new Narudzbenica();
 			    	   n = (Narudzbenica)object;
 			    	   narudzbenice.add(n);
 			    	   //sekvencer.add(n.getId());
-			    	   System.out.println("Narudzbenica "+n.getId());
+			    	//   System.out.println("Narudzbenica "+n.getId());
 			       }
 			       else if(object.getClass().equals(Kategorija.class)) {
 			    	   Kategorija k = new Kategorija();
 			    	   k = (Kategorija)object;
 			    	   kategorije.add(k);
-			    	   System.out.println("Kategorija "+k.getNaziv());
+			    	//   System.out.println("Kategorija "+k.getNaziv());
 			       }else if(object.getClass().equals(Prodavnica.class)) {
 			    	   Prodavnica p = new Prodavnica();
 			    	   p = (Prodavnica)object;
 			    	   prodavnice.add(p);
-			    	   System.out.println("Prodavnica ");
+			    	  // System.out.println("Prodavnica ");
 			       }
 			       
 			   }

@@ -127,7 +127,10 @@ public class ProizvodPanel extends JPanel {
 		
 		slika = new JLabel();
 		//slika.setIcon(new ImageIcon(new ImageIcon("C:\\Windows\\Web\\Wallpaper\\Theme1\\img1.jpg").getImage().getScaledInstance(300, 200, Image.SCALE_DEFAULT)));
+		System.out.println(proizvod.getPutanja());
 		slika.setIcon(new ImageIcon(new ImageIcon(proizvod.getPutanja()).getImage().getScaledInstance(300, 200, Image.SCALE_DEFAULT)));
+		
+		
 		//C:\Windows\Web\Wallpaper\Theme1
 		add(slika);
 		//add(slika);

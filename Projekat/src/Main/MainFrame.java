@@ -5,13 +5,16 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -96,7 +99,7 @@ public class MainFrame extends JFrame {
 		
 		preduzece = new AplikacijaPreduzece();
 		System.out.println(preduzece.proizvodi.size() + 1);
-		//izgenerisiPreduzece();
+		izgenerisiPreduzece();
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setSize(1500, 1000);
@@ -152,16 +155,30 @@ public class MainFrame extends JFrame {
 		
 		//initHeader();
 
+		
 		split = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		split.setTopComponent(header);
 		//
+		
+		JLabel slika = new JLabel();
+		//slika.setIcon(new ImageIcon(new ImageIcon("C:\\\\Windows\\\\Web\\\\Wallpaper\\\\Theme1\\\\img1.jpg").getImage().getScaledInstance(300, 200, Image.SCALE_DEFAULT)));
+		
+		File currentDir = new File("");
+		String sep = File.separator;
+		String backgr = currentDir.getAbsolutePath() + sep + "slike" + sep +"background5.jpg";
+		
+		slika.setIcon(new ImageIcon(new ImageIcon(backgr).getImage().getScaledInstance(2000, 200, Image.SCALE_DEFAULT)));
+		
+		
+		
 		JPanel panel = new JPanel(new BorderLayout());
 		JPanel drugiPanel = new JPanel();
 		JPanel gornjiPanel = new JPanel();
 		gornjiPanel.setBackground(new Color(255, 255, 255));
 		panel.add(gornjiPanel, BorderLayout.PAGE_START);
 		gornjiPanel.setPreferredSize(new Dimension(1100, 20));
-		drugiPanel.setBackground(new Color(255, 100, 255));
+		//drugiPanel.setBackground(new Color(255, 100, 255));
+		drugiPanel.add(slika);
 		drugiPanel.setPreferredSize(new Dimension(1100, 200));
 		panel.add(bw);
 		//panel.add(bw, BorderLayout.CENTER);
@@ -353,6 +370,16 @@ public class MainFrame extends JFrame {
 	public void izgenerisiPreduzece() {
 		// prvo napraviti kategorije, pa proizvode, pa stavke cenovnika i dodati kome sta treba
 		
+		File currentDir = new File("");
+		System.out.println("kkkkkkkkkkkkkkkkkkkk");
+		String sep = File.separator;
+		String put = currentDir.getAbsolutePath() + sep + "slike" + sep + "solja.jpg";
+		//put = "C:\\Users\\Korisnik\\Desktop\\sims_webshop\\tim14\\Projekat\\slike\\solja.jpg";
+		System.out.println(put);
+		String fld = currentDir.getAbsolutePath() + sep + "slike" + sep;
+		System.out.println("ooooooooooooooooooooo");
+		
+		
 		Kategorija kat = new Kategorija("Kuhinja");
 		Kategorija k = new Kategorija("Posudje", kat);
 		Kategorija k1 = new Kategorija("Escajg", kat);
@@ -367,7 +394,7 @@ public class MainFrame extends JFrame {
 		preduzece.addKategorija(k2);
 		preduzece.addKategorija(k22);
 		
-		Proizvod p = new Proizvod(1, "Solja", "zelena, velika", k);
+		Proizvod p = new Proizvod(1, "Solja", "zelena, velika", k, fld + "solja.jpg");
 		
 		SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
 		Date datum = new Date(System.currentTimeMillis());
@@ -375,7 +402,7 @@ public class MainFrame extends JFrame {
 		StavkaCenovnika sc = new StavkaCenovnika(100, datum, p);
 		p.setAktuelnaCena(sc);
 		
-		Proizvod p2 = new Proizvod(2, "Viljuska", "plasticna", k1);
+		Proizvod p2 = new Proizvod(2, "Viljuska", "metalna", k1, fld + "viljuska.jpg");
 		StavkaCenovnika c2 = new StavkaCenovnika(500, datum, p2);
 		p2.setAktuelnaCena(c2);
 		System.out.println(p2.getPutanja());
@@ -386,19 +413,19 @@ public class MainFrame extends JFrame {
 		
 		//
 		
-		Proizvod p42 = new Proizvod(3, "Noz", "metalni", k1);
+		Proizvod p42 = new Proizvod(3, "Noz", "metalni", k1, fld + "noz.jpg");
 		StavkaCenovnika c42 = new StavkaCenovnika(500, datum, p42);
 		p42.setAktuelnaCena(c42);
 		preduzece.addProizvod(p42);
 		
 
-		Proizvod p44 = new Proizvod(4, "Kasicica", "zlatna", k1);
+		Proizvod p44 = new Proizvod(4, "Kasicica", "zlatna", k1, fld + "kasika.jpg");
 		StavkaCenovnika c44 = new StavkaCenovnika(500, datum, p44);
 		p44.setAktuelnaCena(c44);
 		preduzece.addProizvod(p44);
 		
 
-		Proizvod p45 = new Proizvod(5, "Kapa", "vunena", kat2);
+		Proizvod p45 = new Proizvod(5, "Kapa", "vunena", k22, fld + "kravata.jpg");
 		StavkaCenovnika c45 = new StavkaCenovnika(500, datum, p45);
 		p45.setAktuelnaCena(c45);
 		preduzece.addProizvod(p45);
@@ -406,29 +433,29 @@ public class MainFrame extends JFrame {
 		
 		
 		// 
-		Proizvod p3 = new Proizvod(6, "Majica", "plava, pamucna", kat2);
+		Proizvod p3 = new Proizvod(6, "Case", "staklene", k, fld +  "case.jpg");
 		StavkaCenovnika c3 = new StavkaCenovnika(500, datum, p3);
 		p3.setAktuelnaCena(c3);
 		preduzece.addProizvod(p3);
 		
-		Proizvod p4 = new Proizvod(7, "Kosulja", "crna, svilena", kat2);
+		Proizvod p4 = new Proizvod(7, "Kosulja", "crna, svilena", k2, fld + "default.jpg");
 		StavkaCenovnika c4 = new StavkaCenovnika(1500, datum, p4);
 		p4.setAktuelnaCena(c4);
 		preduzece.addProizvod(p4);
 		
-		Proizvod p5 = new Proizvod(8, "Farmerke", "teksas, plave", kat2);
+		Proizvod p5 = new Proizvod(8, "Kapa", "zenska, roze", k2, fld + "kapa.jpg");
 		StavkaCenovnika c5 = new StavkaCenovnika(10000, datum, p5);
 		p5.setAktuelnaCena(c5);
 		preduzece.addProizvod(p5);
 		
 		
-		Proizvod p6 = new Proizvod(9, "Sal", "narandzasti", kat2);
+		Proizvod p6 = new Proizvod(9, "Mikrovalna", "narandzasti", kat, fld + "mikrovalna.jpg");
 		StavkaCenovnika c6 = new StavkaCenovnika(100000, datum, p6);
 		p6.setAktuelnaCena(c6);
 		preduzece.addProizvod(p6);
 		preduzece.addStavkaCenovnika(c6);
 		
-		Proizvod p7 = new Proizvod(10, "Carapice", "pamucne, bijele", kat2);
+		Proizvod p7 = new Proizvod(10, "Sal", "sareni, zenski", k2, fld + "sal.jpg");
 		StavkaCenovnika c7 = new StavkaCenovnika(800, datum, p7);
 		p7.setAktuelnaCena(c7);
 		preduzece.addProizvod(p7);
