@@ -46,23 +46,19 @@ public class NarudzbeniceView extends JPanel {
 	}
 	
 	private void constructGUI() {
-		//setPreferredSize(new Dimension(1000, 600));
 		pnlContent = new JPanel();
-		//pnlContent.setLayout(new GridLayout(narudzbenice.size(), 1));
 		pnlContent.setLayout(new GridLayout(0, 2, 50, 50));
 		int i = 0;
 		for(Narudzbenica n : narudzbenice) {
 			NarudzbenicaView nv = new NarudzbenicaView(n, preduzece, this);
-			//pnlContent.add(nv, new GridBagConstraints(0, i, 1, 1, 0, 0, GridBagConstraints.WEST,
-			//		GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
+			
 			pnlContent.add(nv);
 			i+=10;
 		}
 		System.out.println(preduzece.korpa);
 		if(!preduzece.korpa.stavkeNarudzbenice.isEmpty()) {
 			NarudzbenicaView nv = new NarudzbenicaView(preduzece.korpa, preduzece, this);
-			//pnlContent.add(nv, new GridBagConstraints(0, i, 1, 1, 0, 0, GridBagConstraints.WEST,
-			//		GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
+			
 			pnlContent.add(nv);
 		}
 		
@@ -76,14 +72,11 @@ public class NarudzbeniceView extends JPanel {
 	private void constructGUI2() {
 		pnlContent = new JPanel();
 		pnlContent.setLayout(new GridLayout(0, 2, 50, 50));
-		//pnlContent.setLayout(new GridLayout(narudzbenice.size(), 1));
 		int i = 0;
 		for(Narudzbenica n : narudzbenice) {
 			if(n.getStanje().getClass().equals(Placena.class) || n.getStanje().getClass().equals(Poslata.class)) {
 				NarudzbenicaView nv = new NarudzbenicaView(n, preduzece, this);
-				//pnlContent.add(nv, new GridBagConstraints(0, i, 1, 1, 0, 0, GridBagConstraints.WEST,
-				//		GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
-				//i+=10;
+				
 				pnlContent.add(nv);
 			}
 			

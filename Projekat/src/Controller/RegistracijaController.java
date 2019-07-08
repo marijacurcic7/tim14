@@ -38,7 +38,6 @@ public class RegistracijaController {
 					try {
 						ok();
 					} catch (IOException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 					
@@ -61,31 +60,17 @@ public class RegistracijaController {
 		String title = "Greska";
 		
 		if (regview.getKorisnik() == null){
-			JButton btnOk = new JButton("Ok");
-			btnOk.addActionListener(new ActionListener() {
-			    public void actionPerformed(ActionEvent e) {
-			    	//JOptionPane.
-			    	Window w = SwingUtilities.getWindowAncestor(btnOk);
-
-			        if (w != null) {
-			          w.setVisible(false);
-			        }
-			    	RegistracijaView rw = new RegistracijaView(preduzece, regview.getFrame());
-					regview.add(rw);
-					regview.remove(0);
-					regview.updateUI();
-			        //System.out.println("code excuted");
-			    }
-			}); 
-			JOptionPane.showOptionDialog(parent, message, title, JOptionPane.OK_OPTION, JOptionPane.INFORMATION_MESSAGE, null, new Object[]{btnOk}, btnOk);
 			
+			JOptionPane.showMessageDialog(parent, message);
+
 		}
 		else if (preduzece.trenutnoUlogovani.nalog.getTipKorisnika().equals(TipKorisnika.kupac)) {
 			JOptionPane.showMessageDialog(parent, message);
 			ProizvodiView bw = new ProizvodiView(regview.getFrame().getOvajStoSeMenja(), preduzece, regview.getPreduzece().proizvodi);	// za kupca
 			KupacView kv = new KupacView(preduzece, regview.getFrame());
-			//
-			regview.getFrame().getHeader().getPrijava().setText("Odjava");
+			
+			regview.getFrame().getHeader().getOdjava().setVisible(false);
+			regview.getFrame().getHeader().getOdjava().setVisible(true);
 			regview.getFrame().getHeader().updateUI();
 			regview.add(kv);
 			regview.remove(0);
@@ -93,27 +78,24 @@ public class RegistracijaController {
 			System.out.println(preduzece.trenutnoUlogovani.getIme());
 		}
 		else if (preduzece.trenutnoUlogovani.nalog.getTipKorisnika().equals(TipKorisnika.administrator)){
-			// gledam koji je tip
-			// promijeniti zaglavlje, na odjavi
+			
 			JOptionPane.showMessageDialog(parent, "Dodat je menadzer");
 			ProizvodiView bw = new ProizvodiView(regview.getFrame().getOvajStoSeMenja(), preduzece, regview.getPreduzece().proizvodi);	// za kupca
 			AdminView av = new AdminView(preduzece, regview.getFrame());
-			//
-			regview.getFrame().getHeader().getPrijava().setText("Odjava");
+			
+			regview.getFrame().getHeader().getPrijava().setVisible(false);
+			regview.getFrame().getHeader().getOdjava().setVisible(true);
 			regview.getFrame().getHeader().updateUI();
 			regview.add(av);
 			regview.remove(0);
 			regview.updateUI();
 			System.out.println(preduzece.trenutnoUlogovani.getIme());
 		}
-		
 
 	}
 
 	public String registrujSe(String korisnickoIme, String lozinka, String ime, String prezime, String email, String telefon, String grad, String drzava, String adresa) {
-		/*if(!(preduzece.registracijaKupca(korisnickoIme, lozinka, email, ime, prezime, telefon, null, null, null, 0))) {
-			return "Korisnicko ime vec postoji.";
-		}*/
+		
 		if(!preduzece.proveriRegistraciju(korisnickoIme)) {
 			return "Korisnicko ime vec postoji.";
 		}
@@ -157,16 +139,7 @@ public class RegistracijaController {
 			return "Unesite e-mail";
 		}
 		
-		/*TipKorisnika tip = TipKorisnika.kupac;
-		korisnik = new Korisnik();
-		Nalog nalog = new Nalog(korisnickoIme, lozinka, email, tip);
-		korisnik.setNalog(nalog);
-		korisnik.setIme(ime);
-		korisnik.setPrezime(prezime);
-		regview.setKorisnik(korisnik);
-		preduzece.korisnici.add(korisnik);
-		preduzece.trenutnoUlogovani = korisnik;
-		*/
+		
 		Mesto mesto = new Mesto(grad, drzava, adresa);
 		
 		if(preduzece.trenutnoUlogovani == null) {

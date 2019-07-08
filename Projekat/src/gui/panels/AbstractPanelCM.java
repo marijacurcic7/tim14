@@ -3,7 +3,7 @@ package gui.panels;
 import javax.swing.JPanel;
 
 import Model.AplikacijaPreduzece;
-import controler.AbstractController;
+import Controller.AbstractController;
 
 
 // klasa koju nasledjuju paneli koji imaju kontroler i model

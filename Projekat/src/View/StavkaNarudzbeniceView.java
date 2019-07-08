@@ -16,6 +16,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Controller.StavkaNarudzbeniceController;
 import Model.AplikacijaPreduzece;
 import Model.Formiranje;
 import Model.Narudzbenica;
@@ -27,12 +28,12 @@ public class StavkaNarudzbeniceView extends JPanel {
 	private StavkaNarudzbenice stavkan;
 	private Proizvod proizvod;
 	private AplikacijaPreduzece preduzece;
-	private ProizvodView proizvodv;
 	private JButton btnObrisi;
 	private JButton btnPromeniKolicinu;
 	private JPanel pnlContent;
 	private KorpaView kv;
 	private NarudzbenicaView narudzbenicav;
+	private StavkaNarudzbeniceController sncon;
 	
 	public StavkaNarudzbeniceView(StavkaNarudzbenice sn, AplikacijaPreduzece ap, KorpaView kv) {
 		this.kv = kv;
@@ -41,52 +42,9 @@ public class StavkaNarudzbeniceView extends JPanel {
 		this.proizvod = sn.getProizvod();
 		this.btnObrisi = new JButton("Obrisi");
 		this.btnPromeniKolicinu = new JButton("Promeni kolicinu");
-		
-		/*this.setLayout(new BorderLayout());
-		
-		//setPreferredSize(new Dimension(700, 200));
-		
-		//this.proizvodv = new ProizvodView(proizvod);
-		JLabel slika = new JLabel();
-		
-		slika.setIcon(new ImageIcon(new ImageIcon("C:\\Windows\\Web\\Wallpaper\\Theme1\\img1.jpg").getImage().getScaledInstance(300, 200, Image.SCALE_DEFAULT)));
-		//add(slika);
-		add(slika, BorderLayout.LINE_START);
-		
-		
-		JPanel labele = new JPanel(new BorderLayout());
-		
-		
-		slika.setVisible(true);
-		JLabel naziv = new JLabel(proizvod.getNaziv());
-		//this.add(naziv);
-		labele.add(naziv, BorderLayout.NORTH);
-		JLabel kolicina = new JLabel(stavkan.getKolicina()+"");
-		double ukupno = stavkan.getUkupnaCena();
-		JLabel ukupnaCena = new JLabel(ukupno + "");
-		
-		
-		labele.add(new JLabel(proizvod.getOpis()), BorderLayout.CENTER);
-	
-		//this.add(ukupnaCena);
-		labele.add(ukupnaCena, BorderLayout.SOUTH);
-		
-		this.add(labele, BorderLayout.CENTER);
-		
-		
-		JPanel dugmad = new JPanel(new BorderLayout());
-		//btnObrisi.setSize(new Dimension(2,2));
-		//btnPromeniKolicinu.setSize(5, 2);
-		//dugmad.add(btnObrisi, GroupLayout.PREFERRED_SIZE);
-		//dugmad.add(btnPromeniKolicinu, GroupLayout.PREFERRED_SIZE);
-		
-		btnObrisi.setPreferredSize(new Dimension(5, 2));
-		btnObrisi.setPreferredSize(new Dimension(5, 2));
-		dugmad.add(btnObrisi);
-		dugmad.add(btnPromeniKolicinu);
-		
-		this.add(dugmad, BorderLayout.LINE_END);*/
-		
+		if(this.sncon == null) {
+			this.sncon = new StavkaNarudzbeniceController(preduzece, this);
+		}
 		constructGUI();
 	}
 	
@@ -147,9 +105,7 @@ public class StavkaNarudzbeniceView extends JPanel {
 					}
 				}
 				
-				//StavkaNarudzbeniceView sv = new StavkaNarudzbeniceView(null, preduzece);
 				
-				//add(sv);
 				KorpaView kv1 = new KorpaView(preduzece, kv.frame);
 				kv.add(kv1);
 				kv.remove(0);
@@ -212,9 +168,6 @@ public class StavkaNarudzbeniceView extends JPanel {
 					}
 				}
 				
-				//StavkaNarudzbeniceView sv = new StavkaNarudzbeniceView(null, preduzece);
-				
-				//add(sv);
 				NarudzbeniceView nev = narudzbenicav.nev;
 				
 				JPanel pnl2 = new JPanel();
@@ -225,22 +178,88 @@ public class StavkaNarudzbeniceView extends JPanel {
 					StavkaNarudzbeniceView snv = new StavkaNarudzbeniceView(sn, preduzece, narudzbenicav);
 					pnl2.add(snv, new GridBagConstraints(0, i, 1, 1, 0, 0, GridBagConstraints.WEST,
 							GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
-					//add(new JLabel(sn.proizvod.getNaziv()));
 					i+=10;
 				}
 				nev.add(pnl2);
 				nev.remove(0);
 				nev.updateUI();
 				
-				//NarudzbenicaView nv1 = new NarudzbenicaView(narudzbenicav.narudzbenica, preduzece, narudzbenicav.nev);
-	
-				//add(nv1);
-				//remove(0);
-				//updateUI();
 			}
 		});
 		
 	
+	}
+
+	public StavkaNarudzbenice getStavkan() {
+		return stavkan;
+	}
+
+	public void setStavkan(StavkaNarudzbenice stavkan) {
+		this.stavkan = stavkan;
+	}
+
+	public Proizvod getProizvod() {
+		return proizvod;
+	}
+
+	public void setProizvod(Proizvod proizvod) {
+		this.proizvod = proizvod;
+	}
+
+	public AplikacijaPreduzece getPreduzece() {
+		return preduzece;
+	}
+
+	public void setPreduzece(AplikacijaPreduzece preduzece) {
+		this.preduzece = preduzece;
+	}
+
+	public JButton getBtnObrisi() {
+		return btnObrisi;
+	}
+
+	public void setBtnObrisi(JButton btnObrisi) {
+		this.btnObrisi = btnObrisi;
+	}
+
+	public JButton getBtnPromeniKolicinu() {
+		return btnPromeniKolicinu;
+	}
+
+	public void setBtnPromeniKolicinu(JButton btnPromeniKolicinu) {
+		this.btnPromeniKolicinu = btnPromeniKolicinu;
+	}
+
+	public JPanel getPnlContent() {
+		return pnlContent;
+	}
+
+	public void setPnlContent(JPanel pnlContent) {
+		this.pnlContent = pnlContent;
+	}
+
+	public KorpaView getKv() {
+		return kv;
+	}
+
+	public void setKv(KorpaView kv) {
+		this.kv = kv;
+	}
+
+	public NarudzbenicaView getNarudzbenicav() {
+		return narudzbenicav;
+	}
+
+	public void setNarudzbenicav(NarudzbenicaView narudzbenicav) {
+		this.narudzbenicav = narudzbenicav;
+	}
+
+	public StavkaNarudzbeniceController getSncon() {
+		return sncon;
+	}
+
+	public void setSncon(StavkaNarudzbeniceController sncon) {
+		this.sncon = sncon;
 	}
 
 }

@@ -57,11 +57,9 @@ public class RegistracijaView extends JPanel {
 	private JButton btnOK;
 	
 	public RegistracijaView(AplikacijaPreduzece preduzece, MainFrame frame) {
-		//setLayout(new FlowLayout());
 		
 		this.frame = frame;
 		this.preduzece = preduzece;
-		//this.korisnik = preduzece.trenutnoUlogovani;
 		
 		pnlContent = new JPanel(new GridBagLayout());
 
@@ -70,7 +68,6 @@ public class RegistracijaView extends JPanel {
 
 		lbllozinka = new JLabel("Lozinka:");
 		tflozinka = new JPasswordField(20);
-		//tflozinka = new JTextField(20);
 		
 		lblime = new JLabel("Ime:");
 		tfime = new JTextField(20);
@@ -86,16 +83,13 @@ public class RegistracijaView extends JPanel {
 		
 		lblgrad = new JLabel("Grad:");
 		tfgrad = new JTextField(20);
-		//
 		
 		lbldrzava = new JLabel("Drzava:");
 		tfdrzava = new JTextField(20);
-		//
 		
 		lbladresa = new JLabel("Adresa:");
 		tfadresa = new JTextField(20);
 
-		//pnlOK = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 		btnOK = new JButton("OK");
 		
 		
@@ -151,96 +145,11 @@ public class RegistracijaView extends JPanel {
 		
 		pnlContent.add(btnOK, new GridBagConstraints(1, 9, 1, 1, 100, 0, GridBagConstraints.WEST,
 				GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
-		//pnlOK.add(btnOK);
 
 		add(pnlContent, BorderLayout.CENTER);
 		
-		//add(pnlOK, BorderLayout.SOUTH);
-		/*
-		btnOK.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-					
-					try {
-						ok();
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-					
-				}
-		});*/
-
 	}
-	
-	private void ok() throws IOException {
-		//if (regcon == null) {
-		//	regcon = new RegistracijaController(this, preduzece);
-		//}
-		
-		Window parent = SwingUtilities.getWindowAncestor(this);
 
-		String kime = tfkorisnicko.getText();
-		String lozinka = tflozinka.getText();
-		String ime = tfime.getText();
-		String prezime = tfprezime.getText();
-		String email = tfemail.getText();
-		String telefon = tftelefon.getText();
-		
-		String message = regcon.registrujSe(kime, lozinka, ime, prezime, email, telefon, tfgrad.getText(), tfdrzava.getText(), tfadresa.getText());
-		String title = "Greska";
-		
-		if (korisnik == null){
-			/*JButton btnOk = new JButton("Ok");
-			btnOk.addActionListener(new ActionListener() {
-			    public void actionPerformed(ActionEvent e) {
-			    	//JOptionPane.
-			    	Window w = SwingUtilities.getWindowAncestor(btnOk);
-
-			        if (w != null) {
-			          w.setVisible(false);
-			        }
-			    	RegistracijaView rw = new RegistracijaView(preduzece, frame);
-					add(rw);
-					remove(0);
-					updateUI();
-			        //System.out.println("code excuted");
-			    }
-			}); 
-			JOptionPane.showOptionDialog(parent, message, title, JOptionPane.OK_OPTION, JOptionPane.INFORMATION_MESSAGE, null, new Object[]{btnOk}, btnOk);
-			*/
-			JOptionPane.showMessageDialog(parent, message);
-		}
-		else if (preduzece.trenutnoUlogovani.nalog.getTipKorisnika().equals(TipKorisnika.kupac)) {
-			JOptionPane.showMessageDialog(parent, message);
-			ProizvodiView bw = new ProizvodiView(frame.getOvajStoSeMenja(), preduzece, preduzece.proizvodi);	// za kupca
-			KupacView kv = new KupacView(preduzece, frame);
-			//
-			frame.getHeader().getPrijava().setText("Odjava");
-			frame.getHeader().updateUI();
-			add(kv);
-			remove(0);
-			updateUI();
-			System.out.println(preduzece.trenutnoUlogovani.getIme());
-		}
-		else if (preduzece.trenutnoUlogovani.nalog.getTipKorisnika().equals(TipKorisnika.administrator)){
-			// gledam koji je tip
-			// promijeniti zaglavlje, na odjavi
-			JOptionPane.showMessageDialog(parent, "Dodat je menadzer");
-			ProizvodiView bw = new ProizvodiView(frame.getOvajStoSeMenja(), preduzece, preduzece.proizvodi);	// za kupca
-			AdminView av = new AdminView(preduzece, frame);
-			//
-			frame.getHeader().getPrijava().setText("Odjava");
-			frame.getHeader().updateUI();
-			add(av);
-			remove(0);
-			updateUI();
-			System.out.println(preduzece.trenutnoUlogovani.getIme());
-		}
-		
-		
-	}
 	
 	public AplikacijaPreduzece getPreduzece() {
 		return preduzece;

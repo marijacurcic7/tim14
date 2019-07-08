@@ -33,7 +33,6 @@ import gui.panels.ProizvodPanel;
 
 
 public class ProizvodiView extends BaseView{
-//public class BasicView extends JScrollPane{
 	
 	public JPanel panelSaProizvodima;
 	JScrollPane skrol;
@@ -47,53 +46,42 @@ public class ProizvodiView extends BaseView{
 	JButton sortiraj;
 	JButton sortirajCOpadajuce;
 	JButton pretrazi;
-	JButton sortNazRast;
-	JButton sortNazOp;
+	//JButton sortNazRast;
+	//JButton sortNazOp;
 	JTextField pretragaTxt;
 	JMenu kategorije;
 	
 	public ProizvodiView(JPanel gdeStoji, AplikacijaPreduzece preduzece, List<Proizvod> proizvodi) throws IOException {
 		this.gdeStoji = gdeStoji;
 		this.preduzece = preduzece;
-		//this.proizvodi = (ArrayList) preduzece.proizvodi;
 		this.proizvodi = (ArrayList<Proizvod>) proizvodi;
 		initProductPanel();
 		skrol = new JScrollPane(panelSaProizvodima);
-		//		 JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, 
-		//	        JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-		//skrol.setPreferredSize(new Dimension(500, 300));
-		//
-		//add(skrol);
-		//add(panelSaProizvodima);
-		//skrol.set;
-		//add(panelSaProizvodima);
-		//add(panelSaProizvodima);
+		
 		skrol.setPreferredSize(new Dimension(1100, 630));
 		add(skrol);
-		//skrol.setMaximumSize(new Dimension(1000, 400));
 			
 		initDesno();
 		add(desniDugmici);
 		
 		sortiraj.addActionListener(new ActionListener() {
 			 public void actionPerformed(ActionEvent e) {
-			      //your code here
-			    	// skloniti i desno i panel, pa dodati i desno i panel
+			      
 				 sortirajCenaRastuce();
-				 //remove(0);
-				 //remove(0);
-				 	//add(Proiz)
-				 //updateUI();
-				 	
-			    }
-			
+			 }
+		});
+		
+		sortirajCOpadajuce.addActionListener(new ActionListener() {
+			 public void actionPerformed(ActionEvent e) {
+			      
+				 sortirajCenaOpadajuce();
+			 }
 		});
 		
 		pretrazi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				pretrazi();
-				
-				
+
 			}
 			
 		});
@@ -127,14 +115,10 @@ public class ProizvodiView extends BaseView{
 			else {
 				gdeStoji.remove(1);
 			}
-			//remove(0);
-		 	//remove(0);
-		 	
-			//add(Proiz)
+			
 		 	updateUI();
 			gdeStoji.updateUI();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -142,22 +126,22 @@ public class ProizvodiView extends BaseView{
 	}
 
 	
+	@SuppressWarnings("unchecked")
 	protected void sortirajCenaRastuce() {
 		// TODO Auto-generated method stub
-		 Collections.sort(proizvodi, new Comparator() 
-         {
+		 Collections.sort(proizvodi, new Comparator() {
 
-          public int compare(Object o1, Object o2) 
-          {
-          Proizvod sa = (Proizvod)o1;
-          Proizvod sb = (Proizvod)o2;
-
-          //int v = sa.getAktuelnaCena().getRedovnaCena().compareTo(sb.getAktuelnaCena().getRedovnaCena());
-
-          return Double.compare(sa.getAktuelnaCena().getRedovnaCena(), sb.getAktuelnaCena().getRedovnaCena());           
-
-              // it can also return 0, and 1
-          } }   );
+          public int compare(Object o1, Object o2) {
+	          Proizvod sa = (Proizvod)o1;
+	          Proizvod sb = (Proizvod)o2;
+	
+	          //int v = sa.getAktuelnaCena().getRedovnaCena().compareTo(sb.getAktuelnaCena().getRedovnaCena());
+	
+	          return Double.compare(sa.getAktuelnaCena().getRedovnaCena(), sb.getAktuelnaCena().getRedovnaCena());           
+	
+	              // it can also return 0, and 1
+	          } 
+          });
 		 ProizvodiView pv;
 			try {
 				pv = new ProizvodiView(gdeStoji, preduzece, proizvodi);
@@ -168,17 +152,47 @@ public class ProizvodiView extends BaseView{
 				else {
 					gdeStoji.remove(1);
 				}
-				//remove(0);
-			 	//remove(0);
-			 	
-				//add(Proiz)
+				
 			 	updateUI();
 				gdeStoji.updateUI();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		
+	}
+	
+	@SuppressWarnings("unchecked")
+	protected void sortirajCenaOpadajuce() {
+		// TODO Auto-generated method stub
+		 Collections.sort(proizvodi, new Comparator() {
+
+          public int compare(Object o1, Object o2) {
+	          Proizvod sa = (Proizvod)o1;
+	          Proizvod sb = (Proizvod)o2;
+	
+	          //int v = sa.getAktuelnaCena().getRedovnaCena().compareTo(sb.getAktuelnaCena().getRedovnaCena());
+	
+	          return Double.compare(sb.getAktuelnaCena().getRedovnaCena(), sa.getAktuelnaCena().getRedovnaCena());           
+	
+	              // it can also return 0, and 1
+	          } 
+          });
+		 ProizvodiView pv;
+			try {
+				pv = new ProizvodiView(gdeStoji, preduzece, proizvodi);
+				gdeStoji.add(pv);
+				if(preduzece.trenutnoUlogovani == null) {
+					gdeStoji.remove(0);
+				}
+				else {
+					gdeStoji.remove(1);
+				}
+				
+			 	updateUI();
+				gdeStoji.updateUI();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		
 	}
 
@@ -188,12 +202,10 @@ public class ProizvodiView extends BaseView{
 		desniDugmici.setPreferredSize(new Dimension(300, 600));
 		sortiraj = new JButton("Sortiraj po ceni rastuce");
 		//sortiraj.setPreferredSize(new Dimension(10, 0));
-		sortNazRast = new JButton("Sortiraj po nazivu rastuce");
-		sortNazOp = new JButton("Sortiraj po nazivu opadajuce");
+		//sortNazRast = new JButton("Sortiraj po nazivu rastuce");
+		//sortNazOp = new JButton("Sortiraj po nazivu opadajuce");
 		pretrazi = new JButton("Pretrazi");
 		sortirajCOpadajuce = new JButton("Sortiraj po ceni opadajuce");
-		// nek pretrazuje uvijek sve
-		
 		
 		JPanel holder = new JPanel(new FlowLayout());
 		pretragaTxt = new JTextField(12);
@@ -208,13 +220,13 @@ public class ProizvodiView extends BaseView{
  		p2.add(sortirajCOpadajuce);
 		desniDugmici.add(p2);
  		
-		JPanel p4 = new JPanel();
-		JPanel p5 = new JPanel();
-		p4.add(sortNazRast);
-		p5.add(sortNazOp);
-		desniDugmici.add(p4);
-		desniDugmici.add(p5);
-		Dimension d = sortNazOp.getSize();
+		//JPanel p4 = new JPanel();
+		//JPanel p5 = new JPanel();
+		//p4.add(sortNazRast);
+		//p5.add(sortNazOp);
+		//desniDugmici.add(p4);
+		//desniDugmici.add(p5);
+		//Dimension d = sortNazOp.getSize();
 		//sortiraj.setPreferredSize(d);
 		//sortirajCOpadajuce.setPreferredSize(d);
 		//sortNazRast.setPreferredSize(d);
@@ -275,7 +287,6 @@ public class ProizvodiView extends BaseView{
 						
 						@Override
 						public void actionPerformed(ActionEvent e) {
-							//System.out.println(">>>>>> Kategorija: "+k.getNaziv());
 							prikazKategorije(k);
 						}
 					});
@@ -318,24 +329,14 @@ public class ProizvodiView extends BaseView{
 		panelSaProizvodima = new JPanel();
 		GridLayout grid = new GridLayout(0, 3, 50, 50);
 		panelSaProizvodima.setLayout(grid);
-		//this.setLayout(grid);
 		
-		//if (proizvodi.isEmpty()) {
-		//	JPanel panel = new JPanel(new BorderLayout());
-		//	panel.add(new JLabel("Nema nijednog proizvoda."), BorderLayout.CENTER);
-		//	panelSaProizvodima.add(panel);
-		//	return;
-		//}
 		
 		for (Proizvod p: this.proizvodi) {
 			ProizvodPanel pp = new ProizvodPanel(p, this, preduzece);
 			ControllerProizvoda cp = new ControllerProizvoda(pp, preduzece);		// da ovde dobije preduzece, ili mozemo
 			pp.setController(cp);										// ostaviti ovako jer svakako pristupa preduzecu iz view?
-			//pp.updateUI();
-			// ovde dodam kontroler?
 			
 			panelSaProizvodima.add(pp);
-			//this.add(panelSaProizvodima);
 		
 		}
 		
